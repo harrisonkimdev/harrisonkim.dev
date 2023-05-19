@@ -1,4 +1,12 @@
+const path = require('path')
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  experimental: { appDir: true, serverComponentsExternalPackages: ["mongoose"] },
+  webpack: (config) => {
+    config.experiments = { ...config.experiments, topLevelAwait: true }
+    return config
+  }
+}
 
 module.exports = nextConfig
