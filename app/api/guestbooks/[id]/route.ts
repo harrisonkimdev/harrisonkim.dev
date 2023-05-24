@@ -52,6 +52,16 @@ export const PATCH = async (req: Request ) => {
 }
 
 // delete
-export const DELETE = async (req: Request, res: Response) => {
-  // 
+export const DELETE = async (req: Request, { params }: { params: { id: string }} ) => {
+  try {
+    const result = await Guestbook.deleteOne({ _id: params.id })
+
+    if (result.acknowledged === true) {
+      return new Response('deleted', { status: 200 })
+    } else {
+      return new Response('not deleted', { status: 400 })
+    }
+  } catch (err) {
+    // 
+  }
 }
