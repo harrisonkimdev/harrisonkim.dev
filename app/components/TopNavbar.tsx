@@ -36,7 +36,7 @@ const TopNavbar = () => {
                 <a href="/projects" className='hover:underline'>Projects</a>
               </button>
               <button>
-                <a href="/guestbook" className='hover:underline'>Guest Book</a>
+                <a href="/guestbooks" className='hover:underline'>Guestbook</a>
               </button>
               <button>
                 <a href="/about" className='hover:underline'>About</a>

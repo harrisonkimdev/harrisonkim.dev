@@ -1,5 +1,4 @@
 // create
-
 'use client'
 
 import React, { SyntheticEvent, useState, useEffect } from 'react'
@@ -40,7 +39,7 @@ const page = () => {
       // 
     })
 
-    router.push('/guestbook')
+    router.push('/guestbooks')
   }
 
   useEffect(() => {
@@ -89,7 +88,7 @@ const page = () => {
           {/* buttons */}
           <div className='flex justify-end gap-2'>
             <button type='submit' disabled={disableSubmit} className={submitButtonStyle}> Submit </button>
-            <Link href='/guestbook'>
+            <Link href='/guestbooks'>
               <button type='button' className='border border-stone-400 text-stone-900 px-2 py-1 rounded-lg hover:bg-stone-300'> Cancel </button>
             </Link>
           </div>
