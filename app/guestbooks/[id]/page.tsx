@@ -1,7 +1,7 @@
 // show
 'use client'
 
-import React, { useState, useEffect, SyntheticEvent } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, redirect } from 'next/navigation'
 import { IGuestbook } from '../interfaces/index'
@@ -38,7 +38,7 @@ const Page = () => {
     fetchData()
   }, [])
 
-  const handlePasswordSubmit = async (e: SyntheticEvent) => {
+  const handlePasswordSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (password == guestbook?.password) {
