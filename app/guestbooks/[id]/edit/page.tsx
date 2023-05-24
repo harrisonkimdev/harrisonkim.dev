@@ -8,25 +8,30 @@ import 'react-quill/dist/quill.snow.css'
 import '../../styles/quill-editor.css'
 import Link from 'next/link'
 import { IGuestbook } from '@/guestbooks/interfaces'
+import { useRouter } from 'next/navigation'
 
 const page = ({ params }: { params: { id: String } }) => {
   const [guestbook, setGuestbook] = useState<IGuestbook | undefined>(undefined)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
 
+  const router = useRouter()
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    await axios.patch(`/api/guestbooks/${guestbook?._id}`)
+    await axios.patch(`/api/guestbooks/${guestbook?._id}`, {
+      title,
+      content
+    })
       .then((res) => {
-        // 
+        router.push('/guestbooks')
       })
   }
 
   useEffect(() => {
     axios.get(`/api/guestbooks/${params.id}`)
       .then(res => {
-        console.log(res.data)
         setGuestbook(res.data)
         setTitle(res.data.title)
         setContent(res.data.content)

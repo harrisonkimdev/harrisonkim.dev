@@ -1,5 +1,6 @@
 import { connectToDB } from '@/utils/db'
 import Guestbook from '@/models/guestbook'
+import { IGuestbook } from '@/guestbooks/interfaces';
 
 // show
 export const GET = async (req: Request, { params } : { params: { id: string }; }) => {
@@ -18,42 +19,30 @@ export const GET = async (req: Request, { params } : { params: { id: string }; }
 }
 
 // update
-export const PATCH = async (req: Request ) => {
-  const { _id, title, content, writer, password, viewCount, createdAt, updatedAt } = await req.json()
+export const PATCH = async (req: Request, { params }: { params: { id: string }}) => {
+  const { title, content, updatedAt } = await req.json()
 
   try {
-    const query = Guestbook.findById(_id, (err, doc) => {
-      if (err) {
-        console.error(err)
-        return
-      }
+    await connectToDB()
 
-      if (!doc) {
-        console.log("Document not found")
-        return
-      }
-
-      console.log(doc)
-      doc.viewCount = viewCount
-
-      doc.save((err) => {
-        if (err) {
-          console.error(err)
-          return
-        }
-        console.log("Document updated")
-      })
+    const guestbook = await Guestbook.findByIdAndUpdate({ _id:params.id }, {
+      title,
+      content,
+      updatedAt: Date.now()
     })
 
-    return new Response('hey', { status: 200 })
+    return new Response(JSON.stringify(guestbook), { status: 200 })
+
   } catch (err) {
-    // 
+    console.log(err)
   }
 }
 
 // delete
 export const DELETE = async (req: Request, { params }: { params: { id: string }} ) => {
   try {
+    await connectToDB()
+
     const result = await Guestbook.deleteOne({ _id: params.id })
 
     if (result.acknowledged === true) {
