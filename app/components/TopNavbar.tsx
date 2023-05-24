@@ -4,14 +4,13 @@ import React,{ useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Sidebar from './Sidebar'
+import Image from 'next/image'
 
 const TopNavbar = () => {
   const [darkMode, setDarkMode] = useState(false)
   const [toggleSidebar, setToggleSidebar] = useState(false)
 
   const pathname = usePathname()
-    return usePathname() == '/' ? false : true
-  }
 
   return (
     <>
@@ -21,10 +20,9 @@ const TopNavbar = () => {
           <div className='hidden md:flex justify-between p-4 items-center bg-black text-zinc-200'>
             <div>
               <Link href="/home" className='flex gap-2 items-center'> 
-                {/* <Image src='' alt='' className='' /> */}
-                <img src="https://dieselpunkcore.com/wp-content/uploads/2014/06/logo-placeholder.png" alt="Logo placeholder" className='w-10'/>
-
-                <p>Harrison Kim</p>
+                <Image src='/images/logos/dev-kim-transparent.png' alt='Dev Kim Logo'
+                  width={500} height={500} className='object-contain w-28 invert'
+                />
               </Link>
             </div>
 
@@ -54,8 +52,9 @@ const TopNavbar = () => {
               </div>
 
               <Link href="/home"> 
-                {/* <Image src='' alt='' className='' /> */}
-                <img src="https://dieselpunkcore.com/wp-content/uploads/2014/06/logo-placeholder.png" alt="Logo placeholder" className='w-10'/>
+                <Image src='/images/logos/dev-kim-transparent.png' alt='Dev Kim Logo'
+                  width={500} height={500} className='object-contain w-28 invert'
+                />
               </Link>
 
               {/* dark mode toggle */}

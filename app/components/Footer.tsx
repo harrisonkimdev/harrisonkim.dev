@@ -13,10 +13,11 @@ const Footer = () => {
       { pathname !== '/' && (
         <div className='flex flex-row gap-56 py-10 px-20 bg-zinc-200'>
           <div className='flex flex-col gap-4'>
-            <img
-              src='https://dieselpunkcore.com/wp-content/uploads/2014/06/logo-placeholder.png'
-              alt='' className='object-contain w-12'
-            />
+            <Link href='/home'>
+              <Image src='/images/logos/dev-kim-transparent.png' alt='Dev Kim Logo'
+                width={500} height={500} className='object-contain w-28'
+              />
+            </Link>
             <div className='flex flex-col gap-2'>
               <Link href='https://www.linkedin.com/in/harrison-kim-b246a5175/'
                 className='flex flex-row gap-2 items-center hover:underline'
