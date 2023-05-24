@@ -9,7 +9,7 @@ import '../styles/quill-editor.css'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
-const page = () => {
+const Page = () => {
   const [title, setTitle] =  useState('')
   const [content, setContent] = useState('')
   const [writer, setWriter] =  useState('')
@@ -101,4 +101,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

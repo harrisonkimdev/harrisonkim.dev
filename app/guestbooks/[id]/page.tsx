@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { IGuestbook } from '../interfaces/index'
 
-const page = ({ params }: { params: { id: String } }) => {
+const Page = ({ params }: { params: { id: String } }) => {
   const [guestbook, setGuestbook] = useState<IGuestbook | undefined>(undefined)
   const [showPasswordInput, setShowPasswordInput] = useState<boolean>(false)
   const [password, setPassword] = useState<string>('')
@@ -125,4 +125,4 @@ const page = ({ params }: { params: { id: String } }) => {
   )
 }
 
-export default page
+export default Page

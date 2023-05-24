@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { IGuestbook } from '@/guestbooks/interfaces'
 import { useRouter } from 'next/navigation'
 
-const page = ({ params }: { params: { id: String } }) => {
+const Page = ({ params }: { params: { id: String } }) => {
   const [guestbook, setGuestbook] = useState<IGuestbook | undefined>(undefined)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -61,4 +61,4 @@ const page = ({ params }: { params: { id: String } }) => {
   )
 }
 
-export default page
+export default Page

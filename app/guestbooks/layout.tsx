@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter()
   
   return (
@@ -38,4 +38,4 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-export default layout
+export default Layout

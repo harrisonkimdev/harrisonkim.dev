@@ -1,13 +1,14 @@
 import './styles/welcome.css'
+import Image from 'next/image'
 
 export default function Home() {
   return (
     <>
       {/* <div className={toggleSidebar ? 'opacity-20' : ''}> */}
       <div className='wrapper'>
-        <img src="/images/space.jpg" alt="" className='background' />
+        <Image src="/images/space.jpg" alt="" className='background' />
         <header className='relaitve'>
-          <img src="/images/astronaut.png" alt="" className='foreground' />
+          <Image src="/images/astronaut.jpg" alt="" className='foreground' />
           <div className='text-center'>
             <p className='title text-5xl font-extrabold'>Harrison Kim</p>
             <p className='title text-xl font-bold'>Full Stack Engineer</p>

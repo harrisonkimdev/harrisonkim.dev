@@ -6,7 +6,7 @@ import axios from 'axios'
 import { IGuestbook } from './interfaces'
 import Guestbook from './components/Guestbook'
 
-const page = () => {
+const Page = () => {
   const [guestbooks, setGuestbooks] = useState<IGuestbook[] | undefined>(undefined)
   const [currentPage, setCurrentPage] = useState<number>(1)
 
@@ -36,4 +36,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
