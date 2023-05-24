@@ -3,23 +3,24 @@
 
 import React, { useState, useEffect, SyntheticEvent } from 'react'
 import axios from 'axios'
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
 import { IGuestbook } from '../interfaces/index'
 
-const Page = ({ params }: { params: { id: String } }) => {
+const Page = () => {
   const [guestbook, setGuestbook] = useState<IGuestbook | undefined>(undefined)
   const [showPasswordInput, setShowPasswordInput] = useState<boolean>(false)
   const [password, setPassword] = useState<string>('')
   const [actionType, setActionType] = useState<string>('')
 
   const router = useRouter()
+  const params = useParams()
+
 
   useEffect(() => {
     const fetchData = async () => {
       await axios
         .get(`/api/guestbooks/${params.id}`)
         .then(res => {
-          console.log(res.data)
           setGuestbook(res.data)
 
           // increase the view count

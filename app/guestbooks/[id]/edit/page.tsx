@@ -8,14 +8,15 @@ import 'react-quill/dist/quill.snow.css'
 import '../../styles/quill-editor.css'
 import Link from 'next/link'
 import { IGuestbook } from '@/guestbooks/interfaces'
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
 
-const Page = ({ params }: { params: { id: String } }) => {
+const Page = () => {
   const [guestbook, setGuestbook] = useState<IGuestbook | undefined>(undefined)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
 
   const router = useRouter()
+  const params = useParams()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
