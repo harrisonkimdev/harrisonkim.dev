@@ -17,7 +17,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
             { usePathname() === '/guestbooks' && (
               <div className='flex justify-end'>
                 <Link href='/guestbooks/create'
-                  className='bg-zinc-400 text-white font-normal px-2 py-1 rounded-lg'
+                  className='bg-stone-400 text-white font-normal px-2 py-1 rounded-lg'
                 > Write</Link>
               </div>
             )}
