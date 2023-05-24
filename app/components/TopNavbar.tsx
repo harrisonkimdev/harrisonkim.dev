@@ -9,13 +9,13 @@ const TopNavbar = () => {
   const [darkMode, setDarkMode] = useState(false)
   const [toggleSidebar, setToggleSidebar] = useState(false)
 
-  const currentUrl = () => {
+  const pathname = usePathname()
     return usePathname() == '/' ? false : true
   }
 
   return (
     <>
-      { currentUrl() && (
+      { pathname !== '/' && (
         <div className='relative'>
           {/* Tablets and Desktops */}
           <div className='hidden md:flex justify-between p-4 items-center bg-black text-zinc-200'>

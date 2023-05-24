@@ -6,13 +6,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const Footer = () => {
-  const currentUrl = () => {
-    return usePathname() == '/' ? false : true
-  }
+  const pathname = usePathname()
 
   return (
     <>
-      { currentUrl() && (
+      { pathname !== '/' && (
         <div className='flex flex-row gap-56 py-10 px-20 bg-zinc-200'>
           <div className='flex flex-col gap-4'>
             <img
