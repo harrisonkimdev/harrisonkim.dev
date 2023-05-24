@@ -26,7 +26,7 @@ const page = () => {
             '>
               Hi,
               <br />
-              <span className='whitespace-nowrap'>I'm <span className='text-stone-700'>Harrison</span>,</span>
+              <span className='whitespace-nowrap'>I&apos;m <span className='text-stone-700'>Harrison</span>,</span>
               <br />
               Full-stack
               <br />
@@ -54,7 +54,7 @@ const page = () => {
           <p className='text-5xl font-bold text-stone-500 dark:text-stone-300'>
             Hi,
             <br />
-            <span className='whitespace-nowrap'>I'm <span className='text-stone-700'>Harrison</span>,</span>
+            <span className='whitespace-nowrap'>I&apos;m <span className='text-stone-700'>Harrison</span>,</span>
             <br />
             Full-stack
             <br />
