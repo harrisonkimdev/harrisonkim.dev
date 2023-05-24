@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import TopNavbar from './components/TopNavbar'
 import Footer from './components/Footer'
 import './globals.css'
+import { usePathname } from 'next/navigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,20 +21,29 @@ export default function RootLayout({
 }) {
   const [toggleSidebar, setToggleSidebar] = useState(false)
 
-  const addOpacity = () => {
-    return toggleSidebar === true ? 'opacity-20' : ''
+  const pathname = usePathname()
+
+  const hide = () => {
+    return toggleSidebar === true ? 'hidden' : ''
   }
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TopNavbar emitToggleSidebar={(value: boolean) => setToggleSidebar(value) } />
+        <TopNavbar
+          emitCloseSidebar={(value: boolean) => setToggleSidebar(value) }
+        />
 
-        <div className={addOpacity()}>
-          { children }
+        <div className='overflow-hidden'>
+          <div className={ pathname !== '/' ? 'pt-[60px]' : ''}>
+            <div className={ hide() }>
+              { children }
+
+              <Footer />
+            </div>
+          </div>
         </div>
 
-        <Footer />
       </body>
     </html>
   )

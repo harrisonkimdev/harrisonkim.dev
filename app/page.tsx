@@ -4,11 +4,10 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <>
-      {/* <div className={toggleSidebar ? 'opacity-20' : ''}> */}
       <div className='wrapper'>
-        <Image src="/images/space.jpg" alt="" className='background' />
+        <Image src="/images/space.jpg" alt="" className='background' width={1920} height={1080} />
         <header className='relaitve'>
-          <Image src="/images/astronaut.jpg" alt="" className='foreground' />
+          <Image src="/images/astronaut.png" alt="" className='foreground' width={1920} height={1080} />
           <div className='text-center'>
             <p className='title text-5xl font-extrabold'>Harrison Kim</p>
             <p className='title text-xl font-bold'>Full Stack Engineer</p>

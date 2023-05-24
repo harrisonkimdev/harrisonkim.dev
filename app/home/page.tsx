@@ -5,14 +5,28 @@ const page = () => {
   return (
     <main className="min-h-screen">
       {/* Layout for Tablets & Desktops */}
-      <div className='hidden md:flex flex-col items-center gap-20 p-24'>
+      <div className='
+        hidden items-center gap-20
+        md:flex md:flex-col md:p-16
+        lg:p-24
+      '>
         <div className='flex gap-10 items-center'>
-          <Image src="/images/profile/me.png" alt="" width={320} height={320} />
+          <Image src="/images/profile/me.png" alt="" width={288} height={288}
+            className='
+              object-contain
+              md:w-60
+              lg:w-72
+            '
+          />
           <div className=''>
-            <p className='text-7xl font-bold text-stone-500 dark:text-stone-300'>
+            <p className='
+              font-bold text-stone-500
+              md:text-6xl
+              lg:text-7xl 
+            '>
               Hi,
               <br />
-              <span className='whitespace-nowrap'>I'm <span className='text-stone-700 dark:text-stone-500'>Harrison</span>,</span>
+              <span className='whitespace-nowrap'>I'm <span className='text-stone-700'>Harrison</span>,</span>
               <br />
               Full-stack
               <br />
@@ -20,7 +34,7 @@ const page = () => {
             </p>
           </div>
         </div>
-        <div className='grid grid-cols-3 gap-8 w-full'>
+        {/* <div className='grid grid-cols-3 gap-8 w-full'>
           <div className='bg-white hover:bg-stone-50 dark:bg-stone-400 dark:hover:bg-stone-300 px-4 py-12 rounded-lg text-center text-2xl'>
             <p className='hover:text-4xl ease-in duration-100'>ABCD</p>
           </div>
@@ -30,7 +44,7 @@ const page = () => {
           <div className='bg-white hover:bg-stone-50 dark:bg-stone-400 dark:hover:bg-stone-300 px-4 py-12 rounded-lg text-center text-2xl'>
             <p className='hover:text-4xl ease-in duration-100'>1234</p>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Layout for smartphones */}
@@ -40,7 +54,7 @@ const page = () => {
           <p className='text-5xl font-bold text-stone-500 dark:text-stone-300'>
             Hi,
             <br />
-            <span className='whitespace-nowrap'>I'm <span className='text-stone-700 dark:text-stone-500'>Harrison</span>,</span>
+            <span className='whitespace-nowrap'>I'm <span className='text-stone-700'>Harrison</span>,</span>
             <br />
             Full-stack
             <br />
@@ -48,7 +62,7 @@ const page = () => {
           </p>
         </div>
 
-        <div className='grid grid-rows-3 gap-4 w-full'>
+        {/* <div className='grid grid-rows-3 gap-4 w-full'>
           <div className='bg-white hover:bg-stone-50 dark:bg-stone-400 dark:hover:bg-stone-300 px-4 py-12 rounded-lg text-center text-2xl'>
             <p className='hover:text-4xl ease-in duration-100'>ABCD</p>
           </div>
@@ -58,7 +72,7 @@ const page = () => {
           <div className='bg-white hover:bg-stone-50 dark:bg-stone-400 dark:hover:bg-stone-300 px-4 py-12 rounded-lg text-center text-2xl'>
             <p className='hover:text-4xl ease-in duration-100'>1234</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </main>
   )
