@@ -29,7 +29,6 @@ export const POST = async (req: Request) => {
       content,
       writer,
       password,
-      viewCount: 0,
     })
 
     const res = await newGuestbook.save()

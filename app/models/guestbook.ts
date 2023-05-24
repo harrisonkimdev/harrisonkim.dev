@@ -16,9 +16,6 @@ const guestbookSchema = new Schema({
     type: String,
     required: [true, 'Password is required']
   },
-  viewCount: {
-    type: Number,
-  },
   createdAt: {
     type: Date,
     immutable: true,
