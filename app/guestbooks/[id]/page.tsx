@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect, SyntheticEvent } from 'react'
 import axios from 'axios'
-import { useRouter, useParams } from 'next/navigation'
+import { useParams, redirect } from 'next/navigation'
 import { IGuestbook } from '../interfaces/index'
 
 const Page = () => {
@@ -12,7 +12,6 @@ const Page = () => {
   const [password, setPassword] = useState<string>('')
   const [actionType, setActionType] = useState<string>('')
 
-  const router = useRouter()
   const params = useParams()
 
 
@@ -45,13 +44,13 @@ const Page = () => {
     if (password == guestbook?.password) {
       
       if (actionType == 'edit') {
-        router.push(`/guestbooks/${guestbook?._id}/edit`)
+        redirect(`/guestbooks/${guestbook?._id}/edit`)
       }
       else if (actionType == 'delete') {
         await axios.delete(`/api/guestbooks/${guestbook?._id}`)
           .then(res => console.log(res))
         
-        router.push('/guestbooks')
+        redirect('/guestbooks')
       }
     }
     else {
