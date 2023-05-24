@@ -1,7 +1,7 @@
 // create
 'use client'
 
-import React, { SyntheticEvent, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import Link from 'next/link'
@@ -18,7 +18,7 @@ const Page = () => {
 
   const submitButtonStyle = disableSubmit ? 'hidden' : 'bg-stone-400 text-stone-900  px-2 py-1 rounded-lg hover:bg-stone-300'
 
-  const handleSubmit = (e: SyntheticEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     axios.post('/api/guestbooks', {
