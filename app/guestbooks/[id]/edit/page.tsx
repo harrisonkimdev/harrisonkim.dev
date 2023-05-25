@@ -1,9 +1,9 @@
 // edit
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import axios from 'axios'
-import ReactQuill from 'react-quill'
+import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css'
 import '../../styles/quill-editor.css'
 import Link from 'next/link'
@@ -17,6 +17,13 @@ const Page = () => {
 
   const params = useParams()
   const router = useRouter()
+
+  const QuillNoSSRWrapper = useMemo(() => {
+    return dynamic(() => import("react-quill"), {
+      loading: () => <p>loading...</p>,
+      ssr: false,
+    })
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -47,7 +54,7 @@ const Page = () => {
             className='w-full p-1 bg-stone-100 rounded shadow focus:outline-none'
           />
           <div className='h-96'>
-            <ReactQuill theme='snow' value={content} onChange={setContent} />
+            <QuillNoSSRWrapper placeholder='' theme='snow' value={content} onChange={setContent} />
           </div>
         </div>
 

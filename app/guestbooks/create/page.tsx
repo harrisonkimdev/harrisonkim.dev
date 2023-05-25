@@ -1,8 +1,8 @@
 // create
 'use client'
 
-import React, { useState, useEffect } from 'react'
-// import ReactQuill from 'react-quill'
+import React, { useState, useEffect, useMemo } from 'react'
+import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css'
 import Link from 'next/link'
 import '../styles/quill-editor.css'
@@ -11,21 +11,29 @@ import axios from 'axios'
 
 const Page = () => {
   const [title, setTitle] =  useState('')
-  // const [content, setContent] = useState('')
+  const [content, setContent] = useState('')
   const [writer, setWriter] =  useState('')
   const [password, setPassword] =  useState('')
   const [disableSubmit, setDisableSubmit] = useState(true)
 
   const router = useRouter()
+  
+  const QuillNoSSRWrapper = useMemo(() => {
+    return dynamic(() => import("react-quill"), {
+      loading: () => <p>loading...</p>,
+      ssr: false,
+    })
+  }, [])
 
-  const submitButtonStyle = disableSubmit ? 'hidden' : 'bg-stone-400 text-stone-900  px-2 py-1 rounded-lg hover:bg-stone-300'
+  const submitButtonStyle = disableSubmit ?
+    'hidden' : 'bg-stone-400 text-stone-900  px-2 py-1 rounded-lg hover:bg-stone-300'
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     axios.post('/api/guestbooks', {
       title,
-      // content,
+      content,
       writer,
       password
     })
@@ -50,7 +58,7 @@ const Page = () => {
     ) {
       setDisableSubmit(false)
     }
-  }, [title, writer, password] )
+  }, [title, writer, password])
 
   return (
     <>
@@ -62,7 +70,11 @@ const Page = () => {
             className='w-full p-1 bg-stone-100 rounded shadow focus:outline-none'
           />
           <div className='h-96'>
-            {/* <ReactQuill theme='snow' value={content} onChange={setContent} /> */}
+            <QuillNoSSRWrapper
+              placeholder=''
+              value={content}
+              onChange={setContent}
+            />
           </div>
         </div>
 
