@@ -13,18 +13,26 @@ const Sidebar = (props: any) => {
 
       {/* tabs */}
       <div className='flex flex-col gap-8 px-6'>
-        <button type='button' onClick={() => props.emitCloseSidebar()}>
-          <Link href="/resume">Resume</Link>
-        </button>
-        <button type='button' onClick={() => props.emitCloseSidebar()}>
-          <Link href="/projects">Projects</Link>
-        </button>
-        <button type='button' onClick={() => props.emitCloseSidebar()}>
-          <Link href="/guestbooks">Guestbook</Link>
-        </button>
-        <button type='button' onClick={() => props.emitCloseSidebar()}>
-          <Link href="/about">About</Link>
-        </button>
+        
+          <Link href="/home">
+            <button type='button' onClick={() => props.emitCloseSidebar()}>Home</button>
+          </Link>
+
+          <Link href="/resume">
+            <button type='button' onClick={() => props.emitCloseSidebar()}>Resume</button>
+          </Link>
+        
+          <Link href="/projects">
+            <button type='button' onClick={() => props.emitCloseSidebar()}>Projects</button>
+          </Link>
+        
+          <Link href="/guestbooks">
+            <button type='button' onClick={() => props.emitCloseSidebar()}>Guestbook</button>
+          </Link>
+        
+          <Link href="/about">
+            <button type='button' onClick={() => props.emitCloseSidebar()}>About</button>
+          </Link>
       </div>
     </div>
   )
