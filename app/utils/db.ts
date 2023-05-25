@@ -11,7 +11,7 @@ export const connectToDB = async () => {
   try {
     await mongoose
       .set({ debug: true, strictQuery: false})
-      .connect(`${process.env.MONGO_URI}`)
+      .connect(`${process.env.MONGODB_URI}`)
       .then((mongoose) => mongoose)
 
     isConnected = true
