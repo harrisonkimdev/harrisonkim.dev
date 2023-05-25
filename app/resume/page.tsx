@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const page = () => {
+const Page = () => {
   return (
     <section className='flex flex-col my-14 pb-14 max-w-5xl justify-center mx-auto border shadow-lg bg-white'>
       {/* header */}
@@ -186,4 +186,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

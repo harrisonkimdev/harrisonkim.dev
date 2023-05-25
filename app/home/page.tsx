@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-const page = () => {
+const Page = () => {
   return (
     <main className="min-h-screen">
       {/* Layout for Tablets & Desktops */}
@@ -78,4 +78,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
