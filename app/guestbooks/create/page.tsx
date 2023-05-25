@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react'
 import 'react-quill/dist/quill.snow.css'
 import Link from 'next/link'
 import '../styles/quill-editor.css'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
 const Page = () => {
@@ -15,6 +15,8 @@ const Page = () => {
   const [writer, setWriter] =  useState('')
   const [password, setPassword] =  useState('')
   const [disableSubmit, setDisableSubmit] = useState(true)
+
+  const router = useRouter()
 
   const submitButtonStyle = disableSubmit ? 'hidden' : 'bg-stone-400 text-stone-900  px-2 py-1 rounded-lg hover:bg-stone-300'
 
@@ -36,8 +38,8 @@ const Page = () => {
     .finally(() => {
       // 
     })
-
-    redirect('/guestbooks')
+    
+    router.push('/guestbooks')
   }
 
   useEffect(() => {
