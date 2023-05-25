@@ -30,16 +30,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TopNavbar
-          emitCloseSidebar={(value: boolean) => setToggleSidebar(value) }
-        />
+        <div className='min-w-min'>
+          <TopNavbar
+            emitCloseSidebar={(value: boolean) => setToggleSidebar(value) }
+          />
 
-        <div className='overflow-hidden'>
-          <div className={ pathname !== '/' ? 'pt-[60px]' : ''}>
-            <div className={ hide() }>
-              { children }
+          <div className='overflow-hidden'>
+            <div className={ pathname !== '/' ? 'pt-[60px]' : ''}>
+              <div className={ hide() }>
+                <div className='
+                  min-h-[calc(100vh-(60px+76px))]
+                  md:min-h-[calc(100vh-(60px+172px))]
+                '>
 
-              <Footer />
+                  { children }
+                </div>
+
+                <Footer />
+              </div>
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Page = () => {
   return (
-    <main className="min-h-screen">
+    <section>
       {/* Layout for Tablets & Desktops */}
       <div className='
         hidden items-center gap-20
@@ -74,7 +74,7 @@ const Page = () => {
           </div>
         </div> */}
       </div>
-    </main>
+    </section>
   )
 }
 

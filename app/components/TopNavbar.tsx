@@ -28,9 +28,9 @@ const TopNavbar = ( props: any ) => {
               />
             </div>
           ) : (
-            <div className='fixed w-full'>
+            <nav className='fixed w-full'>
               {/* Tablets and Desktops */}
-              <div className='hidden md:flex justify-between p-4 items-center bg-black text-stone-200'>
+              <div className='hidden md:flex justify-between p-4 items-center bg-black text-stone-200 md:h-[60px]'>
                 <div>
                   <Link href="/home" className='flex gap-2 items-center'> 
                     <Image src='/images/logos/dev-kim-transparent.png' alt='Dev Kim Logo'
@@ -40,9 +40,7 @@ const TopNavbar = ( props: any ) => {
                 </div>
     
                 <div className='
-                  flex gap-10
-                  md:mr-2
-                  lg:mr-8
+                  flex gap-10 mr-2
                 '>
                   <Link href="/home" className='hover:underline'>
                     <button type="button">Home</button>
@@ -95,7 +93,7 @@ const TopNavbar = ( props: any ) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </nav>
           )}
         </>
       }

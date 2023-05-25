@@ -11,14 +11,16 @@ const Footer = () => {
   return (
     <>
       { pathname !== '/' && (
-        <div className='
+        // footer
+        <footer className='
           px-8 py-6
-          md:flex md:flex-row md:gap-32 md:px-8 md:py-10 md:justify-center
-          lg:gap-56 lg:px-20 lg:py-10 bg-stone-200
+          md:flex md:flex-row md:gap-32 md:py-8 md:justify-center
+          lg:h-[172px] lg:gap-56 lg:py-8 bg-stone-200
         '>
+          {/* logo, linkedin & github */}
           <div className='
-            flex flex-row justify-between
-            md:flex-col md:gap-4
+            flex flex-row justify-between gap-6 items-center
+            md:flex-col
           '>
             <Link href='/home'>
               <Image src='/images/logos/dev-kim-transparent.png' alt='Dev Kim Logo'
@@ -27,7 +29,7 @@ const Footer = () => {
             </Link>
 
             <div className='
-              flex flex-row gap-4
+              flex gap-4
               md:flex-col md:gap-2
             '>
               <Link href='https://www.linkedin.com/in/harrison-kim-b246a5175/'
@@ -49,6 +51,7 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* sitemap */}
           <div className='
             hidden
             md:flex md:flex-row md:gap-16
@@ -76,7 +79,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </footer>
       )}
     </>
   )
