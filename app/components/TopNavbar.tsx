@@ -44,18 +44,21 @@ const TopNavbar = ( props: any ) => {
                   md:mr-2
                   lg:mr-8
                 '>
-                  <button>
-                    <a href="/resume" className='hover:underline'>Resume</a>
-                  </button>
-                  <button>
-                    <a href="/projects" className='hover:underline'>Projects</a>
-                  </button>
-                  <button>
-                    <a href="/guestbooks" className='hover:underline'>Guestbook</a>
-                  </button>
-                  <button>
-                    <a href="/about" className='hover:underline'>About</a>
-                  </button>
+                  <Link href="/home" className='hover:underline'>
+                    <button type="button">Home</button>
+                  </Link>
+                  <Link href="/resume" className='hover:underline'>
+                    <button type="button">Resume</button>
+                  </Link>
+                  <Link href="/projects" className='hover:underline'>
+                    <button type="button">Projects</button>
+                  </Link>
+                  <Link href="/guestbooks" className='hover:underline'>
+                    <button type="button">Guestbook</button>
+                  </Link>
+                  <Link href="/about" className='hover:underline'>
+                    <button type="button">About</button>
+                  </Link>
                 </div>
               </div>
               
