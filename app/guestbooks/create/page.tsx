@@ -18,6 +18,8 @@ const Page = () => {
 
   const router = useRouter()
   
+  // https://www.simplenextjs.com/posts/next-rich-editor-quill
+  // https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#with-no-ssr
   const QuillNoSSRWrapper = useMemo(() => {
     return dynamic(() => import("react-quill"), {
       loading: () => <p>loading...</p>,
@@ -70,11 +72,8 @@ const Page = () => {
             className='w-full p-1 bg-stone-100 rounded shadow focus:outline-none'
           />
           <div className='h-96'>
-            <QuillNoSSRWrapper
-              placeholder=''
-              value={content}
-              onChange={setContent}
-            />
+            {/* https://www.simplenextjs.com/posts/react-quill */}
+            <QuillNoSSRWrapper placeholder='' theme='snow' value={content} onChange={setContent} />
           </div>
         </div>
 
