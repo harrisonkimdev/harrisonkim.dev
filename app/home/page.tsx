@@ -91,7 +91,7 @@ const Page = () => {
         <div className='w-full bg-stone-300 md:px-10 pt-10 pb-16'>
           <div className='max-w-5xl mx-auto'>
             <h2 className='text-5xl font-bold text-stone-800'>
-              <span className='text-stone-500 hover:underline'><Link href='/projects'>Projects</Link></span> I've been working on
+              <span className='text-stone-500 hover:underline'><Link href='/projects'>Projects</Link></span> I&apos;ve been working on
             </h2>
 
             <div className='mt-6'>
@@ -236,7 +236,7 @@ const Page = () => {
         <div className='w-full bg-stone-300 px-6 pt-10 pb-12'>
           <div className='max-w-5xl mx-auto'>
             <h2 className='text-5xl font-bold text-stone-800'>
-              <span className='text-stone-500 hover:underline'><Link href='/projects'>Projects</Link></span> I've been working on
+              <span className='text-stone-500 hover:underline'><Link href='/projects'>Projects</Link></span> I&apos;ve been working on
             </h2>
 
             <div className='mt-6'>
