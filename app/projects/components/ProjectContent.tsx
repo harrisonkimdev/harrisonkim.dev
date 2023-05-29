@@ -25,8 +25,7 @@ const ProjectContent = ({ project }: { project: { name: string, readme: string, 
 
       <div className='mt-6'>
         <div className='border flex flex-row bg-white items-center border-b-2 rounded-t-xl shadow-inner'>
-          <img src="https://cdn.dribbble.com/users/355505/screenshots/3224818/media/ba9e25314f8479dbb8a0c603f60b2768.png?compress=1&resize=800x600&vertical=top" alt=""
-              className='w-16 ml-2'/>
+          <Image src="/images/macos-buttons.webp" alt="" width={800} height={600} className='w-16 ml-2 object-contain' />
           <h3 className='py-1 text-sm'>README.md</h3>
         </div>
         <div className='border-l-2 border-r-2 border-b-2 bg-white p-3 shadow rounded-b-xl'>
