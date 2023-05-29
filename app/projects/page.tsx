@@ -97,20 +97,20 @@ const Page = () => {
             <button type='button' onClick={() => {setFilepath('mosPic')}}
               className={`
                 ${filepath === 'mosPic' ? 'bg-stone-300' : 'bg-stone-200'}
-                w-full py-1 rounded-tl-md
+                w-full py-1 hover:bg-stone-300 cursor-pointer rounded-tl-md 
             `}> mosPic </button>
 
             {/* rounded-tr-md */}
             <button type='button' onClick={() => {setFilepath('Dashboard')}}
               className={`
                 ${filepath === 'Dashboard' ? 'bg-stone-300' : 'bg-stone-200'}
-                w-full py-1
+                w-full py-1 hover:bg-stone-300 cursor-pointer 
             `}> Dashboard </button>
 
             <button type='button' onClick={() => {setFilepath('claw_machine')}}
               className={`
                 ${filepath === 'claw_machine' ? 'bg-stone-300' : 'bg-stone-200'}
-                w-full py-1 rounded-tr-md
+                w-full py-1 hover:bg-stone-300 cursor-pointer rounded-tr-md 
             `}> Claw Machine </button>
           </div>
           <div className='bg-black text-lime-400 px-2 pt-1 pb-20 font-mono rounded-b-md'>
