@@ -40,7 +40,7 @@ const ProjectContent = ({ project }: { project: { name: string, readme: string, 
         <Slider {...settings}>
           { project.screenshots.map((item: { src: string, description: string }) => {
             return (
-                <div className='bg-stone-200 p-3 rounded-xl'>
+                <div key={item.id} className='bg-stone-200 p-3 rounded-xl'>
                   <div className='flex flex-col'>
                     <Image src={item.src} alt='' width={1920} height={1080} className='object-contain rounded-t-xl' />
                     <div className='p-4 bg-stone-100 rounded-b-xl'>

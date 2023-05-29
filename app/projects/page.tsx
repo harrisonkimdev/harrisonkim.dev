@@ -13,14 +13,17 @@ const Page = () => {
       readme: '*** This is a team project working with 5 individuals. ***',
       screenshots: [
         {
+          id: 1,
           src: '/images/screenshots/mosPic/landing-page.png',
           description: 'landing page'
         },
         {
+          id: 2,
           src: '/images/screenshots/mosPic/gallery-page.png',
           description: 'gallery page'
         },
         {
+          id: 3,
           src: '/images/screenshots/mosPic/background-image-page.png',
           description: 'background image'
         },
@@ -31,18 +34,22 @@ const Page = () => {
       readme: '',
       screenshots: [
         {
+          id: 4,
           src: '/images/screenshots/Dashboard/task-management.png',
           description: 'Task Management on GitHub'
         },
         {
+          id: 5,
           src: '/images/screenshots/Dashboard/task-description.png',
           description: 'Task Description'
         },
         {
+          id: 6,
           src: '/images/screenshots/Dashboard/blocksix.png',
           description: 'BlockSix - Todo'
         },
         {
+          id: 7,
           src: '/images/screenshots/Dashboard/notes.png',
           description: 'Notes'
         },
@@ -53,14 +60,17 @@ const Page = () => {
       readme: '',
       screenshots: [
         {
+          id: 8,
           src: '/images/screenshots/claw-machine/full.png',
           description: ''
         },
         {
+          id: 9,
           src: '/images/screenshots/claw-machine/close.png',
           description: ''
         },
         {
+          id: 10,
           src: '/images/screenshots/claw-machine/grab.png',
           description: ''
         },
