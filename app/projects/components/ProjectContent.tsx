@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from 'next/image'
 import '../styles/styles.css'
 
-const ProjectContent = ({ project }: { project: { name: string, readme: string, screenshots: { src: string, description: string }[] } }) => {
+const ProjectContent = ({ project }: { project: { name: string, readme: string, screenshots: { id: number, src: string, description: string }[] } }) => {
   const settings = {
     dots: true,
     infinite: true,
