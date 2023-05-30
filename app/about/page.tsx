@@ -4,7 +4,7 @@ import Image from 'next/image'
 const Page = () => {
   return (
     <>
-      <div className='w-full bg-stone-50'>
+      <div className='w-full bg-stone-50 py-20'>
         <div className='max-w-5xl mx-auto h-full flex flex-col justify-center'>
           <div className='flex flex-col text-center items-center'>
             <Image src='/images/logos/dev-kim-transparent.png' alt='Site Logo' width={686} height={172} className='object-contain w-1/3' />
