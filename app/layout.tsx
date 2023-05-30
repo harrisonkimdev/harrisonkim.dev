@@ -41,11 +41,11 @@ export default function RootLayout({
           <div className='overflow-hidden'>
             <div className={ pathname !== '/' ? 'pt-[60px]' : ''}>
               <div className={ hide() }>
-                <div className='
+                <div className={`
                   min-h-[calc(100vh-(60px+76px))]
                   md:min-h-[calc(100vh-(60px+172px))]
-                  flex flex-grow
-                '>
+                  ${pathname != '/' ?? 'flex flex-grow'}
+                `}>
                   { children }
                 </div>
 
