@@ -29,6 +29,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        
+      </head>
       <body className={inter.className}>
         <div className='min-w-min'>
           <TopNavbar
@@ -41,6 +44,7 @@ export default function RootLayout({
                 <div className='
                   min-h-[calc(100vh-(60px+76px))]
                   md:min-h-[calc(100vh-(60px+172px))]
+                  flex flex-grow
                 '>
 
                   { children }
