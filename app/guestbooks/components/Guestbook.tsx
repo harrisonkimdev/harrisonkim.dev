@@ -7,7 +7,7 @@ const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
     var aDay = 24*60*60*1000;
 
     function timeSince(date: any) {
-      var seconds = Math.floor((new Date() - date) / 1000);
+      var seconds = Math.floor((new Date().valueOf() - date) / 1000);
     
       var interval = seconds / 31536000;
     
@@ -57,7 +57,7 @@ const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
             </div>
 
             {/* days ago */}
-            <p className='whitespace-nowrap text-stone-400 text-sm'>{ timeSince(new Date(props.guestbookData.createdAt)-aDay) } ago</p>
+            <p className='whitespace-nowrap text-stone-400 text-sm'>{ timeSince(new Date(props.guestbookData.createdAt).valueOf() - aDay) } ago</p>
           </div>
         </div>
       </Link>

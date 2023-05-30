@@ -18,8 +18,7 @@ const Page = () => {
   var aDay = 24*60*60*1000;
 
     function timeSince(date: any) {
-
-      var seconds = Math.floor((new Date() - date) / 1000);
+      var seconds = Math.floor((new Date().valueOf() - date) / 1000);
     
       var interval = seconds / 31536000;
     
@@ -96,7 +95,7 @@ const Page = () => {
       <div className={`flex flex-row ${showPasswordInput ? 'justify-end md:justify-between' : 'justify-between'} items-center h-6 my-2 md:mt-0`}>
         <div className={`${showPasswordInput ? 'hidden md:flex' : 'flex'} flex-row gap-2 text-sm text-stone-500`}>
           <p>{ guestbook?.writer ?? 'writer' }</p>
-          <p>{ timeSince(new Date(guestbook?.createdAt)-aDay) } ago</p>
+          <p>{ guestbook && timeSince(new Date(guestbook.createdAt).valueOf() - aDay) } ago</p>
         </div>
 
         { showPasswordInput ? (
