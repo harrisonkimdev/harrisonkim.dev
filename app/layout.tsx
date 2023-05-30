@@ -39,13 +39,13 @@ export default function RootLayout({
             ${ pathname !== '/' ? 'pt-[60px]' : '' }
             ${ toggleSidebar === true ? 'hidden' : '' }
           `}>
-              <section className={`   
+              <div className={`   
                 min-h-[calc(100vh-(60px+76px))]
                 md:min-h-[calc(100vh-(60px+172px))]
-                ${ pathname != '/' ? 'flex flex-grow' : '' }
+                ${ pathname !== '/' ? 'flex flex-grow' : '' }
               `}>
                 { children }
-              </section>
+              </div>
 
               <Footer />
           </div>
