@@ -90,44 +90,46 @@ const Page = () => {
   }
 
   return (
-    <section className='bg-stone-50 w-full px-4'>
-      <div className='max-w-5xl mx-auto'>
-        <div className='py-10'>
-          <div className='flex justify-between'>
-            <button type='button' onClick={() => {setFilepath('mosPic')}}
-              className={`
-                ${filepath === 'mosPic' ? 'bg-stone-300' : 'bg-stone-200'}
-                w-full py-1 hover:bg-stone-300 cursor-pointer rounded-tl-md 
-            `}> mosPic </button>
+    <>
+      <div className='bg-stone-50 w-full px-4'>
+        <div className='max-w-5xl mx-auto'>
+          <div className='py-10'>
+            <div className='flex justify-between'>
+              <button type='button' onClick={() => {setFilepath('mosPic')}}
+                className={`
+                  ${filepath === 'mosPic' ? 'bg-stone-300' : 'bg-stone-200'}
+                  w-full py-1 hover:bg-stone-300 cursor-pointer rounded-tl-md 
+              `}> mosPic </button>
 
-            {/* rounded-tr-md */}
-            <button type='button' onClick={() => {setFilepath('Dashboard')}}
-              className={`
-                ${filepath === 'Dashboard' ? 'bg-stone-300' : 'bg-stone-200'}
-                w-full py-1 hover:bg-stone-300 cursor-pointer 
-            `}> Dashboard </button>
+              {/* rounded-tr-md */}
+              <button type='button' onClick={() => {setFilepath('Dashboard')}}
+                className={`
+                  ${filepath === 'Dashboard' ? 'bg-stone-300' : 'bg-stone-200'}
+                  w-full py-1 hover:bg-stone-300 cursor-pointer 
+              `}> Dashboard </button>
 
-            <button type='button' onClick={() => {setFilepath('claw_machine')}}
-              className={`
-                ${filepath === 'claw_machine' ? 'bg-stone-300' : 'bg-stone-200'}
-                w-full py-1 hover:bg-stone-300 cursor-pointer rounded-tr-md 
-            `}> Claw Machine </button>
+              <button type='button' onClick={() => {setFilepath('claw_machine')}}
+                className={`
+                  ${filepath === 'claw_machine' ? 'bg-stone-300' : 'bg-stone-200'}
+                  w-full py-1 hover:bg-stone-300 cursor-pointer rounded-tr-md 
+              `}> Claw Machine </button>
+            </div>
+            <div className='bg-black text-lime-400 px-2 pt-1 pb-20 font-mono rounded-b-md'>
+              <p>user@harrisonkim-dev ~ % git clone { filepath }<span className='blink_me'>|</span></p>
+              {/* <p>Downloading...</p>
+              <p>Installing the program...</p>
+              <p>Initializing...</p>
+              <p>Hang on tight... Almost ready...</p>
+              <p>Happy coding!</p> */}
+
+            </div>
           </div>
-          <div className='bg-black text-lime-400 px-2 pt-1 pb-20 font-mono rounded-b-md'>
-            <p>user@harrisonkim-dev ~ % git clone { filepath }<span className='blink_me'>|</span></p>
-            {/* <p>Downloading...</p>
-            <p>Installing the program...</p>
-            <p>Initializing...</p>
-            <p>Hang on tight... Almost ready...</p>
-            <p>Happy coding!</p> */}
-
+          <div className='py-6'>
+            { contentWrapper() }
           </div>
-        </div>
-        <div className='py-6'>
-          { contentWrapper() }
         </div>
       </div>
-    </section>
+    </>
   )
 }
 

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Page = () => {
   return (
-    <section>
+    <>
       {/* Layout for Tablets & Desktops */}
       <div className='
         hidden items-center
@@ -316,7 +316,7 @@ const Page = () => {
           </p>
         </div>
       </div>
-    </section>
+    </>
   )
 }
 
