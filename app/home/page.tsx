@@ -115,7 +115,7 @@ const Page = () => {
                         </p>
                       </div>
 
-                      <Image src='' alt='mosPic Image' width={128} height={128}
+                      <Image src='/images/screenshots/mosPic/gallery-page.png' alt='mosPic Image' width={1562} height={1036}
                         className='object-contain h-full w-full col-span-1'
                       />
                     </div>
@@ -136,7 +136,7 @@ const Page = () => {
                         </p>
                       </div>
 
-                      <Image src='' alt='Dashboard Image' width={128} height={128}
+                      <Image src='/images/screenshots/Dashboard/notes.png' alt='Dashboard Image' width={1525} height={1043}
                         className='object-contain h-full w-full col-span-1'
                       />
                     </div>
@@ -153,7 +153,7 @@ const Page = () => {
                         <p className='text-stone-800 mt-2'>I had the opportunity to participate in an intriguing university project, and I am now planning to integrate the application into our website in the near future.</p>
                       </div>
 
-                      <Image src='' alt='Clawmachine Image' width={128} height={128}
+                      <Image src='/images/screenshots/claw-machine/full.png' alt='Clawmachine Image' width={128} height={128}
                         className='object-contain h-full w-full col-span-1'
                       />
                     </div>
