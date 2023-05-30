@@ -15,7 +15,7 @@ const TopNavbar = ( props: any ) => {
   return (
     <>
       { pathname !== '/' &&
-        <>
+        <nav>
           { toggleSidebar ? (
             <div className='absolute top-0 left-0 right-0'>
               <Sidebar
@@ -95,7 +95,7 @@ const TopNavbar = ( props: any ) => {
               </div>
             </nav>
           )}
-        </>
+        </nav>
       }
     </>
   )
