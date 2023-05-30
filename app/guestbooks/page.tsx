@@ -23,16 +23,19 @@ const Page = () => {
   }, [])
 
   return (
-    <section className='flex flex-col gap-4'>
-      <div className='p-4 flex flex-col gap-6'>
+    <>
+      {/* list of guestbooks */}
+      <div className='flex flex-col gap-3 md:gap-2 mt-1'>
         { guestbooks?.map(guestbook => {
           return <Guestbook guestbookData={guestbook} key={guestbook._id} />
         })}
       </div>
 
       {/* pagination */}
-      <div></div>
-    </section>
+      <div>
+        
+      </div>
+    </>
   )
 }
 

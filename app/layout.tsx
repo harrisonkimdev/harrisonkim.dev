@@ -46,7 +46,6 @@ export default function RootLayout({
                   md:min-h-[calc(100vh-(60px+172px))]
                   flex flex-grow
                 '>
-
                   { children }
                 </div>
 

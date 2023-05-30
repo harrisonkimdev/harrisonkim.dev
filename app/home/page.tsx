@@ -281,14 +281,14 @@ const Page = () => {
                         </p>
                       </div>
 
-                      <Image src='' alt='Dashboard Image' width={128} height={128}
+                      <Image src='/images/screenshots/Dashboard/blocksix.png' alt='Dashboard Image' width={128} height={128}
                         className='object-contain h-full w-full col-span-1'
                       />
                     </div>
                   </Link>
                 </li>
 
-                {/* Dashboard */}
+                {/* Claw Machine */}
                 <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
                   <Link href='/projects#threejs'>
                     <div className='flex flex-col gap-4'>
@@ -298,7 +298,7 @@ const Page = () => {
                         <p className='text-stone-800 mt-2'>I had the opportunity to participate in an intriguing university project, and I am now planning to integrate the application into our website in the near future.</p>
                       </div>
 
-                      <Image src='' alt='Clawmachine Image' width={128} height={128}
+                      <Image src='/images/screenshots/claw-machine/full.png' alt='Clawmachine Image' width={128} height={128}
                         className='object-contain h-full w-full col-span-1'
                       />
                     </div>

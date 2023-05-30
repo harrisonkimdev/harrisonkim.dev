@@ -48,20 +48,22 @@ const Page = () => {
 
   return (
     <>
-      <form onSubmit={e => handleSubmit(e)}>
-        <div className='flex flex-col gap-4'>
+      <form onSubmit={e => handleSubmit(e)} className='flex flex-col gap-2 md:gap-0 md:my-1 mb-12'>
+        {/* title and content */}
+        <div className='flex flex-col gap-2 md:gap-3'>
           <input type="text" value={title} onChange={e => setTitle(e.target.value)}
             className='w-full p-1 bg-stone-100 rounded shadow focus:outline-none'
           />
-          <div className='h-96'>
+          <div className='h-full'>
             <QuillNoSSRWrapper placeholder='' theme='snow' value={content} onChange={setContent} />
           </div>
         </div>
 
-        <div className='flex justify-end gap-2'>
-          <button type='submit' className='border border-stone-400 text-stone-900 px-2 py-1 rounded-lg hover:bg-stone-300'>Update</button>
+        {/* update & cancel */}
+        <div className='flex justify-center md:justify-end gap-2 py-2'>
+          <button type='submit' className='border border-stone-400 text-sm md:text-base text-stone-900 px-2 py-1 rounded-lg hover:bg-stone-300'>Update</button>
           <Link href={`/guestbooks/${guestbook?._id}`}>
-            <button type='button' className='border border-stone-400 text-stone-900 px-2 py-1 rounded-lg hover:bg-stone-300'>Cancel</button>
+            <button type='button' className='border border-stone-400 text-sm md:text-base text-stone-900 px-2 py-1 rounded-lg hover:bg-stone-300'>Cancel</button>
           </Link>
         </div>
       </form>
