@@ -50,7 +50,6 @@ export default function RootLayout({
 
           <div className={`
             overflow-hidden
-            overflow-y-auto
             ${ pathname !== '/' ? 'pt-[60px]' : ''}
             ${ toggleSidebar === true ? 'hidden' : '' }
           `}>
