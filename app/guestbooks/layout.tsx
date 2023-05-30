@@ -43,7 +43,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <hr className='border-1 border-stone-800 mt-1'/>
         </div>
 
-        <section>{ children }</section>
+        <section className='pb-20'>{ children }</section>
       </div>
     </div>
   )
