@@ -8,7 +8,7 @@ const Page = () => {
       {/* Layout for Tablets & Desktops */}
       <div className='
         hidden items-center
-        md:flex md:flex-col
+        md:flex md:flex-col md:w-full
       '>
         {/* first */}
         <div className='bg-stone-100 w-full flex justify-center py-20'>
