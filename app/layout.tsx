@@ -23,10 +23,6 @@ export default function RootLayout({
 
   const pathname = usePathname()
 
-  const hide = () => {
-    return toggleSidebar === true ? 'hidden' : ''
-  }
-
   return (
     <html lang="en">
       <head>
@@ -38,23 +34,40 @@ export default function RootLayout({
             emitCloseSidebar={(value: boolean) => setToggleSidebar(value) }
           />
 
-          <div className='overflow-hidden'>
-            <div className={ pathname !== '/' ? 'pt-[60px]' : ''}>
-              <div className={ hide() }>
-                <div className={`
-                  min-h-[calc(100vh-(60px+76px))]
-                  md:min-h-[calc(100vh-(60px+172px))]
-                  ${pathname != '/' ?? 'flex flex-grow'}
-                `}>
-                  { children }
-                </div>
 
-                <Footer />
-              </div>
-            </div>
+
+          {/* <section className={`
+            overflow-hidden
+            min-h-[calc(100vh-(60px+76px))]
+            md:min-h-[calc(100vh-(60px+172px))]
+            ${ pathname !== '/' ? 'pt-[60px] flex flex-grow' : '' }
+            ${ toggleSidebar === true ? 'hidden' : 'block' }
+          `}>
+            { children }
+          </section>
+          
+          <Footer /> */}
+
+          <div className={`
+            overflow-hidden
+            overflow-y-auto
+            ${ pathname !== '/' ? 'pt-[60px]' : ''}
+            ${ toggleSidebar === true ? 'hidden' : '' }
+          `}>
+              <section className={`   
+                min-h-[calc(100vh-(60px+76px))]
+                md:min-h-[calc(100vh-(60px+172px))]
+                ${pathname != '/' ? 'flex flex-grow' : ''}
+              `}>
+                { children }
+              </section>
+
+              <Footer />
           </div>
-        </div>
 
+
+
+        </div>
       </body>
     </html>
   )
