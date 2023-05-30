@@ -15,6 +15,35 @@ const Page = () => {
   const params = useParams()
   const router = useRouter()
 
+  var aDay = 24*60*60*1000;
+
+    function timeSince(date: any) {
+
+      var seconds = Math.floor((new Date() - date) / 1000);
+    
+      var interval = seconds / 31536000;
+    
+      if (interval > 1) {
+        return Math.floor(interval) + " years";
+      }
+      interval = seconds / 2592000;
+      if (interval > 1) {
+        return Math.floor(interval) + " months";
+      }
+      interval = seconds / 86400;
+      if (interval > 1) {
+        return Math.floor(interval) + " days";
+      }
+      interval = seconds / 3600;
+      if (interval > 1) {
+        return Math.floor(interval) + " hours";
+      }
+      interval = seconds / 60;
+      if (interval > 1) {
+        return Math.floor(interval) + " minutes";
+      }
+      return Math.floor(seconds) + " seconds";
+    }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,10 +90,6 @@ const Page = () => {
     }
   }
 
-  const printDate = () => {
-    return guestbook?.createdAt
-  }
-
   return (
     <>
       <section>
@@ -72,8 +97,8 @@ const Page = () => {
           <h1 className='text-3xl font-bold text-stone-800'>{ guestbook?.title }</h1>
           <div className='flex flex-row justify-between items-center'>
             <div className='flex flex-col text-sm text-stone-500'>
-              <p>Writer: { guestbook?.writer ?? 'writer' }</p>
-              <p>Written at: { printDate() }</p>
+              <p>{ guestbook?.writer ?? 'writer' }</p>
+              <p>{ timeSince(new Date(guestbook?.createdAt)-aDay) }</p>
             </div>
 
             { showPasswordInput ? (
