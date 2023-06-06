@@ -39,9 +39,7 @@ const ProjectContent = ({ project }: {
             <h3 className='py-1 text-sm'>README.md</h3>
           </div>
           <div className='border-l-2 border-r-2 border-b-2 bg-white p-3 shadow rounded-b-xl'>
-            <text>
-              { project.readme }
-            </text>
+            <text dangerouslySetInnerHTML={{ __html: project.readme }} />
           </div>
         </div>
 
@@ -52,7 +50,7 @@ const ProjectContent = ({ project }: {
               return (
                   <div key={item.id} className='bg-stone-200 p-3 rounded-xl'>
                     <div className='flex flex-col'>
-                      <Image src={item.src} alt='' width={1920} height={1080} className='object-contain rounded-t-xl' />
+                      <Image src={item.src} alt='' width={1024} height={786} className='object-contain rounded-t-xl' />
                       <div className='p-4 bg-stone-100 rounded-b-xl'>
                         <p className='text-stone-800'>{ item.description }</p>
                       </div>
