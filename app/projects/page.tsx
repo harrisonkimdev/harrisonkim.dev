@@ -3,154 +3,22 @@
 import React, { useState } from 'react'
 import './styles/styles.css'
 import ProjectContent from './components/ProjectContent'
+import '@/assets/project_description.json'
 
 const Page = () => {
   const [filepath, setFilepath] = useState('')
 
-  const projects = [
-    {
-      name: 'mosPic',
-      readme: `
-        <p>
-          I am currently working on an exciting team project with five
-          individuals who are eager to enhance their web development skills. I
-          am primarily focuing on the frontend aspect of the project,
-          collaborating closely with another team member. Furthermore, I have
-          taken on the role of project manager within our team, ensuring smooth
-          coordination and progress.
-          
-          <br><br>
-          
-          This is a great opportunity for me to leverage the power of Agile
-          methodology. I belived I had a good understanding of it, but taking
-          on this role has made me realize that there is still much to learn
-          more about it.
-
-          <br><br>
-
-          Our team has devised a plan to leverage Segment Anything, a
-          cutting-edge technology developed by Meta AI, to create an
-          exceptional image editing tool. Additionally, we use next-auth to
-          ensure that our users can securely manage their resources, providing
-          them with a safe and reliable experience.
-        </p>
-      `,
-      screenshots: [
-        {
-          id: 1,
-          src: '/images/screenshots/mosPic/landing-page.png',
-          description: 'Landing Page'
-        },
-        {
-          id: 2,
-          src: '/images/screenshots/mosPic/gallery-page.png',
-          description: 'Gallery Page'
-        },
-        {
-          id: 3,
-          src: '/images/screenshots/mosPic/background-image-page.png',
-          description: 'Background Image Page'
-        },
-      ]
-    },
-    {
-      name: 'Dashboard',
-      readme: `
-        When I embarked on this project, my primary objective was to develop a
-        personalized time management tool that would enhance my productivity at
-        work. During my research phase, I came across a captivating book called
-        'BlockSix,' which expounded on a unique time management methodology
-        that deeply resonated with me.
-
-        <br><br>
-
-        Intrigued and inspired by the book, I reached out to the author to seek
-        permission to incorporate their methodology into my project. Not only
-        did I aspire to create a tool based on their insights, but I also
-        believed that engaging with the author would serve as a powerful source
-        of motivation throughout the project. Fortunately, the author generously
-        granted me permission, further fueling my enthusiasm.
-
-        <br><br>
-      
-        Although this project was predominantly a solo endeavor, due to its
-        nature as a time management tool, I decided to leverage GitHub Issues to
-        effectively track and plan my work. This approach proved invaluable in
-        organizing and prioritizing tasks, ensuring a structured and systematic
-        development process.
-
-        <br><br>
-      
-        Additionally, I viewed this project as an opportunity to update and
-        expand my technical skill set. Therefore, I chose to implement the
-        latest tech stack embraced by the Laravel community, including Vue 3,
-        Inertia.js, and Pinia. By utilizing these cutting-edge technologies,
-        I aimed to enhance the performance, user experience, and
-        maintainability of the time management tool I was building.
-      `,
-      screenshots: [
-        {
-          id: 4,
-          src: '/images/screenshots/Dashboard/task-management.png',
-          description: 'Task Management on GitHub Issues'
-        },
-        {
-          id: 5,
-          src: '/images/screenshots/Dashboard/task-description.png',
-          description: 'Task Description'
-        },
-        {
-          id: 6,
-          src: '/images/screenshots/Dashboard/blocksix.png',
-          description: 'BlockSix - A Todo App'
-        },
-        {
-          id: 7,
-          src: '/images/screenshots/Dashboard/notes.png',
-          description: 'Notes'
-        },
-      ]
-    },
-    {
-      name: 'Claw Machine',
-      readme: `
-        I worked on an intriguing project during my graphics course at
-        university, where I had the opportunity to explore the capabilities
-        of the JavaScript library called Three.js. This experience was
-        incredibly valuable as it allowed me to delve into working with
-        external libraries and gain a deeper understanding of how to
-        effectively utilize their documentation. It was an exciting learning
-        journey that greatly enhanced my skills and knowledge.
-      `,
-      screenshots: [
-        {
-          id: 8,
-          src: '/images/screenshots/claw-machine/full.png',
-          description: 'A Christmas themed claw machine'
-        },
-        {
-          id: 9,
-          src: '/images/screenshots/claw-machine/close.png',
-          description: 'You can move around your claw with the joystick by pressing arrow keys on your keyboard.'
-        },
-        {
-          id: 10,
-          src: '/images/screenshots/claw-machine/grab.png',
-          description: 'You can also make it grab things inside the claw machine with your spacebar.'
-        },
-      ]
-    },
-  ]
+  const projects_json = require('@/assets/project_description.json')
 
   const contentWrapper = () => {
     if (filepath === 'mosPic')
-      return <ProjectContent project={projects[0]} />
+      return <ProjectContent project={projects_json.projects[0]} />
 
     else if (filepath === 'Dashboard')
-      return <ProjectContent project={projects[1]} />
+      return <ProjectContent project={projects_json.projects[1]} />
     
     else if (filepath === 'claw_machine')
-      return <ProjectContent project={projects[2]} />
+      return <ProjectContent project={projects_json.projects[2]} />
   }
 
   return (
