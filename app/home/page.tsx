@@ -260,7 +260,7 @@ const Page = () => {
                         </p>
                       </div>
 
-                      <Image src='' alt='mosPic Image' width={128} height={128}
+                      <Image src='/images/screenshots/mosPic/gallery-page.png' alt='mosPic Image' width={128} height={128}
                         className='object-contain h-full w-full col-span-1'
                       />
                     </div>
