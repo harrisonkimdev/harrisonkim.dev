@@ -43,7 +43,7 @@ const ProjectContent = ({ project }: {
           </div>
         </div>
 
-        <div className='my-12 mx-auto w-80 md:w-auto md:mx-0'>
+        <div className='my-12 mx-auto w-80 lg:w-auto lg:mx-0'>
           {/* https://react-slick.neostack.com/docs/api */}
           <Slider {...settings}>
             { project.screenshots.map((item: { id: number, src: string, description: string }) => {
