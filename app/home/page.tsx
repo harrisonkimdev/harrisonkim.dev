@@ -96,6 +96,21 @@ const Page = () => {
 
             <div className='mt-6'>
               <ul className='flex flex-col gap-4'>
+                <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
+                  <Link href='https://dandycv.vercel.app' target="_blank">
+                    <div className='grid grid-cols-4 gap-4'>
+                      <div className='col-span-3'>
+                        <h3 className='text-3xl font-bold text-stone-800'>dandycv</h3>
+                        <h4 className='text-xl font-medium mt-2'>Freelance work for a startup company</h4>
+                        <p className='text-stone-800 mt-2'>As a freelance full-stack engineer, I collaborated with a startup, implementing NextAuth for authentication, integrating Stripe for payments, and establishing a streamlined email notification system with Resend. These solutions enhanced their online presence and functionality effectively.</p>
+                      </div>
+
+                      <Image src='/images/screenshots/dandycv/landing-page.png' alt='mosPic Image' width={1595} height={964}
+                        className='object-contain h-full w-full col-span-1'
+                      />
+                    </div>
+                  </Link>
+                </li>
 
                 {/* mosPic */}
                 <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
@@ -105,14 +120,10 @@ const Page = () => {
                         <h3 className='text-3xl font-bold text-stone-800'>mos<span className='text-stone-500'>Pic</span></h3>
                         <h4 className='text-xl font-medium mt-2'>Image editing tool with the help of AI - 
                           <span className='text-stone-500'>
-                            <Link href='https://segment-anything.com/'> SAM</Link>
+                            <Link href='https://segment-anything.com/' target="_blank"> SAM</Link>
                           </span>
                         </h4>
-                        <p className='text-stone-800 mt-2'>
-                          I am part of a team project that involves five individuals. As the project manager, my primary focus
-                          lies in crucial tasks such as iteration planning, effectively distributing tasks among team members,
-                          and actively listening to and considering the opinions of each team member.
-                        </p>
+                        <p className='text-stone-800 mt-2'>I am part of a team project that involves five individuals. As the project manager, my primary focus lies in crucial tasks such as iteration planning, effectively distributing tasks among team members, and actively listening to and considering the opinions of each team member.</p>
                       </div>
 
                       <Image src='/images/screenshots/mosPic/gallery-page.png' alt='mosPic Image' width={1562} height={1036}
@@ -130,9 +141,7 @@ const Page = () => {
                         <h3 className='text-3xl font-bold text-stone-800'>Dashboard</h3>
                         <h4 className='text-xl font-medium mt-2'>An all-in-one office tool designed specifically for programmers.</h4>
                         <p className='text-stone-800 mt-2'>
-                          Built with the latest stack incorporating Laravel and Vue.js, this all-in-one office tool takes advantage
-                          of cutting-edge technologies such as Inertia.js and Pinia. This updated tech stack enhances the performance
-                          and functionality of the tool, providing an optimized and seamless experience for programmers.
+                          Built with the latest stack incorporating Laravel and Vue.js, this all-in-one office tool takes advantage of cutting-edge technologies such as Inertia.js and Pinia. This updated tech stack enhances the performance and functionality of the tool, providing an optimized and seamless experience for programmers.
                         </p>
                       </div>
 
