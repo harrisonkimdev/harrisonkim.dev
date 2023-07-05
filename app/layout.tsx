@@ -6,6 +6,7 @@ import TopNavbar from './components/TopNavbar'
 import Footer from './components/Footer'
 import './globals.css'
 import { usePathname } from 'next/navigation'
+import 'semantic-ui-css/semantic.min.css'
 
 const inter = Inter({ subsets: ['latin'] })
 

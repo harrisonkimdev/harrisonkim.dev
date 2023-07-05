@@ -5,24 +5,32 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { IGuestbook } from './interfaces'
 import Guestbook from './components/Guestbook'
+import { Loader } from 'semantic-ui-react'
 
 const Page = () => {
   const [guestbooks, setGuestbooks] = useState<IGuestbook[] | undefined>(undefined)
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const [loaded, setLoaded] = useState<boolean>(false)
 
   useEffect(() => {
     const fetchGuestbooks = async () => {
-      await axios.get('/api/guestbooks')
+      axios.get('/api/guestbooks')
         .then((res) => {
           setGuestbooks(res.data)
-        })
-        
+          setLoaded(true)
+        }) 
     }
-
     fetchGuestbooks()
   }, [])
 
-  return (
+  if (!loaded) return (
+    <>
+      <div className='pt-32 flex items-center'>
+        <Loader active inline='centered' />
+      </div>
+    </>
+  )
+  else return (
     <>
       {/* list of guestbooks */}
       <div className='flex flex-col gap-3 md:gap-2 mt-1'>

@@ -4,34 +4,33 @@ import Link from 'next/link'
 import '../styles/styles.css'
 
 const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
-    var aDay = 24*60*60*1000;
 
-    function timeSince(date: any) {
-      var seconds = Math.floor((new Date().valueOf() - date) / 1000);
-    
-      var interval = seconds / 31536000;
-    
-      if (interval > 1) {
-        return Math.floor(interval) + " years";
-      }
-      interval = seconds / 2592000;
-      if (interval > 1) {
-        return Math.floor(interval) + " months";
-      }
-      interval = seconds / 86400;
-      if (interval > 1) {
-        return Math.floor(interval) + " days";
-      }
-      interval = seconds / 3600;
-      if (interval > 1) {
-        return Math.floor(interval) + " hours";
-      }
-      interval = seconds / 60;
-      if (interval > 1) {
-        return Math.floor(interval) + " minutes";
-      }
-      return Math.floor(seconds) + " seconds";
+  function timeSince(date: any) {
+    var seconds = Math.floor((new Date().valueOf() - date) / 1000);
+  
+    var interval = seconds / 31536000;
+  
+    if (interval > 1) {
+      return Math.floor(interval) + " years";
     }
+    interval = seconds / 2592000;
+    if (interval > 1) {
+      return Math.floor(interval) + " months";
+    }
+    interval = seconds / 86400;
+    if (interval > 1) {
+      return Math.floor(interval) + " days";
+    }
+    interval = seconds / 3600;
+    if (interval > 1) {
+      return Math.floor(interval) + " hours";
+    }
+    interval = seconds / 60;
+    if (interval > 1) {
+      return Math.floor(interval) + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+  }
 
   return (
     <>
@@ -57,7 +56,7 @@ const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
             </div>
 
             {/* days ago */}
-            <p className='whitespace-nowrap text-stone-400 text-sm'>{ timeSince(new Date(props.guestbookData.createdAt).valueOf() - aDay) } ago</p>
+            <p className='whitespace-nowrap text-stone-400 text-sm'>{ timeSince(new Date(props.guestbookData.createdAt).valueOf()) } ago</p>
           </div>
         </div>
       </Link>
