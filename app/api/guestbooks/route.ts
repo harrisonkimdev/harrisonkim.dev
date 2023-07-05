@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server'
 import { connectToDB } from '@/utils/db'
 import Guestbook from '@/models/guestbook'
 
@@ -8,11 +9,9 @@ export const GET = async (req: Request) => {
 
     const guestbooks = await Guestbook.find()
 
-    return new Response(JSON.stringify(guestbooks), {
-      status: 200,
-    })
+    return NextResponse.json(guestbooks, { status: 200 })
   } catch (err) {
-    // 
+    return NextResponse.json({ message: err }, { status: 500 })
   }
 }
 
@@ -33,8 +32,8 @@ export const POST = async (req: Request) => {
 
     const res = await newGuestbook.save()
 
-    return new Response(JSON.stringify(res), { status: 200 })
+    return NextResponse.json({ message: 'Successfully posted.' }, { status: 200 })
   } catch (err) {
-    // 
+    return NextResponse.json({ message: err }, { status: 500 })
   }
 }

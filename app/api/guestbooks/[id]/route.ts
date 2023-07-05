@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server'
 import { connectToDB } from '@/utils/db'
 import Guestbook from '@/models/guestbook'
 import { IGuestbook } from '@/guestbooks/interfaces';
@@ -8,13 +9,11 @@ export const GET = async (req: Request, { params } : { params: { id: string }; }
     await connectToDB()
 
     const query = Guestbook.where({ _id: params.id })
-    const guestbooks = await query.findOne()
+    const guestbook = await query.findOne()
 
-    return new Response(JSON.stringify(guestbooks), {
-      status: 200,
-    })
+    return NextResponse.json(guestbook, { status: 200 })
   } catch (err) {
-    // 
+    return NextResponse.json({ message: err }, { status: 500 })
   }
 }
 
@@ -31,10 +30,9 @@ export const PATCH = async (req: Request, { params }: { params: { id: string }})
       updatedAt: Date.now()
     })
 
-    return new Response(JSON.stringify(guestbook), { status: 200 })
-
+    return NextResponse.json(guestbook, { status: 200 })
   } catch (err) {
-    console.log(err)
+    return NextResponse.json({ message: err }, { status: 500 })
   }
 }
 
@@ -46,11 +44,11 @@ export const DELETE = async (req: Request, { params }: { params: { id: string }}
     const result = await Guestbook.deleteOne({ _id: params.id })
 
     if (result.acknowledged === true) {
-      return new Response('deleted', { status: 200 })
+      return NextResponse.json({ message: 'Post deleted.' }, { status: 200 })
     } else {
-      return new Response('not deleted', { status: 400 })
+      return NextResponse.json({ message: 'Item not found' }, { status: 404 })
     }
   } catch (err) {
-    // 
+    return NextResponse.json({ message: err }, { status: 500 })
   }
 }
