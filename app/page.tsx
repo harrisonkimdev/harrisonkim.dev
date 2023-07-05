@@ -17,7 +17,7 @@ export default function Home() {
           </svg>
         </header>
 
-        <section className='flex flex-col gap-6'>
+        <section className='flex flex-col gap-6 font-mono'>
           <div className='max-w-sm md:max-w-lg lg:max-w-3xl mx-auto'>
             <p className='text-2xl text-center'>Hello, world!</p>
             <p className='mt-3'>My name is <a href="https://www.linkedin.com/in/harrison-kim-b246a5175/" className='hover:underline'>Harrison Kim</a> and
