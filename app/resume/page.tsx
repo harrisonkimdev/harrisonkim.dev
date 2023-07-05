@@ -6,7 +6,7 @@ const Page = () => {
   return (
     <>
       <div className='lg:py-8 max-w-5xl justify-center mx-auto'>
-        <div className='flex flex-col bg-white pb-10'>
+        <div className='pb-10 flex flex-col bg-stone-50'>
           {/* header */}
           <div className='bg-blue-400'>
             <div className='
