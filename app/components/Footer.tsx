@@ -70,12 +70,12 @@ const Footer = () => {
           <div className='flex flex-col gap-2'>
             <p className='text-3xl font-semibold text-stone-700'>Projects</p>
             <ul className='flex flex-col gap-2'>
-              <Link href='#'>
-                <li className='font-medium text-stone-500 hover:text-stone-600'> mosPic </li>
+              <Link href='/projects'>
+                <li className='font-medium text-stone-500 hover:text-stone-600'> dandycv </li>
               </Link>
 
-              <Link href='#'>
-                <li className='font-medium text-stone-500 hover:text-stone-600'> Dashboard </li>
+              <Link href='/projects'>
+                <li className='font-medium text-stone-500 hover:text-stone-600'> mosPic </li>
               </Link>
             </ul>
           </div>
