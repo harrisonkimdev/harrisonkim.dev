@@ -91,37 +91,38 @@ export default function Home() {
         <div className='w-full bg-stone-300 md:px-10 pt-10 pb-16'>
           <div className='max-w-5xl mx-auto'>
             <h2 className='text-5xl font-bold text-stone-800'>
-              <span className='text-stone-500 hover:underline'><Link href='/projects'>Projects</Link></span> I&apos;ve been working on
+              <Link href='/projects' className='text-stone-500 hover:text-stone-600 hover:underline'>Projects</Link>
+              I&apos;ve been working on
             </h2>
 
             <div className='mt-6'>
               <ul className='flex flex-col gap-4'>
-                <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
-                  <Link href='https://dandycv.vercel.app' target="_blank">
-                    <div className='grid grid-cols-4 gap-4'>
-                      <div className='col-span-3'>
-                        <h3 className='text-3xl font-bold text-stone-800'>dandycv</h3>
-                        <h4 className='text-xl font-medium mt-2'>Freelance work for a startup company</h4>
-                        <p className='text-stone-800 mt-2'>As a freelance full-stack engineer, I collaborated with a startup, implementing NextAuth for authentication, integrating Stripe for payments, and establishing a streamlined email notification system with Resend. These solutions enhanced their online presence and functionality effectively.</p>
-                      </div>
+                {/* dandycv */}
+                <Link href='https://dandycv.vercel.app' target="_blank">
+                  <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
+                      <div className='grid grid-cols-4 gap-4'>
+                        <div className='col-span-3'>
+                          <h3 className='text-3xl font-bold text-stone-800'>dandycv</h3>
+                          <h4 className='text-xl font-medium mt-2 text-stone-600'>Freelance work for a startup company</h4>
+                          <p className='text-stone-800 mt-2'>As a freelance full-stack engineer, I collaborated with a startup, implementing NextAuth for authentication, integrating Stripe for payments, and establishing a streamlined email notification system with Resend. These solutions enhanced their online presence and functionality effectively.</p>
+                        </div>
 
-                      <Image src='/images/screenshots/dandycv/landing-page.png' alt='mosPic Image' width={1595} height={964}
-                        className='object-contain h-full w-full col-span-1'
-                      />
-                    </div>
-                  </Link>
-                </li>
+                        <Image src='/images/screenshots/dandycv/landing-page.png' alt='mosPic Image' width={1595} height={964}
+                          className='object-contain h-full w-full col-span-1'
+                        />
+                      </div>
+                  </li>
+                </Link>
 
                 {/* mosPic */}
-                <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
-                  <Link href='/projects#mospic'>
+                <Link href='/projects#mospic'>
+                  <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
                     <div className='grid grid-cols-4 gap-4'>
                       <div className='col-span-3'>
                         <h3 className='text-3xl font-bold text-stone-800'>mos<span className='text-stone-500'>Pic</span></h3>
-                        <h4 className='text-xl font-medium mt-2'>Image editing tool with the help of AI - 
-                          <span className='text-stone-500'>
-                            <Link href='https://segment-anything.com/' target="_blank"> SAM</Link>
-                          </span>
+                        <h4 className='text-xl font-medium mt-2 text-stone-600'>
+                          Image editing tool with the help of AI -
+                          <Link href='https://segment-anything.com/' target="_blank" className='text-stone-800'> SAM</Link>
                         </h4>
                         <p className='text-stone-800 mt-2'>I am part of a team project that involves five individuals. As the project manager, my primary focus lies in crucial tasks such as iteration planning, effectively distributing tasks among team members, and actively listening to and considering the opinions of each team member.</p>
                       </div>
@@ -130,35 +131,35 @@ export default function Home() {
                         className='object-contain h-full w-full col-span-1'
                       />
                     </div>
-                  </Link>
-                </li>
+                  </li>
+                </Link>
 
                 {/* Dashboard */}
-                <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
-                  <Link href='/projects#dashboard'>
-                    <div className='grid grid-cols-4 gap-4'>
-                      <div className='col-span-3'>
-                        <h3 className='text-3xl font-bold text-stone-800'>Dashboard</h3>
-                        <h4 className='text-xl font-medium mt-2'>An all-in-one office tool designed specifically for programmers.</h4>
-                        <p className='text-stone-800 mt-2'>
-                          Built with the latest stack incorporating Laravel and Vue.js, this all-in-one office tool takes advantage of cutting-edge technologies such as Inertia.js and Pinia. This updated tech stack enhances the performance and functionality of the tool, providing an optimized and seamless experience for programmers.
-                        </p>
+                <Link href='/projects#dashboard'>
+                  <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
+                      <div className='grid grid-cols-4 gap-4'>
+                        <div className='col-span-3'>
+                          <h3 className='text-3xl font-bold text-stone-800'>Dashboard</h3>
+                          <h4 className='text-xl font-medium mt-2 text-stone-600'>An all-in-one office tool designed specifically for programmers.</h4>
+                          <p className='text-stone-800 mt-2'>
+                            Built with the latest stack incorporating Laravel and Vue.js, this all-in-one office tool takes advantage of cutting-edge technologies such as Inertia.js and Pinia. This updated tech stack enhances the performance and functionality of the tool, providing an optimized and seamless experience for programmers.
+                          </p>
+                        </div>
+
+                        <Image src='/images/screenshots/Dashboard/notes.png' alt='Dashboard Image' width={1525} height={1043}
+                          className='object-contain h-full w-full col-span-1'
+                        />
                       </div>
-
-                      <Image src='/images/screenshots/Dashboard/notes.png' alt='Dashboard Image' width={1525} height={1043}
-                        className='object-contain h-full w-full col-span-1'
-                      />
-                    </div>
-                  </Link>
-                </li>
+                  </li>
+                </Link>
 
                 {/* Dashboard */}
-                <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
-                  <Link href='/projects#threejs'>
+                <Link href='/projects#threejs'>
+                  <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
                     <div className='grid grid-cols-4 gap-4'>
                       <div className='col-span-3'>
                         <h3 className='text-3xl font-bold text-stone-800'>Claw machine</h3>
-                        <h4 className='text-xl font-medium mt-2'>Experience an immersive and interactive virtual claw machine powered by the advanced 3D modeling library, three.js.</h4>
+                        <h4 className='text-xl font-medium mt-2 text-stone-600'>Experience an immersive and interactive virtual claw machine powered by the advanced 3D modeling library, three.js.</h4>
                         <p className='text-stone-800 mt-2'>I had the opportunity to participate in an intriguing university project, and I am now planning to integrate the application into our website in the near future.</p>
                       </div>
 
@@ -166,8 +167,8 @@ export default function Home() {
                         className='object-contain h-full w-full col-span-1'
                       />
                     </div>
-                  </Link>
-                </li>
+                  </li>
+                </Link>
               </ul>
             </div>
 
@@ -245,74 +246,81 @@ export default function Home() {
         <div className='w-full bg-stone-300 px-6 pt-10 pb-12'>
           <div className='max-w-5xl mx-auto'>
             <h2 className='text-5xl font-bold text-stone-800'>
-              <span className='text-stone-500 hover:underline'><Link href='/projects'>Projects</Link></span> I&apos;ve been working on
+              <Link href='/projects' className='text-stone-500 hover:underline'> Projects </Link>
+              I&apos;ve been working on
             </h2>
 
             <div className='mt-6'>
               <ul className='flex flex-col gap-4'>
+                {/* dandycv */}
+                <Link href='https://dandycv.vercel.app' target="_blank">
+                  <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
+                    <div className='flex flex-col gap-2'>
+                      <h3 className='text-3xl font-bold text-stone-800'>dandycv</h3>
+                      <p className='text-xl font-medium text-stone-600'>Freelance work for a startup company</p>
+                      <p className='text-stone-800'>As a freelance full-stack engineer, I collaborated with a startup, implementing NextAuth for authentication, integrating Stripe for payments, and establishing a streamlined email notification system with Resend. These solutions enhanced their online presence and functionality effectively.</p>
+
+                      <Image src='/images/screenshots/dandycv/landing-page.png' alt='mosPic Image' width={1595} height={964}
+                        className='object-contain h-full w-full'
+                      />
+                    </div>
+                  </li>
+                </Link>
 
                 {/* mosPic */}
-                <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
-                  <Link href='/projects#mospic'>
-                    <div className='flex flex-col gap-4'>
-                      <div>
-                        <h3 className='text-3xl font-bold text-stone-800'>mos<span className='text-stone-500'>Pic</span></h3>
-                        <h4 className='text-xl font-medium mt-2'>Image editing tool with the help of AI - 
-                          <span className='text-stone-500'>
-                            <Link href='https://segment-anything.com/'> SAM</Link>
-                          </span>
-                        </h4>
-                        <p className='text-stone-800 mt-2'>
-                          I am part of a team project that involves five individuals. As the project manager, my primary focus
-                          lies in crucial tasks such as iteration planning, effectively distributing tasks among team members,
-                          and actively listening to and considering the opinions of each team member.
-                        </p>
-                      </div>
+                <Link href='/projects#mospic'>
+                  <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
+                    <div className='flex flex-col gap-2'>
+                      <h3 className='text-3xl font-bold text-stone-800'>mos<span className='text-stone-500'>Pic</span></h3>
+                      <p className='text-xl font-medium text-stone-600'>Image editing tool with the help of AI - 
+                        <Link href='https://segment-anything.com/' target="_blank" className='text-stone-800'> SAM</Link>
+                      </p>
+                      <p className='text-stone-800'>
+                        I am part of a team project that involves five individuals. As the project manager, my primary focus
+                        lies in crucial tasks such as iteration planning, effectively distributing tasks among team members,
+                        and actively listening to and considering the opinions of each team member.
+                      </p>
 
                       <Image src='/images/screenshots/mosPic/gallery-page.png' alt='mosPic Image' width={128} height={128}
-                        className='object-contain h-full w-full col-span-1'
+                        className='object-contain h-full w-full'
                       />
                     </div>
-                  </Link>
-                </li>
+                  </li>
+                </Link>
 
                 {/* Dashboard */}
-                <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
-                  <Link href='/projects#dashboard'>
-                    <div className='flex flex-col gap-4'>
-                      <div>
-                        <h3 className='text-3xl font-bold text-stone-800'>Dashboard</h3>
-                        <h4 className='text-xl font-medium mt-2'>An all-in-one office tool designed specifically for programmers.</h4>
-                        <p className='text-stone-800 mt-2'>
-                          Built with the latest stack incorporating Laravel and Vue.js, this all-in-one office tool takes advantage
-                          of cutting-edge technologies such as Inertia.js and Pinia. This updated tech stack enhances the performance
-                          and functionality of the tool, providing an optimized and seamless experience for programmers.
-                        </p>
-                      </div>
+                <Link href='/projects#dashboard'>
+                  <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
+                    <div className='flex flex-col gap-2'>
+                      <h3 className='text-3xl font-bold text-stone-800'>Dashboard</h3>
+                      <p className='text-xl font-medium text-stone-600'>An all-in-one office tool designed specifically for programmers.</p>
+                      <p className='text-stone-800'>
+                        Built with the latest stack incorporating Laravel and Vue.js, this all-in-one office tool takes advantage
+                        of cutting-edge technologies such as Inertia.js and Pinia. This updated tech stack enhances the performance
+                        and functionality of the tool, providing an optimized and seamless experience for programmers.
+                      </p>
 
                       <Image src='/images/screenshots/Dashboard/blocksix.png' alt='Dashboard Image' width={128} height={128}
-                        className='object-contain h-full w-full col-span-1'
+                        className='object-contain h-full w-full'
                       />
                     </div>
-                  </Link>
-                </li>
+                  </li>
+                </Link>
 
                 {/* Claw Machine */}
-                <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
-                  <Link href='/projects#threejs'>
-                    <div className='flex flex-col gap-4'>
-                      <div>
-                        <h3 className='text-3xl font-bold text-stone-800'>Claw machine</h3>
-                        <h4 className='text-xl font-medium mt-2'>Experience an immersive and interactive virtual claw machine powered by the advanced 3D modeling library, three.js.</h4>
-                        <p className='text-stone-800 mt-2'>I had the opportunity to participate in an intriguing university project, and I am now planning to integrate the application into our website in the near future.</p>
-                      </div>
+                <Link href='/projects#threejs'>
+                  <li className='bg-stone-50 p-7 rounded-xl hover:bg-stone-100'>
+                    <div className='flex flex-col gap-2'>
+                      <h3 className='text-3xl font-bold text-stone-800'>Claw machine</h3>
+                      <p className='text-xl font-medium text-stone-600'>Experience an immersive and interactive virtual claw machine powered by the advanced 3D modeling library, three.js.</p>
+                      <p className='text-stone-800'>I had the opportunity to participate in an intriguing university project, and I am now planning to integrate the application into our website in the near future.</p>
 
                       <Image src='/images/screenshots/claw-machine/full.png' alt='Clawmachine Image' width={128} height={128}
-                        className='object-contain h-full w-full col-span-1'
+                        className='object-contain h-full w-full'
                       />
                     </div>
-                  </Link>
-                </li>
+                  </li>
+                </Link>
               </ul>
             </div>
 
