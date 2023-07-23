@@ -14,24 +14,24 @@ const Sidebar = (props: any) => {
       {/* tabs */}
       <div className='flex flex-col gap-8 px-6'>
         
-          <Link href="/home">
-            <button type='button' onClick={() => props.emitCloseSidebar()}>Home</button>
+          <Link href="/home" onClick={() => props.emitCloseSidebar()}>
+            <p className='font-medium text-stone-500 hover:text-stone-600'>Home</p>
           </Link>
 
-          <Link href="/resume">
-            <button type='button' onClick={() => props.emitCloseSidebar()}>Resume</button>
+          <Link href="/resume" onClick={() => props.emitCloseSidebar()}>
+            <p className='font-medium text-stone-500 hover:text-stone-600'>Resume</p>
           </Link>
         
-          <Link href="/projects">
-            <button type='button' onClick={() => props.emitCloseSidebar()}>Projects</button>
+          <Link href="/projects" onClick={() => props.emitCloseSidebar()}>
+            <p className='font-medium text-stone-500 hover:text-stone-600'>Projects</p>
           </Link>
         
-          <Link href="/guestbooks">
-            <button type='button' onClick={() => props.emitCloseSidebar()}>Guestbook</button>
+          <Link href="/guestbooks" onClick={() => props.emitCloseSidebar()}>
+            <p className='font-medium text-stone-500 hover:text-stone-600'>Guestbook</p>
           </Link>
         
-          <Link href="/about">
-            <button type='button' onClick={() => props.emitCloseSidebar()}>About</button>
+          <Link href="/about" onClick={() => props.emitCloseSidebar()}>
+            <p className='font-medium text-stone-500 hover:text-stone-600'>About</p>
           </Link>
       </div>
     </div>

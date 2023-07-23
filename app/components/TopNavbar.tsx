@@ -29,32 +29,32 @@ const TopNavbar = ( props: any ) => {
         ) : (
           <nav className='fixed w-full'>
             {/* Tablets and Desktops */}
-            <div className='hidden md:flex justify-between p-4 items-center bg-black text-stone-200 md:h-[60px]'>
-              <div>
-                <Link href="/home" className='flex gap-2 items-center'> 
-                  <Image src='/images/logos/dev-kim-transparent.png' alt='Dev Kim Logo'
-                    width={500} height={500} className='object-contain w-28 invert'
-                  />
-                </Link>
-              </div>
+            <div className='hidden md:flex justify-between px-6 py-4 items-center bg-black text-stone-200 md:h-[60px]'>
+              <Link href="/home" className='flex gap-2 items-center'> 
+                <Image src='/images/logos/dev-kim-transparent.png' alt='Dev Kim Logo'
+                  width={500} height={500} className='object-contain w-28 invert'
+                />
+              </Link>
   
-              <div className='
-                flex gap-10 mr-2
-              '>
-                <Link href="/home" className='hover:underline'>
-                  <button type="button">Home</button>
+              <div className='flex gap-10 mt-1'>
+                <Link href="/home">
+                  <p className='text-stone-100 hover:text-stone-50 hover:underline'> Home </p>
                 </Link>
-                <Link href="/resume" className='hover:underline'>
-                  <button type="button">Resume</button>
+
+                <Link href="/resume">
+                  <p className='text-stone-100 hover:text-stone-50 hover:underline'> Resume </p>
                 </Link>
-                <Link href="/projects" className='hover:underline'>
-                  <button type="button">Projects</button>
+
+                <Link href="/projects">
+                  <p className='text-stone-100 hover:text-stone-50 hover:underline'> Projects </p>
                 </Link>
-                <Link href="/guestbooks" className='hover:underline'>
-                  <button type="button">Guestbook</button>
+
+                <Link href="/guestbooks">
+                  <p className='text-stone-100 hover:text-stone-50 hover:underline'> Guestbook </p>
                 </Link>
-                <Link href="/about" className='hover:underline'>
-                  <button type="button">About</button>
+
+                <Link href="/about">
+                  <p className='text-stone-100 hover:text-stone-50 hover:underline'> About </p>
                 </Link>
               </div>
             </div>
