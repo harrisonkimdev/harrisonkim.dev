@@ -27,17 +27,17 @@ const Page = () => {
                   {/* LinkedIn */}
                   <Link href='https://www.linkedin.com/in/harrison-kim-b246a5175/' target="_blank" className='flex gap-2'>
                     <Image src='/images/logos/linkedin-logo.png' alt='GitHub Logo' width={512} height={512} className='object-contain w-5 h-5'/>
-                    <p>LinkedIn</p>
+                    <p className='text-white hover:text-white hover:underline'>LinkedIn</p>
                   </Link>
                   {/* GitHub */}
                   <Link href='https://github.com/hhkimmm9' target="_blank" className='flex gap-2'>
                     <Image src='/images/logos/github-logo.png' alt='GitHub Logo' width={512} height={512} className='object-contain w-5 h-5'/>
-                    <p>GitHub</p>
+                    <p className='text-white hover:text-white hover:underline'>GitHub</p>
                   </Link>
                   {/* Personal */}
                   <Link href='https://www.harrisonkim.dev/' className='flex gap-2'>
                     <span>🧑🏻‍💻</span>
-                    <p>Personal Website</p>
+                    <p className='text-white hover:text-white hover:underline'>Personal Website</p>
                   </Link>
                 </div>
               </div>
