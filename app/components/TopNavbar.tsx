@@ -30,14 +30,14 @@ const TopNavbar = ( props: any ) => {
           <nav className='fixed w-full'>
             {/* Tablets and Desktops */}
             <div className='hidden md:flex justify-between px-6 py-4 items-center bg-black text-stone-200 md:h-[60px]'>
-              <Link href="/home" className='flex gap-2 items-center'> 
+              <Link href="/" className='flex gap-2 items-center'> 
                 <Image src='/images/logos/dev-kim-transparent.png' alt='Dev Kim Logo'
                   width={500} height={500} className='object-contain w-28 invert'
                 />
               </Link>
   
               <div className='flex gap-10 mt-1'>
-                <Link href="/home">
+                <Link href="/">
                   <p className='text-stone-100 hover:text-stone-50 hover:underline'> Home </p>
                 </Link>
 
@@ -68,7 +68,7 @@ const TopNavbar = ( props: any ) => {
                   </svg>
                 </div>
   
-                <Link href="/home" className='col-span-1 flex justify-center'> 
+                <Link href="/" className='col-span-1 flex justify-center'> 
                   <Image src='/images/logos/dev-kim-transparent.png' alt='Dev Kim Logo'
                     width={112} height={112} className='object-contain w-28 invert'
                   />

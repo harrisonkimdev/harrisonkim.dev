@@ -20,7 +20,7 @@ const Footer = () => {
           flex flex-row justify-between gap-6 items-center
           md:flex-col
         '>
-          <Link href='/home'>
+          <Link href='/'>
             <Image src='/images/logos/dev-kim-transparent.png' alt='Dev Kim Logo'
               width={128} height={128} className='object-contain w-28 lg:w-32'
             />

@@ -14,7 +14,7 @@ const Sidebar = (props: any) => {
       {/* tabs */}
       <div className='flex flex-col gap-8 px-6'>
         
-          <Link href="/home" onClick={() => props.emitCloseSidebar()}>
+          <Link href="/" onClick={() => props.emitCloseSidebar()}>
             <p className='font-medium text-stone-500 hover:text-stone-600'>Home</p>
           </Link>
 
