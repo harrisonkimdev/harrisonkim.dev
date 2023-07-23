@@ -36,14 +36,12 @@ export default function RootLayout({
           />
 
           <div className={`
-            overflow-hidden
-            ${ pathname !== '/' ? 'pt-[60px]' : '' }
+            overflow-hidden pt-[60px]
             ${ toggleSidebar === true ? 'hidden' : '' }
           `}>
               <div className={`   
-                min-h-[calc(100vh-(60px+76px))]
+                min-h-[calc(100vh-(60px+76px))] flex flex-grow
                 md:min-h-[calc(100vh-(60px+172px))]
-                ${ pathname !== '/' ? 'flex flex-grow' : '' }
               `}>
                 { children }
               </div>
