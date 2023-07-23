@@ -31,20 +31,20 @@ const Footer = () => {
             md:flex-col md:gap-2
           '>
             <Link href='https://www.linkedin.com/in/harrison-kim-b246a5175/'
-              className='flex flex-row gap-2 items-center hover:underline'
+              className='flex flex-row gap-2 items-center'
             >
               <Image src='/images/logos/linkedin-logo.png'
                 alt='LinkedIn Logo' width={16} height={16} className='object-contain'
               />
-              <p>LinkedIn</p>
+              <p className='mt-1.5 font-medium text-stone-500 hover:text-stone-600'>LinkedIn</p>
             </Link>
             <Link href='https://github.com/hhkimmm9'
-              className='flex flex-row gap-2 items-center hover:underline'
+              className='flex flex-row gap-2 items-center'
             >
               <Image src='/images/logos/github-logo.png'
                 alt='GitHub Logo' width={16} height={16} className='object-contain'
               />
-              <p>GitHub</p>
+              <p className='mt-1 font-medium text-stone-500 hover:text-stone-600'>GitHub</p>
             </Link>
           </div>
         </div>
@@ -55,25 +55,40 @@ const Footer = () => {
           md:flex md:flex-row md:gap-16
           lg:gap-32
         '>
-          <div className='flex flex-col gap-4'>
-            <p className='text-3xl font-bold text-stone-700'>Home</p>
+          <div className='flex flex-col gap-2'>
+            <p className='text-3xl font-semibold text-stone-700'>Home</p>
             <ul className='flex flex-col gap-2'>
-              <li className='hover:underline'><Link href='/resume'>Resume</Link></li>
-              <li className='hover:underline'><Link href='/projects'>Projects</Link></li>
+              <Link href='/resume'>
+                <li className='font-medium text-stone-500 hover:text-stone-600'> Resume </li>
+              </Link>
+
+              <Link href='/projects'>
+                <li className='font-medium text-stone-500 hover:text-stone-600'> Projects </li>
+              </Link>
             </ul>
           </div>
-          <div className='flex flex-col gap-4'>
-            <p className='text-3xl font-bold text-stone-700'>Projects</p>
+          <div className='flex flex-col gap-2'>
+            <p className='text-3xl font-semibold text-stone-700'>Projects</p>
             <ul className='flex flex-col gap-2'>
-              <li className='hover:underline'><Link href='#'>mosPic</Link></li>
-              <li className='hover:underline'><Link href='#'>Dashboard</Link></li>
+              <Link href='#'>
+                <li className='font-medium text-stone-500 hover:text-stone-600'> mosPic </li>
+              </Link>
+
+              <Link href='#'>
+                <li className='font-medium text-stone-500 hover:text-stone-600'> Dashboard </li>
+              </Link>
             </ul>
           </div>
-          <div className='flex flex-col gap-4'>
-            <p className='text-3xl font-bold text-stone-700'>About</p>
+          <div className='flex flex-col gap-2'>
+            <p className='text-3xl font-semibold text-stone-700'>About</p>
             <ul className='flex flex-col gap-2'>
-              <li className='hover:underline'><Link href='/about?tab=myself'>Myself</Link></li>
-              <li className='hover:underline'><Link href='/about?tab=website'>This website</Link></li>
+              <Link href='/about?tab=myself'>
+                <li className='font-medium text-stone-500 hover:text-stone-600'> Myself </li>
+              </Link>
+
+              <Link href='/about?tab=website'>
+                <li className='font-medium text-stone-500 hover:text-stone-600'> This website </li>
+              </Link>
             </ul>
           </div>
         </div>
