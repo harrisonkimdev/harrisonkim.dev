@@ -45,11 +45,12 @@ export default function Home() {
 
             <div className='grid grid-cols-3 md:gap-6 lg:gap-8 mt-6'>
               <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
-                <h4 className='text-2xl font-medium text-stone-800'>Web Development</h4>
-                <ul className='mt-2 h-28'>
-                  <li><p className='text-lg text-stone-800'>Laravel & Vue.js</p></li>
-                  <li><p className='text-lg text-stone-800'>Next.js</p></li>
-                  <li><p className='text-lg text-stone-800'>AWS & ngnix</p></li>
+                <h4 className='text-center text-2xl font-medium text-stone-800'>Frontend</h4>
+                <ul className='h-36 mt-2 text-center'>
+                  <li><p className='text-lg text-stone-800'>Next.js (React.js)</p></li>
+                  <li><p className='text-lg text-stone-800'>Vue.js</p></li>
+                  <li><p className='text-lg text-stone-800'>Tailwind</p></li>
+                  <li><p className='text-lg text-stone-800'>TypeScript</p></li>
                 </ul>
                 <div className='flex justify-center left-0 right-0 bottom-4'>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-20 h-20 text-stone-500">
@@ -58,11 +59,11 @@ export default function Home() {
                 </div>
               </div>
               <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
-                <h4 className='text-2xl font-medium text-stone-800'>Programming Tools</h4>
-                <ul className='mt-2 h-28'>
-                  <li><p className='text-lg text-stone-800'>Git</p></li>
-                  <li><p className='text-lg text-stone-800'>SQL</p></li>
-                  <li><p className='text-lg text-stone-800'>Figma</p></li>
+                <h4 className='text-center text-2xl font-medium text-stone-800'>Backend</h4>
+                <ul className='h-36 mt-2 text-center'>
+                <li><p className='text-lg text-stone-800'>Laravel & Node.js</p></li>
+                  <li><p className='text-lg text-stone-800'>SQL & NoSQL (MongoDB)</p></li>
+                  <li><p className='text-lg text-stone-800'>AWS & nginx</p></li>
                 </ul>
                 <div className='flex justify-center left-0 right-0 bottom-4'>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-20 h-20 text-stone-500">
@@ -72,10 +73,11 @@ export default function Home() {
                 </div>
               </div>
               <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
-                <h4 className='text-2xl font-medium text-stone-800'>Others</h4>
-                <ul className='mt-2 h-28'>
-                  <li><p className='text-lg text-stone-800'>Java (OOP)</p></li>
-                  <li><p className='text-lg text-stone-800'>Python & C</p></li>
+                <h4 className='text-center text-2xl font-medium text-stone-800'>Others</h4>
+                <ul className='h-36 mt-2 text-center'>
+                  <li><p className='text-lg text-stone-800'>Git & Jira</p></li>
+                  <li><p className='text-lg text-stone-800'>Figma</p></li>
+                  <li><p className='text-lg text-stone-800'>Python & Java (OOP)</p></li>
                 </ul>
                 <div className='flex justify-center left-0 right-0 bottom-4'>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-20 h-20 text-stone-500">
@@ -201,11 +203,12 @@ export default function Home() {
 
           <div className='grid grid-rows-3 gap-5 mt-6'>
             <div className='px-8 py-6 rounded-lg text-center bg-stone-100 shadow-md hover:bg-stone-50'>
-              <h4 className='text-2xl font-medium text-stone-800'>Web Development</h4>
-              <ul className='mt-2 h-28'>
-                <li><p className='text-lg text-stone-800'>Laravel & Vue.js</p></li>
-                <li><p className='text-lg text-stone-800'>Next.js</p></li>
-                <li><p className='text-lg text-stone-800'>AWS & ngnix</p></li>
+              <h4 className='text-2xl font-medium text-stone-800'>Frontend</h4>
+              <ul className='mt-2 h-32'>
+                <li><p className='text-lg text-stone-800'>Next.js (React.js)</p></li>
+                <li><p className='text-lg text-stone-800'>Vue.js</p></li>
+                <li><p className='text-lg text-stone-800'>Tailwind</p></li>
+                <li><p className='text-lg text-stone-800'>TypeScript</p></li>
               </ul>
               <div className='flex justify-center left-0 right-0 bottom-4'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-20 h-20 text-stone-500">
@@ -214,11 +217,11 @@ export default function Home() {
               </div>
             </div>
             <div className='px-8 py-6 rounded-lg text-center bg-stone-100 shadow-md hover:bg-stone-50'>
-              <h4 className='text-2xl font-medium text-stone-800'>Programming Tools</h4>
-              <ul className='mt-2 h-28'>
-                <li><p className='text-lg text-stone-800'>Git</p></li>
-                <li><p className='text-lg text-stone-800'>SQL</p></li>
-                <li><p className='text-lg text-stone-800'>Figma</p></li>
+              <h4 className='text-2xl font-medium text-stone-800'>Backend</h4>
+              <ul className='mt-2 h-32'>
+                <li><p className='text-lg text-stone-800'>Laravel & Node.js</p></li>
+                <li><p className='text-lg text-stone-800'>SQL & NoSQL (MongoDB)</p></li>
+                <li><p className='text-lg text-stone-800'>AWS & nginx</p></li>
               </ul>
               <div className='flex justify-center left-0 right-0 bottom-4'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-20 h-20 text-stone-500">
@@ -229,9 +232,10 @@ export default function Home() {
             </div>
             <div className='px-8 py-6 rounded-lg text-center bg-stone-100 shadow-md hover:bg-stone-50'>
               <h4 className='text-2xl font-medium text-stone-800'>Others</h4>
-              <ul className='mt-2 h-28'>
-                <li><p className='text-lg text-stone-800'>Java (OOP)</p></li>
-                <li><p className='text-lg text-stone-800'>Python & C</p></li>
+              <ul className='mt-2 h-32'>
+                <li><p className='text-lg text-stone-800'>Git & Jira</p></li>
+                <li><p className='text-lg text-stone-800'>Figma</p></li>
+                <li><p className='text-lg text-stone-800'>Python & Java (OOP)</p></li>
               </ul>
               <div className='flex justify-center left-0 right-0 bottom-4'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-20 h-20 text-stone-500">
