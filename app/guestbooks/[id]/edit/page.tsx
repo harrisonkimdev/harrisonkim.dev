@@ -61,9 +61,11 @@ const Page = () => {
 
         {/* update & cancel */}
         <div className='flex justify-center md:justify-end gap-2 py-2'>
-          <button type='submit' className='border border-stone-400 text-sm md:text-base text-stone-900 px-2 py-1 rounded-lg hover:bg-stone-300'>Update</button>
+          <button type='submit'
+            className='border border-stone-400 text-sm md:text-base text-stone-700 px-2 py-1 rounded-lg bg-stone-200 hover:bg-stone-300'
+          >Update</button>
           <Link href={`/guestbooks/${guestbook?._id}`}>
-            <button type='button' className='border border-stone-400 text-sm md:text-base text-stone-900 px-2 py-1 rounded-lg hover:bg-stone-300'>Cancel</button>
+            <button className='border border-stone-400 text-sm md:text-base text-stone-700 px-2 py-1 rounded-lg'>Cancel</button>
           </Link>
         </div>
       </form>

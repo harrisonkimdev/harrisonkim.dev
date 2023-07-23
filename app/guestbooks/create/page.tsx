@@ -109,7 +109,7 @@ const Page = () => {
           <div className='flex justify-center md:justify-end gap-2 py-4 md:py-0'>
             <button type='submit' disabled={disableSubmit} className={submitButtonStyle}> Submit </button>
             <Link href='/guestbooks'>
-              <button type='button' className='border border-stone-400 text-stone-900 px-2 py-1 rounded-lg hover:bg-stone-300'> Cancel </button>
+              <p className='border border-stone-400 text-stone-900 px-2 py-1 rounded-lg hover:bg-stone-300'> Cancel </p>
             </Link>
           </div>
         </div>
