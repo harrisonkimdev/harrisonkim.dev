@@ -41,7 +41,7 @@ const TopNavbar = ( props: any ) => {
                   <p className='text-stone-100 hover:text-stone-50 hover:underline'> Home </p>
                 </Link>
 
-                <Link href="/resume">
+                <Link href="/assets/Resume_HarrisonKim_FullStack.pdf" target="_blank">
                   <p className='text-stone-100 hover:text-stone-50 hover:underline'> Resume </p>
                 </Link>
 
