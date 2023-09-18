@@ -96,8 +96,10 @@ export default function Home() {
         <div className='w-full bg-stone-300 md:px-10 pt-10 pb-16'>
           <div className='max-w-5xl mx-auto'>
             <h2 className='text-5xl font-bold text-stone-800'>
-              <Link href='/projects' className='text-stone-500 hover:text-stone-600 hover:underline'>Projects</Link>
-              I&apos;ve been working on
+              <Link href='/projects'
+                className='text-stone-500 hover:text-stone-600 hover:underline'
+              >Projects</Link>
+              <span> I&apos;ve been working on</span>
             </h2>
 
             <div className='mt-6'>
@@ -259,8 +261,10 @@ export default function Home() {
         <div className='w-full bg-stone-300 px-6 pt-10 pb-12'>
           <div className='max-w-5xl mx-auto'>
             <h2 className='text-5xl font-bold text-stone-800'>
-              <Link href='/projects' className='text-stone-500 hover:underline'> Projects </Link>
-              I&apos;ve been working on
+              <Link href='/projects'
+                className='text-stone-500 hover:underline'
+              >Projects</Link>
+              <span> I&apos;ve been working on</span>
             </h2>
 
             <div className='mt-6'>
