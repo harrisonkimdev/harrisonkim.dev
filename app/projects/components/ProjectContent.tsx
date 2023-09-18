@@ -34,9 +34,24 @@ const ProjectContent = ({ project }: {
         <h1 className='text-4xl text-stone-800 font-semibold'>{ project.name }</h1>
 
         <div className='mt-6'>
-          <div className='border flex flex-row bg-white items-center border-b-2 rounded-t-xl shadow-inner'>
-            <Image src="/images/macos-buttons.webp" alt="" width={800} height={600} className='w-16 ml-2 object-contain' />
-            <h3 className='py-1 text-sm'>README.md</h3>
+          <div className='
+            border
+            flex
+            flex-row
+            items-center
+            border-b-2
+            rounded-t-xl
+            shadow-inner
+            bg-white
+          '>
+            <Image src="/images/macos-buttons.webp" alt="" width={800} height={600}
+              className='w-16 ml-2'
+            />
+            <span className='
+              py-1
+              text-base
+              font-semibold
+            '>README.md</span>
           </div>
           <div className='border-l-2 border-r-2 border-b-2 bg-white p-3 shadow rounded-b-xl'>
             <text dangerouslySetInnerHTML={{ __html: project.readme }} />
