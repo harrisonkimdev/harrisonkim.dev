@@ -13,11 +13,14 @@ export default function Home() {
         {/* first */}
         <div className='bg-stone-100 w-full flex justify-center py-20'>
           <div className='flex gap-10 items-center'>
-            <Image src="/images/profile/me.png" alt="" width={288} height={288}
+            <Image src="/images/profile/me_cropped.jpeg" alt="Profile picture of myself" width={2448} height={2334}
               className='
-                object-contain
                 md:w-60
+                md:h-60
                 lg:w-72
+                lg:h-72
+                rounded-full
+                object-cover
               '
             />
             <div className=''>
@@ -185,8 +188,14 @@ export default function Home() {
       {/* Layout for smartphones */}
       <div className='flex flex-col md:hidden items-center'>
         {/* first */}
-        <div className='bg-stone-100 w-full flex flex-col items-center px-6 py-10'>
-          <Image src="/images/profile/me.png" alt="" width={240} height={240} />
+        <div className='bg-stone-100 w-full flex flex-col gap-8 items-center px-6 py-10'>
+          <Image src="/images/profile/me_cropped.jpeg" alt="Profile picture of myself" width={2448} height={2334}
+            className='
+              w-72
+              h-72
+              rounded-full
+            '
+          />
           <p className='text-5xl font-bold text-stone-500 dark:text-stone-300'>
             Hi, <br />
             <span className='whitespace-nowrap'>I&apos;m
