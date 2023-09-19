@@ -5,7 +5,6 @@ import { Inter } from 'next/font/google'
 import TopNavbar from '@/layouts/TopNavbar'
 import Footer from '@/layouts/Footer'
 import './globals.css'
-import { usePathname } from 'next/navigation'
 import 'semantic-ui-css/semantic.min.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,8 +20,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const [toggleSidebar, setToggleSidebar] = useState(false)
-
-  const pathname = usePathname()
 
   return (
     <html lang="en">
