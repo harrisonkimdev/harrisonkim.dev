@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react'
 import { Inter } from 'next/font/google'
-import TopNavbar from './components/TopNavbar'
-import Footer from './components/Footer'
+import TopNavbar from '@/layouts/TopNavbar'
+import Footer from '@/layouts/Footer'
 import './globals.css'
 import { usePathname } from 'next/navigation'
 import 'semantic-ui-css/semantic.min.css'
