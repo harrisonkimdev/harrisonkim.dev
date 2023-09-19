@@ -17,28 +17,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-
   return (
     <html lang="en">
-      <head>
-        
-      </head>
       <body className={inter.className}>
         <div className='min-w-min'>
           <TopNavbar />
 
-          <div className={`
-            overflow-hidden pt-[60px]
-            ${ toggleSidebar === true ? 'hidden' : '' }
-          `}>
-              <div className={`   
-                min-h-[calc(100vh-(60px+76px))] flex flex-grow
-                md:min-h-[calc(100vh-(60px+172px))]
-              `}>
-                { children }
-              </div>
+          <div className="overflow-hidden pt-[52.5px] md:pt-[60px]">
+            <div className={`   
+              min-h-[calc(100vh-(52.5px+76px))] flex flex-grow
+              md:min-h-[calc(100vh-(60px+172px))]
+            `}>
+              { children }
+            </div>
 
-              <Footer />
+            <Footer />
           </div>
         </div>
       </body>
