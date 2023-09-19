@@ -1,14 +1,14 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Inter } from 'next/font/google'
+import { Rubik } from 'next/font/google'
 import TopNavbar from '@/layouts/TopNavbar'
 import Footer from '@/layouts/Footer'
 import './globals.css'
 import { usePathname } from 'next/navigation'
 import 'semantic-ui-css/semantic.min.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const rubik = Rubik({ subsets: ['latin'] })
 
 // export const metadata = {
 //   title: 'Hey, Dev Kim!',
@@ -29,7 +29,7 @@ export default function RootLayout({
       <head>
         
       </head>
-      <body className={inter.className}>
+      <body className={rubik.className}>
         <div className='min-w-min'>
           <TopNavbar
             emitCloseSidebar={(value: boolean) => setToggleSidebar(value) }
