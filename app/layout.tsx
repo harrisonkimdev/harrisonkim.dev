@@ -1,6 +1,4 @@
-'use client'
-
-import React, { useState } from 'react'
+import React from 'react'
 import { Inter } from 'next/font/google'
 import TopNavbar from '@/layouts/TopNavbar'
 import Footer from '@/layouts/Footer'
@@ -9,17 +7,16 @@ import 'semantic-ui-css/semantic.min.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-// export const metadata = {
-//   title: 'Hey, Dev Kim!',
-//   description: 'My Personal Website',
-// }
+export const metadata = {
+  title: 'Personal Website',
+  description: 'My Personal Website',
+}
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const [toggleSidebar, setToggleSidebar] = useState(false)
 
   return (
     <html lang="en">
@@ -28,9 +25,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <div className='min-w-min'>
-          <TopNavbar
-            emitCloseSidebar={(value: boolean) => setToggleSidebar(value) }
-          />
+          <TopNavbar />
 
           <div className={`
             overflow-hidden pt-[60px]
