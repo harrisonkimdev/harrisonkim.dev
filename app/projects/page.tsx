@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import './styles/styles.css'
-import ProjectContent from './components/ProjectContent'
+import '@/globals.css'
+import ProjectContent from '@/components/ProjectContent'
 import '@/assets/project_description.json'
 
 const Page = () => {
