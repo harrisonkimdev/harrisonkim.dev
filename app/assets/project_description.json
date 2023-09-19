@@ -53,7 +53,7 @@
         {
           "id": 1,
           "src": "/images/screenshots/mosPic/landing-page.png",
-          "description": "Landing Page"
+          "description": "Landing Page - This is a temporary placehoder for a landing page. We are currently focusing on the image editing pages."
         },
         {
           "id": 2,
@@ -69,22 +69,27 @@
     },
     {
       "name": "dandycv",
-      "readme": "<p>I am currently working on an exciting team project with five individuals who are eager to enhance their web development skills. I am primarily focuing on the frontend aspect of the project, collaborating closely with another team member. Furthermore, I have taken on the role of project manager within our team, ensuring smooth coordination and progress. <br><br> This is a great opportunity for me to leverage the power of Agile methodology. I belived I had a understanding of it, but taking on this role has made me realize that there is still much to learn more about it. <br><br> Our team has devised a plan to leverage Segment Anything, a cutting-edge technology developed by Meta AI, to create an exceptional image editing tool. Additionally, we use next-auth to ensure that our users can securely manage their resources, providing them with a safe and reliable experience.</p>",
+      "readme": "<p>I'd been building a website for a startup company based in South Korea. I was a part of a team of three; a ML engineer, a web designer, and myself. We'd been continuosuly communicated each other throughout the entire building process to deliver the best quality product.<br><br>As a full-stack engineer, I'd implemented email notification system using Resend and React Email, subscription-based payment system using Stripe and Toss Payments for their image editing tool, authentication with NextAuth.js, Notices & FAQs management pages which are available for admin users only, and table-based user management page with the following features supported: pagination, sorting, filtering, and search functionality. <br><br>Unfortunately, they had to put this project on hold for a while and had to change their business model based on their clients' demands. However, I was able to leverage this great opportunity to design the whole website's architecture as well as database design from the scratch. I was also able to go through a lot of differnet PG libraries while I was considering a few options to implement the payment system.</p><br><a href='https://dandycv.vercel.app/' target='_blank'>Please click this link to visit the website</a>",
       "screenshots": [
         {
           "id": 1,
-          "src": "/images/screenshots/mosPic/landing-page.png",
+          "src": "/images/screenshots/dandycv/landing_page.png",
           "description": "Landing Page"
         },
         {
           "id": 2,
-          "src": "/images/screenshots/mosPic/gallery-page.png",
-          "description": "Gallery Page"
+          "src": "/images/screenshots/dandycv/pricing_page.png",
+          "description": "Pricing Page - Click Buy Now to go to make your purchase."
         },
         {
           "id": 3,
-          "src": "/images/screenshots/mosPic/background-image-page.png",
-          "description": "Background Image Page"
+          "src": "/images/screenshots/dandycv/notices_page.png",
+          "description": "Notices Page - from regular users/guest perspective"
+        },
+        {
+          "id": 4,
+          "src": "/images/screenshots/dandycv/admin_users_page.png",
+          "description": "Admin page with a table to help manage their users."
         }
       ]
     }
