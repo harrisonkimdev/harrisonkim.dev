@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import './styles/styles.css'
-import ProjectContent from './components/ProjectContent'
+import '@/globals.css'
+import ProjectContent from '@/components/ProjectContent'
 import '@/assets/project_description.json'
 
 const Page = () => {
@@ -11,14 +11,17 @@ const Page = () => {
   const projects_json = require('@/assets/project_description.json')
 
   const contentWrapper = () => {
-    if (filepath === 'mosPic')
+    if (filepath === 'claw_machine')
       return <ProjectContent project={projects_json.projects[0]} />
 
     else if (filepath === 'Dashboard')
       return <ProjectContent project={projects_json.projects[1]} />
-    
-    else if (filepath === 'claw_machine')
+
+    else if (filepath === 'mosPic')
       return <ProjectContent project={projects_json.projects[2]} />
+    
+    else if (filepath === 'dandycv')
+      return <ProjectContent project={projects_json.projects[3]} />
   }
 
   return (
@@ -27,23 +30,43 @@ const Page = () => {
         <div className='max-w-5xl mx-auto'>
           <div className='py-10'>
             <div className='flex justify-between'>
+              <button type='button' onClick={() => {setFilepath('dandycv')}}
+                className={`
+                  ${filepath === 'dandycv' ? 'bg-stone-300' : 'bg-stone-200'}
+                  w-full
+                  py-1
+                  cursor-pointer
+                  rounded-tl-md
+                hover:bg-stone-300
+              `}> dandycv </button>
+
               <button type='button' onClick={() => {setFilepath('mosPic')}}
                 className={`
                   ${filepath === 'mosPic' ? 'bg-stone-300' : 'bg-stone-200'}
-                  w-full py-1 hover:bg-stone-300 cursor-pointer rounded-tl-md 
+                  w-full
+                  py-1
+                  cursor-pointer
+                hover:bg-stone-300
               `}> mosPic </button>
 
               {/* rounded-tr-md */}
               <button type='button' onClick={() => {setFilepath('Dashboard')}}
                 className={`
                   ${filepath === 'Dashboard' ? 'bg-stone-300' : 'bg-stone-200'}
-                  w-full py-1 hover:bg-stone-300 cursor-pointer 
+                  w-full
+                  py-1
+                  cursor-pointer
+                hover:bg-stone-300
               `}> Dashboard </button>
 
               <button type='button' onClick={() => {setFilepath('claw_machine')}}
                 className={`
                   ${filepath === 'claw_machine' ? 'bg-stone-300' : 'bg-stone-200'}
-                  w-full py-1 hover:bg-stone-300 cursor-pointer rounded-tr-md 
+                  w-full
+                  py-1
+                  cursor-pointer
+                  rounded-tr-md
+                hover:bg-stone-300
               `}> Claw Machine </button>
             </div>
             <div className='bg-black text-lime-400 px-2 pt-1 pb-20 font-mono rounded-b-md'>

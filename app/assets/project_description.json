@@ -1,23 +1,23 @@
 {
   "projects": [
     {
-      "name": "mosPic",
-      "readme": "<p>I am currently working on an exciting team project with five individuals who are eager to enhance their web development skills. I am primarily focuing on the frontend aspect of the project, collaborating closely with another team member. Furthermore, I have taken on the role of project manager within our team, ensuring smooth coordination and progress. <br><br> This is a great opportunity for me to leverage the power of Agile methodology. I belived I had a understanding of it, but taking on this role has made me realize that there is still much to learn more about it. <br><br> Our team has devised a plan to leverage Segment Anything, a cutting-edge technology developed by Meta AI, to create an exceptional image editing tool. Additionally, we use next-auth to ensure that our users can securely manage their resources, providing them with a safe and reliable experience.</p>",
+      "name": "Claw Machine",
+      "readme": "I worked on an intriguing project during my graphics course at university, where I had the opportunity to explore the capabilities of the JavaScript library called Three.js. This experience was incredibly valuable as it allowed me to delve into working with external libraries and gain a deeper understanding of how to effectively utilize their documentation. It was an exciting learning journey that greatly enhanced my skills and knowledge.",
       "screenshots": [
         {
-          "id": 1,
-          "src": "/images/screenshots/mosPic/landing-page.png",
-          "description": "Landing Page"
+          "id": 8,
+          "src": "/images/screenshots/claw-machine/full.png",
+          "description": "A Christmas themed claw machine"
         },
         {
-          "id": 2,
-          "src": "/images/screenshots/mosPic/gallery-page.png",
-          "description": "Gallery Page"
+          "id": 9,
+          "src": "/images/screenshots/claw-machine/close.png",
+          "description": "You can move around your claw with the joystick by pressing arrow keys on your keyboard."
         },
         {
-          "id": 3,
-          "src": "/images/screenshots/mosPic/background-image-page.png",
-          "description": "Background Image Page"
+          "id": 10,
+          "src": "/images/screenshots/claw-machine/grab.png",
+          "description": "You can also make it grab things inside the claw machine with your spacebar."
         }
       ]
     },
@@ -47,25 +47,47 @@
       ]
     },
     {
-      "name": "Claw Machine",
-      "readme": "I worked on an intriguing project during my graphics course at university, where I had the opportunity to explore the capabilities of the JavaScript library called Three.js. This experience was incredibly valuable as it allowed me to delve into working with external libraries and gain a deeper understanding of how to effectively utilize their documentation. It was an exciting learning journey that greatly enhanced my skills and knowledge.",
+      "name": "mosPic",
+      "readme": "<p>I am currently working on an exciting team project with five individuals who are eager to enhance their web development skills. I am primarily focuing on the frontend aspect of the project, collaborating closely with another team member. Furthermore, I have taken on the role of project manager within our team, ensuring smooth coordination and progress. <br><br> This is a great opportunity for me to leverage the power of Agile methodology. I belived I had a understanding of it, but taking on this role has made me realize that there is still much to learn more about it. <br><br> Our team has devised a plan to leverage Segment Anything, a cutting-edge technology developed by Meta AI, to create an exceptional image editing tool. Additionally, we use next-auth to ensure that our users can securely manage their resources, providing them with a safe and reliable experience.</p>",
       "screenshots": [
         {
-          "id": 8,
-          "src": "/images/screenshots/claw-machine/full.png",
-          "description": "A Christmas themed claw machine"
+          "id": 1,
+          "src": "/images/screenshots/mosPic/landing-page.png",
+          "description": "Landing Page"
         },
         {
-          "id": 9,
-          "src": "/images/screenshots/claw-machine/close.png",
-          "description": "You can move around your claw with the joystick by pressing arrow keys on your keyboard."
+          "id": 2,
+          "src": "/images/screenshots/mosPic/gallery-page.png",
+          "description": "Gallery Page"
         },
         {
-          "id": 10,
-          "src": "/images/screenshots/claw-machine/grab.png",
-          "description": "You can also make it grab things inside the claw machine with your spacebar."
+          "id": 3,
+          "src": "/images/screenshots/mosPic/background-image-page.png",
+          "description": "Background Image Page"
+        }
+      ]
+    },
+    {
+      "name": "dandycv",
+      "readme": "<p>I am currently working on an exciting team project with five individuals who are eager to enhance their web development skills. I am primarily focuing on the frontend aspect of the project, collaborating closely with another team member. Furthermore, I have taken on the role of project manager within our team, ensuring smooth coordination and progress. <br><br> This is a great opportunity for me to leverage the power of Agile methodology. I belived I had a understanding of it, but taking on this role has made me realize that there is still much to learn more about it. <br><br> Our team has devised a plan to leverage Segment Anything, a cutting-edge technology developed by Meta AI, to create an exceptional image editing tool. Additionally, we use next-auth to ensure that our users can securely manage their resources, providing them with a safe and reliable experience.</p>",
+      "screenshots": [
+        {
+          "id": 1,
+          "src": "/images/screenshots/mosPic/landing-page.png",
+          "description": "Landing Page"
+        },
+        {
+          "id": 2,
+          "src": "/images/screenshots/mosPic/gallery-page.png",
+          "description": "Gallery Page"
+        },
+        {
+          "id": 3,
+          "src": "/images/screenshots/mosPic/background-image-page.png",
+          "description": "Background Image Page"
         }
       ]
     }
+    
   ]
 }
