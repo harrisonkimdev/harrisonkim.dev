@@ -4,9 +4,9 @@ import Link from 'next/link'
 import '@/globals.css'
 import { FaUser } from 'react-icons/fa'
 
-const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
+const Guestbook = (props) => {
 
-  function timeSince(date: any) {
+  function timeSince(date) {
     var seconds = Math.floor((new Date().valueOf() - date) / 1000);
   
     var interval = seconds / 31536000;

@@ -29,7 +29,7 @@ const Page = () => {
   const submitButtonStyle = disableSubmit ?
     'hidden' : 'bg-stone-400 text-stone-900  px-2 py-1 rounded-lg hover:bg-stone-300'
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
 
     axios.post('/api/guestbooks', {

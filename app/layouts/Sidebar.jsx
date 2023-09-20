@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 // Only visible on devices with smaller screen
-const Sidebar = (props: any) => {
+const Sidebar = (props) => {
   return (
     <div className='bg-stone-100 text-stone-900 text-lg min-h-screen py-2 flex flex-col gap-6'>
       {/* close icon */}

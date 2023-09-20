@@ -4,21 +4,20 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, useRouter } from 'next/navigation'
-import { IGuestbook } from '../interfaces/index'
 import { Loader } from 'semantic-ui-react'
 import { FaPen, FaRegTrashAlt } from 'react-icons/fa'
 
 const Page = () => {
-  const [guestbook, setGuestbook] = useState<IGuestbook | undefined>(undefined)
-  const [showPasswordInput, setShowPasswordInput] = useState<boolean>(false)
-  const [password, setPassword] = useState<string>('')
-  const [actionType, setActionType] = useState<string>('')
-  const [loaded, setLoaded] = useState<boolean>(false)
+  const [guestbook, setGuestbook] = useState(undefined)
+  const [showPasswordInput, setShowPasswordInput] = useState(false)
+  const [password, setPassword] = useState('')
+  const [actionType, setActionType] = useState('')
+  const [loaded, setLoaded] = useState(false)
 
   const params = useParams()
   const router = useRouter()
 
-  function timeSince(date: any) {
+  function timeSince(date) {
     var seconds = Math.floor((new Date().valueOf() - date) / 1000);
   
     var interval = seconds / 31536000;
@@ -68,7 +67,7 @@ const Page = () => {
     fetchData()
   }, [])
 
-  const handlePasswordSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handlePasswordSubmit = async (e) => {
     e.preventDefault()
 
     if (password == guestbook?.password) {

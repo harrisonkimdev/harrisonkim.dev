@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { FaPen, FaRegArrowAltCircleLeft } from 'react-icons/fa'
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }) => {
   const router = useRouter()
   
   return (

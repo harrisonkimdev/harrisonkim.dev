@@ -2,14 +2,13 @@
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { IGuestbook } from './interfaces'
 import Guestbook from './components/Guestbook'
 import { Loader } from 'semantic-ui-react'
 
 const Page = () => {
-  const [guestbooks, setGuestbooks] = useState<IGuestbook[] | undefined>(undefined)
-  const [currentPage, setCurrentPage] = useState<number>(1)
-  const [loaded, setLoaded] = useState<boolean>(false)
+  const [guestbooks, setGuestbooks] = useState(undefined)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     const fetchGuestbooks = async () => {
