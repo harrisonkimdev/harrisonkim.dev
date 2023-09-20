@@ -4,7 +4,7 @@ import Guestbook from '@/models/guestbook'
 import { IGuestbook } from '@/guestbooks/interfaces';
 
 // show
-export const GET = async (req: Request, { params } : { params: { id: string }; }) => {
+export const GET = async (req, { params }) => {
   try {
     await connectToDB()
 
@@ -18,7 +18,7 @@ export const GET = async (req: Request, { params } : { params: { id: string }; }
 }
 
 // update
-export const PATCH = async (req: Request, { params }: { params: { id: string }}) => {
+export const PATCH = async (req, { params }) => {
   const { title, content, updatedAt } = await req.json()
 
   try {
@@ -37,7 +37,7 @@ export const PATCH = async (req: Request, { params }: { params: { id: string }})
 }
 
 // delete
-export const DELETE = async (req: Request, { params }: { params: { id: string }} ) => {
+export const DELETE = async (req, { params }) => {
   try {
     await connectToDB()
 

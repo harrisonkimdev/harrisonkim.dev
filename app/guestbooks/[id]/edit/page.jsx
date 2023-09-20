@@ -7,11 +7,10 @@ import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css'
 import '../../styles/quill-editor.css'
 import Link from 'next/link'
-import { IGuestbook } from '@/guestbooks/interfaces'
 import { useParams, useRouter } from 'next/navigation'
 
 const Page = () => {
-  const [guestbook, setGuestbook] = useState<IGuestbook | undefined>(undefined)
+  const [guestbook, setGuestbook] = useState(undefined)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
 
@@ -25,7 +24,7 @@ const Page = () => {
     })
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     await axios.patch(`/api/guestbooks/${guestbook?._id}`, {

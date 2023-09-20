@@ -3,7 +3,7 @@ import { connectToDB } from '@/utils/db'
 import Guestbook from '@/models/guestbook'
 
 // index
-export const GET = async (req: Request) => {
+export const GET = async (req) => {
   try {
     await connectToDB()
 
@@ -16,7 +16,7 @@ export const GET = async (req: Request) => {
 }
 
 // store
-export const POST = async (req: Request) => {
+export const POST = async (req) => {
   const { title, content, writer, password } = await req.json()
 
   try {

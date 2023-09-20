@@ -3,9 +3,9 @@ import { IGuestbook } from '../interfaces'
 import Link from 'next/link'
 import '../styles/styles.css'
 
-const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
+const Guestbook = (props) => {
 
-  function timeSince(date: any) {
+  function timeSince(date) {
     var seconds = Math.floor((new Date().valueOf() - date) / 1000);
   
     var interval = seconds / 31536000;
