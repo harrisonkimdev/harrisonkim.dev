@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 import { connectToDB } from '@/utils/db'
 import Guestbook from '@/models/guestbook'
-import { IGuestbook } from '@/guestbooks/interfaces';
 
 // show
 export const GET = async (req, { params }) => {
