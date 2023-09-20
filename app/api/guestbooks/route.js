@@ -7,9 +7,18 @@ export const GET = async (req) => {
   try {
     await connectToDB()
 
-    const guestbooks = await Guestbook.find()
+    const { searchParams } = new URL(req.url)
+    const currentPage = searchParams.get('currentPage')
 
-    return NextResponse.json(guestbooks, { status: 200 })
+    const query = Guestbook.find()
+    query.skip(10*(currentPage-1)).limit(10)
+    const guestbooks = await query.exec()
+    
+    // TODO: find a way to merge the following operation into the upper one. 
+    const lengthQuery = Guestbook.find()
+    const lastPage = Math.ceil((await lengthQuery.estimatedDocumentCount())/10)
+    
+    return NextResponse.json({ guestbooks, lastPage }, { status: 200 })
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 500 })
   }
