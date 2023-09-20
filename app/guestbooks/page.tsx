@@ -40,7 +40,7 @@ const Page = () => {
 
       {/* pagination */}
       <div>
-        
+
       </div>
     </>
   )
