@@ -3,18 +3,17 @@
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { Loader } from 'semantic-ui-react'
 import { FaPen, FaRegTrashAlt } from 'react-icons/fa'
 
-const Page = () => {
+const Page = ({ params }) => {
   const [guestbook, setGuestbook] = useState(undefined)
   const [showPasswordInput, setShowPasswordInput] = useState(false)
   const [password, setPassword] = useState('')
   const [actionType, setActionType] = useState('')
   const [loaded, setLoaded] = useState(false)
 
-  const params = useParams()
   const router = useRouter()
 
   function timeSince(date) {
@@ -62,6 +61,10 @@ const Page = () => {
         .catch(err => {
           // 
         })
+
+      const res = await fetch(`/api/guestbooks/${params.id}?readOnly=1`)
+      const data = await res.json()
+      setGuestbook(data)
     }
 
     fetchData()
