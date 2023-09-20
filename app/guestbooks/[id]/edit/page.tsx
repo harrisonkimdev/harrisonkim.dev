@@ -1,11 +1,10 @@
-// edit
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
 import axios from 'axios'
 import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css'
-import '../../styles/quill-editor.css'
+import '@/globals.css'
 import Link from 'next/link'
 import { IGuestbook } from '@/guestbooks/interfaces'
 import { useParams, useRouter } from 'next/navigation'

@@ -1,11 +1,10 @@
-// create
 'use client'
 
 import React, { useState, useEffect, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css'
 import Link from 'next/link'
-import '../styles/quill-editor.css'
+import '@/globals.css'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 

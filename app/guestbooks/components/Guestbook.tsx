@@ -1,7 +1,7 @@
 import React from 'react'
 import { IGuestbook } from '../interfaces'
 import Link from 'next/link'
-import '../styles/styles.css'
+import '@/globals.css'
 
 const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
 
