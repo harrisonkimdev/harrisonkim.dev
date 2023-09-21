@@ -4,9 +4,6 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { FaPen, FaRegTrashAlt, FaTimes, FaCheck } from 'react-icons/fa'
 
-// temp
-import axios from 'axios'
-
 const ControlSection = ({ guestbook }) => {
   const [showPasswordInput, setShowPasswordInput] = useState(false)
   const [password, setPassword] = useState('')
@@ -18,22 +15,23 @@ const ControlSection = ({ guestbook }) => {
   const handlePasswordSubmit = async (e) => {
     e.preventDefault()
 
+    // not really need to hash it at the moment.
     if (password == guestbook?.password) {
       
       if (actionType == 'edit') {
         router.push(`/guestbooks/${guestbook?._id}/edit`)
       }
       else if (actionType == 'delete') {
-        await axios.delete(`/api/guestbooks/${guestbook?._id}`)
-          .then(res => console.log(res))
-        
+        await fetch(`/api/guestbooks/${guestbook?._id}`, {
+          method: 'DELETE',
+        })
+
         router.refresh()
         router.push('/guestbooks')
       }
     }
     else {
       alert('Password doesn\'t match')
-
       setPassword('')
     }
   }
