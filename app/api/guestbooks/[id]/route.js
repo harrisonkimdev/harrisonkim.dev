@@ -7,8 +7,16 @@ export const GET = async (req, { params }) => {
   try {
     await connectToDB()
 
-    const query = Guestbook.where({ _id: params.id })
-    const guestbook = await query.findOne()
+    const { searchParams } = new URL(req.url)
+    const readOnly = searchParams.get('readOnly')
+
+    const guestbook = await Guestbook.findOne({ _id: params.id })
+
+    // var viewCount
+
+    // if (readOnly === 1) {
+    //   // 
+    // }
 
     return NextResponse.json(guestbook, { status: 200 })
   } catch (err) {
@@ -18,7 +26,7 @@ export const GET = async (req, { params }) => {
 
 // update
 export const PATCH = async (req, { params }) => {
-  const { title, content, updatedAt } = await req.json()
+  const { title, content } = await req.json()
 
   try {
     await connectToDB()
