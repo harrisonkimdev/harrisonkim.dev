@@ -6,7 +6,6 @@ import 'react-quill/dist/quill.snow.css'
 import Link from 'next/link'
 import '@/globals.css'
 import { useRouter } from 'next/navigation'
-import axios from 'axios'
 
 const Page = () => {
   const [title, setTitle] =  useState('')
@@ -29,25 +28,23 @@ const Page = () => {
   const submitButtonStyle = disableSubmit ?
     'hidden' : 'bg-stone-400 text-stone-900  px-2 py-1 rounded-lg hover:bg-stone-300'
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    axios.post('/api/guestbooks', {
-      title,
-      content,
-      writer,
-      password
-    })
-    .then((res) => {
-      // 
-    })
-    .catch((err) => {
-      // 
-    })
-    .finally(() => {
-      // 
+    await fetch('/api/guestbooks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+        content,
+        writer,
+        password
+      })
     })
     
+    router.refresh()
     router.push('/guestbooks')
   }
 
