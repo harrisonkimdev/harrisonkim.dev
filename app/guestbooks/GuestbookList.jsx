@@ -1,7 +1,6 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 
 // components
-import Loading from '@/loading'
 import Guestbook from './Guestbook'
 import PaginationNavigator from '@/components/PaginationNavigator'
 
@@ -24,13 +23,11 @@ const GuestbookList = async () => {
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <div className='flex flex-col gap-3 md:gap-2 mt-1'>
-          { guestbooks.map((guestbook) => (
-            <Guestbook guestbookData={guestbook} key={guestbook._id} />
-          )) }
-        </div>
-      </Suspense>
+      <div className='flex flex-col gap-3 md:gap-2 mt-1'>
+        { guestbooks.map((guestbook) => (
+          <Guestbook guestbookData={guestbook} key={guestbook._id} />
+        )) }
+      </div>
 
       <PaginationNavigator />
     </>

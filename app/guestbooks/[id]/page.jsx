@@ -1,7 +1,6 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 
 // component
-import Loading from '@/loading'
 import ControlSection from './ControlSection'
 
 const getGuestbook = async (id) => {
@@ -19,15 +18,13 @@ const GuestbookShow = async ({ params }) => {
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <div className='mt-4'>
-          <h1 className='text-xl md:text-3xl font-bold text-stone-800'>{ guestbook.title }</h1>
-          <ControlSection guestbook={guestbook} />
-          
-          <hr className='border-b border-stone-400' />
-          <div dangerouslySetInnerHTML={{ __html: guestbook.content }} className='my-2 md:my-3 text-stone-600' />
-        </div>
-      </Suspense>
+      <div className='mt-4'>
+        <h1 className='text-xl md:text-3xl font-bold text-stone-800'>{ guestbook.title }</h1>
+        <ControlSection guestbook={guestbook} />
+        
+        <hr className='border-b border-stone-400' />
+        <div dangerouslySetInnerHTML={{ __html: guestbook.content }} className='my-2 md:my-3 text-stone-600' />
+      </div>
     </>
   )
 }
