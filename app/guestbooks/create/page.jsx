@@ -4,7 +4,6 @@ import React, { useState, useEffect, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css'
 import Link from 'next/link'
-import '@/globals.css'
 import { useRouter } from 'next/navigation'
 
 const Page = () => {
@@ -17,7 +16,6 @@ const Page = () => {
   const router = useRouter()
   
   // https://www.simplenextjs.com/posts/next-rich-editor-quill
-  // https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#with-no-ssr
   const QuillNoSSRWrapper = useMemo(() => {
     return dynamic(() => import("react-quill"), {
       loading: () => <p>loading...</p>,
