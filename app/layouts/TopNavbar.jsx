@@ -52,10 +52,6 @@ const TopNavbar = (props) => {
                 <Link href="/guestbooks">
                   <p className='text-stone-100 hover:text-stone-50 hover:underline'> Guestbook </p>
                 </Link>
-
-                <Link href="/about">
-                  <p className='text-stone-100 hover:text-stone-50 hover:underline'> About </p>
-                </Link>
               </div>
             </div>
             
