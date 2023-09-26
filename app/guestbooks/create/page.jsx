@@ -1,13 +1,9 @@
-// create
 'use client'
 
-import React, { useState, useEffect, useMemo } from 'react'
-import dynamic from 'next/dynamic'
-import 'react-quill/dist/quill.snow.css'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import '../styles/quill-editor.css'
 import { useRouter } from 'next/navigation'
-import axios from 'axios'
+import Tiptap from '@/components/Tiptap'
 
 const Page = () => {
   const [title, setTitle] =  useState('')
@@ -17,39 +13,32 @@ const Page = () => {
   const [disableSubmit, setDisableSubmit] = useState(true)
 
   const router = useRouter()
-  
-  // https://www.simplenextjs.com/posts/next-rich-editor-quill
-  // https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#with-no-ssr
-  const QuillNoSSRWrapper = useMemo(() => {
-    return dynamic(() => import("react-quill"), {
-      loading: () => <p>loading...</p>,
-      ssr: false,
-    })
-  }, [])
 
   const submitButtonStyle = disableSubmit ?
     'hidden' : 'bg-stone-400 text-stone-900  px-2 py-1 rounded-lg hover:bg-stone-300'
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
-    axios.post('/api/guestbooks', {
-      title,
-      content,
-      writer,
-      password
-    })
-    .then((res) => {
+    try {
+      await fetch('/api/guestbooks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          content,
+          writer,
+          password
+        })
+      })
+      
+      router.refresh()
+      router.push('/guestbooks')
+    } catch (err) {
       // 
-    })
-    .catch((err) => {
-      // 
-    })
-    .finally(() => {
-      // 
-    })
-    
-    router.push('/guestbooks')
+    }
   }
 
   useEffect(() => {
@@ -68,15 +57,14 @@ const Page = () => {
 
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col gap-2 md:gap-0 md:my-1 mb-12'>
+      <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col gap-2'>
         {/* title and content */}
         <div className='flex flex-col gap-2 md:gap-3'>
           <input type="text" value={title} onChange={e => setTitle(e.target.value)}
             className='w-full p-1 bg-stone-100 rounded shadow focus:outline-none'
           />
           <div className='h-full'>
-            {/* https://www.simplenextjs.com/posts/react-quill */}
-            <QuillNoSSRWrapper placeholder='' theme='snow' value={content} onChange={setContent} />
+            <Tiptap getHTML={(html) => setContent(html)} />
           </div>
         </div>
 

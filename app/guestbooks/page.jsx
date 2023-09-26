@@ -1,47 +1,10 @@
-// index
-'use client'
-
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import Guestbook from './components/Guestbook'
-import { Loader } from 'semantic-ui-react'
+import React from 'react'
+import GuestbookList from './GuestbookList'
 
 const Page = () => {
-  const [guestbooks, setGuestbooks] = useState(undefined)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [loaded, setLoaded] = useState(false)
-
-  useEffect(() => {
-    const fetchGuestbooks = async () => {
-      axios.get('/api/guestbooks')
-        .then((res) => {
-          setGuestbooks(res.data)
-          setLoaded(true)
-        }) 
-    }
-    fetchGuestbooks()
-  }, [])
-
-  if (!loaded) return (
+  return (
     <>
-      <div className='pt-32 flex items-center'>
-        <Loader active inline='centered' />
-      </div>
-    </>
-  )
-  else return (
-    <>
-      {/* list of guestbooks */}
-      <div className='flex flex-col gap-3 md:gap-2 mt-1'>
-        { guestbooks?.map(guestbook => {
-          return <Guestbook guestbookData={guestbook} key={guestbook._id} />
-        })}
-      </div>
-
-      {/* pagination */}
-      <div>
-        
-      </div>
+      <GuestbookList />
     </>
   )
 }
