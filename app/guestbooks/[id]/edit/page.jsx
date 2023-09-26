@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, Suspense } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
@@ -66,9 +66,9 @@ const GuestbookEdit = async ({ params }) => {
           <input type="text" value={title} onChange={e => setTitle(e.target.value)}
             className='w-full p-1 bg-stone-100 rounded shadow focus:outline-none'
           />
-          <div className='h-full'>
+          <Suspense fallback={<Loading />}>
             <QuillNoSSRWrapper placeholder='' theme='snow' value={content} onChange={setContent} />
-          </div>
+          </Suspense>
         </div>
 
         {/* update & cancel */}
