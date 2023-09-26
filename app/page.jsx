@@ -21,6 +21,9 @@ export default function Home() {
                 rounded-full
                 object-cover
               '
+              quality={100}
+              placeholder='blur'
+              blurDataURL='/images/profile/me_cropped.jpeg'
             />
             <div className=''>
               <h1 className='

@@ -79,18 +79,6 @@ const Footer = () => {
               </Link>
             </ul>
           </div>
-          <div className='flex flex-col gap-2'>
-            <p className='text-3xl font-semibold text-stone-700'>About</p>
-            <ul className='flex flex-col gap-2'>
-              <Link href='/about?tab=myself'>
-                <li className='font-medium text-stone-500 hover:text-stone-600'> Myself </li>
-              </Link>
-
-              <Link href='/about?tab=website'>
-                <li className='font-medium text-stone-500 hover:text-stone-600'> This website </li>
-              </Link>
-            </ul>
-          </div>
         </div>
       </footer>
     </>

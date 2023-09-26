@@ -1,15 +1,22 @@
 import { NextResponse } from 'next/server'
 import { connectToDB } from '@/utils/db'
 import Guestbook from '@/models/guestbook'
-import { IGuestbook } from '@/guestbooks/interfaces';
 
 // show
-export const GET = async (req: Request, { params } : { params: { id: string }; }) => {
+export const GET = async (req, { params }) => {
   try {
     await connectToDB()
 
-    const query = Guestbook.where({ _id: params.id })
-    const guestbook = await query.findOne()
+    const { searchParams } = new URL(req.url)
+    const readOnly = searchParams.get('readOnly')
+
+    const guestbook = await Guestbook.findOne({ _id: params.id })
+
+    // var viewCount
+
+    // if (readOnly === 1) {
+    //   // 
+    // }
 
     return NextResponse.json(guestbook, { status: 200 })
   } catch (err) {
@@ -18,8 +25,8 @@ export const GET = async (req: Request, { params } : { params: { id: string }; }
 }
 
 // update
-export const PATCH = async (req: Request, { params }: { params: { id: string }}) => {
-  const { title, content, updatedAt } = await req.json()
+export const PATCH = async (req, { params }) => {
+  const { title, content } = await req.json()
 
   try {
     await connectToDB()
@@ -37,7 +44,7 @@ export const PATCH = async (req: Request, { params }: { params: { id: string }})
 }
 
 // delete
-export const DELETE = async (req: Request, { params }: { params: { id: string }} ) => {
+export const DELETE = async (req, { params }) => {
   try {
     await connectToDB()
 
