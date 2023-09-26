@@ -116,7 +116,7 @@ export default function Home() {
                           <p className='text-stone-800 mt-2'>As a freelance full-stack engineer, I collaborated with a startup, implementing NextAuth for authentication, integrating Stripe for payments, and establishing a streamlined email notification system with Resend. These solutions enhanced their online presence and functionality effectively.</p>
                         </div>
 
-                        <Image src='/images/screenshots/dandycv/landing-page.png' alt='mosPic Image' width={1595} height={964}
+                        <Image src='/images/screenshots/dandycv/landing_page.png' alt='mosPic Image' width={1595} height={964}
                           className='object-contain h-full w-full col-span-1'
                         />
                       </div>
