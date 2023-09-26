@@ -50,7 +50,7 @@ const TopNavbar = (props) => {
                 </Link>
 
                 <Link href="/guestbooks">
-                  <p className='text-stone-100 hover:text-stone-50 hover:underline'> Guestbook </p>
+                  <p className='text-stone-100 hover:text-stone-50 hover:underline'> Guestbooks </p>
                 </Link>
               </div>
             </div>

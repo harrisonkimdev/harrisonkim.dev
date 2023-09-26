@@ -28,7 +28,7 @@ const Sidebar = (props) => {
           </Link>
         
           <Link href="/guestbooks" onClick={() => props.emitCloseSidebar()}>
-            <p className='font-medium text-stone-500 hover:text-stone-600'>Guestbook</p>
+            <p className='font-medium text-stone-500 hover:text-stone-600'>Guestbooks</p>
           </Link>
       </div>
     </div>
