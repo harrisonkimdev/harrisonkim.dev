@@ -1,27 +1,17 @@
 'use client'
 
-import { useState, useEffect, useMemo, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-// quill
-import dynamic from 'next/dynamic'
-import 'react-quill/dist/quill.snow.css'
-import { Loading } from '@/loading'
+import Tiptap from '@/components/Tiptap'
 
 const GuestbookEdit = async ({ params }) => {
   const [guestbook, setGuestbook] = useState(undefined)
   const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
+  const [content, setContent] = useState(undefined)
   
   const router = useRouter()
-
-  const QuillNoSSRWrapper = useMemo(() => {
-    return dynamic(() => import("react-quill"), {
-      loading: () => <p>loading...</p>,
-      ssr: false,
-    })
-  }, [])
 
   useEffect(() => {
     getGuestbook(params.id)
@@ -43,16 +33,20 @@ const GuestbookEdit = async ({ params }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await fetch(`/api/guestbooks/${guestbook?._id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title,
-        content
+    try {
+      await fetch(`/api/guestbooks/${guestbook?._id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title,
+          content
+        })
       })
-    })
+    } catch (err) {
+      // 
+    }
 
     router.refresh()
     router.push('/guestbooks')
@@ -60,15 +54,13 @@ const GuestbookEdit = async ({ params }) => {
 
   return (
     <>
-      <form onSubmit={e => handleSubmit(e)} className='flex flex-col gap-2 md:gap-0 md:my-1 mb-12'>
+      <form onSubmit={e => handleSubmit(e)} className='flex flex-col gap-2 md:my-1 mb-12'>
         {/* title and content */}
         <div className='flex flex-col gap-2 md:gap-3'>
           <input type="text" value={title} onChange={e => setTitle(e.target.value)}
             className='w-full p-1 bg-stone-100 rounded shadow focus:outline-none'
           />
-          <Suspense fallback={<Loading />}>
-            <QuillNoSSRWrapper placeholder='' theme='snow' value={content} onChange={setContent} />
-          </Suspense>
+          { content && <Tiptap content={content} getHTML={(html) => setContent(html)} />}
         </div>
 
         {/* update & cancel */}
