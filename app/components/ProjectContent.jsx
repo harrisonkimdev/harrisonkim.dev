@@ -5,16 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from 'next/image'
 import '@/globals.css'
 
-const ProjectContent = ({ project }: {
-    project: {
-      name: string,
-      readme: string,
-      screenshots: {
-        id: number,
-        src: string,
-        description: string
-      }[]
-}}) => {
+const ProjectContent = ({ project }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -61,7 +52,7 @@ const ProjectContent = ({ project }: {
         <div className='my-12 mx-auto w-80 lg:w-auto lg:mx-0'>
           {/* https://react-slick.neostack.com/docs/api */}
           <Slider {...settings}>
-            { project.screenshots.map((item: { id: number, src: string, description: string }) => {
+            { project.screenshots.map((item) => {
               return (
                   <div key={item.id} className='bg-stone-200 p-3 rounded-xl'>
                     <div className='flex flex-col'>

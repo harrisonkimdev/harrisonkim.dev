@@ -15,11 +15,7 @@ const rubik = Rubik({ subsets: ['latin'] })
 //   description: 'My Personal Website',
 // }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }) {
   const [toggleSidebar, setToggleSidebar] = useState(false)
 
   const pathname = usePathname()
@@ -32,7 +28,7 @@ export default function RootLayout({
       <body className={rubik.className}>
         <div className='min-w-min'>
           <TopNavbar
-            emitCloseSidebar={(value: boolean) => setToggleSidebar(value) }
+            emitCloseSidebar={(value) => setToggleSidebar(value) }
           />
 
           <div className={`
