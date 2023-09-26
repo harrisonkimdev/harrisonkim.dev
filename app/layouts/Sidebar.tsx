@@ -30,10 +30,6 @@ const Sidebar = (props: any) => {
           <Link href="/guestbooks" onClick={() => props.emitCloseSidebar()}>
             <p className='font-medium text-stone-500 hover:text-stone-600'>Guestbook</p>
           </Link>
-        
-          <Link href="/about" onClick={() => props.emitCloseSidebar()}>
-            <p className='font-medium text-stone-500 hover:text-stone-600'>About</p>
-          </Link>
       </div>
     </div>
   )
