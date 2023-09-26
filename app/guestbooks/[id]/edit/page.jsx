@@ -1,19 +1,19 @@
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
-import axios from 'axios'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+
+// quill
 import dynamic from 'next/dynamic'
 import 'react-quill/dist/quill.snow.css'
-import '@/globals.css'
-import Link from 'next/link'
-import { useParams, useRouter } from 'next/navigation'
+import { Loading } from '@/loading'
 
-const Page = () => {
+const GuestbookEdit = async ({ params }) => {
   const [guestbook, setGuestbook] = useState(undefined)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
-
-  const params = useParams()
+  
   const router = useRouter()
 
   const QuillNoSSRWrapper = useMemo(() => {
@@ -23,26 +23,40 @@ const Page = () => {
     })
   }, [])
 
+  useEffect(() => {
+    getGuestbook(params.id)
+  }, [])
+
+  const getGuestbook = async (id) => {
+    try {
+      const res = await fetch(`/api/guestbooks/${id}?readOnly=0`)
+      const guestbookData = await res.json()
+
+      setGuestbook(guestbookData)
+      setTitle(guestbookData.title)
+      setContent(guestbookData.content)
+    } catch (err) {
+      // 
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await axios.patch(`/api/guestbooks/${guestbook?._id}`, {
-      title,
-      content
+    await fetch(`/api/guestbooks/${guestbook?._id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+        content
+      })
     })
-      .then((res) => {
-        router.push('/guestbooks')
-      })
-  }
 
-  useEffect(() => {
-    axios.get(`/api/guestbooks/${params.id}`)
-      .then(res => {
-        setGuestbook(res.data)
-        setTitle(res.data.title)
-        setContent(res.data.content)
-      })
-  }, [])
+    router.refresh()
+    router.push('/guestbooks')
+  }
 
   return (
     <>
@@ -59,11 +73,33 @@ const Page = () => {
 
         {/* update & cancel */}
         <div className='flex justify-center md:justify-end gap-2 py-2'>
+          {/* update */}
           <button type='submit'
-            className='border border-stone-400 text-sm md:text-base text-stone-700 px-2 py-1 rounded-lg bg-stone-200 hover:bg-stone-300'
-          >Update</button>
+            className='
+              border
+            border-stone-400
+              text-sm
+              md:text-base
+            text-stone-700
+              px-2
+              py-1
+              rounded-lg
+            bg-stone-200
+            hover:bg-stone-300
+          '> Update </button>
+
+          {/* cancel */}
           <Link href={`/guestbooks/${guestbook?._id}`}>
-            <button className='border border-stone-400 text-sm md:text-base text-stone-700 px-2 py-1 rounded-lg'>Cancel</button>
+            <button className='
+              px-2
+              py-1
+              rounded-lg
+              border
+            border-stone-400
+              text-sm
+              md:text-base
+            text-stone-700
+            '> Cancel </button>
           </Link>
         </div>
       </form>
@@ -71,4 +107,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default GuestbookEdit
