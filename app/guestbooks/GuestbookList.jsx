@@ -24,7 +24,7 @@ const GuestbookList = async () => {
   return (
     <>
       <div className='flex flex-col gap-3 md:gap-2 mt-1'>
-        { guestbooks.map((guestbook) => (
+        { guestbooks?.map((guestbook) => (
           <Guestbook guestbookData={guestbook} key={guestbook._id} />
         )) }
       </div>
