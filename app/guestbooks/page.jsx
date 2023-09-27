@@ -7,9 +7,9 @@ import PaginationNavigator from '@/components/PaginationNavigator'
 const getGuestbooks = async () => {
   try {
     const res = await fetch(`${process.env.BASE_URL}/api/guestbooks?currentPage=${1}`, {
-      next: {
-        revalidate: 60
-      }
+      // next: {
+      //   revalidate: 60
+      // }
     })
     const data = await res.json()
     return data.guestbooks
