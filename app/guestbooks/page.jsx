@@ -20,7 +20,6 @@ const getGuestbooks = async () => {
 
 const Guestbooks = async () => {
   const guestbooks = await getGuestbooks()
-  console.log(guestbooks)
 
   return (
     <>
