@@ -32,16 +32,14 @@ export const POST = async (req) => {
     await connectToDB()
 
     // TODO: hash the password
-    const newGuestbook = new Guestbook({
+    await Guestbook.create({
       title,
       content,
       writer,
       password,
     })
 
-    const res = await newGuestbook.save()
-
-    return NextResponse.json({ message: 'Successfully posted.' }, { status: 200 })
+    return NextResponse.json({ message: 'Successfully Posted.' }, { status: 200 })
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 500 })
   }
