@@ -7,8 +7,7 @@ export const GET = async (req) => {
   try {
     await connectToDB()
 
-    const { searchParams } = new URL(req.url)
-    const currentPage = searchParams.get('currentPage')
+    const currentPage = req.nextUrl.searchParams.get('currentPage')
 
     const query = Guestbook.find()
     query.skip(10*(currentPage-1)).limit(10)
