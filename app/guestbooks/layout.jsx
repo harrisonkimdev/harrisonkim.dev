@@ -2,11 +2,10 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { FaPen, FaRegArrowAltCircleLeft } from 'react-icons/fa'
 
 const Layout = ({ children }) => {
-  const router = useRouter()
   
   return (
     <div className='w-full pt-5 md:pt-16 bg-stone-50'>

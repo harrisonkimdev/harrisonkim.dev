@@ -1,17 +1,23 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
-import Tiptap from '@/components/Tiptap'
-
-const GuestbookEdit = async ({ params }) => {
-  const [guestbook, setGuestbook] = useState(undefined)
+const GuestbookEdit = ({ params }) => {
+  const [guestbook, setGuestbook] = useState({})
   const [title, setTitle] = useState('')
-  const [content, setContent] = useState(undefined)
-  
+  const [content, setContent] = useState('')
+
   const router = useRouter()
+
+  const QuillNoSSRWrapper = useMemo(() => {
+    return dynamic(() => import("@/components/ReactQuillWrapper"), {
+      loading: () => <p>loading...</p>,
+      ssr: false,
+    })
+  }, [])
 
   useEffect(() => {
     getGuestbook(params.id)
@@ -19,9 +25,13 @@ const GuestbookEdit = async ({ params }) => {
 
   const getGuestbook = async (id) => {
     try {
-      const res = await fetch(`/api/guestbooks/${id}?readOnly=0`)
+      const res = await fetch(
+        `/api/guestbooks/${id}?readOnly=0`,
+        {
+          cache: 'no-store'
+        }
+      )
       const guestbookData = await res.json()
-
       setGuestbook(guestbookData)
       setTitle(guestbookData.title)
       setContent(guestbookData.content)
@@ -44,12 +54,11 @@ const GuestbookEdit = async ({ params }) => {
           content
         })
       })
+      router.refresh()
+      router.push('/guestbooks')
     } catch (err) {
       // 
     }
-
-    router.refresh()
-    router.push('/guestbooks')
   }
 
   return (
@@ -60,7 +69,7 @@ const GuestbookEdit = async ({ params }) => {
           <input type="text" value={title} onChange={e => setTitle(e.target.value)}
             className='w-full p-1 bg-stone-100 rounded shadow focus:outline-none'
           />
-          { content && <Tiptap content={content} getHTML={(html) => setContent(html)} />}
+          <QuillNoSSRWrapper content={content} setContent={setContent} />
         </div>
 
         {/* update & cancel */}
