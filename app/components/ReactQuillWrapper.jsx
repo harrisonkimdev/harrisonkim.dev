@@ -5,7 +5,7 @@ import React, { useState, useMemo } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
-const ReactQuillWarpper = ({ content, setContent }) => {
+const ReactQuillWrapper = ({ content, setContent }) => {
   const [value, setValue] = useState('')
   
   const modules = useMemo(() => {
@@ -19,4 +19,4 @@ const ReactQuillWarpper = ({ content, setContent }) => {
   )
 }
 
-export default ReactQuillWarpper
+export default ReactQuillWrapper

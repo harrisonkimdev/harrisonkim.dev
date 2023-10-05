@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
-import Tiptap from '@/components/Tiptap'
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 const Page = () => {
   const [title, setTitle] =  useState('')
@@ -16,6 +16,27 @@ const Page = () => {
 
   const submitButtonStyle = disableSubmit ?
     'hidden' : 'bg-stone-400 text-stone-900  px-2 py-1 rounded-lg hover:bg-stone-300'
+
+  const QuillNoSSRWrapper = useMemo(() => {
+    return dynamic(() => import("@/components/ReactQuillWrapper"), {
+      loading: () => <p>loading...</p>,
+      ssr: false,
+    })
+  }, [])
+
+  useEffect(() => {
+    if (
+      title.length != 0
+      && writer.length != 0
+      && password.length != 0
+    ) setDisableSubmit(false)
+
+    if (
+      title.length == 0
+      || writer.length == 0
+      || password.length == 0
+    ) setDisableSubmit(true)
+  }, [title, writer, password])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -33,7 +54,6 @@ const Page = () => {
           password
         })
       })
-      
       router.refresh()
       router.push('/guestbooks')
     } catch (err) {
@@ -41,31 +61,15 @@ const Page = () => {
     }
   }
 
-  useEffect(() => {
-    if (
-      title.length != 0
-      && writer.length != 0
-      && password.length != 0
-    ) setDisableSubmit(false)
-
-    if (
-      title.length == 0
-      || writer.length == 0
-      || password.length == 0
-    ) setDisableSubmit(true)
-  }, [title, writer, password])
-
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)} className='flex flex-col gap-2'>
+      <form onSubmit={e => handleSubmit(e)} className='flex flex-col gap-2'>
         {/* title and content */}
         <div className='flex flex-col gap-2 md:gap-3'>
           <input type="text" value={title} onChange={e => setTitle(e.target.value)}
             className='w-full p-1 bg-stone-100 rounded shadow focus:outline-none'
           />
-          <div className='h-full'>
-            <Tiptap getHTML={(html) => setContent(html)} />
-          </div>
+          <QuillNoSSRWrapper content={content} setContent={setContent} />
         </div>
 
         <div className='
