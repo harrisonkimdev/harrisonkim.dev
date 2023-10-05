@@ -20,3 +20,21 @@
 .slick-slider .slick-arrow:hover {
   filter: invert(100%);
 }
+
+/* react-quill */
+.quill {
+  background-color: rgb(245 245 244);
+}
+.ql-editor {
+  height: 323px;
+}
+#innerHTML {
+  width: 83.333333%;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+#innerHTML p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
