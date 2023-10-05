@@ -6,12 +6,9 @@ import PaginationNavigator from '@/components/PaginationNavigator'
 
 const getGuestbooks = async () => {
   try {
-    const res = await fetch(
-      `${process.env.BASE_URL}/api/guestbooks?currentPage=${1}`,
-      {
-        cache: 'no-store'
-      }
-    )
+    const res = await fetch(`${process.env.BASE_URL}/api/guestbooks?currentPage=${1}`, {
+      cache: 'no-store'
+    })
     const data = await res.json()
     return data.guestbooks
   } catch (err) {

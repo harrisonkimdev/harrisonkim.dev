@@ -5,7 +5,9 @@ import ControlSection from './ControlSection'
 
 const getGuestbook = async (id) => {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/api/guestbooks/${id}?readOnly=1`)
+    const res = await fetch(`${process.env.BASE_URL}/api/guestbooks/${id}?readOnly=1`, {
+      cache: 'no-store'
+    })
     const guestbook = await res.json()
     return guestbook
   } catch (err) {
