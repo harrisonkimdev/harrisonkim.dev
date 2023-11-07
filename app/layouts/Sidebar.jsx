@@ -19,7 +19,7 @@ const Sidebar = (props) => {
             <p className='font-medium text-stone-500 hover:text-stone-600'>Home</p>
           </Link>
 
-          <Link href="/assets/Resume_HarrisonKim_FullStack.pdf" target="_blank" onClick={() => props.emitCloseSidebar()}>
+          <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank" onClick={() => props.emitCloseSidebar()}>
             <p className='font-medium text-stone-500 hover:text-stone-600'>Resume</p>
           </Link>
         
