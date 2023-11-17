@@ -25,7 +25,9 @@ const GuestbookShow = async ({ params }: { params: { id: string } }) => {
         <ControlSection guestbook={guestbook} />
         
         <hr className='border-b border-stone-400' />
-        <div dangerouslySetInnerHTML={{ __html: guestbook.content }} className='my-2 md:my-3 text-stone-600' />
+        <div dangerouslySetInnerHTML={{ __html: guestbook.content }}
+          className='my-2 md:my-3 text-stone-600'
+        />
       </div>
     </>
   )

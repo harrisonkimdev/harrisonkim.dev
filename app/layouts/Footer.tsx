@@ -36,7 +36,9 @@ const Footer = () => {
               <Image src='/images/logos/linkedin-logo.png'
                 alt='LinkedIn Logo' width={16} height={16} className='object-contain'
               />
-              <p className='mt-1.5 font-medium text-stone-500 hover:text-stone-600'>LinkedIn</p>
+              <p className='
+                mt-1.5 font-medium text-stone-500 hover:text-stone-600
+              '>LinkedIn</p>
             </Link>
             <Link href='https://github.com/hhkimmm9'
               className='flex flex-row gap-2 items-center'
@@ -44,7 +46,9 @@ const Footer = () => {
               <Image src='/images/logos/github-logo.png'
                 alt='GitHub Logo' width={16} height={16} className='object-contain'
               />
-              <p className='mt-1 font-medium text-stone-500 hover:text-stone-600'>GitHub</p>
+              <p className='
+                mt-1 font-medium text-stone-500 hover:text-stone-600
+              '>GitHub</p>
             </Link>
           </div>
         </div>
@@ -59,11 +63,15 @@ const Footer = () => {
             <p className='text-3xl font-semibold text-stone-700'>Home</p>
             <ul className='flex flex-col gap-2'>
               <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank">
-                <li className='font-medium text-stone-500 hover:text-stone-600'> Resume </li>
+                <li className='
+                  font-medium text-stone-500 hover:text-stone-600
+                '> Resume </li>
               </Link>
 
               <Link href='/projects'>
-                <li className='font-medium text-stone-500 hover:text-stone-600'> Projects </li>
+                <li className='
+                  font-medium text-stone-500 hover:text-stone-600
+                '> Projects </li>
               </Link>
             </ul>
           </div>
@@ -71,11 +79,15 @@ const Footer = () => {
             <p className='text-3xl font-semibold text-stone-700'>Projects</p>
             <ul className='flex flex-col gap-2'>
               <Link href='/projects'>
-                <li className='font-medium text-stone-500 hover:text-stone-600'> dandycv </li>
+                <li className='
+                  font-medium text-stone-500 hover:text-stone-600
+                '> dandycv </li>
               </Link>
 
               <Link href='/projects'>
-                <li className='font-medium text-stone-500 hover:text-stone-600'> mosPic </li>
+                <li className='
+                  font-medium text-stone-500 hover:text-stone-600
+                '> mosPic </li>
               </Link>
             </ul>
           </div>

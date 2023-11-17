@@ -69,8 +69,14 @@ const Page = () => {
                 hover:bg-stone-300
               `}> Claw Machine </button>
             </div>
-            <div className='bg-black text-lime-400 px-2 pt-1 pb-20 font-mono rounded-b-md'>
-              <p>user@harrisonkim-dev ~ % git clone { filepath }<span className='blink_me'>|</span></p>
+            <div className='
+              px-2 pt-1 pb-20 rounded-b-md bg-black
+              font-mono text-lime-400
+            '>
+              <p>
+                user@harrisonkim-dev ~ % git clone { filepath }
+                <span className='blink_me'>|</span>
+              </p>
               {/* <p>Downloading...</p>
               <p>Installing the program...</p>
               <p>Initializing...</p>

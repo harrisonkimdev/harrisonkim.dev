@@ -82,14 +82,19 @@ const Page = () => {
             md:flex-row md:gap-4
           '>
             <div className='flex flex-col gap-0.5'>
-              <label htmlFor="writer" className='text-stone-700 font-light'>Your name</label>
+              <label htmlFor="writer"
+                className='text-stone-700 font-light'
+              > Your name </label>
               <input id='writer' type="text" value={writer}
                 onChange={e => setWriter(e.target.value)}
                 className='p-1 bg-stone-100 rounded shadow focus:outline-none'
               />
             </div>
+            
             <div className='flex flex-col gap-0.5'>
-              <label htmlFor="password" className='text-stone-700 font-light'>Password</label>
+              <label htmlFor="password"
+                className='text-stone-700 font-light
+              '> Password </label>
               <input id='password 'type="password" value={password}
                 onChange={e => setPassword(e.target.value)}
                 className='p-1 bg-stone-100 rounded shadow focus:outline-none'
@@ -99,15 +104,22 @@ const Page = () => {
 
           {/* submit & cancel */}
           <div className='flex justify-center md:justify-end gap-2 py-4 md:py-0'>
-            <button type='submit' disabled={disableSubmit} className={submitButtonStyle}> Submit </button>
+            <button type='submit' disabled={disableSubmit}
+              className={submitButtonStyle}
+            > Submit </button>
             <Link href='/guestbooks'>
-              <p className='border border-stone-400 text-stone-900 px-2 py-1 rounded-lg hover:bg-stone-300'> Cancel </p>
+              <p className='
+                px-2 py-1 rounded-lg border border-stone-400 hover:bg-stone-300
+                text-stone-900
+              '> Cancel </p>
             </Link>
           </div>
         </div>
 
-        <div className={disableSubmit ? 'flex justify-center md:justify-end text-sm text-stone-400' : 'hidden'}>
-          <p className=''>Please fill in the required fields first: title, your name and password</p>
+        <div className={disableSubmit ?
+          'flex justify-center md:justify-end text-sm text-stone-400' : 'hidden'
+        }>
+          <p>Please fill in the required fields first: title, your name and password</p>
         </div>
         
       </form>

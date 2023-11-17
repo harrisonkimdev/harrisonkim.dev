@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import '@/globals.css'
-import { FaUser } from 'react-icons/fa'
+import { FaUser } from 'react-icons/fa6'
 import { IGuestbook } from '@/interfaces'
 
 const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
@@ -35,12 +35,19 @@ const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
 
   return (
     <>
-      <Link href={`guestbooks/${props.guestbookData._id}`} className='border border-stone-200 shadow rounded-xl p-1'>
-        <div className='border border-stone-300 p-3 bg-stone-200 rounded-lg text-stone-500 hover:bg-stone-300'>
+      <Link href={`guestbooks/${props.guestbookData._id}`}
+        className='border border-stone-200 shadow rounded-xl p-1
+      '>
+        <div className='
+          p-3 rounded-lg border border-stone-300 bg-stone-200 hover:bg-stone-300
+          text-stone-500
+        '>
           {/* title and content */}
           <div className='md:flex md:flex-col md:gap-6'>
             {/* title */}
-            <h2 className='text-xl font-semibold truncate w-5/6 text-stone-800'>{ props.guestbookData.title }</h2>
+            <h2 className='
+              w-5/6 truncate font-semibold text-xl text-stone-800
+            '>{ props.guestbookData.title }</h2>
 
             {/* content */}
             {/* <div id="innerHTML" dangerouslySetInnerHTML={{ __html: guestbookData.content }} /> */}
@@ -55,7 +62,9 @@ const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
             </div>
 
             {/* days ago */}
-            <p className='whitespace-nowrap text-stone-400 text-sm'>{ timeSince(new Date(props.guestbookData.createdAt).valueOf()) } ago</p>
+            <p className='whitespace-nowrap text-stone-400 text-sm'>
+              { timeSince(new Date(props.guestbookData.createdAt).valueOf()) } ago
+            </p>
           </div>
         </div>
       </Link>

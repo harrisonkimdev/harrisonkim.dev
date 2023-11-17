@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FaPen, FaRegArrowAltCircleLeft } from 'react-icons/fa'
+import { FaPen, FaAngleLeft } from 'react-icons/fa6'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   
@@ -13,7 +13,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         {/* heading */}
         <div className='mb-2'>
           <div className='flex items-center justify-between gap-16'>
-            <h1 className='text-3xl md:text-4xl font-semibold text-stone-800'>Guestbooks</h1>
+            <h1 className='
+              text-3xl md:text-4xl font-semibold text-stone-800
+            '> Guestbooks </h1>
 
             {/* write */}
             { usePathname() === '/guestbooks' && (
@@ -40,7 +42,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             {/* go back */}
             { usePathname() !== '/guestbooks' && (
               <Link href='/guestbooks'>
-                <FaRegArrowAltCircleLeft className='cursor-pointer text-2xl text-stone-800' />
+                <FaAngleLeft className='cursor-pointer text-2xl text-stone-800' />
               </Link>
             )}
           </div>

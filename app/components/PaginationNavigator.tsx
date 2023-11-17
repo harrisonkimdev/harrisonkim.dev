@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 
 const PaginationNavigator = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
@@ -29,7 +29,9 @@ const PaginationNavigator = () => {
           >{ currentPage+0 }</span>
 
           { currentPage+1 < lastPage ? (
-            <span onClick={() => handlePagination(currentPage+1)} className='cursor-pointer'>{ currentPage+1 }</span>
+            <span onClick={() => handlePagination(currentPage+1)}
+              className='cursor-pointer'
+            >{ currentPage+1 }</span>
           ) : (
             <>
               {/*  */}

@@ -94,8 +94,10 @@ const ControlSection = ({ guestbook }: { guestbook: IGuestbook}) => {
           >
             <input type="password" placeholder='Password'
               value={password} onChange={e => setPassword(e.target.value)}
-              className='w-full p-1 md:my-1 bg-stone-100 rounded shadow focus:outline-none'
-            />
+              className='
+                w-full p-1 md:my-1 rounded shadow bg-stone-100 focus:outline-none
+            '/>
+            
             <div className='flex flex-row gap-3 justify-end'>
               {/* cancel */}
               <FaTimes onClick={() => {
@@ -110,12 +112,18 @@ const ControlSection = ({ guestbook }: { guestbook: IGuestbook}) => {
             </div>
           </form>
         ) : (
-          <div className='flex flex-row gap-3' onClick={() => setShowPasswordInput(true)}>
+          <div className='flex flex-row gap-3'
+            onClick={() => setShowPasswordInput(true)}
+          >
             {/* edit */}
-            <FaPen onClick={() => setActionType('edit')} className='text-xl cursor-pointer' />
+            <FaPen onClick={() => setActionType('edit')}
+              className='text-xl cursor-pointer'
+            />
 
             {/* delete */}
-            <FaRegTrashAlt onClick={() => setActionType('delete') } className='text-xl cursor-pointer'/>
+            <FaRegTrashAlt onClick={() => setActionType('delete') }
+              className='text-xl cursor-pointer'
+            />
           </div>
         )}
       </div>
