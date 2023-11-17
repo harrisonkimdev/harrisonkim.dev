@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Sidebar from './Sidebar'
 import Image from 'next/image'
 
-const TopNavbar = (props) => {
+const TopNavbar = (props: { emitCloseSidebar: Function }) => {
   const [darkMode, setDarkMode] = useState(false)
   const [toggleSidebar, setToggleSidebar] = useState(false)
 

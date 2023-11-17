@@ -3,8 +3,9 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { FaPen, FaRegTrashAlt, FaTimes, FaCheck } from 'react-icons/fa'
+import { IGuestbook } from '@/interfaces'
 
-const ControlSection = ({ guestbook }) => {
+const ControlSection = ({ guestbook }: { guestbook: IGuestbook}) => {
   const [showPasswordInput, setShowPasswordInput] = useState(false)
   const [password, setPassword] = useState('')
   const [actionType, setActionType] = useState('')
@@ -12,7 +13,7 @@ const ControlSection = ({ guestbook }) => {
   // hooks
   const router = useRouter()
 
-  const handlePasswordSubmit = async (e) => {
+  const handlePasswordSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     // not really need to hash it at the moment.
@@ -36,7 +37,7 @@ const ControlSection = ({ guestbook }) => {
     }
   }
 
-  const timeSince = (date) => {
+  const timeSince = (date: number) => {
     var seconds = Math.floor((new Date().valueOf() - date) / 1000);
   
     var interval = seconds / 31536000;

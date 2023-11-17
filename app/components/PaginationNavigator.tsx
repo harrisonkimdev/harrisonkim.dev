@@ -4,10 +4,10 @@ import React, { useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 const PaginationNavigator = () => {
-  const [currentPage, setCurrentPage] = useState(1)
-  const [lastPage, setLastPage] = useState(undefined)
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [lastPage, setLastPage] = useState<number>(1)
 
-  const handlePagination = (pageNum) => {
+  const handlePagination = (pageNum: number) => {
     setCurrentPage(pageNum)
   }
 

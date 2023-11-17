@@ -38,7 +38,7 @@ const Page = () => {
     ) setDisableSubmit(true)
   }, [title, writer, password])
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     try {

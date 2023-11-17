@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FaPen, FaRegArrowAltCircleLeft } from 'react-icons/fa'
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   
   return (
     <div className='w-full pt-5 md:pt-16 bg-stone-50'>

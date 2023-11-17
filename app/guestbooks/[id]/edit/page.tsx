@@ -4,9 +4,10 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { IGuestbook } from '@/interfaces'
 
-const GuestbookEdit = ({ params }) => {
-  const [guestbook, setGuestbook] = useState({})
+const GuestbookEdit = ({ params }: { params: { id: string } }) => {
+  const [guestbook, setGuestbook] = useState<IGuestbook | undefined>(undefined)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
 
@@ -23,7 +24,7 @@ const GuestbookEdit = ({ params }) => {
     getGuestbook(params.id)
   }, [])
 
-  const getGuestbook = async (id) => {
+  const getGuestbook = async (id: string) => {
     try {
       const res = await fetch(
         `/api/guestbooks/${id}?readOnly=0`,
@@ -40,7 +41,7 @@ const GuestbookEdit = ({ params }) => {
     }
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     try {

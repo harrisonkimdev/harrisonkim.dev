@@ -1,9 +1,11 @@
-import { NextResponse } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 import { connectToDB } from '@/utils/db'
 import Guestbook from '@/models/guestbook'
 
 // show
-export const GET = async (req, { params }) => {
+export const GET = async (
+    req: NextRequest, { params }: { params: { id: string } }
+) => {
   try {
     await connectToDB()
 
@@ -25,7 +27,9 @@ export const GET = async (req, { params }) => {
 }
 
 // update
-export const PATCH = async (req, { params }) => {
+export const PATCH = async (
+  req: NextRequest, { params }: { params: { id: string } }
+) => {
   const { title, content } = await req.json()
 
   try {
@@ -44,7 +48,9 @@ export const PATCH = async (req, { params }) => {
 }
 
 // delete
-export const DELETE = async (req, { params }) => {
+export const DELETE = async (
+  req: NextRequest, { params }: { params: { id: string} }
+) => {
   try {
     await connectToDB()
 

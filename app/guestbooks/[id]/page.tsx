@@ -3,7 +3,7 @@ import React from 'react'
 // component
 import ControlSection from './ControlSection'
 
-const getGuestbook = async (id) => {
+const getGuestbook = async (id: string) => {
   try {
     const res = await fetch(`${process.env.BASE_URL}/api/guestbooks/${id}?readOnly=1`, {
       cache: 'no-store'
@@ -15,7 +15,7 @@ const getGuestbook = async (id) => {
   }
 }
 
-const GuestbookShow = async ({ params }) => {
+const GuestbookShow = async ({ params }: { params: { id: string } }) => {
   const guestbook = await getGuestbook(params.id)
 
   return (

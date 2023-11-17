@@ -1,4 +1,5 @@
 import React from 'react'
+import { IGuestbook } from '@/interfaces'
 
 // components
 import Guestbook from './Guestbook'
@@ -22,7 +23,7 @@ const Guestbooks = async () => {
   return (
     <>
       <div className='flex flex-col gap-3 md:gap-2 mt-1'>
-        { guestbooks?.map((guestbook) => (
+        { guestbooks?.map((guestbook: IGuestbook) => (
           <Guestbook guestbookData={guestbook} key={guestbook._id} />
         )) }
       </div>
