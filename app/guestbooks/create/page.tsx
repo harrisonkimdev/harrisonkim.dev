@@ -14,9 +14,6 @@ const Page = () => {
 
   const router = useRouter()
 
-  const submitButtonStyle = disableSubmit ?
-    'hidden' : 'bg-stone-400 text-stone-900  px-2 py-1 rounded-lg hover:bg-stone-300'
-
   const QuillNoSSRWrapper = useMemo(() => {
     return dynamic(() => import("@/components/ReactQuillWrapper"), {
       loading: () => <p>loading...</p>,
@@ -63,56 +60,59 @@ const Page = () => {
 
   return (
     <>
-      <form onSubmit={e => handleSubmit(e)} className='flex flex-col gap-2'>
+      <form onSubmit={e => handleSubmit(e)} className='flex flex-col'>
         {/* title and content */}
-        <div className='flex flex-col gap-2 md:gap-3'>
+        <div className='flex flex-col'>
           <input type="text" value={title} onChange={e => setTitle(e.target.value)}
-            className='w-full p-1 bg-stone-100 rounded shadow focus:outline-none'
+            className='w-full my-2 p-2 border border-stone-300 bg-stone-100 focus:outline-none'
           />
-          <QuillNoSSRWrapper content={content} setContent={setContent} />
+          <div className='my-2'>
+            <QuillNoSSRWrapper content={content} setContent={setContent} />
+          </div>
         </div>
 
         <div className='
-          flex flex-col gap-3 md:gap-6 my-2 md:mb-4
-          md:flex-row md:items-end md:justify-between
+          h-full my-2 flex
+          flex-col gap-5
+          md:flex-row md:justify-between
         '>
           {/* your name & password */}
           <div className='
             flex flex-col gap-2
             md:flex-row md:gap-4
           '>
-            <div className='flex flex-col gap-0.5'>
+            <div className='flex flex-col'>
               <label htmlFor="writer"
                 className='text-stone-700 font-light'
               > Your name </label>
               <input id='writer' type="text" value={writer}
                 onChange={e => setWriter(e.target.value)}
-                className='p-1 bg-stone-100 rounded shadow focus:outline-none'
+                className='mt-1 p-2 border border-stone-300 bg-stone-100 focus:outline-none'
               />
             </div>
             
-            <div className='flex flex-col gap-0.5'>
+            <div className='flex flex-col'>
               <label htmlFor="password"
                 className='text-stone-700 font-light
               '> Password </label>
               <input id='password 'type="password" value={password}
                 onChange={e => setPassword(e.target.value)}
-                className='p-1 bg-stone-100 rounded shadow focus:outline-none'
+                className='mt-1 p-2 border border-stone-300 bg-stone-100 focus:outline-none'
               />
             </div>
           </div>
 
-          {/* submit & cancel */}
-          <div className='flex justify-center md:justify-end gap-2 py-4 md:py-0'>
+          {/* submit */}
+          <div className='flex flex-col justify-end'>
             <button type='submit' disabled={disableSubmit}
-              className={submitButtonStyle}
+              className={disableSubmit ?
+                'hidden' :
+                `
+                  px-2 py-1.5 border border-stone-300 bg-stone-100 hover:bg-stone-200
+                  font-medium text-lg md:text-base text-stone-600
+                `
+              }
             > Submit </button>
-            <Link href='/guestbooks'>
-              <p className='
-                px-2 py-1 rounded-lg border border-stone-400 hover:bg-stone-300
-                text-stone-900
-              '> Cancel </p>
-            </Link>
           </div>
         </div>
 
