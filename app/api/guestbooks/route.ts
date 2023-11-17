@@ -1,16 +1,16 @@
-import { NextResponse } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 import { connectToDB } from '@/utils/db'
 import Guestbook from '@/models/guestbook'
 
 // index
-export const GET = async (req) => {
+export const GET = async (req: NextRequest) => {
   try {
     await connectToDB()
 
-    const currentPage = req.nextUrl.searchParams.get('currentPage')
+    const currentPage: (string | null) = req.nextUrl.searchParams.get('currentPage')
 
     const query = Guestbook.find()
-    query.skip(10*(currentPage-1)).limit(10)
+    query.skip(10*(Number(currentPage)-1)).limit(10)
     const guestbooks = await query.exec()
     
     // TODO: find a way to merge the following operation into the upper one. 
@@ -24,7 +24,7 @@ export const GET = async (req) => {
 }
 
 // store
-export const POST = async (req) => {
+export const POST = async (req: NextRequest) => {
   const { title, content, writer, password } = await req.json()
 
   try {

@@ -5,16 +5,14 @@ import React, { useState, useMemo } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
-const ReactQuillWrapper = ({ content, setContent }) => {
+const ReactQuillWrapper = (
+  { content, setContent }: { content: string, setContent: React.Dispatch<React.SetStateAction<string>> }
+) => {
   const [value, setValue] = useState('')
-  
-  const modules = useMemo(() => {
-
-  })
 
   return (
     <>
-      <ReactQuill modules={modules} theme='snow' value={content} onChange={setContent} />
+      <ReactQuill theme='snow' value={content} onChange={() => setContent} />
     </>
   )
 }
