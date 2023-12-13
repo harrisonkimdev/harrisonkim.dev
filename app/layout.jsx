@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
           />
 
           <div className={`
-            overflow-hidden pt-[60px]
+            overflow-hidden pt-[52.5px]
             ${ toggleSidebar === true ? 'hidden' : '' }
           `}>
               <div className={`   
