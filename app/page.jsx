@@ -10,9 +10,18 @@ export default function Home() {
         md:flex md:flex-col md:w-full
       '>
         {/* first */}
-        <div className='bg-stone-100 w-full flex justify-center py-20'>
+        <div className='
+          w-full py-20 flex flex-col gap-16 items-center
+          bg-stone-100
+        '>
           <div className='flex gap-10 items-center'>
-            <Image src="/images/profile/me_cropped.jpeg" alt="Profile picture of myself" width={2448} height={2334}
+            <Image
+              src="/images/profile/me_cropped.jpeg"
+              alt="Profile picture of myself"
+              width={2448} height={2334}
+              quality={100}
+              placeholder='blur'
+              blurDataURL='/images/profile/me_cropped.jpeg'
               className='
                 md:w-60
                 md:h-60
@@ -20,11 +29,7 @@ export default function Home() {
                 lg:h-72
                 rounded-full
                 object-cover
-              '
-              quality={100}
-              placeholder='blur'
-              blurDataURL='/images/profile/me_cropped.jpeg'
-            />
+            '/>
             <div className=''>
               <h1 className='
                 font-bold text-stone-500
@@ -37,6 +42,14 @@ export default function Home() {
                 </span> <br /> Full Stack <br /> Engineer
               </h1>
             </div>
+          </div>
+          <div className='
+            p-3 rounded-lg border border-stone-600 shadow-md
+            cursor-pointer hover:bg-stone-50
+          '>
+            <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank">
+              <span className='font-medium text-stone-500'>Download Resumé</span>
+            </Link>
           </div>
         </div>
 
