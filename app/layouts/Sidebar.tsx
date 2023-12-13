@@ -22,14 +22,6 @@ const Sidebar = ({ handleClose, emitCloseSidebar }: { handleClose: Function, emi
               font-medium text-stone-500 hover:text-stone-600
             '>Home</p>
           </Link>
-
-          <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank"
-            onClick={() => emitCloseSidebar()}
-          >
-            <p className='
-              font-medium text-stone-500 hover:text-stone-600
-            '>Resume</p>
-          </Link>
         
           <Link href="/projects" onClick={() => emitCloseSidebar()}>
             <p className='
