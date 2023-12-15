@@ -43,13 +43,23 @@ export default function Home() {
               </h1>
             </div>
           </div>
-          <div className='
-            p-3 rounded-lg border border-stone-600 shadow-md
-            cursor-pointer hover:bg-stone-50
-          '>
-            <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank">
-              <span className='font-medium text-stone-500'>Download Resumé</span>
-            </Link>
+          <div className='grid grid-cols-2 gap-8'>
+            <div className='
+              p-3 rounded-lg border border-stone-600 shadow-md
+              text-center cursor-pointer hover:bg-stone-50
+            '>
+              <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank">
+                <span className='font-medium text-stone-500'>Download Resumé</span>
+              </Link>
+            </div>
+            <div className='
+              p-3 rounded-lg border border-stone-600 shadow-md
+              text-center cursor-pointer hover:bg-stone-50
+            '>
+              <Link href="/contact-me">
+                <span className='font-medium text-stone-500'>Contact me</span>
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -207,13 +217,14 @@ export default function Home() {
         {/* first */}
         <div className='w-full py-10 flex flex-col gap-8 items-center bg-stone-100'>
           <div className='px-8 flex flex-col gap-8 items-center'>
-            <Image src="/images/profile/me_cropped.jpeg" alt="Profile picture of myself" width={2448} height={2334}
+            <Image src="/images/profile/me_cropped.jpeg" alt="Profile picture of myself"
+              width={2448} height={2334}
               className='
                 w-72
                 h-72
                 rounded-full
-              '
-            />
+                object-cover
+            '/>
             <p className='text-5xl font-bold text-stone-500 dark:text-stone-300'>
               Hi, <br />
               <span className='whitespace-nowrap'>I&apos;m
@@ -221,13 +232,23 @@ export default function Home() {
               </span> <br /> Full Stack <br /> Engineer
             </p>
           </div>
-          <div className='
-            p-3 rounded-lg border border-stone-600 shadow-md
-            cursor-pointer hover:bg-stone-50
-          '>
-            <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank">
-              <span className='font-medium text-stone-500'>Download Resumé</span>
-            </Link>
+          <div className='grid grid-rows-2 gap-4'>
+            <div className='
+              p-3 rounded-lg border border-stone-600 shadow-md
+              text-center cursor-pointer hover:bg-stone-50
+            '>
+              <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank">
+                <span className='font-medium text-stone-500'>Download Resumé</span>
+              </Link>
+            </div>
+            <div className='
+              p-3 rounded-lg border border-stone-600 shadow-md
+              text-center cursor-pointer hover:bg-stone-50
+            '>
+              <Link href="/contact-me">
+                <span className='font-medium text-stone-500'>Contact Me</span>
+              </Link>
+            </div>
           </div>
         </div>
 
