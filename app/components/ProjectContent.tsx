@@ -10,7 +10,10 @@ import { FaLink } from "react-icons/fa6";
 interface IProject {
     name: string
     link: string
-    readme: string
+    readme: {
+        tech_stacks: string,
+        bulletpoints: string[]
+    }
     screenshots: []
 }
 
@@ -67,10 +70,15 @@ const ProjectContent = ({ project }: { project: IProject }) => {
 
                 {/* README */}
                 <div className='
-                    p-6 text-lg
+                    p-6 flex flex-col gap-4
                     rounded-b-xl shadow border-l-2 border-r-2 border-b-2 bg-white
+                    text-lg
                 '>
-                    <text dangerouslySetInnerHTML={{ __html: project.readme }} />
+                    <p><span className='font-medium'>Tech Stacks:</span> { project.readme.tech_stacks }</p>
+                    
+                    <ul className='pl-6 list-disc'>
+                        { project.readme.bulletpoints.map(bp => <li>{ bp }</li>) }
+                    </ul>
                 </div>
             </div>
 
