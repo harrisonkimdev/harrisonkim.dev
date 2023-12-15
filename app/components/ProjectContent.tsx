@@ -4,9 +4,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from 'next/image'
 import '@/globals.css'
+import Link from 'next/link'
+import { FaLink } from "react-icons/fa6";
 
 interface IProject {
   name: string
+  link: string
   readme: string
   screenshots: []
 }
@@ -34,7 +37,12 @@ const ProjectContent = ({ project }: { project: IProject }) => {
   return (
     <>
       <div className='flex flex-col'>
-        <h1 className='text-4xl text-stone-800 font-semibold'>{ project.name }</h1>
+        <Link href={project.link} target='_blank'
+          className='px-2 flex gap-4 items-center cursor-pointer'
+        >
+          <h1 className='text-4xl text-stone-800 font-semibold'>{ project.name }</h1>
+          <FaLink className='pt-1 text-2xl text-stone-800' />
+        </Link>
 
         <div className='mt-6'>
           <div className='
@@ -57,7 +65,8 @@ const ProjectContent = ({ project }: { project: IProject }) => {
             '>README.md</span>
           </div>
           <div className='
-            p-3 rounded-b-xl shadow border-l-2 border-r-2 border-b-2 bg-white
+            p-6 text-lg
+            rounded-b-xl shadow border-l-2 border-r-2 border-b-2 bg-white
           '>
             <text dangerouslySetInnerHTML={{ __html: project.readme }} />
           </div>
