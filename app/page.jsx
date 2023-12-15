@@ -233,22 +233,18 @@ export default function Home() {
             </p>
           </div>
           <div className='grid grid-rows-2 gap-4'>
-            <div className='
-              p-3 rounded-lg border border-stone-600 shadow-md
-              text-center cursor-pointer hover:bg-stone-50
-            '>
-              <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank">
-                <span className='font-medium text-stone-500'>Download Resumé</span>
-              </Link>
-            </div>
-            <div className='
-              p-3 rounded-lg border border-stone-600 shadow-md
-              text-center cursor-pointer hover:bg-stone-50
-            '>
-              <Link href="/contact-me">
-                <span className='font-medium text-stone-500'>Contact Me</span>
-              </Link>
-            </div>
+            <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank">
+              <div className='
+                p-3 rounded-lg border border-stone-600 shadow-md
+                text-center cursor-pointer font-medium text-stone-500 hover:bg-stone-50
+              '>Download Resumé</div>
+            </Link>
+            <Link href="/contact-me">
+              <div className='
+                p-3 rounded-lg border border-stone-600 shadow-md
+                text-center cursor-pointer font-medium text-stone-500 hover:bg-stone-50
+                '>Contact Me</div>
+            </Link>
           </div>
         </div>
 
