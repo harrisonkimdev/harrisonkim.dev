@@ -70,7 +70,7 @@ const Page = () => {
               `}> Claw Machine </button>
             </div>
             <div className='
-              px-2 pt-1 pb-20 rounded-b-md bg-black
+              h-72 px-2 pt-1 pb-20 rounded-b-md bg-black
               font-mono text-lime-400
             '>
               <p>
