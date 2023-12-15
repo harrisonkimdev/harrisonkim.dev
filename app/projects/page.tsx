@@ -55,7 +55,7 @@ const Page = () => {
 
                 {/* toggled on */}
                 <div className={`w-full ease-in duration-300
-                    ${isContentVisible ? 'opacity-0 h-0' : 'opacity-1'} 
+                    ${isContentVisible ? 'hidden' : 'opacity-1'} 
                 `}>
                     {/* a group of tabs for projects */}
                     <div className='flex justify-between'>

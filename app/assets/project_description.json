@@ -69,7 +69,15 @@
     },
     {
       "name": "dandycv",
-      "readme": "<p>I'd been building a website for a startup company based in South Korea. I was a part of a team of three; a ML engineer, a web designer, and myself. We'd been continuosuly communicated each other throughout the entire building process to deliver the best quality product.<br><br>As a full-stack engineer, I'd implemented email notification system using Resend and React Email, subscription-based payment system using Stripe and Toss Payments for their image editing tool, authentication with NextAuth.js, Notices & FAQs management pages which are available for admin users only, and table-based user management page with the following features supported: pagination, sorting, filtering, and search functionality. <br><br>Unfortunately, they had to put this project on hold for a while and had to change their business model based on their clients' demands. However, I was able to leverage this great opportunity to design the whole website's architecture as well as database design from the scratch. I was also able to go through a lot of differnet PG libraries while I was considering a few options to implement the payment system.</p><br><a href='https://dandycv.vercel.app/' target='_blank'>Please click this link to visit the website</a>",
+      "link": "https://dandycv.vercel.app/",
+      "readme": {
+        "tech_stacks": "Next.js, MongoDB, Stripe, Resend, Next-Auth, i18next",
+        "bulletpoints": [
+          "Optimized the DB system by meticulously designing data model relationships, leading to a remarkable 50% reduction in access frequency.",
+          "Effectively managed large volumes of user data within the admin page by incorporating features like search, sorting, and filtering, achieving a 70% reduction in loading time through lazy loading with pagination.",
+          "Implemented a payment system using Stripe and integrated data sharing with a desktop application through APIs."
+        ]
+      },
       "screenshots": [
         {
           "id": 1,
