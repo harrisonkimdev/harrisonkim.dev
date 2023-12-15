@@ -37,14 +37,13 @@ const ProjectContent = ({ project }: { project: IProject }) => {
   return (
     <>
       <div className='flex flex-col'>
-        <Link href={project.link} target='_blank'
-          className='px-2 flex gap-4 items-center cursor-pointer'
-        >
+        <Link href={project.link} target='_blank' className='w-min px-2 flex gap-4 items-center'>
           <h1 className='text-4xl text-stone-800 font-semibold'>{ project.name }</h1>
           <FaLink className='pt-1 text-2xl text-stone-800' />
         </Link>
 
         <div className='mt-6'>
+          {/*  */}
           <div className='
             border
             flex
@@ -64,6 +63,8 @@ const ProjectContent = ({ project }: { project: IProject }) => {
               font-semibold
             '>README.md</span>
           </div>
+
+          {/* README */}
           <div className='
             p-6 text-lg
             rounded-b-xl shadow border-l-2 border-r-2 border-b-2 bg-white
