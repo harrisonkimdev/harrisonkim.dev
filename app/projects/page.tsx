@@ -5,7 +5,6 @@ import '@/globals.css'
 import ProjectContent from '@/components/ProjectContent'
 import '@/assets/project_description.json'
 import { FaTerminal } from "react-icons/fa6"
-import { isJSDocNameReference } from 'typescript'
 
 const Page = () => {
     const [filepath, setFilepath] = useState('')
