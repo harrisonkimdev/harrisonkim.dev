@@ -37,25 +37,29 @@ const Page = () => {
         <div className='max-w-5xl mx-auto py-12 h-full'>
             {/* terminal window */}
             <div className={`
-                ease-in duration-300
                 ${isContentVisible ? '' : 'h-full flex flex-col justify-center'}
+                ease-in duration-300 motion-reduce:duration-0
             `}>
 
                 {/* toggled off, icon */}
                 <div className={`
                     ${isContentVisible ?
-                        'opacity-1 h-16 py-4 flex justify-center ease-in duration-300'
+                        'opacity-1 h-16 py-4 flex justify-center'
                         : 'hidden'
                     }
+                    ease-in duration-300 motion-reduce:duration-0
                 `}>
                     <FaTerminal onClick={() => { tabClicked('', false) }}
-                        className='text-2xl cursor-pointer hover:text-4xl ease-in duration-300'
-                    />
+                        className='
+                            text-2xl cursor-pointer hover:text-4xl
+                            ease-in duration-300 motion-reduce:duration-0
+                    '/>
                 </div>
 
                 {/* toggled on */}
-                <div className={`w-full ease-in duration-300
-                    ${isContentVisible ? 'hidden' : 'opacity-1'} 
+                <div className={`
+                    ${isContentVisible ? 'hidden' : 'opacity-1 w-full'}
+                    ease-in duration-300 motion-reduce:duration-0
                 `}>
                     {/* a group of tabs for projects */}
                     <div className='flex justify-between'>
@@ -119,8 +123,8 @@ const Page = () => {
 
             {/* Project Description */}
             <div className={`
-                py-6 ${isContentVisible ? 'opacity-1' : 'opacity-0'}
-                ease-in duration-300
+                ${isContentVisible ? 'opacity-1 py-6' : 'opacity-0'}
+                ease-in duration-300 motion-reduce:duration-0
             `}>{ contentWrapper() }</div>
         </div>
     </div>
