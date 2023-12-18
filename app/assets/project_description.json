@@ -1,101 +1,164 @@
 {
   "projects": [
     {
+      "id": 1,
       "name": "Claw Machine",
-      "readme": "I worked on an intriguing project during my graphics course at university, where I had the opportunity to explore the capabilities of the JavaScript library called Three.js. This experience was incredibly valuable as it allowed me to delve into working with external libraries and gain a deeper understanding of how to effectively utilize their documentation. It was an exciting learning journey that greatly enhanced my skills and knowledge.",
+      "link": "",
+      "readme": {
+        "skillsets": "Three.js",
+        "bulletpoints": [
+          {
+            "map_key": 1,
+            "content": "Utilized osm2world to create 3D models from OSM data, significantly reducing development time."
+          },
+          {
+            "map_key": 2,
+            "content": "Implemented physics in the map with interactions with user input."
+          }
+        ]
+      },
       "screenshots": [
         {
-          "id": 8,
+          "map_key": 1,
           "src": "/images/screenshots/claw-machine/full.png",
-          "description": "A Christmas themed claw machine"
+          "description": "A Christma-themed claw machine"
         },
         {
-          "id": 9,
+          "map_key": 2,
           "src": "/images/screenshots/claw-machine/close.png",
           "description": "You can move around your claw with the joystick by pressing arrow keys on your keyboard."
         },
         {
-          "id": 10,
+          "map_key": 3,
           "src": "/images/screenshots/claw-machine/grab.png",
           "description": "You can also make it grab things inside the claw machine with your spacebar."
         }
       ]
     },
     {
+      "id": 2,
       "name": "Dashboard",
-      "readme": "When I embarked on this project, my primary objective was to develop a personalized time management tool that would enhance my productivity at work. During my research phase, I came across a captivating book called 'BlockSix', which expounded on a unique time management methodology that deeply resonated with me. <br><br> Intrigued and inspired by the book, I reached out to the author to seek permission to incorporate their methodology into my project. Not only did I aspire to create a tool based on their insights, but I also believed that engaging with the author would serve as a powerful source of motivation throughout the project. Fortunately, the author generously granted me permission, further fueling my enthusiasm. <br><br> Although this project was predominantly a solo endeavor, due to its nature as a time management tool, I decided to leverage GitHub Issues to effectively track and plan my work. This approach proved invaluable in organizing and prioritizing tasks, ensuring a structured and systematic development process. <br><br> Additionally, I viewed this project as an opportunity to update and expand my technical skill set. Therefore, I chose to implement the latest tech stack embraced by the Laravel community, including Vue 3, Inertia.js, and Pinia. By utilizing these cutting-edge technologies, I aimed to enhance the performance, user experience, and maintainability of the time management tool I was building.",
+      "link": "",
+      "readme": {
+        "skillsets": "Laravel & Vue.js, Inertia.js, Tailwind, Pinia.js, Agile, Laravel Forge, AWS, Nginx",
+        "bulletpoints": [
+          {
+            "map_key": 1,
+            "content": "Configured AWS VPC and EC2 instances with Nginx, and managed DNS for web hosting with personal domain."
+          },
+          {
+            "map_key": 2,
+            "content": "Enhanced performance by 40% with Inertia.js, bolstering SSR for faster loading and improved user experiences."
+          },
+          {
+            "map_key": 3,
+            "content": "Reached out to the author of a book I was inspired by to seek permission to incorporate their methodology into my project."
+          },
+          {
+            "map_key": 4,
+            "content": "Utilized GitHub Issues to manage tasks, getting myself familarized with Agile as a project manager's perspective."
+          }
+        ]
+      },
       "screenshots": [
-        { "id": 4,
-          "src": "/images/screenshots/Dashboard/task-management.png",
-          "description": "Task Management on GitHub Issues"
-        },
         {
-          "id": 5,
-          "src": "/images/screenshots/Dashboard/task-description.png",
-          "description": "Task Description"
-        },
-        {
-          "id": 6,
+          "map_key": 1,
           "src": "/images/screenshots/Dashboard/blocksix.png",
           "description": "BlockSix - A Todo App"
         },
         {
-          "id": 7,
+          "map_key": 2,
           "src": "/images/screenshots/Dashboard/notes.png",
           "description": "Notes"
+        },
+        { "map_key": 3,
+          "src": "/images/screenshots/Dashboard/task-management.png",
+          "description": "Task Management on GitHub Issues"
+        },
+        {
+          "map_key": 4,
+          "src": "/images/screenshots/Dashboard/task-description.png",
+          "description": "Task Description"
         }
       ]
     },
     {
+      "id": 3,
       "name": "mosPic",
-      "readme": "<p>I am currently working on an exciting team project with five individuals who are eager to enhance their web development skills. I am primarily focuing on the frontend aspect of the project, collaborating closely with another team member. Furthermore, I have taken on the role of project manager within our team, ensuring smooth coordination and progress. <br><br> This is a great opportunity for me to leverage the power of Agile methodology. I belived I had a understanding of it, but taking on this role has made me realize that there is still much to learn more about it. <br><br> Our team has devised a plan to leverage Segment Anything, a cutting-edge technology developed by Meta AI, to create an exceptional image editing tool. Additionally, we use next-auth to ensure that our users can securely manage their resources, providing them with a safe and reliable experience.</p>",
+      "link": "",
+      "readme": {
+        "skillsets": "Next.js, TypeScript, Open Source Community, Project Management",
+        "bulletpoints": [
+          {
+            "map_key": 1,
+            "content": "Distributed tasks effectively to each team member and ran a 2 week-sprint using Agile as a project manager."
+          },
+          {
+            "map_key": 2,
+            "content": "Utilized Google CoLab to generate an ONNX model, enabling the image segmentation AI to analyze given images."
+          },
+          {
+            "map_key": 3,
+            "content": "Engaged with the open-source community to acquire backend code running SAM (Segment Anything), enabling the generation of image embedding files and facilitating focus on web development tasks."
+          }
+        ]
+      },
       "screenshots": [
         {
-          "id": 1,
+          "map_key": 1,
           "src": "/images/screenshots/mosPic/landing-page.png",
           "description": "Landing Page - This is a temporary placehoder for a landing page. We are currently focusing on the image editing pages."
         },
         {
-          "id": 2,
+          "map_key": 2,
           "src": "/images/screenshots/mosPic/gallery-page.png",
           "description": "Gallery Page"
         },
         {
-          "id": 3,
+          "map_key": 3,
           "src": "/images/screenshots/mosPic/background-image-page.png",
           "description": "Background Image Page"
         }
       ]
     },
     {
+      "id": 4,
       "name": "dandycv",
       "link": "https://dandycv.vercel.app/",
       "readme": {
-        "tech_stacks": "Next.js, MongoDB, Stripe, Resend, Next-Auth, i18next",
+        "skillsets": "Next.js, MongoDB, Stripe, Resend, Next-Auth, i18next",
         "bulletpoints": [
-          "Optimized the DB system by meticulously designing data model relationships, leading to a remarkable 50% reduction in access frequency.",
-          "Effectively managed large volumes of user data within the admin page by incorporating features like search, sorting, and filtering, achieving a 70% reduction in loading time through lazy loading with pagination.",
-          "Implemented a payment system using Stripe and integrated data sharing with a desktop application through APIs."
+          {
+            "map_key": 1,
+            "content": "Optimized the DB system by meticulously designing data model relationships, leading to a remarkable 50% reduction in access frequency."
+          },
+          {
+            "map_key": 2,
+            "content": "Effectively managed large volumes of user data within the admin page by incorporating features like search, sorting, and filtering, achieving a 70% reduction in loading time through lazy loading with pagination."},
+          {
+            "map_key": 3,
+            "content": "Implemented a payment system using Stripe and integrated data sharing with a desktop application through APIs."
+          }
         ]
       },
       "screenshots": [
         {
-          "id": 1,
+          "map_key": 1,
           "src": "/images/screenshots/dandycv/landing_page.png",
           "description": "Landing Page"
         },
         {
-          "id": 2,
+          "map_key": 2,
           "src": "/images/screenshots/dandycv/pricing_page.png",
           "description": "Pricing Page - Click Buy Now to go to make your purchase."
         },
         {
-          "id": 3,
+          "map_key": 3,
           "src": "/images/screenshots/dandycv/notices_page.png",
           "description": "Notices Page - from regular users/guest perspective"
         },
         {
-          "id": 4,
+          "map_key": 4,
           "src": "/images/screenshots/dandycv/admin_users_page.png",
           "description": "Admin page with a table to help manage their users."
         }
