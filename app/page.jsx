@@ -125,8 +125,12 @@ export default function Home() {
                     <div className='grid grid-rows-2 md:grid-rows-1 md:grid-cols-4 gap-4'>
                       <div className='row-span-1 md:col-span-3'>
                         <h3 className='text-3xl font-bold text-stone-800'>dandycv</h3>
-                        <h4 className='text-xl font-medium mt-2 text-stone-600'>Promotional website</h4>
-                        <p className='text-stone-800 mt-2'>description</p>
+                        <h4 className='text-xl font-medium mt-2 text-stone-600'>Promotional website for a startup</h4>
+                        <ul className='list-disc pl-6 text-stone-800'>
+                          <li>Optimized the DB system by meticulously designing data model relationships, leading to a remarkable 50% reduction in access frequency.</li>
+                          <li>Effectively managed large volumes of user data within the admin page by incorporating features like search, sorting, and filtering, achieving a 70% reduction in loading time through lazy loading with pagination.</li>
+                          <li>Implemented a payment system using Stripe and integrated data sharing with a desktop application through APIs.</li>
+                        </ul>
                       </div>
 
                       <Image src='/images/screenshots/dandycv/landing_page.png' alt='mosPic Image' width={1595} height={964}
@@ -144,9 +148,13 @@ export default function Home() {
                         <h3 className='text-3xl font-bold text-stone-800'>mos<span className='text-stone-500'>Pic</span></h3>
                         <h4 className='text-xl font-medium mt-2 text-stone-600'>
                           Image editing tool with the help of AI -
-                          <Link href='https://segment-anything.com/' target="_blank" className='text-stone-800'> SAM</Link>
+                          <Link href='https://segment-anything.com/' target="_blank" className='text-stone-800'> Segment Anything</Link>
                         </h4>
-                        <p className='text-stone-800 mt-2'>Idescription</p>
+                        <ul className='list-disc pl-6 text-stone-800'>
+                          <li>Distributed tasks effectively to each team member and ran a 2 week-sprint using Agile as a project manager.</li>
+                          <li>Utilized Google CoLab to generate an ONNX model, enabling the image segmentation AI to analyze given images.</li>
+                          <li>Engaged with the open-source community to acquire backend code running SAM (Segment Anything), enabling the generation of image embedding files and facilitating focus on web development tasks.</li>
+                        </ul>
                       </div>
 
                       <Image src='/images/screenshots/mosPic/gallery-page.png' alt='mosPic Image' width={1562} height={1036}
@@ -163,7 +171,12 @@ export default function Home() {
                         <div className='row-span-1 md:col-span-3'>
                           <h3 className='text-3xl font-bold text-stone-800'>Dashboard</h3>
                           <h4 className='text-xl font-medium mt-2 text-stone-600'>An all-in-one office tool designed specifically for programmers.</h4>
-                          <p className='text-stone-800 mt-2'>description</p>
+                          <ul className='list-disc pl-6 text-stone-800'>
+                            <li>Configured AWS VPC and EC2 instances with Nginx, and managed DNS for web hosting with personal domain.</li>
+                            <li>Enhanced performance by 40% with Inertia.js, bolstering SSR for faster loading and improved user experiences.</li>
+                            <li>Utilized GitHub Issues to manage tasks, getting myself familarized with Agile as a project manager's perspective.</li>
+                            <li>Reached out to the author of a book I was inspired by to seek permission to incorporate their methodology into my project.</li>
+                          </ul>
                         </div>
 
                         <Image src='/images/screenshots/Dashboard/notes.png' alt='Dashboard Image' width={1525} height={1043}
@@ -173,14 +186,17 @@ export default function Home() {
                   </li>
                 </Link>
 
-                {/* Dashboard */}
+                {/* Claw Machine */}
                 <Link href='/projects#threejs'>
                   <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                     <div className='grid grid-rows-2 md:grid-rows-1 md:grid-cols-4 gap-4'>
                       <div className='row-span-1 md:col-span-3'>
                         <h3 className='text-3xl font-bold text-stone-800'>Claw machine</h3>
                         <h4 className='text-xl font-medium mt-2 text-stone-600'>Experience an immersive and interactive virtual claw machine powered by the advanced 3D modeling library, three.js.</h4>
-                        <p className='text-stone-800 mt-2'>description</p>
+                        <ul className='list-disc pl-6 text-stone-800'>
+                          <li>Utilized osm2world to create 3D models from OSM data, significantly reducing development time.</li>
+                          <li>Implemented physics in the map with interactions with user input.</li>
+                        </ul>
                       </div>
 
                       <Image src='/images/screenshots/claw-machine/full.png' alt='Clawmachine Image' width={128} height={128}
