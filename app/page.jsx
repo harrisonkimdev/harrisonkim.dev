@@ -174,7 +174,7 @@ export default function Home() {
                           <ul className='list-disc pl-6 text-stone-800'>
                             <li>Configured AWS VPC and EC2 instances with Nginx, and managed DNS for web hosting with personal domain.</li>
                             <li>Enhanced performance by 40% with Inertia.js, bolstering SSR for faster loading and improved user experiences.</li>
-                            <li>Utilized GitHub Issues to manage tasks, getting myself familarized with Agile as a project manager's perspective.</li>
+                            <li>Utilized GitHub Issues to manage tasks, getting myself familarized with Agile as a project manager&apos;s perspective.</li>
                             <li>Reached out to the author of a book I was inspired by to seek permission to incorporate their methodology into my project.</li>
                           </ul>
                         </div>
