@@ -122,8 +122,8 @@ export default function Home() {
                 {/* dandycv */}
                 <Link href='https://dandycv.vercel.app' target="_blank">
                   <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
-                    <div className='grid grid-rows-2 md:grid-rows-1 md:grid-cols-4 gap-4'>
-                      <div className='row-span-1 md:col-span-3'>
+                    <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
+                      <div className='md:col-span-3'>
                         <h3 className='text-3xl font-bold text-stone-800'>dandycv</h3>
                         <h4 className='text-xl font-medium mt-2 text-stone-600'>Promotional website for a startup</h4>
                         <ul className='list-disc pl-6 text-stone-800'>
@@ -134,7 +134,7 @@ export default function Home() {
                       </div>
 
                       <Image src='/images/screenshots/dandycv/landing_page.png' alt='mosPic Image' width={1595} height={964}
-                        className='object-contain h-full w-full row-span-1 md:col-span-1'
+                        className='object-contain h-full w-full md:col-span-1'
                       />
                     </div>
                   </li>
@@ -143,8 +143,8 @@ export default function Home() {
                 {/* mosPic */}
                 <Link href='/projects#mospic'>
                   <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
-                    <div className='grid grid-rows-2 md:grid-rows-1 md:grid-cols-4 gap-4'>
-                      <div className='row-span-1 md:col-span-3'>
+                    <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
+                      <div className='md:col-span-3'>
                         <h3 className='text-3xl font-bold text-stone-800'>mos<span className='text-stone-500'>Pic</span></h3>
                         <h4 className='text-xl font-medium mt-2 text-stone-600'>
                           Image editing tool with the help of AI -
@@ -158,7 +158,7 @@ export default function Home() {
                       </div>
 
                       <Image src='/images/screenshots/mosPic/gallery-page.png' alt='mosPic Image' width={1562} height={1036}
-                        className='object-contain h-full w-full row-span-1 md:col-span-1'
+                        className='object-contain h-full w-full md:col-span-1'
                       />
                     </div>
                   </li>
@@ -167,8 +167,8 @@ export default function Home() {
                 {/* Dashboard */}
                 <Link href='/projects#dashboard'>
                   <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
-                      <div className='grid grid-rows-2 md:grid-rows-1 md:grid-cols-4 gap-4'>
-                        <div className='row-span-1 md:col-span-3'>
+                      <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
+                        <div className='md:col-span-3'>
                           <h3 className='text-3xl font-bold text-stone-800'>Dashboard</h3>
                           <h4 className='text-xl font-medium mt-2 text-stone-600'>An all-in-one office tool designed specifically for programmers.</h4>
                           <ul className='list-disc pl-6 text-stone-800'>
@@ -180,7 +180,7 @@ export default function Home() {
                         </div>
 
                         <Image src='/images/screenshots/Dashboard/notes.png' alt='Dashboard Image' width={1525} height={1043}
-                          className='object-contain h-full w-full row-span-1 md:col-span-1'
+                          className='object-contain h-full w-full md:col-span-1'
                         />
                       </div>
                   </li>
@@ -189,8 +189,8 @@ export default function Home() {
                 {/* Claw Machine */}
                 <Link href='/projects#threejs'>
                   <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
-                    <div className='grid grid-rows-2 md:grid-rows-1 md:grid-cols-4 gap-4'>
-                      <div className='row-span-1 md:col-span-3'>
+                    <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
+                      <div className='md:col-span-3'>
                         <h3 className='text-3xl font-bold text-stone-800'>Claw machine</h3>
                         <h4 className='text-xl font-medium mt-2 text-stone-600'>Experience an immersive and interactive virtual claw machine powered by the advanced 3D modeling library, three.js.</h4>
                         <ul className='list-disc pl-6 text-stone-800'>
@@ -200,7 +200,7 @@ export default function Home() {
                       </div>
 
                       <Image src='/images/screenshots/claw-machine/full.png' alt='Clawmachine Image' width={128} height={128}
-                        className='object-contain h-full w-full row-span-1 md:col-span-1'
+                        className='object-contain h-full w-full md:col-span-1'
                       />
                     </div>
                   </li>
