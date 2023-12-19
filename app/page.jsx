@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import 'animate.css'
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       <div className='flex flex-col w-full items-center'>
         {/* first */}
         <div className='
-          w-full px-8 py-10 md:py-20 bg-stone-100
+          w-full min-h-screen px-8 py-10 md:py-20 bg-stone-100
           flex flex-col gap-8 md:gap-16 items-center
         '>
           <div className='px-8 md:px-0 flex flex-col md:flex-row md:gap-10 items-center'>
@@ -54,14 +55,17 @@ export default function Home() {
         </div>
 
         {/* second */}
-        <div className='w-full px-8 pt-10 pb-20 bg-white'>
-          <div className='max-w-5xl mx-auto'>
+        <div className='w-full min-h-screen px-8 pt-10 pb-20 md:py-28 bg-white'>
+          <div className='max-w-5xl mx-auto md:flex md:flex-col md:items-center'>
 
             <h2 className='text-5xl font-bold text-stone-800'>Here are my
-              <span className='text-stone-500'> skill sets</span>
+              <span className='animate__animated animate__fadeIn text-stone-500'> skill sets</span>
             </h2>
 
-            <div className='grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-6 mt-6'>
+            <div className='
+              grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-6 mt-6
+              animate__animated animate__backInLeft ease-in duration-300
+            '>
               <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
                 <h4 className='text-center text-2xl font-medium text-stone-800'>Frontend</h4>
                 <ul className='h-36 mt-2 text-center'>
@@ -108,7 +112,7 @@ export default function Home() {
         </div>
 
         {/* third */}
-        <div className='w-full px-8 pt-10 pb-16 bg-stone-300'>
+        <div className='w-full px-8 pt-10 pb-16 md:py-20 bg-stone-300'>
           <div className='max-w-5xl mx-auto'>
             <h2 className='text-5xl font-bold text-stone-800'>
               <Link href='/projects'
@@ -120,7 +124,7 @@ export default function Home() {
             <div className='mt-6'>
               <ul className='flex flex-col gap-4'>
                 {/* dandycv */}
-                <Link href='https://dandycv.vercel.app' target="_blank">
+                <Link href='https://dandycv.vercel.app' target="_blank" className='animate__animated animate__slideInLeft'>
                   <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                     <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                       <div className='md:col-span-3'>
@@ -141,7 +145,7 @@ export default function Home() {
                 </Link>
 
                 {/* mosPic */}
-                <Link href='/projects#mospic'>
+                <Link href='/projects#mospic' className='animate__animated animate__slideInLeft'>
                   <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                     <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                       <div className='md:col-span-3'>
@@ -165,7 +169,7 @@ export default function Home() {
                 </Link>
 
                 {/* Dashboard */}
-                <Link href='/projects#dashboard'>
+                <Link href='/projects#dashboard' className='animate__animated animate__slideInLeft'>
                   <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                       <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                         <div className='md:col-span-3'>
@@ -187,7 +191,7 @@ export default function Home() {
                 </Link>
 
                 {/* Claw Machine */}
-                <Link href='/projects#threejs'>
+                <Link href='/projects#threejs' className='animate__animated animate__slideInLeft'>
                   <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                     <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                       <div className='md:col-span-3'>
@@ -215,6 +219,7 @@ export default function Home() {
           <p className='
             text-3xl hover:text-4xl ease-in duration-200
             font-semibold text-stone-800
+            animate__animated animate__bounce
           '>Thank you for visiting my website :)</p>
         </div>
       </div>
