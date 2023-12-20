@@ -1,3 +1,6 @@
+'use client'
+
+import React, { useRef, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import 'animate.css'
@@ -5,6 +8,124 @@ import 'animate.css'
 import { FaDisplay, FaDatabase, FaToolbox } from "react-icons/fa6";
 
 export default function Home() {
+
+  const secondRowTitle = useRef(null)
+  const secondRowCards = useRef(null)
+  const thirdRowCard1 = useRef(null)
+  const thirdRowCard2 = useRef(null)
+  const thirdRowCard3 = useRef(null)
+  const thirdRowCard4 = useRef(null)
+  const fourthContent = useRef(null)
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null, // Use the viewport as the root
+      rootMargin: '0px', // No margin
+      threshold: 1.0 // 100% of the element must be visible
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        
+        if (entry.isIntersecting) {
+          console.log(entry)
+          if (entry.target.className.includes('secondRowTitle')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__fadeIn')
+          }
+          // else if (entry.target.className.includes('secondRowCards')) {
+          //   // entry.target.classList.remove('opacity-0')
+          //   entry.target.classList.add('animate__backInLeft')
+          // }
+          else if (entry.target.className.includes('thirdRowCard1')) {
+            entry.target.classList.add('text-blue-600')
+          }
+          else if (entry.target.className.includes('thirdRowCard2')) {
+            entry.target.classList.add('text-blue-600')
+          }
+          else if (entry.target.className.includes('thirdRowCard3')) {
+            entry.target.classList.add('text-blue-600')
+          }
+          else if (entry.target.className.includes('thirdRowCard4')) {
+            entry.target.classList.add('text-blue-600')
+          }
+          else if (entry.target.className.includes('fourthContent')) {
+            entry.target.classList.add('text-blue-600')
+          }
+        }
+        
+        // if you want to add effect every time users scroll through
+        else {
+          if (entry.target.className.includes('secondRowTitle')) {
+            // console.log(entry)
+            entry.target.classList.add('opacity-0')
+            entry.target.classList.remove('animate__fadeIn')
+          }
+          // else if (entry.target.className.includes('secondRowCards')) {
+          //   entry.target.classList.add('opacity-0')
+          //   entry.target.classList.remove('animate__backInLeft')
+          // }
+        }
+      })
+    }, observerOptions)
+
+    activateObservers(observer)
+  
+    return () => {
+      inactivateObservers(observer)
+    }
+  }, [])
+
+  const activateObservers = (observer) => {
+    if (secondRowTitle.current) {
+      observer.observe(secondRowTitle.current)
+    }
+    if (secondRowCards.current) {
+      observer.observe(secondRowCards.current)
+    }
+    if (thirdRowCard1.current) {
+      observer.observe(thirdRowCard1.current)
+    }
+    if (thirdRowCard2.current) {
+      observer.observe(thirdRowCard2.current)
+    }
+    if (thirdRowCard3.current) {
+      observer.observe(thirdRowCard3.current)
+    }
+    if (thirdRowCard4.current) {
+      observer.observe(thirdRowCard4.current)
+    }
+    if (fourthContent.current) {
+      observer.observe(fourthContent.current)
+    }
+  }
+
+  const inactivateObservers = (observer) => {
+    if (secondRowTitle.current) {
+      observer.unobserve(secondRowTitle.current)
+    }
+    if (secondRowCards.current) {
+      observer.unobserve(secondRowCards.current)
+    }
+    if (thirdRowCard1.current) {
+      observer.unobserve(thirdRowCard1.current)
+    }
+    if (thirdRowCard2.current) {
+      observer.unobserve(thirdRowCard2.current)
+    }
+    if (thirdRowCard3.current) {
+      observer.unobserve(thirdRowCard3.current)
+    }
+    if (thirdRowCard4.current) {
+      observer.unobserve(thirdRowCard4.current)
+    }
+    if (fourthContent.current) {
+      observer.unobserve(fourthContent.current)
+    }
+  }
+  
+  
+
   return (
     <>
       {/* Layout for Tablets & Desktops */}
@@ -31,6 +152,7 @@ export default function Home() {
             '/>
             <h1 className='
               text-5xl md:text-7xl font-bold text-stone-500
+              animate__animated animate__pulse
             '>
               Hi, <br />
               <span className='whitespace-nowrap'>I&apos;m
@@ -71,49 +193,53 @@ export default function Home() {
           '>
             {/* title */}
             <h2 className='text-5xl font-bold text-stone-800'>Here are my
-              <span className='animate__animated animate__fadeIn text-stone-500'> skill sets</span>
+              <span ref={secondRowTitle}
+                className='text-stone-500
+                  animate__animated secondRowTitle opacity-0
+              '> skill sets</span>
             </h2>
 
             {/* cards */}
-            <div className='
-              grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-6 mt-6
-              animate__animated animate__backInLeft ease-in duration-300
-            '>
-              {/* frontend */}
-              <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
-                <h4 className='text-center text-2xl font-medium text-stone-800'>Frontend</h4>
-                <ul className='h-36 mt-2 text-center'>
-                  <li><p className='text-lg text-stone-800'>Next.js (React.js)</p></li>
-                  <li><p className='text-lg text-stone-800'>Vue.js</p></li>
-                  <li><p className='text-lg text-stone-800'>Tailwind</p></li>
-                  <li><p className='text-lg text-stone-800'>TypeScript</p></li>
-                </ul>
-                <div className='flex justify-center left-0 right-0 bottom-4'>
-                  <FaDisplay className="text-7xl text-stone-500" />
+            <div ref={secondRowCards} className='animate__animated secondRowCards'>
+              <div className='
+                grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-6 mt-6
+              '>
+                {/* frontend */}
+                <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
+                  <h4 className='text-center text-2xl font-medium text-stone-800'>Frontend</h4>
+                  <ul className='h-36 mt-2 text-center'>
+                    <li><p className='text-lg text-stone-800'>Next.js (React.js)</p></li>
+                    <li><p className='text-lg text-stone-800'>Vue.js</p></li>
+                    <li><p className='text-lg text-stone-800'>Tailwind</p></li>
+                    <li><p className='text-lg text-stone-800'>TypeScript</p></li>
+                  </ul>
+                  <div className='flex justify-center left-0 right-0 bottom-4'>
+                    <FaDisplay className="text-7xl text-stone-500" />
+                  </div>
                 </div>
-              </div>
-              {/* backend */}
-              <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
-                <h4 className='text-center text-2xl font-medium text-stone-800'>Backend</h4>
-                <ul className='h-36 mt-2 text-center'>
-                <li><p className='text-lg text-stone-800'>Laravel & Node.js</p></li>
-                  <li><p className='text-lg text-stone-800'>SQL & NoSQL (MongoDB)</p></li>
-                  <li><p className='text-lg text-stone-800'>AWS & nginx</p></li>
-                </ul>
-                <div className='flex justify-center left-0 right-0 bottom-4'>
-                  <FaDatabase className="text-7xl text-stone-500" />
+                {/* backend */}
+                <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
+                  <h4 className='text-center text-2xl font-medium text-stone-800'>Backend</h4>
+                  <ul className='h-36 mt-2 text-center'>
+                  <li><p className='text-lg text-stone-800'>Laravel & Node.js</p></li>
+                    <li><p className='text-lg text-stone-800'>SQL & NoSQL (MongoDB)</p></li>
+                    <li><p className='text-lg text-stone-800'>AWS & nginx</p></li>
+                  </ul>
+                  <div className='flex justify-center left-0 right-0 bottom-4'>
+                    <FaDatabase className="text-7xl text-stone-500" />
+                  </div>
                 </div>
-              </div>
-              {/* others */}
-              <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
-                <h4 className='text-center text-2xl font-medium text-stone-800'>Others</h4>
-                <ul className='h-36 mt-2 text-center'>
-                  <li><p className='text-lg text-stone-800'>Git & Jira</p></li>
-                  <li><p className='text-lg text-stone-800'>Figma</p></li>
-                  <li><p className='text-lg text-stone-800'>Python & Java (OOP)</p></li>
-                </ul>
-                <div className='flex justify-center left-0 right-0 bottom-4'>
-                  <FaToolbox className="text-7xl text-stone-500" />
+                {/* others */}
+                <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
+                  <h4 className='text-center text-2xl font-medium text-stone-800'>Others</h4>
+                  <ul className='h-36 mt-2 text-center'>
+                    <li><p className='text-lg text-stone-800'>Git & Jira</p></li>
+                    <li><p className='text-lg text-stone-800'>Figma</p></li>
+                    <li><p className='text-lg text-stone-800'>Python & Java (OOP)</p></li>
+                  </ul>
+                  <div className='flex justify-center left-0 right-0 bottom-4'>
+                    <FaToolbox className="text-7xl text-stone-500" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -135,7 +261,9 @@ export default function Home() {
             {/* cards */}
             <ul className='mt-6 flex flex-col gap-4'>
               {/* dandycv */}
-              <Link href='https://dandycv.vercel.app' target="_blank" className='animate__animated animate__slideInLeft'>
+              <Link href='https://dandycv.vercel.app' target="_blank"
+                ref={thirdRowCard1} className='animate__animated thirdRowCard1 animate__slideInLeft'
+              >
                 <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                   <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                     <div className='md:col-span-3'>
@@ -156,7 +284,7 @@ export default function Home() {
               </Link>
 
               {/* mosPic */}
-              <Link href='/projects#mospic' className='animate__animated animate__slideInLeft'>
+              <Link href='/projects#mospic' ref={thirdRowCard2} className='animate__animated thirdRowCard2 animate__slideInLeft'>
                 <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                   <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                     <div className='md:col-span-3'>
@@ -180,7 +308,7 @@ export default function Home() {
               </Link>
 
               {/* Dashboard */}
-              <Link href='/projects#dashboard' className='animate__animated animate__slideInLeft'>
+              <Link href='/projects#dashboard' ref={thirdRowCard3} className='animate__animated thirdRowCard3 animate__slideInLeft'>
                 <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                     <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                       <div className='md:col-span-3'>
@@ -202,7 +330,7 @@ export default function Home() {
               </Link>
 
               {/* Claw Machine */}
-              <Link href='/projects#threejs' className='animate__animated animate__slideInLeft'>
+              <Link href='/projects#threejs' ref={thirdRowCard4} className='animate__animated thirdRowCard4 animate__slideInLeft'>
                 <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                   <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                     <div className='md:col-span-3'>
@@ -226,10 +354,11 @@ export default function Home() {
         </div>
 
         <div className='w-full h-64 p-8 text-center grid content-center bg-white'>
-          <p className='
+          <p ref={fourthContent} className='
+          fourthContent
             text-3xl hover:text-4xl ease-in duration-200
             font-semibold text-stone-800
-            animate__animated animate__bounce
+            animate__animated fourthContent animate__bounce
           '>Thank you for visiting my website :)</p>
         </div>
       </div>
