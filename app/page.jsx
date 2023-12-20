@@ -31,7 +31,7 @@ export default function Home() {
           console.log(entry)
           if (entry.target.className.includes('secondRowTitle')) {
             entry.target.classList.remove('opacity-0')
-            entry.target.classList.add('animate__fadeIn')
+            entry.target.classList.add('animate__fadeIn', 'animate__delay-2', 'animate__slow')
           }
           // else if (entry.target.className.includes('secondRowCards')) {
           //   // entry.target.classList.remove('opacity-0')
@@ -59,7 +59,7 @@ export default function Home() {
           if (entry.target.className.includes('secondRowTitle')) {
             // console.log(entry)
             entry.target.classList.add('opacity-0')
-            entry.target.classList.remove('animate__fadeIn')
+            entry.target.classList.remove('animate__fadeIn', 'animate__delay-2', 'animate__slow')
           }
           // else if (entry.target.className.includes('secondRowCards')) {
           //   entry.target.classList.add('opacity-0')
@@ -152,7 +152,7 @@ export default function Home() {
             '/>
             <h1 className='
               text-5xl md:text-7xl font-bold text-stone-500
-              animate__animated animate__pulse
+              animate__animated animate__pulse animate__repeat-2
             '>
               Hi, <br />
               <span className='whitespace-nowrap'>I&apos;m
