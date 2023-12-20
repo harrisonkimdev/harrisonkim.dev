@@ -7,11 +7,13 @@ export default function Home() {
     <>
       {/* Layout for Tablets & Desktops */}
       <div className='flex flex-col w-full items-center'>
-        {/* first */}
+
+        {/* first row */}
         <div className='
           w-full min-h-screen px-8 py-10 md:py-20 bg-stone-100
-          flex flex-col gap-8 md:gap-16 items-center
+          flex flex-col gap-8 md:gap-16 justify-center items-center
         '>
+          {/* profile picture and greeting */}
           <div className='px-8 md:px-0 flex flex-col md:flex-row md:gap-10 items-center'>
             <Image
               src="/images/profile/me_cropped.jpeg"
@@ -34,6 +36,8 @@ export default function Home() {
               </span> <br /> Full Stack <br /> Engineer
             </h1>
           </div>
+
+          {/* buttons */}
           <div className='grid grid-cols-2 gap-4 md:gap-8'>
             <div className='
               p-3 rounded-lg border border-stone-600 shadow-md
@@ -54,18 +58,26 @@ export default function Home() {
           </div>
         </div>
 
-        {/* second */}
-        <div className='w-full min-h-screen px-8 pt-10 pb-20 md:py-28 bg-white'>
-          <div className='max-w-5xl mx-auto md:flex md:flex-col md:items-center'>
-
+        {/* second row */}
+        <div className='
+          w-full min-h-screen px-8 pt-10 pb-20 md:py-28
+          flex flex-col justify-center bg-white
+        '>
+          <div className='
+            max-w-5xl mx-auto
+            md:flex md:flex-col md:justify-center md:items-center
+          '>
+            {/* title */}
             <h2 className='text-5xl font-bold text-stone-800'>Here are my
               <span className='animate__animated animate__fadeIn text-stone-500'> skill sets</span>
             </h2>
 
+            {/* cards */}
             <div className='
               grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-6 mt-6
               animate__animated animate__backInLeft ease-in duration-300
             '>
+              {/* frontend */}
               <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
                 <h4 className='text-center text-2xl font-medium text-stone-800'>Frontend</h4>
                 <ul className='h-36 mt-2 text-center'>
@@ -80,6 +92,7 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
+              {/* backend */}
               <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
                 <h4 className='text-center text-2xl font-medium text-stone-800'>Backend</h4>
                 <ul className='h-36 mt-2 text-center'>
@@ -94,6 +107,7 @@ export default function Home() {
 
                 </div>
               </div>
+              {/* others */}
               <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
                 <h4 className='text-center text-2xl font-medium text-stone-800'>Others</h4>
                 <ul className='h-36 mt-2 text-center'>
@@ -111,9 +125,11 @@ export default function Home() {
           </div>
         </div>
 
-        {/* third */}
+        {/* third row */}
         <div className='w-full px-8 pt-10 pb-16 md:py-20 bg-stone-300'>
           <div className='max-w-5xl mx-auto'>
+            
+            {/* title */}
             <h2 className='text-5xl font-bold text-stone-800'>
               <Link href='/projects'
                 className='text-stone-500 hover:text-stone-600 hover:underline'
@@ -121,96 +137,95 @@ export default function Home() {
               <span> I&apos;ve been working on</span>
             </h2>
 
-            <div className='mt-6'>
-              <ul className='flex flex-col gap-4'>
-                {/* dandycv */}
-                <Link href='https://dandycv.vercel.app' target="_blank" className='animate__animated animate__slideInLeft'>
-                  <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
+            {/* cards */}
+            <ul className='mt-6 flex flex-col gap-4'>
+              {/* dandycv */}
+              <Link href='https://dandycv.vercel.app' target="_blank" className='animate__animated animate__slideInLeft'>
+                <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
+                  <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
+                    <div className='md:col-span-3'>
+                      <h3 className='text-3xl font-bold text-stone-800'>dandycv</h3>
+                      <h4 className='text-xl font-medium mt-2 text-stone-600'>Promotional website for a startup</h4>
+                      <ul className='list-disc pl-6 text-stone-800'>
+                        <li>Optimized the DB system by meticulously designing data model relationships, leading to a remarkable 50% reduction in access frequency.</li>
+                        <li>Effectively managed large volumes of user data within the admin page by incorporating features like search, sorting, and filtering, achieving a 70% reduction in loading time through lazy loading with pagination.</li>
+                        <li>Implemented a payment system using Stripe and integrated data sharing with a desktop application through APIs.</li>
+                      </ul>
+                    </div>
+
+                    <Image src='/images/screenshots/dandycv/landing_page.png' alt='mosPic Image' width={1595} height={964}
+                      className='object-contain h-full w-full md:col-span-1'
+                    />
+                  </div>
+                </li>
+              </Link>
+
+              {/* mosPic */}
+              <Link href='/projects#mospic' className='animate__animated animate__slideInLeft'>
+                <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
+                  <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
+                    <div className='md:col-span-3'>
+                      <h3 className='text-3xl font-bold text-stone-800'>mos<span className='text-stone-500'>Pic</span></h3>
+                      <h4 className='text-xl font-medium mt-2 text-stone-600'>
+                        Image editing tool with the help of AI -
+                        <Link href='https://segment-anything.com/' target="_blank" className='text-stone-800'> Segment Anything</Link>
+                      </h4>
+                      <ul className='list-disc pl-6 text-stone-800'>
+                        <li>Distributed tasks effectively to each team member and ran a 2 week-sprint using Agile as a project manager.</li>
+                        <li>Utilized Google CoLab to generate an ONNX model, enabling the image segmentation AI to analyze given images.</li>
+                        <li>Engaged with the open-source community to acquire backend code running SAM (Segment Anything), enabling the generation of image embedding files and facilitating focus on web development tasks.</li>
+                      </ul>
+                    </div>
+
+                    <Image src='/images/screenshots/mosPic/gallery-page.png' alt='mosPic Image' width={1562} height={1036}
+                      className='object-contain h-full w-full md:col-span-1'
+                    />
+                  </div>
+                </li>
+              </Link>
+
+              {/* Dashboard */}
+              <Link href='/projects#dashboard' className='animate__animated animate__slideInLeft'>
+                <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                     <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                       <div className='md:col-span-3'>
-                        <h3 className='text-3xl font-bold text-stone-800'>dandycv</h3>
-                        <h4 className='text-xl font-medium mt-2 text-stone-600'>Promotional website for a startup</h4>
+                        <h3 className='text-3xl font-bold text-stone-800'>Dashboard</h3>
+                        <h4 className='text-xl font-medium mt-2 text-stone-600'>An all-in-one office tool designed specifically for programmers.</h4>
                         <ul className='list-disc pl-6 text-stone-800'>
-                          <li>Optimized the DB system by meticulously designing data model relationships, leading to a remarkable 50% reduction in access frequency.</li>
-                          <li>Effectively managed large volumes of user data within the admin page by incorporating features like search, sorting, and filtering, achieving a 70% reduction in loading time through lazy loading with pagination.</li>
-                          <li>Implemented a payment system using Stripe and integrated data sharing with a desktop application through APIs.</li>
+                          <li>Configured AWS VPC and EC2 instances with Nginx, and managed DNS for web hosting with personal domain.</li>
+                          <li>Enhanced performance by 40% with Inertia.js, bolstering SSR for faster loading and improved user experiences.</li>
+                          <li>Utilized GitHub Issues to manage tasks, getting myself familarized with Agile as a project manager&apos;s perspective.</li>
+                          <li>Reached out to the author of a book I was inspired by to seek permission to incorporate their methodology into my project.</li>
                         </ul>
                       </div>
 
-                      <Image src='/images/screenshots/dandycv/landing_page.png' alt='mosPic Image' width={1595} height={964}
+                      <Image src='/images/screenshots/Dashboard/notes.png' alt='Dashboard Image' width={1525} height={1043}
                         className='object-contain h-full w-full md:col-span-1'
                       />
                     </div>
-                  </li>
-                </Link>
+                </li>
+              </Link>
 
-                {/* mosPic */}
-                <Link href='/projects#mospic' className='animate__animated animate__slideInLeft'>
-                  <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
-                    <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
-                      <div className='md:col-span-3'>
-                        <h3 className='text-3xl font-bold text-stone-800'>mos<span className='text-stone-500'>Pic</span></h3>
-                        <h4 className='text-xl font-medium mt-2 text-stone-600'>
-                          Image editing tool with the help of AI -
-                          <Link href='https://segment-anything.com/' target="_blank" className='text-stone-800'> Segment Anything</Link>
-                        </h4>
-                        <ul className='list-disc pl-6 text-stone-800'>
-                          <li>Distributed tasks effectively to each team member and ran a 2 week-sprint using Agile as a project manager.</li>
-                          <li>Utilized Google CoLab to generate an ONNX model, enabling the image segmentation AI to analyze given images.</li>
-                          <li>Engaged with the open-source community to acquire backend code running SAM (Segment Anything), enabling the generation of image embedding files and facilitating focus on web development tasks.</li>
-                        </ul>
-                      </div>
-
-                      <Image src='/images/screenshots/mosPic/gallery-page.png' alt='mosPic Image' width={1562} height={1036}
-                        className='object-contain h-full w-full md:col-span-1'
-                      />
+              {/* Claw Machine */}
+              <Link href='/projects#threejs' className='animate__animated animate__slideInLeft'>
+                <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
+                  <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
+                    <div className='md:col-span-3'>
+                      <h3 className='text-3xl font-bold text-stone-800'>Claw machine</h3>
+                      <h4 className='text-xl font-medium mt-2 text-stone-600'>Experience an immersive and interactive virtual claw machine powered by the advanced 3D modeling library, three.js.</h4>
+                      <ul className='list-disc pl-6 text-stone-800'>
+                        <li>Utilized osm2world to create 3D models from OSM data, significantly reducing development time.</li>
+                        <li>Implemented physics in the map with interactions with user input.</li>
+                      </ul>
                     </div>
-                  </li>
-                </Link>
 
-                {/* Dashboard */}
-                <Link href='/projects#dashboard' className='animate__animated animate__slideInLeft'>
-                  <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
-                      <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
-                        <div className='md:col-span-3'>
-                          <h3 className='text-3xl font-bold text-stone-800'>Dashboard</h3>
-                          <h4 className='text-xl font-medium mt-2 text-stone-600'>An all-in-one office tool designed specifically for programmers.</h4>
-                          <ul className='list-disc pl-6 text-stone-800'>
-                            <li>Configured AWS VPC and EC2 instances with Nginx, and managed DNS for web hosting with personal domain.</li>
-                            <li>Enhanced performance by 40% with Inertia.js, bolstering SSR for faster loading and improved user experiences.</li>
-                            <li>Utilized GitHub Issues to manage tasks, getting myself familarized with Agile as a project manager&apos;s perspective.</li>
-                            <li>Reached out to the author of a book I was inspired by to seek permission to incorporate their methodology into my project.</li>
-                          </ul>
-                        </div>
-
-                        <Image src='/images/screenshots/Dashboard/notes.png' alt='Dashboard Image' width={1525} height={1043}
-                          className='object-contain h-full w-full md:col-span-1'
-                        />
-                      </div>
-                  </li>
-                </Link>
-
-                {/* Claw Machine */}
-                <Link href='/projects#threejs' className='animate__animated animate__slideInLeft'>
-                  <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
-                    <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
-                      <div className='md:col-span-3'>
-                        <h3 className='text-3xl font-bold text-stone-800'>Claw machine</h3>
-                        <h4 className='text-xl font-medium mt-2 text-stone-600'>Experience an immersive and interactive virtual claw machine powered by the advanced 3D modeling library, three.js.</h4>
-                        <ul className='list-disc pl-6 text-stone-800'>
-                          <li>Utilized osm2world to create 3D models from OSM data, significantly reducing development time.</li>
-                          <li>Implemented physics in the map with interactions with user input.</li>
-                        </ul>
-                      </div>
-
-                      <Image src='/images/screenshots/claw-machine/full.png' alt='Clawmachine Image' width={128} height={128}
-                        className='object-contain h-full w-full md:col-span-1'
-                      />
-                    </div>
-                  </li>
-                </Link>
-              </ul>
-            </div>
+                    <Image src='/images/screenshots/claw-machine/full.png' alt='Clawmachine Image' width={128} height={128}
+                      className='object-contain h-full w-full md:col-span-1'
+                    />
+                  </div>
+                </li>
+              </Link>
+            </ul>
 
           </div>
         </div>
