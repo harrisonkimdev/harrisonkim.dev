@@ -10,7 +10,9 @@ import { FaDisplay, FaDatabase, FaToolbox } from "react-icons/fa6";
 export default function Home() {
 
   const secondRowTitle = useRef(null)
-  const secondRowCards = useRef(null)
+  const secondRowCard1 = useRef(null)
+  const secondRowCard2 = useRef(null)
+  const secondRowCard3 = useRef(null)
   const thirdRowCard1 = useRef(null)
   const thirdRowCard2 = useRef(null)
   const thirdRowCard3 = useRef(null)
@@ -25,46 +27,56 @@ export default function Home() {
     }
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        
+      entries.forEach((entry) => {        
         if (entry.isIntersecting) {
-          console.log(entry)
           if (entry.target.className.includes('secondRowTitle')) {
             entry.target.classList.remove('opacity-0')
-            entry.target.classList.add('animate__fadeIn', 'animate__delay-2', 'animate__slow')
+            entry.target.classList.add('animate__fadeIn')
           }
-          // else if (entry.target.className.includes('secondRowCards')) {
-          //   // entry.target.classList.remove('opacity-0')
-          //   entry.target.classList.add('animate__backInLeft')
-          // }
+          else if (entry.target.className.includes('secondRowCard1')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
+          }
+          else if (entry.target.className.includes('secondRowCard2')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
+          }
+          else if (entry.target.className.includes('secondRowCard3')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
+          }
           else if (entry.target.className.includes('thirdRowCard1')) {
-            entry.target.classList.add('text-blue-600')
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
           }
           else if (entry.target.className.includes('thirdRowCard2')) {
-            entry.target.classList.add('text-blue-600')
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
           }
           else if (entry.target.className.includes('thirdRowCard3')) {
-            entry.target.classList.add('text-blue-600')
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
           }
           else if (entry.target.className.includes('thirdRowCard4')) {
-            entry.target.classList.add('text-blue-600')
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
           }
           else if (entry.target.className.includes('fourthContent')) {
-            entry.target.classList.add('text-blue-600')
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__bounce')
           }
         }
         
         // if you want to add effect every time users scroll through
         else {
           if (entry.target.className.includes('secondRowTitle')) {
-            // console.log(entry)
             entry.target.classList.add('opacity-0')
-            entry.target.classList.remove('animate__fadeIn', 'animate__delay-2', 'animate__slow')
+            entry.target.classList.remove('animate__fadeIn')
           }
-          // else if (entry.target.className.includes('secondRowCards')) {
-          //   entry.target.classList.add('opacity-0')
-          //   entry.target.classList.remove('animate__backInLeft')
-          // }
+          else if (entry.target.className.includes('fourthContent')) {
+            entry.target.classList.add('opacity-0')
+            entry.target.classList.remove('animate__bounce')
+          }
         }
       })
     }, observerOptions)
@@ -77,11 +89,18 @@ export default function Home() {
   }, [])
 
   const activateObservers = (observer) => {
+
     if (secondRowTitle.current) {
       observer.observe(secondRowTitle.current)
     }
-    if (secondRowCards.current) {
-      observer.observe(secondRowCards.current)
+    if (secondRowCard1.current) {
+      observer.observe(secondRowCard1.current)
+    }
+    if (secondRowCard2.current) {
+      observer.observe(secondRowCard2.current)
+    }
+    if (secondRowCard3.current) {
+      observer.observe(secondRowCard3.current)
     }
     if (thirdRowCard1.current) {
       observer.observe(thirdRowCard1.current)
@@ -101,11 +120,18 @@ export default function Home() {
   }
 
   const inactivateObservers = (observer) => {
+    
     if (secondRowTitle.current) {
       observer.unobserve(secondRowTitle.current)
     }
-    if (secondRowCards.current) {
-      observer.unobserve(secondRowCards.current)
+    if (secondRowCard1.current) {
+      observer.unobserve(secondRowCard1.current)
+    }
+    if (secondRowCard2.current) {
+      observer.unobserve(secondRowCard2.current)
+    }
+    if (secondRowCard3.current) {
+      observer.unobserve(secondRowCard3.current)
     }
     if (thirdRowCard1.current) {
       observer.unobserve(thirdRowCard1.current)
@@ -124,8 +150,6 @@ export default function Home() {
     }
   }
   
-  
-
   return (
     <>
       {/* Layout for Tablets & Desktops */}
@@ -152,7 +176,7 @@ export default function Home() {
             '/>
             <h1 className='
               text-5xl md:text-7xl font-bold text-stone-500
-              animate__animated animate__pulse animate__repeat-2
+              animate__animated animate__pulse animate__repeat-3
             '>
               Hi, <br />
               <span className='whitespace-nowrap'>I&apos;m
@@ -195,51 +219,56 @@ export default function Home() {
             <h2 className='text-5xl font-bold text-stone-800'>Here are my
               <span ref={secondRowTitle}
                 className='text-stone-500
-                  animate__animated secondRowTitle opacity-0
+                  animate__animated animate__slow secondRowTitle opacity-0
               '> skill sets</span>
             </h2>
 
             {/* cards */}
-            <div ref={secondRowCards} className='animate__animated secondRowCards'>
-              <div className='
-                grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-6 mt-6
+            <div className='grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-6 mt-6'>
+              {/* frontend */}
+              <div ref={secondRowCard1} className='
+                animate__animated animate__slow secondRowCard1 opacity-0
+                px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50
               '>
-                {/* frontend */}
-                <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
-                  <h4 className='text-center text-2xl font-medium text-stone-800'>Frontend</h4>
-                  <ul className='h-36 mt-2 text-center'>
-                    <li><p className='text-lg text-stone-800'>Next.js (React.js)</p></li>
-                    <li><p className='text-lg text-stone-800'>Vue.js</p></li>
-                    <li><p className='text-lg text-stone-800'>Tailwind</p></li>
-                    <li><p className='text-lg text-stone-800'>TypeScript</p></li>
-                  </ul>
-                  <div className='flex justify-center left-0 right-0 bottom-4'>
-                    <FaDisplay className="text-7xl text-stone-500" />
-                  </div>
+                <h4 className='text-center text-2xl font-medium text-stone-800'>Frontend</h4>
+                <ul className='h-36 mt-2 text-center'>
+                  <li><p className='text-lg text-stone-800'>Next.js (React.js)</p></li>
+                  <li><p className='text-lg text-stone-800'>Vue.js</p></li>
+                  <li><p className='text-lg text-stone-800'>Tailwind</p></li>
+                  <li><p className='text-lg text-stone-800'>TypeScript</p></li>
+                </ul>
+                <div className='flex justify-center left-0 right-0 bottom-4'>
+                  <FaDisplay className="text-7xl text-stone-500" />
                 </div>
-                {/* backend */}
-                <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
-                  <h4 className='text-center text-2xl font-medium text-stone-800'>Backend</h4>
-                  <ul className='h-36 mt-2 text-center'>
-                  <li><p className='text-lg text-stone-800'>Laravel & Node.js</p></li>
-                    <li><p className='text-lg text-stone-800'>SQL & NoSQL (MongoDB)</p></li>
-                    <li><p className='text-lg text-stone-800'>AWS & nginx</p></li>
-                  </ul>
-                  <div className='flex justify-center left-0 right-0 bottom-4'>
-                    <FaDatabase className="text-7xl text-stone-500" />
-                  </div>
+              </div>
+              {/* backend */}
+              <div ref={secondRowCard2} className='
+                animate__animated md:animate__delay-1s animate__slow secondRowCard2 opacity-0
+                px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50
+              '>
+                <h4 className='text-center text-2xl font-medium text-stone-800'>Backend</h4>
+                <ul className='h-36 mt-2 text-center'>
+                <li><p className='text-lg text-stone-800'>Laravel & Node.js</p></li>
+                  <li><p className='text-lg text-stone-800'>SQL & NoSQL (MongoDB)</p></li>
+                  <li><p className='text-lg text-stone-800'>AWS & nginx</p></li>
+                </ul>
+                <div className='flex justify-center left-0 right-0 bottom-4'>
+                  <FaDatabase className="text-7xl text-stone-500" />
                 </div>
-                {/* others */}
-                <div className='px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50'>
-                  <h4 className='text-center text-2xl font-medium text-stone-800'>Others</h4>
-                  <ul className='h-36 mt-2 text-center'>
-                    <li><p className='text-lg text-stone-800'>Git & Jira</p></li>
-                    <li><p className='text-lg text-stone-800'>Figma</p></li>
-                    <li><p className='text-lg text-stone-800'>Python & Java (OOP)</p></li>
-                  </ul>
-                  <div className='flex justify-center left-0 right-0 bottom-4'>
-                    <FaToolbox className="text-7xl text-stone-500" />
-                  </div>
+              </div>
+              {/* others */}
+              <div ref={secondRowCard3} className='
+                animate__animated md:animate__delay-2s animate__slow secondRowCard3 opacity-0
+                px-8 py-6 rounded-lg text-left bg-stone-100 shadow-md hover:bg-stone-50
+              '>
+                <h4 className='text-center text-2xl font-medium text-stone-800'>Others</h4>
+                <ul className='h-36 mt-2 text-center'>
+                  <li><p className='text-lg text-stone-800'>Git & Jira</p></li>
+                  <li><p className='text-lg text-stone-800'>Figma</p></li>
+                  <li><p className='text-lg text-stone-800'>Python & Java (OOP)</p></li>
+                </ul>
+                <div className='flex justify-center left-0 right-0 bottom-4'>
+                  <FaToolbox className="text-7xl text-stone-500" />
                 </div>
               </div>
             </div>
@@ -262,7 +291,7 @@ export default function Home() {
             <ul className='mt-6 flex flex-col gap-4'>
               {/* dandycv */}
               <Link href='https://dandycv.vercel.app' target="_blank"
-                ref={thirdRowCard1} className='animate__animated thirdRowCard1 animate__slideInLeft'
+                ref={thirdRowCard1} className='animate__animated thirdRowCard1 opacity-0'
               >
                 <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                   <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
@@ -276,15 +305,17 @@ export default function Home() {
                       </ul>
                     </div>
 
-                    <Image src='/images/screenshots/dandycv/landing_page.png' alt='mosPic Image' width={1595} height={964}
-                      className='object-contain h-full w-full md:col-span-1'
+                    <Image src='/images/screenshots/dandycv/landing_page.png' alt='mosPic Image'
+                      width={1595} height={964} className='object-contain h-full w-full md:col-span-1'
                     />
                   </div>
                 </li>
               </Link>
 
               {/* mosPic */}
-              <Link href='/projects#mospic' ref={thirdRowCard2} className='animate__animated thirdRowCard2 animate__slideInLeft'>
+              <Link href='/projects#mospic'
+                ref={thirdRowCard2} className='animate__animated thirdRowCard2 opacity-0'
+              >
                 <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                   <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                     <div className='md:col-span-3'>
@@ -300,15 +331,17 @@ export default function Home() {
                       </ul>
                     </div>
 
-                    <Image src='/images/screenshots/mosPic/gallery-page.png' alt='mosPic Image' width={1562} height={1036}
-                      className='object-contain h-full w-full md:col-span-1'
+                    <Image src='/images/screenshots/mosPic/gallery-page.png' alt='mosPic Image'
+                      width={1562} height={1036} className='object-contain h-full w-full md:col-span-1'
                     />
                   </div>
                 </li>
               </Link>
 
               {/* Dashboard */}
-              <Link href='/projects#dashboard' ref={thirdRowCard3} className='animate__animated thirdRowCard3 animate__slideInLeft'>
+              <Link href='/projects#dashboard'
+                ref={thirdRowCard3} className='animate__animated thirdRowCard3 opacity-0'
+              >
                 <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                     <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                       <div className='md:col-span-3'>
@@ -322,15 +355,17 @@ export default function Home() {
                         </ul>
                       </div>
 
-                      <Image src='/images/screenshots/Dashboard/notes.png' alt='Dashboard Image' width={1525} height={1043}
-                        className='object-contain h-full w-full md:col-span-1'
+                      <Image src='/images/screenshots/Dashboard/notes.png' alt='Dashboard Image'
+                        width={1525} height={1043} className='object-contain h-full w-full md:col-span-1'
                       />
                     </div>
                 </li>
               </Link>
 
               {/* Claw Machine */}
-              <Link href='/projects#threejs' ref={thirdRowCard4} className='animate__animated thirdRowCard4 animate__slideInLeft'>
+              <Link href='/projects#threejs'
+                ref={thirdRowCard4} className='animate__animated thirdRowCard4 opacity-0'
+              >
                 <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                   <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                     <div className='md:col-span-3'>
@@ -342,8 +377,8 @@ export default function Home() {
                       </ul>
                     </div>
 
-                    <Image src='/images/screenshots/claw-machine/full.png' alt='Clawmachine Image' width={128} height={128}
-                      className='object-contain h-full w-full md:col-span-1'
+                    <Image src='/images/screenshots/claw-machine/full.png' alt='Clawmachine Image'
+                      width={128} height={128} className='object-contain h-full w-full md:col-span-1'
                     />
                   </div>
                 </li>
@@ -353,12 +388,12 @@ export default function Home() {
           </div>
         </div>
 
+        {/* thanks for visiting my website */}
         <div className='w-full h-64 p-8 text-center grid content-center bg-white'>
           <p ref={fourthContent} className='
-          fourthContent
             text-3xl hover:text-4xl ease-in duration-200
             font-semibold text-stone-800
-            animate__animated fourthContent animate__bounce
+            animate__animated animate__slow fourthContent opacity-0
           '>Thank you for visiting my website :)</p>
         </div>
       </div>
