@@ -28,7 +28,7 @@ const TopNavbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
             />
           </div>
         ) : (
-          <nav className='fixed w-full'>
+          <nav className='fixed top-0 w-full z-10'>
             {/* Tablets and Desktops */}
             <div className='
               hidden md:h-[60px]
