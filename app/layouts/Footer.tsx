@@ -16,7 +16,7 @@ const Footer = () => {
         p-8 flex flex-col gap-16 justify-center bg-stone-200
       '>
         <div className='
-          w-fit flex flex-row gap-8 justify-end items-center
+          flex flex-row gap-8 justify-center items-center
         '>
           <Link href='/'>
             <Image src='/images/logos/dev-kim-transparent.png' alt='Dev Kim Logo'

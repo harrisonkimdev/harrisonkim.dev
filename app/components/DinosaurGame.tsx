@@ -199,8 +199,6 @@ const DinosaurGame = () => {
 
     return (
         <div className='w-full h-40 flex flex-col'>
-            DinosaurGame
-
             <canvas id="canvas" className='h-[150px] py-4'></canvas>
             <audio id="myAudio">
                 <source src="/sound-effects/bboop.wav" type="audio/wav" />
