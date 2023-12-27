@@ -1,5 +1,5 @@
 var personImage = new Image()
-    personImage.src = '/images/running-person.png'
+personImage.src = '/images/running-person.png'
 
 class Player {
     private x: number
@@ -22,19 +22,9 @@ class Player {
     }
     jump() {
         this.y -= 3
-
-        // setTimeout(() => {
-        //     dinoY += 100;
-        // }, 300);
     }
     fall() {
         this.y += 3
-    }
-    isOnTheGround(): boolean {
-        return this.y === 75 ? true : false
-    }
-    didHitTheCeiling(): boolean {
-        return this.y === 0 ? true : false
     }
     getContactPoints(): number[] {
         return [this.x, this.x + this. width, this.y, this.y + this.height]

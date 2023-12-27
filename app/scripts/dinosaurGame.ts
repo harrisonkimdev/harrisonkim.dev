@@ -68,15 +68,15 @@ const initCanvas = () => {
 
         // jump action
         if (isJumping === true) {
-            if (player.didHitTheCeiling())
-                isJumping = false
             player.jump()
-        } else {
-            if (!player.isOnTheGround())
+
+            setTimeout(() => {
                 player.fall()
+                isJumping = false
+            }, 300);
         }
     }
-
+ 
     // is this the best practice?
     if (canvas instanceof HTMLCanvasElement) {
         ctx = canvas.getContext('2d')
