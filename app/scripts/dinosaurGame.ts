@@ -134,6 +134,17 @@ const initCanvas = () => {
             ctx?.clearRect(0,0, canvas.width, canvas.height)
         }
 
+        if (ctx) {
+            // Set the font and text properties
+            ctx.font = '30px Arial'; // Set the font size and type
+            ctx.fillStyle = '#57534e'; // Set the fill color
+            
+            ctx.fillText("Timer: " + (timer/75).toFixed(1).toString(), window.innerWidth*4/6, 25);
+            ctx.fillText("Score: " + (score).toString(), window.innerWidth*5/6, 25);
+        }
+
+
+
         // object generators
         // bugs
         if (timer % (75*(2 + Math.floor(Math.random()*3))) === 0) {
