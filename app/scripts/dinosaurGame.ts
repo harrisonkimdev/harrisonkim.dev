@@ -12,40 +12,50 @@ const initCanvas = () => {
     var oneImage = new Image()
     oneImage.src = '/images/one.png'
 
+    var animation: number;
     var timer = 0
+    var score = 0
     var bugs: Bug[] = []
     var numbers: Number[] = []
     var isJumping = false
-    var score = 0
 
-    // 
-    var player = {
-        x: 50,
-        y: 75,
-        width: 65,
-        height: 75,
+    class Player {
+        private x: number
+        private y: number
+        private width: number
+        private height: number
+
+        constructor() {
+            this.x = 50
+            this.y = 75
+            this.width = 65
+            this.height = 75
+        }
         draw() {
             if (ctx) {
                 ctx.fillStyle = 'green'
                 ctx?.fillRect(this.x, this.y, this.width, this.height)
                 ctx.drawImage(personImage, this.x, this.y, this.width, this.height)
             }
-        },
+        }
         jump() {
             this.y -= 3
 
             // setTimeout(() => {
             //     dinoY += 100;
             // }, 300);
-        },
+        }
         fall() {
             this.y += 3
-        },
-        isOnTheGround() {
+        }
+        isOnTheGround(): boolean {
             return this.y === 75 ? true : false
-        },
-        didHitTheCeiling() {
+        }
+        didHitTheCeiling(): boolean {
             return this.y === 0 ? true : false
+        }
+        getContactPoints(): number[] {
+            return [this.x, this.x + this. width, this.y, this.y + this.height]
         }
     }
 
@@ -78,7 +88,7 @@ const initCanvas = () => {
         moveForward() {
             this.x -= (5 + Math.floor(Math.random()*4))
         }
-        isOutOfFrame() {
+        isOutOfFrame(): boolean {
             return this.x < 0 ? true : false
         }
     }
@@ -105,13 +115,18 @@ const initCanvas = () => {
         moveForward() {
             this.x -= 3 + Math.floor(Math.random()*1)
         }
-        isOutOfFrame() {
+        isOutOfFrame(): boolean {
             return this.x < 0 ? true : false
+        }
+        getContactPoints(): number[] {
+            return [this.x, this.x + this. width, this.y, this.y + this.height]
         }
     }
 
+    var player = new Player()
+
     const initAnimation = () => {
-        requestAnimationFrame(initAnimation)
+        animation = requestAnimationFrame(initAnimation)
         
         timer++
 
@@ -132,13 +147,18 @@ const initCanvas = () => {
         }
 
         // object dispatcher
+        player.draw()
+
         // bugs
         bugs.forEach((bug, i, o) => {
             if (bug.isOutOfFrame())
                 o.splice(i, 1)
             bug.moveForward()
             bug.draw()
+
+            checkCollision(player.getContactPoints(), bug.getContactPoints())
         })
+
         // numbers
         numbers.forEach((number, i, o) => {
             if (number.isOutOfFrame())
@@ -146,8 +166,6 @@ const initCanvas = () => {
             number.moveForward()
             number.draw()
         })
-
-        player.draw()
 
         // jump action
         if (isJumping === true) {
@@ -160,8 +178,18 @@ const initCanvas = () => {
         }
     }
 
-    const checkCollision = () => {
-        
+    const checkCollision = (player: number[], bug: number[]) => {
+        let xContacted = player[0] < bug[0] && bug[0] < player[1]
+        let yContacted = bug[0] < player[3]
+
+        if (xContacted && yContacted) {
+            console.log('contacted')
+
+            // if (canvas instanceof HTMLCanvasElement) {
+            //     ctx?.clearRect(0,0, canvas.width, canvas.height)
+            // }
+            // cancelAnimationFrame(animation)
+        }
     }
 
     // is this the best practice?
