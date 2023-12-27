@@ -1,23 +1,23 @@
-var bugImage = new Image()
-bugImage.src = '/images/bug.png'
-
 class Bug {
     private x: number
     private y: number
     private width: number
     private height: number
+    private bugImage = new Image()
 
     constructor() {
         this.x = window.innerWidth
         this.y = 125
         this.width = 25
         this.height = 25
+
+        this.bugImage.src = '/images/bug.png'
     }
     draw(ctx: CanvasRenderingContext2D) {
         if (ctx) {
             ctx.fillStyle = 'red'
             ctx?.fillRect(this.x, this.y, this.width, this.height)
-            ctx?.drawImage(bugImage, this.x, this.y, this.width, this.height)
+            ctx?.drawImage(this.bugImage, this.x, this.y, this.width, this.height)
         }
     }
     moveForward() {

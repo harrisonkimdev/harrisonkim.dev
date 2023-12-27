@@ -1,19 +1,19 @@
-var zeroImage = new Image()
-zeroImage.src = '/images/zero.png'
-var oneImage = new Image()
-oneImage.src = '/images/one.png'
-
 class BackgroundNumber {
     private x: number
     private y: number
     private width: number
     private height: number
+    private zeroImage = new Image()
+    private oneImage = new Image()
 
     constructor() {
         this.x = window.innerWidth
         this.y = Math.floor(Math.random() * 75)
         this.width = 25
         this.height = 25
+
+        this.zeroImage.src = '/images/zero.png'
+        this.oneImage.src = '/images/one.png'
     }
     draw(ctx: CanvasRenderingContext2D) {
         var zeroOrOne = Math.floor(Math.random() * 2)
@@ -22,9 +22,9 @@ class BackgroundNumber {
             ctx.fillStyle = 'yellow'
             ctx?.fillRect(this.x, this.y, this.width, this.height)
             if (zeroOrOne === 0)
-                ctx?.drawImage(zeroImage, this.x, this.y, this.width, this.height)
+                ctx?.drawImage(this.zeroImage, this.x, this.y, this.width, this.height)
             else
-                ctx?.drawImage(oneImage, this.x, this.y, this.width, this.height)
+                ctx?.drawImage(this.oneImage, this.x, this.y, this.width, this.height)
         }
     }
     moveForward() {
