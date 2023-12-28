@@ -74,13 +74,13 @@ const initAnimation = () => {
         setTimeout(() => {
             player.fall()
             isJumping = false
-        }, 330);
+        }, 370);
     }
 }
 
 const checkCollision = (player: number[], bug: number[]) => {
-    let xContacted = player[0] < bug[0] && bug[0] < player[1]
-    let yContacted = bug[0] < player[3]
+    let xContacted: boolean = player[0] < bug[0] && bug[0] < player[1]
+    let yContacted: boolean = player[3] == bug[2]
 
     if (xContacted && yContacted) {
         console.log('contacted')

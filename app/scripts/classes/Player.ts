@@ -21,13 +21,18 @@ class Player {
         }
     }
     jump() {
-        this.y -= 3.5
+        this.y -= 2.5
     }
     fall() {
-        this.y += 3.5
+        this.y += 2.5
     }
     getContactPoints(): number[] {
-        return [this.x, this.x + this. width, this.y, this.y + this.height]
+        return [
+            this.x,
+            this.x + this.width,
+            this.y,
+            this.y + this.height
+        ]
     }
 }
 

@@ -27,7 +27,12 @@ class Bug {
         return this.x < 0 ? true : false
     }
     getContactPoints(): number[] {
-        return [this.x, this.x + this. width, this.y, this.y + this.height]
+        return [
+            this.x,
+            this.x + this.width,
+            this.y,
+            this.y + this.height
+        ]
     }
 }
 
