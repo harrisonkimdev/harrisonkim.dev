@@ -83,7 +83,12 @@ const checkCollision = (player: number[], bug: number[]) => {
     let yContacted: boolean = player[3] == bug[2]
 
     if (xContacted && yContacted) {
-        console.log('contacted')
+        score++
+
+        var audio: HTMLElement | null = document.getElementById("dead_bug_sound_effect")
+        if (audio instanceof HTMLAudioElement) {
+            audio?.play()
+        }
 
         // if (canvas instanceof HTMLCanvasElement) {
         //     ctx?.clearRect(0,0, canvas.width, canvas.height)
@@ -93,7 +98,7 @@ const checkCollision = (player: number[], bug: number[]) => {
 }
 
 const playAudio = () => {
-    var audio: HTMLElement | null = document.getElementById("myAudio")
+    var audio: HTMLElement | null = document.getElementById("jump_sound_effect")
     if (audio instanceof HTMLAudioElement) {
         audio?.play()
     }
