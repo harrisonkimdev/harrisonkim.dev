@@ -74,7 +74,7 @@ const initAnimation = () => {
         setTimeout(() => {
             player.fall()
             isJumping = false
-        }, 300);
+        }, 330);
     }
 }
 
