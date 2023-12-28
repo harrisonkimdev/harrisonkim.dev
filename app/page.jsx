@@ -51,6 +51,14 @@ export default function Home() {
     inactivateObserver(thirdRowCard4)
     inactivateObserver(fourthContent)
   }
+
+  const scrollToBottom = () => {
+    console.log('first11')
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    })
+  }
   
   return (
     <>
@@ -88,23 +96,35 @@ export default function Home() {
           </div>
 
           {/* buttons */}
-          <div className='grid grid-cols-2 gap-4 md:gap-8'>
-            <div className='
-              p-3 rounded-lg border border-stone-600 shadow-md
-              text-center cursor-pointer hover:bg-stone-50
-            '>
-              <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank">
-                <span className='font-medium text-stone-500'>Download Resumé</span>
-              </Link>
+          <div className='flex flex-col gap-12'>
+            <div className='grid grid-cols-2 gap-4 md:gap-8'>
+              <div className='
+                p-3 rounded-lg border border-stone-600 shadow-md
+                text-center cursor-pointer hover:bg-stone-50
+              '>
+                <Link href="/assets/Harrison_Kim_Resume.pdf" target="_blank">
+                  <span className='font-medium text-stone-500'>Download Resumé</span>
+                </Link>
+              </div>
+              <div className='
+                p-3 rounded-lg border border-stone-600 shadow-md
+                text-center cursor-pointer hover:bg-stone-50
+              '>
+                <Link href="/contact-me">
+                  <span className='font-medium text-stone-500'>Contact me</span>
+                </Link>
+              </div>
             </div>
-            <div className='
-              p-3 rounded-lg border border-stone-600 shadow-md
-              text-center cursor-pointer hover:bg-stone-50
-            '>
-              <Link href="/contact-me">
-                <span className='font-medium text-stone-500'>Contact me</span>
-              </Link>
-            </div>
+
+            {/* click to go to the bottom of the page to try the dinosaur game */}
+            <button onClick={scrollToBottom}className='hover:scale-125 ease-in duration-150'>
+              <div className='
+                p-3 rounded-lg border border-stone-600 shadow-md
+                text-center cursor-pointer hover:bg-stone-50
+              '>
+                Latest Project. Please Try Me!
+              </div>
+            </button>
           </div>
         </div>
 
