@@ -30,8 +30,8 @@ const initAnimation = () => {
         ctx.font = '30px Arial'; // Set the font size and type
         ctx.fillStyle = '#57534e'; // Set the fill color
         
-        ctx.fillText("Timer: " + (timer/75).toFixed(1).toString(), window.innerWidth*4/6, 25);
-        ctx.fillText("Score: " + (score).toString(), window.innerWidth*5/6, 25);
+        ctx.fillText("Timer: " + (timer/60).toFixed(1).toString(), window.innerWidth*4/6, 25);
+        ctx.fillText(" Score: " + (score).toString(), window.innerWidth*5/6, 25);
     }
 
     // object generators
