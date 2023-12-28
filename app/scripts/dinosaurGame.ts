@@ -41,7 +41,7 @@ const initAnimation = () => {
         bugs.push(bug)
     }
     // numbers
-    if (timer % (25 + Math.floor(Math.random()*5)) === 0) {
+    if (timer % (50 + Math.floor(Math.random()*5)) === 0) {
         var bgNumber = new BackgroundNumber()
         bgNumbers.push(bgNumber)
     }

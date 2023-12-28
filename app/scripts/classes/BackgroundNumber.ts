@@ -27,7 +27,7 @@ class BackgroundNumber {
         }
     }
     moveForward() {
-        this.x -= (5 + Math.floor(Math.random()*4))
+        this.x -= (3 + Math.floor(Math.random()*5))
     }
     isOutOfFrame(): boolean {
         return this.x < 0 ? true : false
