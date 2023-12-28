@@ -1,3 +1,4 @@
+/* eslint-disable */
 const observerOptions = {
     root: null, // Use the viewport as the root
     rootMargin: '0px', // No margin
@@ -70,3 +71,4 @@ export const inactivateObserver = (refObject: React.MutableRefObject<null>) => {
         observer.unobserve(refObject.current)
     }
 }
+/* eslint-enable */
