@@ -15,8 +15,8 @@ class Player {
     }
     draw(ctx: CanvasRenderingContext2D) {
         if (ctx) {
-            ctx.fillStyle = 'green'
-            ctx?.fillRect(this.x, this.y, this.width, this.height)
+            // ctx.fillStyle = 'green'
+            // ctx?.fillRect(this.x, this.y, this.width, this.height)
             ctx.drawImage(this.personImage, this.x, this.y, this.width, this.height)
         }
     }
