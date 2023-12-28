@@ -117,7 +117,9 @@ export default function Home() {
             </div>
 
             {/* click to go to the bottom of the page to try the dinosaur game */}
-            <button onClick={scrollToBottom}className='hover:scale-125 ease-in duration-150'>
+            <button onClick={scrollToBottom}
+              className='hidden md:block hover:scale-125 ease-in duration-150
+            '>
               <div className='
                 p-3 rounded-lg border border-stone-600 shadow-md
                 text-center cursor-pointer hover:bg-stone-50
