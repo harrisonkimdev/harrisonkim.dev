@@ -5,11 +5,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import 'animate.css'
 
-import { activateObserver, inactivateObserver } from './scripts/landingPageAnimation'
-
 import { FaDisplay, FaDatabase, FaToolbox } from "react-icons/fa6";
 
 export default function Home() {
+
   const secondRowTitle = useRef(null)
   const secondRowCard1 = useRef(null)
   const secondRowCard2 = useRef(null)
@@ -20,36 +19,135 @@ export default function Home() {
   const thirdRowCard4 = useRef(null)
   const fourthContent = useRef(null)
 
-  useEffect(() => {    
-    activateObservers()
+  useEffect(() => {
+    const observerOptions = {
+      root: null, // Use the viewport as the root
+      rootMargin: '0px', // No margin
+      threshold: 1.0 // 100% of the element must be visible
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {        
+        if (entry.isIntersecting) {
+          if (entry.target.className.includes('secondRowTitle')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__fadeIn')
+          }
+          else if (entry.target.className.includes('secondRowCard1')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
+          }
+          else if (entry.target.className.includes('secondRowCard2')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
+          }
+          else if (entry.target.className.includes('secondRowCard3')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
+          }
+          else if (entry.target.className.includes('thirdRowCard1')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
+          }
+          else if (entry.target.className.includes('thirdRowCard2')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
+          }
+          else if (entry.target.className.includes('thirdRowCard3')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
+          }
+          else if (entry.target.className.includes('thirdRowCard4')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__backInLeft')
+          }
+          else if (entry.target.className.includes('fourthContent')) {
+            entry.target.classList.remove('opacity-0')
+            entry.target.classList.add('animate__bounce')
+          }
+        }
+        
+        // if you want to add effect every time users scroll through
+        else {
+          if (entry.target.className.includes('secondRowTitle')) {
+            entry.target.classList.add('opacity-0')
+            entry.target.classList.remove('animate__fadeIn')
+          }
+          else if (entry.target.className.includes('fourthContent')) {
+            entry.target.classList.add('opacity-0')
+            entry.target.classList.remove('animate__bounce')
+          }
+        }
+      })
+    }, observerOptions)
+
+    activateObservers(observer)
   
     return () => {
-      inactivateObservers()
+      inactivateObservers(observer)
     }
   }, [])
 
-  const activateObservers = () => {
-    activateObserver(secondRowTitle)
-    activateObserver(secondRowCard1)
-    activateObserver(secondRowCard2)
-    activateObserver(secondRowCard3)
-    activateObserver(thirdRowCard1)
-    activateObserver(thirdRowCard2)
-    activateObserver(thirdRowCard3)
-    activateObserver(thirdRowCard4)
-    activateObserver(fourthContent)
+  const activateObservers = (observer) => {
+
+    if (secondRowTitle.current) {
+      observer.observe(secondRowTitle.current)
+    }
+    if (secondRowCard1.current) {
+      observer.observe(secondRowCard1.current)
+    }
+    if (secondRowCard2.current) {
+      observer.observe(secondRowCard2.current)
+    }
+    if (secondRowCard3.current) {
+      observer.observe(secondRowCard3.current)
+    }
+    if (thirdRowCard1.current) {
+      observer.observe(thirdRowCard1.current)
+    }
+    if (thirdRowCard2.current) {
+      observer.observe(thirdRowCard2.current)
+    }
+    if (thirdRowCard3.current) {
+      observer.observe(thirdRowCard3.current)
+    }
+    if (thirdRowCard4.current) {
+      observer.observe(thirdRowCard4.current)
+    }
+    if (fourthContent.current) {
+      observer.observe(fourthContent.current)
+    }
   }
 
-  const inactivateObservers = () => {
-    inactivateObserver(secondRowTitle)
-    inactivateObserver(secondRowCard1)
-    inactivateObserver(secondRowCard2)
-    inactivateObserver(secondRowCard3)
-    inactivateObserver(thirdRowCard1)
-    inactivateObserver(thirdRowCard2)
-    inactivateObserver(thirdRowCard3)
-    inactivateObserver(thirdRowCard4)
-    inactivateObserver(fourthContent)
+  const inactivateObservers = (observer) => {
+    
+    if (secondRowTitle.current) {
+      observer.unobserve(secondRowTitle.current)
+    }
+    if (secondRowCard1.current) {
+      observer.unobserve(secondRowCard1.current)
+    }
+    if (secondRowCard2.current) {
+      observer.unobserve(secondRowCard2.current)
+    }
+    if (secondRowCard3.current) {
+      observer.unobserve(secondRowCard3.current)
+    }
+    if (thirdRowCard1.current) {
+      observer.unobserve(thirdRowCard1.current)
+    }
+    if (thirdRowCard2.current) {
+      observer.unobserve(thirdRowCard2.current)
+    }
+    if (thirdRowCard3.current) {
+      observer.unobserve(thirdRowCard3.current)
+    }
+    if (thirdRowCard4.current) {
+      observer.unobserve(thirdRowCard4.current)
+    }
+    if (fourthContent.current) {
+      observer.unobserve(fourthContent.current)
+    }
   }
 
   const scrollToBottom = () => {
