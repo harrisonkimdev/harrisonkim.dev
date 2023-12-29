@@ -5,7 +5,7 @@ import { Rubik } from 'next/font/google'
 import React from 'react'
 
 import TopNavbar from '@/layouts/TopNavbar'
-import Main from '@/layouts/Main'
+import MainComponent from '@/layouts/MainComponent'
 import Footer from '@/layouts/Footer'
 
 const rubik = Rubik({ subsets: ['latin'] })
@@ -24,7 +24,9 @@ export default function RootLayout({ children }) {
             <body className={`${rubik.className} min-w-min`}>
                 <TopNavbar />
 
-                <Main children={children} />
+                <MainComponent>
+                    { children }
+                </MainComponent>
                 
                 <Footer />
             </body>

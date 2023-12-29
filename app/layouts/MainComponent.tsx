@@ -1,9 +1,9 @@
 'use client'
 
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { FaAngleUp } from "react-icons/fa6";
 
-const Main = ({ children }: any) => {
+const MainComponent = ({ children }: { children: ReactNode }) => {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -31,4 +31,4 @@ const Main = ({ children }: any) => {
     )
 }
 
-export default Main
+export default MainComponent
