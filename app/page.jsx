@@ -53,7 +53,6 @@ export default function Home() {
   }
 
   const scrollToBottom = () => {
-    console.log('first11')
     window.scrollTo({
       top: document.body.scrollHeight,
       behavior: 'smooth'
