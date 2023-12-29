@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { connectToDB } from '@/utils/db'
-import Guestbook from '@/models/guestbook'
+import Blog from '@/models/blog'
 
 // show
 export const GET = async (
@@ -12,7 +12,7 @@ export const GET = async (
     const { searchParams } = new URL(req.url)
     const readOnly = searchParams.get('readOnly')
 
-    const guestbook = await Guestbook.findOne({ _id: params.id })
+    const blog = await Blog.findOne({ _id: params.id })
 
     // var viewCount
 
@@ -20,7 +20,7 @@ export const GET = async (
     //   // 
     // }
 
-    return NextResponse.json(guestbook, { status: 200 })
+    return NextResponse.json(blog, { status: 200 })
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 500 })
   }
@@ -35,13 +35,13 @@ export const PATCH = async (
   try {
     await connectToDB()
 
-    const guestbook = await Guestbook.findByIdAndUpdate({ _id:params.id }, {
+    const blog = await Blog.findByIdAndUpdate({ _id:params.id }, {
       title,
       content,
       updatedAt: Date.now()
     })
 
-    return NextResponse.json(guestbook, { status: 200 })
+    return NextResponse.json(blog, { status: 200 })
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 500 })
   }
@@ -54,7 +54,7 @@ export const DELETE = async (
   try {
     await connectToDB()
 
-    const result = await Guestbook.deleteOne({ _id: params.id })
+    const result = await Blog.deleteOne({ _id: params.id })
 
     if (result.acknowledged === true) {
       return NextResponse.json({ message: 'Post deleted.' }, { status: 200 })

@@ -48,11 +48,11 @@ const TopNavbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
                 '>Projects</p>
               </Link>
 
-              {/* <Link href="/guestbooks">
+              <Link href="/blogs">
                 <p className='
                   text-stone-100 hover:text-stone-50 hover:underline
-                '>Guestbooks</p>
-              </Link> */}
+                '>Blogs</p>
+              </Link>
             </div>
           </div>
           

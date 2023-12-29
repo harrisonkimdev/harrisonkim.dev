@@ -39,7 +39,7 @@ const Page = () => {
     e.preventDefault()
 
     try {
-      await fetch('/api/guestbooks', {
+      await fetch('/api/blogs', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const Page = () => {
         })
       })
       router.refresh()
-      router.push('/guestbooks')
+      router.push('/blogs')
     } catch (err) {
       // 
     }

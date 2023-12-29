@@ -4,10 +4,10 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { IGuestbook } from '@/interfaces'
+import { IBlog } from '@/interfaces'
 
-const GuestbookEdit = ({ params }: { params: { id: string } }) => {
-  const [guestbook, setGuestbook] = useState<IGuestbook | undefined>(undefined)
+const BlogEdit = ({ params }: { params: { id: string } }) => {
+  const [blog, setBlog] = useState<IBlog | undefined>(undefined)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
 
@@ -21,21 +21,21 @@ const GuestbookEdit = ({ params }: { params: { id: string } }) => {
   }, [])
 
   useEffect(() => {
-    getGuestbook(params.id)
+    getBlog(params.id)
   }, [])
 
-  const getGuestbook = async (id: string) => {
+  const getBlog = async (id: string) => {
     try {
       const res = await fetch(
-        `/api/guestbooks/${id}?readOnly=0`,
+        `/api/blogs/${id}?readOnly=0`,
         {
           cache: 'no-store'
         }
       )
-      const guestbookData = await res.json()
-      setGuestbook(guestbookData)
-      setTitle(guestbookData.title)
-      setContent(guestbookData.content)
+      const blogData = await res.json()
+      setBlog(blogData)
+      setTitle(blogData.title)
+      setContent(blogData.content)
     } catch (err) {
       // 
     }
@@ -45,7 +45,7 @@ const GuestbookEdit = ({ params }: { params: { id: string } }) => {
     e.preventDefault()
 
     try {
-      await fetch(`/api/guestbooks/${guestbook?._id}`, {
+      await fetch(`/api/blogs/${blog?._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const GuestbookEdit = ({ params }: { params: { id: string } }) => {
         })
       })
       router.refresh()
-      router.push('/guestbooks')
+      router.push('/blogs')
     } catch (err) {
       // 
     }
@@ -91,7 +91,7 @@ const GuestbookEdit = ({ params }: { params: { id: string } }) => {
           '> Update </button>
 
           {/* cancel */}
-          <Link href={`/guestbooks/${guestbook?._id}`}>
+          <Link href={`/blogs/${blog?._id}`}>
             <button className='
               px-2
               py-1
@@ -109,4 +109,4 @@ const GuestbookEdit = ({ params }: { params: { id: string } }) => {
   )
 }
 
-export default GuestbookEdit
+export default BlogEdit

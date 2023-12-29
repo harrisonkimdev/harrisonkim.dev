@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { connectToDB } from '@/utils/db'
-import Guestbook from '@/models/guestbook'
+import Blog from '@/models/blog'
 
 // index
 export const GET = async (req: NextRequest) => {
@@ -9,15 +9,15 @@ export const GET = async (req: NextRequest) => {
 
     const currentPage: (string | null) = req.nextUrl.searchParams.get('currentPage')
 
-    const query = Guestbook.find()
+    const query = Blog.find()
     query.skip(10*(Number(currentPage)-1)).limit(10)
-    const guestbooks = await query.exec()
+    const blogs = await query.exec()
     
     // TODO: find a way to merge the following operation into the upper one. 
-    const lengthQuery = Guestbook.find()
+    const lengthQuery = Blog.find()
     const lastPage = Math.ceil((await lengthQuery.estimatedDocumentCount())/10)
     
-    return NextResponse.json({ guestbooks, lastPage }, { status: 200 })
+    return NextResponse.json({ blogs, lastPage }, { status: 200 })
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 500 })
   }
@@ -31,7 +31,7 @@ export const POST = async (req: NextRequest) => {
     await connectToDB()
 
     // TODO: hash the password
-    await Guestbook.create({
+    await Blog.create({
       title,
       content,
       writer,

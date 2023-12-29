@@ -1,6 +1,6 @@
 import { Schema, model, models } from 'mongoose'
 
-const guestbookSchema = new Schema({
+const blogSchema = new Schema({
   title: {
     type: String,
     required: [true, 'Title is required']
@@ -27,6 +27,6 @@ const guestbookSchema = new Schema({
   }
 })
 
-const guestbook = models.guestbook || model("guestbook", guestbookSchema)
+const blog = models.blog || model("blog", blogSchema)
 
-export default guestbook
+export default blog

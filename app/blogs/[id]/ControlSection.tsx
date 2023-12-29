@@ -3,9 +3,9 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { FaPen, FaRegTrashAlt, FaTimes, FaCheck } from 'react-icons/fa'
-import { IGuestbook } from '@/interfaces'
+import { IBlog } from '@/interfaces'
 
-const ControlSection = ({ guestbook }: { guestbook: IGuestbook}) => {
+const ControlSection = ({ blog }: { blog: IBlog}) => {
   const [showPasswordInput, setShowPasswordInput] = useState(false)
   const [password, setPassword] = useState('')
   const [actionType, setActionType] = useState('')
@@ -17,18 +17,18 @@ const ControlSection = ({ guestbook }: { guestbook: IGuestbook}) => {
     e.preventDefault()
 
     // not really need to hash it at the moment.
-    if (password == guestbook?.password) {
+    if (password == blog?.password) {
       
       if (actionType == 'edit') {
-        router.push(`/guestbooks/${guestbook?._id}/edit`)
+        router.push(`/blogs/${blog?._id}/edit`)
       }
       else if (actionType == 'delete') {
-        await fetch(`/api/guestbooks/${guestbook?._id}`, {
+        await fetch(`/api/blogs/${blog?._id}`, {
           method: 'DELETE',
         })
 
         router.refresh()
-        router.push('/guestbooks')
+        router.push('/blogs')
       }
     }
     else {
@@ -84,8 +84,8 @@ const ControlSection = ({ guestbook }: { guestbook: IGuestbook}) => {
           text-sm
         text-stone-500
         `}>
-          <p>{ guestbook?.writer ?? 'writer' }</p>
-          <p>{ guestbook && timeSince(new Date(guestbook.createdAt).valueOf()) } ago</p>
+          <p>{ blog?.writer ?? 'writer' }</p>
+          <p>{ blog && timeSince(new Date(blog.createdAt).valueOf()) } ago</p>
         </div>
 
         { showPasswordInput ? (

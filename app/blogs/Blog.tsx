@@ -2,9 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 import '@/globals.css'
 import { FaUser } from 'react-icons/fa6'
-import { IGuestbook } from '@/interfaces'
+import { IBlog } from '@/interfaces'
 
-const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
+const Blog = ( props: { blogData: IBlog } ) => {
 
   function timeSince(date: number) {
     var seconds = Math.floor((new Date().valueOf() - date) / 1000);
@@ -35,7 +35,7 @@ const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
 
   return (
     <>
-      <Link href={`guestbooks/${props.guestbookData._id}`}
+      <Link href={`blogs/${props.blogData._id}`}
         className='border border-stone-200 shadow rounded-xl p-1
       '>
         <div className='
@@ -47,10 +47,10 @@ const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
             {/* title */}
             <h2 className='
               w-5/6 truncate font-semibold text-xl text-stone-800
-            '>{ props.guestbookData.title }</h2>
+            '>{ props.blogData.title }</h2>
 
             {/* content */}
-            {/* <div id="innerHTML" dangerouslySetInnerHTML={{ __html: guestbookData.content }} /> */}
+            {/* <div id="innerHTML" dangerouslySetInnerHTML={{ __html: blogData.content }} /> */}
           </div>
 
           {/* writer and created at */}
@@ -58,12 +58,12 @@ const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
             {/* writer */}
             <div className='flex flex-row gap-2 items-center'>
               <FaUser />
-              <span className='whitespace-nowrap'>{ props.guestbookData.writer }</span>
+              <span className='whitespace-nowrap'>{ props.blogData.writer }</span>
             </div>
 
             {/* days ago */}
             <p className='whitespace-nowrap text-stone-400 text-sm'>
-              { timeSince(new Date(props.guestbookData.createdAt).valueOf()) } ago
+              { timeSince(new Date(props.blogData.createdAt).valueOf()) } ago
             </p>
           </div>
         </div>
@@ -72,4 +72,4 @@ const Guestbook = ( props: { guestbookData: IGuestbook } ) => {
   )
 }
 
-export default Guestbook
+export default Blog

@@ -15,11 +15,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className='flex items-center justify-between gap-16'>
             <h1 className='
               text-3xl md:text-4xl font-semibold text-stone-800
-            '> Guestbooks </h1>
+            '> Blogs </h1>
 
             {/* write */}
-            { usePathname() === '/guestbooks' && (
-              <Link href='/guestbooks/create'> 
+            { usePathname() === '/blogs' && (
+              <Link href='/blogs/create'> 
                 <div className='
                   flex
                   flex-row
@@ -40,8 +40,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               </Link>
             )}
             {/* go back */}
-            { usePathname() !== '/guestbooks' && (
-              <Link href='/guestbooks'>
+            { usePathname() !== '/blogs' && (
+              <Link href='/blogs'>
                 <FaAngleLeft className='cursor-pointer text-2xl text-stone-800' />
               </Link>
             )}
