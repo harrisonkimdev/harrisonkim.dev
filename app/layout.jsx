@@ -19,7 +19,6 @@ export default function RootLayout({ children }) {
   const [toggleSidebar, setToggleSidebar] = useState(false)
 
   const scrollToTop = () => {
-    console.log('first')
     window.scrollTo({
       top: 0,
       behavior: 'smooth'  // This will create a smooth scrolling effect
@@ -48,7 +47,7 @@ export default function RootLayout({ children }) {
             { children }
           </div>
 
-          <button type="button" click={scrollToTop}
+          <button type="button" onClick={scrollToTop}
             className='
             fixed bottom-0 right-0 mb-8 mr-20 p-2
             rounded-xl border-2 border-stone-800 bg-stone-200 hover:bg-stone-100
