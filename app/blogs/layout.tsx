@@ -1,58 +1,21 @@
-'use client'
-
 import React from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { FaPen, FaAngleLeft } from 'react-icons/fa6'
+import BlogSidebar from './components/BlogSidebar'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  
-  return (
-    <div className='w-full pt-5 md:pt-16 bg-stone-50'>
-      <div className='max-w-5xl mx-auto flex flex-col px-8'>
-        {/* heading */}
-        <div className='mb-2'>
-          <div className='flex items-center justify-between gap-16'>
-            <h1 className='
-              text-3xl md:text-4xl font-semibold text-stone-800
-            '> Blogs </h1>
-
-            {/* write */}
-            { usePathname() === '/blogs' && (
-              <Link href='/blogs/create'> 
+    return (
+        <div className='w-full py-10 bg-stone-50'>
+            <div className='max-w-5xl mx-auto px-8 grid grid-cols-5'>
+                {/* heading */}
                 <div className='
-                  flex
-                  flex-row
-                  gap-2
-                  items-center
-                  px-3
-                  py-1
-                  rounded-lg
-                  shadow-inner
-                  border
-                border-stone-300
-                bg-stone-200
-                hover:bg-stone-300
+                    col-span-1 rounded-lg border-2 border-stone-500 bg-stone-100
                 '>
-                  <FaPen className='text-stone-800' />
-                  <span className='text-stone-800 font-medium text-lg'>Write</span>
+                    <BlogSidebar />
                 </div>
-              </Link>
-            )}
-            {/* go back */}
-            { usePathname() !== '/blogs' && (
-              <Link href='/blogs'>
-                <FaAngleLeft className='cursor-pointer text-2xl text-stone-800' />
-              </Link>
-            )}
-          </div>
-          <hr className='border-1 border-stone-800 mt-1'/>
+                
+                <main className='col-span-4 h-full'>{ children }</main>
+            </div>
         </div>
-
-        <section className='pb-20'>{ children }</section>
-      </div>
-    </div>
-  )
+    )
 }
 
 export default Layout
