@@ -26,7 +26,7 @@ const TopNavbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
         <nav className='fixed top-0 w-full z-10'>
           {/* Tablets and Desktops */}
           <div className='
-            hidden
+            hidden h-16
             px-6 py-4 md:flex justify-between items-center text-stone-200 bg-black
           '>
             <Link href="/" className='flex gap-2 items-center'> 
