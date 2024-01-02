@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
             `}>
                 <TopNavbar />
 
-                <div className='flex-grow'>
+                <div className='mt-8 flex-grow'>
                     <MainComponent>
                         { children }
                     </MainComponent>
