@@ -12,7 +12,6 @@ const Footer = () => {
   return (
     <>
       <footer className='
-
         p-8 flex flex-col gap-16 justify-center bg-stone-200
       '>
         <div className='
@@ -48,9 +47,11 @@ const Footer = () => {
         </div>
 
         {/* dinosaur game */}
-        <div className='hidden md:block'>
-          <DinosaurGame />
-        </div>
+        { pathname === '/' ? (
+          <div className='hidden md:block'>
+            <DinosaurGame />
+          </div>
+        ) : (<></>)}
       </footer>
     </>
   )
