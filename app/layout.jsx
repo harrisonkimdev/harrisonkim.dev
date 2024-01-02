@@ -18,15 +18,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <head>
-                
-            </head>
-            <body className={`${rubik.className} min-w-min`}>
+            <body className={`${rubik.className}
+                min-w-min flex flex-col
+            `}>
                 <TopNavbar />
 
-                <MainComponent>
-                    { children }
-                </MainComponent>
+                <div className='flex-grow'>
+                    <MainComponent>
+                        { children }
+                    </MainComponent>
+                </div>
                 
                 <Footer />
             </body>

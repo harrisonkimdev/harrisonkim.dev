@@ -164,7 +164,7 @@ export default function Home() {
 
         {/* first row */}
         <div className='
-          w-full min-h-screen px-8 py-10 md:py-20 bg-stone-100
+          w-full h-screen px-8 py-10 md:py-20 bg-stone-100
           flex flex-col gap-8 md:gap-16 justify-center items-center
         '>
           {/* profile picture and greeting */}
@@ -229,7 +229,7 @@ export default function Home() {
 
         {/* second row */}
         <div className='
-          w-full min-h-screen px-8 pt-10 pb-20 md:py-28
+          w-full h-screen px-8 pt-10 pb-20 md:py-28
           flex flex-col justify-center bg-white
         '>
           <div className='

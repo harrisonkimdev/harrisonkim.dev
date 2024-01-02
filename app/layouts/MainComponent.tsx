@@ -12,11 +12,8 @@ const MainComponent = ({ children }: { children: ReactNode }) => {
     }
 
     return (
-        <div className="relative overflow-hidden pt-[52.5px]">
-            <div className={`   
-                min-h-[calc(100vh-(60px+76px))] flex flex-grow
-                md:min-h-[calc(100vh-(60px+172px))]
-            `}>
+        <div className="relative overflow-hidden">
+            <div>
                 { children }
             </div>
 
