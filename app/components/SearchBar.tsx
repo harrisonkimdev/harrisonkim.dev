@@ -13,7 +13,7 @@ const SearchBar = ({ searchSubmit }: { searchSubmit: Function }) => {
     }
 
     return (
-        <div className='my-8 flex justify-center'>
+        <div className='flex justify-center'>
             <form onSubmit={(e) => emitSearchQuery(e)} className='flex flex-row'>
                 <label htmlFor="searchQuery"></label>
                 <input

@@ -5,9 +5,7 @@ import ControlSection from './ControlSection'
 
 const getBlog = async (id: string) => {
   try {
-    const res = await fetch(`${process.env.BASE_URL}/api/blogs/${id}?readOnly=1`, {
-      cache: 'no-store'
-    })
+    const res = await fetch(`${process.env.BASE_URL}/api/blogs/${id}?readOnly=1`)
     const blog = await res.json()
     return blog
   } catch (err) {

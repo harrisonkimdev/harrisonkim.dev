@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { FaPen, FaRegTrashAlt, FaTimes, FaCheck } from 'react-icons/fa'
 import { IBlog } from '@/interfaces'
 
-const ControlSection = ({ blog }: { blog: IBlog}) => {
+const ControlSection = ({ blog }: { blog: IBlog }) => {
   const [showPasswordInput, setShowPasswordInput] = useState(false)
   const [password, setPassword] = useState('')
   const [actionType, setActionType] = useState('')

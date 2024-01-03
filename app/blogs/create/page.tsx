@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
 
 const Page = () => {
   const [title, setTitle] =  useState('')

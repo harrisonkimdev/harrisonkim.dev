@@ -26,12 +26,7 @@ const BlogEdit = ({ params }: { params: { id: string } }) => {
 
   const getBlog = async (id: string) => {
     try {
-      const res = await fetch(
-        `/api/blogs/${id}?readOnly=0`,
-        {
-          cache: 'no-store'
-        }
-      )
+      const res = await fetch(`/api/blogs/${id}?readOnly=0`)
       const blogData = await res.json()
       setBlog(blogData)
       setTitle(blogData.title)
