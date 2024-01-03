@@ -32,7 +32,7 @@ const Sidebar = ({ handleClose, emitCloseSidebar }: { handleClose: Function, emi
           <Link href="/blogs" onClick={() => emitCloseSidebar()}>
             <p className='
               font-medium text-stone-500 hover:text-stone-600
-            '>Blogs</p>
+            '>Blog</p>
           </Link>
       </div>
     </div>
