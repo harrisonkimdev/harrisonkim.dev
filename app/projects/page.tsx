@@ -32,7 +32,7 @@ const Page = () => {
     }
 
   return (
-    <div className='h-screen bg-stone-50 w-full px-4'>
+    <div className='w-full px-4 bg-stone-50'>
         <div className='max-w-5xl mx-auto py-12 h-full'>
             {/* terminal window */}
             <div className={`
