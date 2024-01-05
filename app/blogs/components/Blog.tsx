@@ -68,7 +68,7 @@ const Blog = ({ blogData }: { blogData: IBlog }) => {
                 </div>
 
                 {/* read more */}
-                <div className='flex justify-end'>
+                <div className='mt-4 flex justify-end'>
                     <Link href={`#`}>
                         <p className='
                             w-min px-3 py-2 rounded-full whitespace-nowrap text-lg text-stone-800
