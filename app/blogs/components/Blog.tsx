@@ -69,7 +69,7 @@ const Blog = ({ blogData }: { blogData: IBlog }) => {
 
                 {/* read more */}
                 <div className='mt-4 flex justify-end'>
-                    <Link href={`#`}>
+                    <Link href={`/blogs/${blogData._id}`}>
                         <p className='
                             w-min px-3 py-2 rounded-full whitespace-nowrap text-lg text-stone-800
                             bg-gradient-to-br from-amber-400 hover:from-amber-300
