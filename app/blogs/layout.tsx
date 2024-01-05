@@ -3,7 +3,7 @@ import BlogSidebar from './components/BlogSidebar'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div className='w-full py-20 bg-stone-50'>
+        <div className='w-full min-h-screen py-20 bg-stone-50'>
             <div className='max-w-5xl mx-auto px-8 md:grid grid-cols-5'>
                 <div className='
                     hidden md:block col-span-1
@@ -13,7 +13,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     <BlogSidebar />
                 </div>
                 
-                <div className='md:col-span-4'>
+                <div className='md:col-span-4 px-10'>
                     { children }
                 </div>
             </div>

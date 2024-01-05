@@ -64,7 +64,7 @@ const Blogs = () => {
     }
 
     return (
-        <div className='h-full sm:px-10'>
+        <div className='h-full'>
             <div className='flex justify-between items-center'>
                 <div>
                     hide side bar button
