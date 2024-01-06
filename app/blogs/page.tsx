@@ -64,7 +64,7 @@ const Blogs = () => {
     }
 
     return (
-        <div className='h-full'>
+        <div className='min-h-screen'>
             <SearchBar searchSubmit={(searchQuery: string) => handleSubmit(searchQuery)} />
                 
             <div className='
