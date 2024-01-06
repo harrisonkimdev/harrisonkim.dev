@@ -26,8 +26,8 @@ const Blogs = () => {
             content: 'first blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog content',
             writer: 'first blog writer',
             password: 'first blog password',
-            createdAt: 'created at',
-            updatedAt: 'updated at',
+            createdAt: '2024-01-05',
+            updatedAt: '2024-01-05',
         },
         {
             _id: '2',
@@ -35,8 +35,8 @@ const Blogs = () => {
             content: 'second blog content',
             writer: 'second blog writer',
             password: 'second blog password',
-            createdAt: 'created at',
-            updatedAt: 'updated at',
+            createdAt: '2024-01-05',
+            updatedAt: '2024-01-05',
         },
         {
             _id: '3',
@@ -44,8 +44,8 @@ const Blogs = () => {
             content: 'third blog content',
             writer: 'third blog writer',
             password: 'third blog password',
-            createdAt: 'created at',
-            updatedAt: 'updated at',
+            createdAt: '2024-01-05',
+            updatedAt: '2024-01-05',
         },
         {
             _id: '4',
@@ -53,8 +53,8 @@ const Blogs = () => {
             content: 'fourth blog content',
             writer: 'fourth blog writer',
             password: 'fourth blog password',
-            createdAt: 'created at',
-            updatedAt: 'updated at',
+            createdAt: '2024-01-05',
+            updatedAt: '2024-01-05',
         }
     ]
 

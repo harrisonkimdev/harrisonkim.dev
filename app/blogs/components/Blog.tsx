@@ -50,8 +50,8 @@ const Blog = ({ blogData }: { blogData: IBlog }) => {
             <div className='min-h-[10vh] h-full p-4 flex flex-col justify-between'>
                 <div className='w-72 flex flex-col justify-between'>
                     {/* category / tag */}
-                    <div className=''>
-                        <p className='text-stone-400'>{ blogData.writer }</p>
+                    <div className='flex justify-between'>
+                        <span>Tag</span>
                     </div>
 
                     {/* title */}
@@ -75,6 +75,11 @@ const Blog = ({ blogData }: { blogData: IBlog }) => {
                             bg-gradient-to-br from-amber-400 hover:from-amber-300
                         '>Read More</p>
                     </Link>
+                </div>
+
+                <div className='mt-4 flex justify-between text-neutral-400'>
+                    <span>Harrison Kim</span>
+                    <span>{ blogData.createdAt }</span>
                 </div>
             </div>
         </div>
