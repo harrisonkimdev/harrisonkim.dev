@@ -65,12 +65,7 @@ const Blogs = () => {
 
     return (
         <div className='h-full'>
-            <div className='flex justify-between items-center'>
-                <div>
-                    hide side bar button
-                </div>
-                <SearchBar searchSubmit={(searchQuery: string) => handleSubmit(searchQuery)} />
-            </div>
+            <SearchBar searchSubmit={(searchQuery: string) => handleSubmit(searchQuery)} />
                 
             <div className='
                 my-8 grid grid-col-1 gap-8 sm:grid-cols-2 sm:gap-4

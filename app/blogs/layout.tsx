@@ -7,8 +7,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <div className='max-w-5xl mx-auto px-8 md:grid grid-cols-5'>
                 <div className='
                     hidden md:block col-span-1
-                    h-1/2 p-8 overflow-y-auto rounded-lg
-                    border-2 border-stone-500 bg-stone-100
+                    h-80 p-4 overflow-y-auto rounded-lg
                 '>
                     <BlogSidebar />
                 </div>

@@ -1,16 +1,37 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 
 const BlogSidebar = () => {
-  return (
-    <div className=''>
-        <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-        </ul>
-    </div>
-  )
+    const [tags, setTags] = useState([""])
+
+    useEffect(() => {
+        fetchByTag()
+    }, [])
+
+    const fetchByTag = async (tagType?: string) => {
+        // const res = await fetch(`/api/blogs/${tagType}`)
+        // const data = await res.json()
+
+        console.log('fetcg')
+    
+        setTags(['ML', "AI", "JavaScript", "TypeScript", "Python", "React.js"])
+    }
+    
+    return (
+        <>
+            <p>Search by tag</p>
+            <div className='flex flex-wrap'>
+                { tags?.map((tag: string) => (
+                    <span onClick={() => fetchByTag(tag)} className='
+                        w-min m-1 px-2 py-1 border rounded-lg bg-stone-400 hover:bg-stone-500
+                        whitespace-nowrap font-light text-white
+                        cursor-pointer
+                    '>{ tag }</span>
+                )) }
+            </div>
+        </>
+    )
 }
 
 export default BlogSidebar
