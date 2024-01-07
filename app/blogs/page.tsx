@@ -24,8 +24,24 @@ const Blogs = () => {
             _id: '1',
             title: 'first blog title',
             content: 'first blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog contentfirst blog content',
-            writer: 'first blog writer',
-            password: 'first blog password',
+            tags: [
+                {
+                    _id: '1',
+                    title: 'first tag within the first blog',
+                    createdAt: '2024-01-05',
+                    updatedAt: '2024-01-05',
+                }
+            ],
+            comments: [
+                {
+                    _id: '1',
+                    writer: 'first comment writer',
+                    comment: 'first comment',
+                    password: '123',
+                    createdAt: '2024-01-05',
+                    updatedAt: '2024-01-05',        
+                }
+            ],
             createdAt: '2024-01-05',
             updatedAt: '2024-01-05',
         },
@@ -33,8 +49,24 @@ const Blogs = () => {
             _id: '2',
             title: 'second blog title',
             content: 'second blog content',
-            writer: 'second blog writer',
-            password: 'second blog password',
+            tags: [
+                {
+                    _id: '1',
+                    title: 'first tag within the second blog',
+                    createdAt: '2024-01-05',
+                    updatedAt: '2024-01-05',
+                }
+            ],
+            comments: [
+                {
+                    _id: '1',
+                    writer: 'first comment writer',
+                    comment: 'first comment',
+                    password: '123',
+                    createdAt: '2024-01-05',
+                    updatedAt: '2024-01-05',        
+                }
+            ],
             createdAt: '2024-01-05',
             updatedAt: '2024-01-05',
         },
@@ -42,8 +74,24 @@ const Blogs = () => {
             _id: '3',
             title: 'third blog title',
             content: 'third blog content',
-            writer: 'third blog writer',
-            password: 'third blog password',
+            tags: [
+                {
+                    _id: '1',
+                    title: 'first tag within the third blog',
+                    createdAt: '2024-01-05',
+                    updatedAt: '2024-01-05',
+                }
+            ],
+            comments: [
+                {
+                    _id: '1',
+                    writer: 'first comment writer',
+                    comment: 'first comment',
+                    password: '123',
+                    createdAt: '2024-01-05',
+                    updatedAt: '2024-01-05',        
+                }
+            ],
             createdAt: '2024-01-05',
             updatedAt: '2024-01-05',
         },
@@ -51,8 +99,24 @@ const Blogs = () => {
             _id: '4',
             title: 'fourth blog title',
             content: 'fourth blog content',
-            writer: 'fourth blog writer',
-            password: 'fourth blog password',
+            tags: [
+                {
+                    _id: '1',
+                    title: 'first tag within the fourth blog',
+                    createdAt: '2024-01-05',
+                    updatedAt: '2024-01-05',
+                }
+            ],
+            comments: [
+                {
+                    _id: '1',
+                    writer: 'first comment writer',
+                    comment: 'first comment',
+                    password: '123',
+                    createdAt: '2024-01-05',
+                    updatedAt: '2024-01-05',
+                }
+            ],
             createdAt: '2024-01-05',
             updatedAt: '2024-01-05',
         }
