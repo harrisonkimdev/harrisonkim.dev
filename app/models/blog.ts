@@ -1,32 +1,36 @@
 import { Schema, model, models } from 'mongoose'
 
-const blogSchema = new Schema({
-  title: {
-    type: String,
-    required: [true, 'Title is required']
-  },
-  content: {
-    type: String,
-  },
-  writer: {
-    type: String,
-    required: [true, 'Writer is required']
-  },
-  password: {
-    type: String,
-    required: [true, 'Password is required']
-  },
-  createdAt: {
-    type: Date,
-    immutable: true,
-    default: () => Date.now(),
-  },
-  updatedAt: {
-    type: Date,
-    default: () => Date.now(),
-  }
+const tagSchema = new Schema({
+    title: String
 })
 
-const blog = models.blog || model("blog", blogSchema)
+const commentsSchema = new Schema({
+    writer: String,
+    content: String,
+    password: String
+})
 
-export default blog
+const blogSchema = new Schema({
+    title: {
+        type: String,
+        required: [true, 'Title is required']
+    },
+    content: {
+        type: String
+    },
+    tags: [ tagSchema ],
+    comments: [ commentsSchema ],
+    createdAt: {
+        type: Date,
+        immutable: true,
+        default: () => Date.now()
+    },
+    updatedAt: {
+        type: Date,
+        default: () => Date.now()
+    }
+})
+
+const Blog = models.blog || model("Blog", blogSchema)
+
+export default Blog

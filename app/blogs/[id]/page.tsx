@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image'
 import { FaAngleLeft } from "react-icons/fa6";
 
+import Comments from '../components/Comments';
+
 const getBlog = async (id: string) => {
     // try {
     //     const res = await fetch(`${process.env.BASE_URL}/api/blogs/${id}?readOnly=1`)
@@ -60,6 +62,11 @@ const BlogShow = async ({ params }: { params: { id: string } }) => {
             {/* <div dangerouslySetInnerHTML={{ __html: blog.content }}
                 className='my-2 md:my-3 text-stone-600'
             /> */}
+
+            {/* reply section */}
+            <div className='mt-12'>
+                <Comments blogId={blog._id} />
+            </div>
         </div>
     )
 }
