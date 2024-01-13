@@ -35,57 +35,73 @@ const TableComponent = () => {
     fetchBlogData()
   }, [])
 
+  const convertDate = (dateInString: string | undefined) => {
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ]
+    
+    if (dateInString) {
+      const date = new Date(dateInString)
+
+      const day = date.getDate()
+      const month = months[date.getMonth()]
+      const year = date.getFullYear()
+      const hours = (date.getHours() % 12) || 12 // Convert to 12-hour format
+      const minutes = String(date.getMinutes()).padStart(2, '0')
+      const period = date.getHours() < 12 ? 'AM' : 'PM'
+      
+      return `${month} ${day}, ${year} ${hours}:${minutes} ${period}`
+    }
+  }
+
   return (
-    <>
-      <Table celled>
-        <TableHeader>
-          <TableRow>
-            <TableHeaderCell>Title</TableHeaderCell>
-            <TableHeaderCell>Content</TableHeaderCell>
-            <TableHeaderCell>Tags</TableHeaderCell>
-            <TableHeaderCell>Updated At</TableHeaderCell>
-          </TableRow>
-        </TableHeader>
+    <Table celled>
+      <TableHeader>
+        <TableRow>
+          <TableHeaderCell width={4}>Title</TableHeaderCell>
+          <TableHeaderCell width={5}>Content</TableHeaderCell>
+          <TableHeaderCell width={1}>Updated At</TableHeaderCell>
+        </TableRow>
+      </TableHeader>
 
-        <TableBody>
-          { blog?.map((blog: IBlog) => {
-            return (
-              <TableRow key={blog._id} className='hover:bg-stone-100'>
-                <TableCell>
-                  <Link href={`/blog/${blog._id}`}
-                    className='text-stone-800 hover:text-stone-400 hover:underline'
-                  >{ blog.title }</Link>
-                </TableCell>
-                <TableCell>
-                  <div dangerouslySetInnerHTML={{ __html: blog.content }} className='' />
-                </TableCell>
-                <TableCell>{ blog.tags.map((tag: string) => <>{ tag }</>) }</TableCell>
-                <TableCell>{ blog.updatedAt.toString() }</TableCell>
-              </TableRow>
-            )
-          }) }
-        </TableBody>
+      <TableBody>
+        { blog?.map((blog: IBlog) => {
+          return (
+            <TableRow key={blog._id} className='hover:bg-stone-100'>
+              <TableCell>
+                <Link href={`/blog/${blog._id}`}
+                  className='text-stone-800 hover:text-stone-400 hover:underline'
+                >{ blog.title }</Link>
+              </TableCell>
+              <TableCell>
+                <div dangerouslySetInnerHTML={{ __html: blog.content }} className='h-[3rem] overflow-hidden line-clamp-2' />
+              </TableCell>
+              <TableCell><span className='whitespace-nowrap'>{ convertDate(blog.updatedAt) }</span></TableCell>
+            </TableRow>
+          )
+        }) }
+      </TableBody>
 
-        <TableFooter>
-          <TableRow>
-            <TableHeaderCell colSpan='4'>
-              <Menu floated='right' pagination>
-                <MenuItem as='a' icon>
-                  <Icon name='chevron left' />
-                </MenuItem>
-                <MenuItem as='a'>1</MenuItem>
-                <MenuItem as='a'>2</MenuItem>
-                <MenuItem as='a'>3</MenuItem>
-                <MenuItem as='a'>4</MenuItem>
-                <MenuItem as='a' icon>
-                  <Icon name='chevron right' />
-                </MenuItem>
-              </Menu>
-            </TableHeaderCell>
-          </TableRow>
-        </TableFooter>
-      </Table>
-    </>
+      <TableFooter>
+        <TableRow>
+          <TableHeaderCell colSpan='3'>
+            <Menu floated='right' pagination>
+              <MenuItem as='a' icon>
+                <Icon name='chevron left' />
+              </MenuItem>
+              <MenuItem as='a'>1</MenuItem>
+              <MenuItem as='a'>2</MenuItem>
+              <MenuItem as='a'>3</MenuItem>
+              <MenuItem as='a'>4</MenuItem>
+              <MenuItem as='a' icon>
+                <Icon name='chevron right' />
+              </MenuItem>
+            </Menu>
+          </TableHeaderCell>
+        </TableRow>
+      </TableFooter>
+    </Table>
   )
 }
 
