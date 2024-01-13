@@ -3,8 +3,8 @@ export interface IComment {
     writer: string
     comment: string
     password: string
-    createdAt: Date
-    updatedAt: Date
+    createdAt: string
+    updatedAt: string
 }
 export interface IBlog {
     _id: string
@@ -12,6 +12,6 @@ export interface IBlog {
     content: string
     tags: string[]
     comments: IComment[]
-    createdAt: Date
-    updatedAt: Date
+    createdAt: string
+    updatedAt: string
 }
