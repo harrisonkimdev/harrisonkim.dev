@@ -46,7 +46,7 @@ const AddComment = (
             <form onSubmit={(e) => addComment(e)}
                 className='mb-8 p-4'
             >
-                <div className='flex justify-between'>
+                <div className='flex flex-col md:flex-row md:justify-between'>
                     <div className='flex flex-col'>
                         <label htmlFor="writer">Writer</label>
                         <input type="text" id="writer"
