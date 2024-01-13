@@ -42,11 +42,11 @@ const BlogComponent = ({ blogData }: { blogData: IBlog }) => {
         <Link href={`/blog/${blogData._id}`} className='text-black hover:text-black'>
             <div className='flex flex-col border shadow-md hover:shadow-lg'>
                 <div className=''>
-                    <Image
-                        src="https://placehold.co/600x400"
+                    <Image 
+                        src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="Blog Image"
-                        width={600}
-                        height={400}
+                        width={1470}
+                        height={980}
                         className='object-cover'
                     />
                 </div>

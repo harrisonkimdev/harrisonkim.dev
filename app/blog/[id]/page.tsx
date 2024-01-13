@@ -35,7 +35,7 @@ const BlogShow = ({ params }: { params: { id: string } }) => {
         
         if (dateInString) {
             const date = new Date(dateInString)
-            
+
             const day = date.getDate()
             const month = months[date.getMonth()]
             const year = date.getFullYear()
@@ -56,17 +56,16 @@ const BlogShow = ({ params }: { params: { id: string } }) => {
             {/* image and title */}
             <div className='mt-8 relative'>
                 <Image 
-                    src="https://placehold.co/600x400"
+                    src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Blog Image"
-                    width={600}
-                    height={400}
+                    width={1470}
+                    height={980}
                     className='object-cover absolute h-[200px]'
                 />
-
                 <h1 className='
                     absolute top-0 left-0 right-0 z-10
                     h-[200px] m-0 ml-12 flex items-center
-                    text-stone-800
+                    text-stone-50
                 '>{ blog?.title }</h1>
             </div>
 
