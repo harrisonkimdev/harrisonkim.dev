@@ -11,27 +11,27 @@ import Footer from '@/layouts/Footer'
 const rubik = Rubik({ subsets: ['latin'] })
 
 export const metadata = {
-    title: 'harrisonkim.dev',
-    description: 'Harrison Kim\'s Personal Website.',
+  title: 'harrisonkim.dev',
+  description: 'Harrison Kim\'s Personal Website.',
 }
 
 export default function RootLayout({ children }) {
-    return (
-        <html lang="en">
-            <body className={`
-                ${rubik.className}
-                flex flex-col
-            `}>
-                <TopNavbar />
+  return (
+    <html lang="en">
+      <body className={`
+        ${rubik.className}
+        flex flex-col
+      `}>
+        <TopNavbar />
 
-                <div className='mt-8 flex-grow'>
-                    <MainComponent>
-                        { children }
-                    </MainComponent>
-                </div>
-                
-                <Footer />
-            </body>
-        </html>
-    )
+        <div className='mt-8 flex-grow'>
+          <MainComponent>
+            { children }
+          </MainComponent>
+        </div>
+        
+        <Footer />
+      </body>
+    </html>
+  )
 }
