@@ -2,7 +2,15 @@
 
 import React, { useState } from 'react'
 
-const AddComment = ({ blogId }: { blogId: string }) => {
+const AddComment = (
+    {
+        blogId,
+        fetchComments
+    } :
+    {
+        blogId: string | undefined,
+        fetchComments: any
+    }) => {
     const [writer, setWriter] = useState("")
     const [comment, setComment] = useState("")
     const [password, setPassword] = useState("")
@@ -22,6 +30,15 @@ const AddComment = ({ blogId }: { blogId: string }) => {
             })
         })
         const data = await res.json()
+
+        resetInputFields()
+        fetchComments()
+    }
+
+    const resetInputFields = () => {
+        setWriter('')
+        setComment('')
+        setPassword('')
     }
 
     return (

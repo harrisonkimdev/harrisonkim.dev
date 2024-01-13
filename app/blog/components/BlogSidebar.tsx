@@ -10,10 +10,8 @@ const BlogSidebar = () => {
     }, [])
 
     const fetchByTag = async (tagType?: string) => {
-        // const res = await fetch(`/api/blogs/${tagType}`)
+        // const res = await fetch(`/api/blog/${tagType}`)
         // const data = await res.json()
-
-        console.log('fetcg')
     
         setTags(['ML', "AI", "JavaScript", "TypeScript", "Python", "React.js"])
     }

@@ -26,7 +26,7 @@ const BlogEdit = ({ params }: { params: { id: string } }) => {
 
   const getBlog = async (id: string) => {
     try {
-      const res = await fetch(`/api/blogs/${id}?readOnly=0`)
+      const res = await fetch(`/api/blog/${id}?readOnly=0`)
       const blogData = await res.json()
       setBlog(blogData)
       setTitle(blogData.title)
@@ -40,7 +40,7 @@ const BlogEdit = ({ params }: { params: { id: string } }) => {
     e.preventDefault()
 
     try {
-      await fetch(`/api/blogs/${blog?._id}`, {
+      await fetch(`/api/blog/${blog?._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const BlogEdit = ({ params }: { params: { id: string } }) => {
         })
       })
       router.refresh()
-      router.push('/blogs')
+      router.push('/blog')
     } catch (err) {
       // 
     }
@@ -86,7 +86,7 @@ const BlogEdit = ({ params }: { params: { id: string } }) => {
           '> Update </button>
 
           {/* cancel */}
-          <Link href={`/blogs/${blog?._id}`}>
+          <Link href={`/blog/${blog?._id}`}>
             <button className='
               px-2
               py-1

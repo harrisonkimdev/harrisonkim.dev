@@ -3,14 +3,19 @@ import blog from "@/models/blog"
 
 export async function POST(req: Request) {
     const data = await req.json()
-    console.log(data)
 
     // TODO: validation checks
 
-    const blogItem = await blog.findOneAndUpdate(
+    await blog.findOneAndUpdate(
         { _id: data.blogId },
         { $push: {
-            comments: { writer: data.writer, comment: data.comment, password: data.password }
+            comments: {
+                writer: data.writer,
+                comment: data.comment,
+                password: data.password,
+                createdAt: Date.now(),
+                updatedAt: Date.now(),
+            }
         }},
         { new: true }
     )

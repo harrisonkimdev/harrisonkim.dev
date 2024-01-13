@@ -2,7 +2,6 @@ import { NextResponse, type NextRequest } from 'next/server'
 import { connectToDB } from '@/utils/db'
 import Blog from '@/models/blog'
 
-// show
 export const GET = async (
     req: NextRequest, { params }: { params: { id: string } }
 ) => {
@@ -20,13 +19,12 @@ export const GET = async (
     //   // 
     // }
 
-    return NextResponse.json(blog, { status: 200 })
+    return NextResponse.json({ blog }, { status: 200 })
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 500 })
   }
 }
 
-// update
 export const PATCH = async (
   req: NextRequest, { params }: { params: { id: string } }
 ) => {
@@ -47,7 +45,6 @@ export const PATCH = async (
   }
 }
 
-// delete
 export const DELETE = async (
   req: NextRequest, { params }: { params: { id: string} }
 ) => {

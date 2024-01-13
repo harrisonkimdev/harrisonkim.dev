@@ -1,14 +1,5 @@
 import { Schema, model, models } from 'mongoose'
-
-const tagSchema = new Schema({
-    title: String
-})
-
-const commentsSchema = new Schema({
-    writer: String,
-    content: String,
-    password: String
-})
+// import { commentSchema } from './comment'
 
 const blogSchema = new Schema({
     title: {
@@ -18,8 +9,17 @@ const blogSchema = new Schema({
     content: {
         type: String
     },
-    tags: [ tagSchema ],
-    comments: [ commentsSchema ],
+    tags: {
+        type: [String],
+    },
+    // comments: [ commentSchema ],
+    comments: [{
+        writer: String,
+        comment: String,
+        password: String,
+        createdAt: Date,
+        updatedAt: Date,
+    }],
     createdAt: {
         type: Date,
         immutable: true,
@@ -31,6 +31,6 @@ const blogSchema = new Schema({
     }
 })
 
-const Blog = models.blog || model("Blog", blogSchema)
+const Blog = models.Blog || model("Blog", blogSchema)
 
 export default Blog
