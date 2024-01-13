@@ -16,7 +16,8 @@ const ReadComments = (
     fetchComments: any
   }
 ) => {
-  const [showPasswordInput, setShowPasswordInput] = useState(true)
+  const [showPasswordInput, setShowPasswordInput] = useState(false)
+  const [passwordInput, setPasswordInput] = useState('')
 
   const timeSince = (date: number) => {
     var seconds = Math.floor((new Date().valueOf() - date) / 1000);
@@ -49,28 +50,34 @@ const ReadComments = (
     return Math.floor(seconds) + " seconds";
   }
 
-  const handleDelete = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleDelete = async (
+      e: React.FormEvent<HTMLFormElement>,
+      password: string
+    ) => {
     e.preventDefault();
 
-    try {
-
-      await fetch(`/api/blog/${blogId}`, {
-        method: 'DELETE',
-      })
-
-      setShowPasswordInput(false)
-      fetchComments()
-    } catch (err) {
-      console.error(err)
+    if (password === passwordInput) {
+      try {
+        await fetch(`/api/blog/${blogId}`, {
+          method: 'DELETE',
+        })
+  
+        setShowPasswordInput(false)
+        fetchComments()
+      } catch (err) {
+        console.error(err)
+      }
+    } else {
+      setPasswordInput('')
+      alert("Password doesn't match. Please try again")
     }
-
   }
 
   return (
     <>
-      { comments?.map((reply: IComment) => (
+      { comments?.map((comment: IComment) => (
         <div
-          key={reply._id}
+          key={comment._id}
           className='
             m-4
             pb-2
@@ -83,19 +90,32 @@ const ReadComments = (
           <div className='flex flex-col gap-4'>
             <div className='h-8 flex gap-4 justify-between items-center'>
               <div className='flex gap-2'>
-                <span>{ reply.writer }</span>
+                <span>{ comment.writer }</span>
                 <span>·</span>
-                <span className='whitespace-nowrap'>{ timeSince(new Date(reply.createdAt).valueOf()) } ago</span>
+                <span className='whitespace-nowrap'>
+                  { timeSince(new Date(comment.createdAt).valueOf()) } ago
+                </span>
               </div>
               { showPasswordInput ? (
                 <>
                   <form
-                    onSubmit={(e) => handleDelete(e)}
+                    onSubmit={(e) => handleDelete(e, comment.password)}
                     className='flex gap-2 items-center'
                   >
-                    <input type="text" className='p-2 rounded-md'/>
+                    <input
+                      type="text"
+                      value={passwordInput}
+                      onChange={(e) => setPasswordInput(e.target.value)}
+                      className='p-2 rounded-md'
+                    />
 
-                    <FaRegCircleXmark onClick={() => setShowPasswordInput(false)} className='text-2xl cursor-pointer' />
+                    {/* cancel button */}
+                    <FaRegCircleXmark
+                      onClick={() => setShowPasswordInput(false)}
+                      className='text-2xl cursor-pointer'
+                    />
+
+                    {/* submit button */}
                     <button type="submit">
                       <FaRegCircleCheck className='text-2xl cursor-pointer' />
                     </button>
@@ -108,7 +128,7 @@ const ReadComments = (
               )}
             </div>
 
-            <span>{ reply.comment }</span>
+            <span>{ comment.comment }</span>
           </div>
         </div>
       )) }
