@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
 
 import 'react-quill/dist/quill.snow.css'
+import './styles/quill-editor-custom.css'
 
 const BlogCreate = () => {
   const [title, setTitle] = useState<string>('')
