@@ -15,7 +15,7 @@ const Admin = () => {
           '>Create</Link>
         </div>
         <div className='mt-8'>
-            <Table />
+          <Table />
         </div>
       </div>
     </div>
