@@ -17,7 +17,6 @@ import {
 } from 'semantic-ui-react'
 
 import { IBlog, IComment } from '@/interfaces';
-
 import { FaPenToSquare, FaRegTrashCan } from "react-icons/fa6";
 
 const TableComponent = ({ data }: { data: IBlog[] }) => {
@@ -48,12 +47,26 @@ const TableComponent = ({ data }: { data: IBlog[] }) => {
   }
 
   const deleteBlog = async (id: string) => {
-    console.log('delete: ', id)
-
     try {
       const res = await fetch(`/api/blog/${id}`, {
         method: 'DELETE',
       })
+
+      if (res.ok) {
+        fetchBlogData()
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const fetchBlogData = async () => {
+    try {
+      const res = await fetch(`/api/blog`, {
+        method: 'GET',
+      })
+      const data = await res.json()
+      setBlog(data.blog)
     } catch (err) {
       console.error(err)
     }
@@ -63,9 +76,10 @@ const TableComponent = ({ data }: { data: IBlog[] }) => {
     <Table celled>
       <TableHeader>
         <TableRow>
-          <TableHeaderCell width={4}>Title</TableHeaderCell>
+          <TableHeaderCell width={3}>Title</TableHeaderCell>
           <TableHeaderCell width={5}>Content</TableHeaderCell>
-          <TableHeaderCell width={1}>Updated At</TableHeaderCell>
+          <TableHeaderCell width={3}>Updated At</TableHeaderCell>
+          <TableHeaderCell width={1}>Update/Delete</TableHeaderCell>
         </TableRow>
       </TableHeader>
 
@@ -73,15 +87,34 @@ const TableComponent = ({ data }: { data: IBlog[] }) => {
         { blog?.map((blog: IBlog) => {
           return (
             <TableRow key={blog._id} className='hover:bg-stone-100'>
+              {/* Title */}
               <TableCell>
                 <Link href={`/blog/${blog._id}`}
                   className='text-stone-800 hover:text-stone-400 hover:underline'
                 >{ blog.title }</Link>
               </TableCell>
+              
+              {/* Content */}
               <TableCell>
                 <div dangerouslySetInnerHTML={{ __html: blog.content }} className='h-[3rem] overflow-hidden line-clamp-2' />
               </TableCell>
-              <TableCell><span className='whitespace-nowrap'>{ convertDate(blog.updatedAt) }</span></TableCell>
+              
+              {/* Updated at */}
+              <TableCell>
+                <span className='whitespace-nowrap'>{ convertDate(blog.updatedAt) }</span>
+              </TableCell>
+              
+              {/* Update/Delete */}
+              <TableCell>
+                <div className='flex gap-3 justify-center'>
+                  <Link href={`/admin/blog/${blog._id}/edit`}
+                    className='text-xl text-stone-800 hover:text-stone-800'
+                  ><FaPenToSquare /></Link>
+                  <button onClick={() => { deleteBlog(blog._id) }}
+                    className='text-xl text-stone-800 hover:text-stone-800'
+                  ><FaRegTrashCan /></button>
+                </div>
+              </TableCell>
             </TableRow>
           )
         }) }
@@ -89,7 +122,7 @@ const TableComponent = ({ data }: { data: IBlog[] }) => {
 
       <TableFooter>
         <TableRow>
-          <TableHeaderCell colSpan='3'>
+          <TableHeaderCell colSpan='4'>
             <Menu floated='right' pagination>
               <MenuItem as='a' icon>
                 <Icon name='chevron left' />
