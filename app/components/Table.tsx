@@ -18,21 +18,13 @@ import {
 
 import { IBlog, IComment } from '@/interfaces';
 
-const TableComponent = () => {
+import { FaPenToSquare, FaRegTrashCan } from "react-icons/fa6";
+
+const TableComponent = ({ data }: { data: IBlog[] }) => {
   const [blog, setBlog] = useState<IBlog[]>([])
 
   useEffect(() => {
-    const fetchBlogData = async () => {
-      try {
-        const res = await fetch('/api/blog')
-        const data = await res.json()
-        setBlog(data.blog)
-      } catch (err) {
-        console.error(err)
-      }
-    }
-  
-    fetchBlogData()
+    setBlog(data)
   }, [])
 
   const convertDate = (dateInString: string | undefined) => {
@@ -52,6 +44,18 @@ const TableComponent = () => {
       const period = date.getHours() < 12 ? 'AM' : 'PM'
       
       return `${month} ${day}, ${year} ${hours}:${minutes} ${period}`
+    }
+  }
+
+  const deleteBlog = async (id: string) => {
+    console.log('delete: ', id)
+
+    try {
+      const res = await fetch(`/api/blog/${id}`, {
+        method: 'DELETE',
+      })
+    } catch (err) {
+      console.error(err)
     }
   }
 

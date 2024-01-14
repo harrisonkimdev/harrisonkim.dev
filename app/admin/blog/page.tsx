@@ -2,7 +2,21 @@ import React from 'react'
 import Link from 'next/link'
 import Table from '@/components/Table'
 
-const Admin = () => {
+const fetchBlogData = async () => {
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/api/blog`, {
+      method: 'GET',
+    })
+    const data = await res.json()
+    return data.blog
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+const Admin = async () => {
+  var blogData = await fetchBlogData()
+
   return (
     <div className='w-full min-h-screen mt-8 bg-stone-50'>
       <div className='max-w-5xl mx-auto py-20'>
@@ -15,7 +29,7 @@ const Admin = () => {
           '>Create</Link>
         </div>
         <div className='mt-8'>
-          <Table />
+          <Table data={blogData} />
         </div>
       </div>
     </div>
