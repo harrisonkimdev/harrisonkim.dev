@@ -107,8 +107,8 @@ const BlogEditPage = () => {
                 </button>
               </div>
               <div className='w-full h-16 p-4 flex flex-wrap gap-2'>
-                { tags?.map((tag: string) => {
-                  return <span className='px-3 py-2 rounded-full border bg-white'>{ tag }</span>
+                { tags?.map((tag: string, index) => {
+                  return <span key={index} className='px-3 py-2 rounded-full border bg-white'>{ tag }</span>
                 })}
               </div>
             </div>
