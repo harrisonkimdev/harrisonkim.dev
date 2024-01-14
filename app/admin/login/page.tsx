@@ -1,38 +1,56 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 
 const AdminLogin = () => {
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
+    const router = useRouter()
+
+    const [passwordInput, setPasswordInput] = useState('')
+    const [confirmPasswordInput, setConfirmPasswordInput] = useState('')
 
     const submitCredential = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        const res = await fetch('')
-        const data = await res.json()
-    }
+        try {
+            const res = await signIn("credentials", {
+                password: passwordInput,
+                redirect: false,
+                callbackUrl: 'localhost:3000',
+            })
 
+            if (res?.error === 'CredentialsSignin' && res.url === null) {
+                // 
+            } else if (res?.error === null && res.url !== null) {
+                // 
+
+                router.push(res.url)
+            }
+        } catch (err) {
+            console.error(err)
+        }
+    }
 
   return (
     <div className='min-h-screen mt-8 flex justify-center items-center'>
         <div className='w-min px-12 py-8 rounded-lg border border-stone-200 shadow-md'>
-            <p className='whitespace-nowrap font-bold text-2xl text-stone-700'>Admin Panel</p>
+            <p className='whitespace-nowrap font-bold text-2xl text-stone-700'>Admin</p>
             <form onSubmit={(e) => submitCredential(e)} className='my-8'>
                 <label htmlFor="password">Password</label>
                 <input
                     type="text"
                     id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={passwordInput}
+                    onChange={(e) => setPasswordInput(e.target.value)}
                     className='my-2 p-2 border rounded-md'
                 />
                 <label htmlFor="confirmPassword">Confirm Password</label>
                 <input
                     type="text"
                     id="confirmPassword"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    value={confirmPasswordInput}
+                    onChange={(e) => setConfirmPasswordInput(e.target.value)}
                     className='my-2 p-2 border rounded-md'
                 />
                 <div className='flex justify-center'>
