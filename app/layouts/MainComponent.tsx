@@ -12,10 +12,8 @@ const MainComponent = ({ children }: { children: ReactNode }) => {
     }
 
     return (
-        <div className="relative overflow-hidden">
-            <div>
-                { children }
-            </div>
+        <div className="relative">
+            { children }
 
             <button type="button" onClick={() => scrollToTop()}
                 className='

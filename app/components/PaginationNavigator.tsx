@@ -14,7 +14,7 @@ const PaginationNavigator = () => {
   return (
     <>
       {/* pagination */}
-      <div className='mt-16 flex justify-center'>
+      <div className='flex justify-center'>
         <div className='flex items-center gap-6'>
           <FaChevronLeft
             onClick={() => currentPage > 1

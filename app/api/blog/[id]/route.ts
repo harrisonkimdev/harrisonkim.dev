@@ -1,18 +1,17 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { connectToDB } from '@/utils/db'
-import Guestbook from '@/models/guestbook'
+import Blog from '@/models/blog'
 
-// show
 export const GET = async (
     req: NextRequest, { params }: { params: { id: string } }
 ) => {
   try {
     await connectToDB()
 
-    const { searchParams } = new URL(req.url)
-    const readOnly = searchParams.get('readOnly')
+    // const { searchParams } = new URL(req.url)
+    // const readOnly = searchParams.get('readOnly')
 
-    const guestbook = await Guestbook.findOne({ _id: params.id })
+    const blog = await Blog.findOne({ _id: params.id })
 
     // var viewCount
 
@@ -20,44 +19,43 @@ export const GET = async (
     //   // 
     // }
 
-    return NextResponse.json(guestbook, { status: 200 })
+    return NextResponse.json({ blog }, { status: 200 })
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 500 })
   }
 }
 
-// update
 export const PATCH = async (
   req: NextRequest, { params }: { params: { id: string } }
 ) => {
-  const { title, content } = await req.json()
+  const { title, content, tags } = await req.json()
 
   try {
     await connectToDB()
 
-    const guestbook = await Guestbook.findByIdAndUpdate({ _id:params.id }, {
+    const blog = await Blog.findByIdAndUpdate({ _id:params.id }, {
       title,
       content,
+      tags,
       updatedAt: Date.now()
     })
 
-    return NextResponse.json(guestbook, { status: 200 })
+    return NextResponse.json(blog, { status: 200 })
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 500 })
   }
 }
 
-// delete
 export const DELETE = async (
-  req: NextRequest, { params }: { params: { id: string} }
+  req: NextRequest, { params }: { params: { id: string } }
 ) => {
   try {
     await connectToDB()
 
-    const result = await Guestbook.deleteOne({ _id: params.id })
+    const result = await Blog.deleteOne({ _id: params.id })
 
     if (result.acknowledged === true) {
-      return NextResponse.json({ message: 'Post deleted.' }, { status: 200 })
+      return NextResponse.json({ message: 'Successfully deleted.' }, { status: 200 })
     } else {
       return NextResponse.json({ message: 'Item not found' }, { status: 404 })
     }

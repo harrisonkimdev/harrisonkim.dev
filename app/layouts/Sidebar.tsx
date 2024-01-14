@@ -29,11 +29,11 @@ const Sidebar = ({ handleClose, emitCloseSidebar }: { handleClose: Function, emi
             '>Projects</p>
           </Link>
         
-          {/* <Link href="/guestbooks" onClick={() => emitCloseSidebar()}>
+          <Link href="/blog" onClick={() => emitCloseSidebar()}>
             <p className='
               font-medium text-stone-500 hover:text-stone-600
-            '>Guestbooks</p>
-          </Link> */}
+            '>Blog</p>
+          </Link>
       </div>
     </div>
   )
