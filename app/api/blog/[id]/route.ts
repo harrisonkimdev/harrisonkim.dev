@@ -46,7 +46,7 @@ export const PATCH = async (
 }
 
 export const DELETE = async (
-  req: NextRequest, { params }: { params: { id: string} }
+  req: NextRequest, { params }: { params: { id: string } }
 ) => {
   try {
     await connectToDB()

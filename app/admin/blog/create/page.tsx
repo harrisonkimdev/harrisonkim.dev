@@ -64,19 +64,17 @@ const BlogCreate = () => {
       <div className='max-w-5xl mx-auto py-20'>
         {/* title */}
         <div className=''>
-            <h1 className='text-3xl font-medium'>Post A New Blog</h1>
+          <h1 className='text-3xl font-medium'>Post A New Blog</h1>
         </div>
 
         {/* text editor and buttons */}
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className='mt-8'>
-            <div className='my-4 flex flex-col'>
-              <input
-                type="text" id="title" placeholder='Title...'
-                value={title} onChange={(e) => setTitle(e.target.value)}
-                className='p-4 border'
-              />
-            </div>
+            <input
+              type="text" id="title" placeholder='Title...'
+              value={title} onChange={(e) => setTitle(e.target.value)}
+              className='w-full my-4 p-4 border'
+            />
             <QuillNoSSRWrapper content={content} setContent={setContent} />
 
             {/* tags */}
