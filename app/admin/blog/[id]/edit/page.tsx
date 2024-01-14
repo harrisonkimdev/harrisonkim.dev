@@ -7,7 +7,6 @@ import Link from 'next/link'
 
 import 'react-quill/dist/quill.snow.css'
 import '@/styles/quill-editor-custom.css'
-import { set } from 'mongoose'
 
 const BlogEditPage = () => {
   const router = useRouter()
@@ -27,8 +26,8 @@ const BlogEditPage = () => {
   const [tags, setTags] = useState<string[]>([])
 
   useEffect(() => {
-    const fetchBlog = async () => {
-      const res = await fetch(`/api/blog/${params.id}`, {
+    const fetchBlog = async (id: string) => {
+      const res = await fetch(`/api/blog/${id}`, {
         method: "GET",
       })
       const data = await res.json()
@@ -37,7 +36,7 @@ const BlogEditPage = () => {
       setContent(data.blog.content)
       setTags(data.blog.tags)
     }
-    fetchBlog()
+    fetchBlog(params.id)
   }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
