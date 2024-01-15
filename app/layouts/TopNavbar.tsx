@@ -1,12 +1,15 @@
 'use client'
 
 import React,{ useState } from 'react'
+import { useSession, signOut } from 'next-auth/react'
 import Link from 'next/link'
 import Sidebar from './Sidebar'
 import Image from 'next/image'
 import { FaBars } from "react-icons/fa6";
 
 const TopNavbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
+  const { data: session, status } = useSession({ required: false })
+
   const [toggleSidebar, setToggleSidebar] = useState(false)
 
   return (
@@ -53,6 +56,14 @@ const TopNavbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
                   text-stone-100 hover:text-stone-50 hover:underline
                 '>Blog</p>
               </Link>
+
+              { session && (
+                <button onClick={() => signOut()}>
+                  <p className='
+                    cursor-pointer text-stone-100 hover:text-stone-50 hover:underline
+                  '>Sign out</p>
+                </button>
+              )}
             </div>
           </div>
           
