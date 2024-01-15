@@ -32,11 +32,11 @@ const Page = () => {
     }
 
   return (
-    <div className='w-full px-4 bg-stone-50'>
-        <div className='max-w-5xl mx-auto py-12 h-full'>
+    <div className='w-full min-h-screen px-4 flex flex-col justify-center bg-stone-50'>
+        <div className='max-w-5xl h-full mx-auto'>
             {/* terminal window */}
             <div className={`
-                ${isContentVisible ? '' : 'h-full flex flex-col justify-center'}
+                ${isContentVisible ? '' : 'h-full min-w-[44rem] flex flex-col justify-center'}
                 ease-in duration-300 motion-reduce:duration-0
             `}>
 
@@ -46,7 +46,7 @@ const Page = () => {
                         'opacity-1 h-16 py-4 flex justify-center'
                         : 'hidden'
                     }
-                    ease-in duration-300 motion-reduce:duration-0
+                    mt-20 ease-in duration-300 motion-reduce:duration-0
                 `}>
                     <FaTerminal onClick={() => { tabClicked('', false) }}
                         className='
@@ -66,9 +66,11 @@ const Page = () => {
                             className={`
                             ${filepath === 'dandycv' ? 'bg-stone-300' : 'bg-stone-200'}
                             w-full
+                            px-12
                             py-1
                             cursor-pointer
                             rounded-tl-md
+                            whitespace-nowrap
                             hover:bg-stone-300
                         `}> dandycv </button>
 
@@ -76,8 +78,10 @@ const Page = () => {
                             className={`
                             ${filepath === 'mosPic' ? 'bg-stone-300' : 'bg-stone-200'}
                             w-full
+                            px-12
                             py-1
                             cursor-pointer
+                            whitespace-nowrap
                             hover:bg-stone-300
                         `}> mosPic </button>
 
@@ -86,8 +90,10 @@ const Page = () => {
                             className={`
                             ${filepath === 'Dashboard' ? 'bg-stone-300' : 'bg-stone-200'}
                             w-full
+                            px-12
                             py-1
                             cursor-pointer
+                            whitespace-nowrap
                             hover:bg-stone-300
                         `}> Dashboard </button>
 
@@ -95,9 +101,11 @@ const Page = () => {
                             className={`
                             ${filepath === 'claw_machine' ? 'bg-stone-300' : 'bg-stone-200'}
                             w-full
+                            px-12
                             py-1
                             cursor-pointer
                             rounded-tr-md
+                            whitespace-nowrap
                             hover:bg-stone-300
                         `}> Claw Machine </button>
                     </div>
