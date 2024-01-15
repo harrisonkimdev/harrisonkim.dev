@@ -10,7 +10,7 @@ export const connectToDB = async () => {
 
   try {
     await mongoose
-      .set({ debug: true, strictQuery: false})
+      .set({ debug: true, strictQuery: false })
       .connect(`${process.env.MONGODB_URI}`)
       .then((mongoose) => mongoose)
 
