@@ -3,7 +3,7 @@ import NextAuth from "next-auth/next"
 import { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
-const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -17,8 +17,8 @@ const authOptions: NextAuthOptions = {
           type: "password",
         }
       },
-      async authorize(credentials, req) {
-        const res = await fetch(`/api/auth/login`, {
+      async authorize(credentials) {
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/login`, {
           method: "POST",
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" },
@@ -40,15 +40,11 @@ const authOptions: NextAuthOptions = {
     signIn: '/admin/login'
   },
   callbacks: {
-    async jwt({ token, user, trigger, session }) {
-      if (trigger === "update") {
-        return { ...token, ...session.user, }
-      }
-      return { ...token, ...user, }
+    async jwt({ token }) {
+      return token
     },
-    async session({ session, token }) {
-      session.user = token
-      return { ...session }
+    async session({ session }) {
+      return session
     }
   },
 }
