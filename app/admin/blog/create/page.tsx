@@ -4,17 +4,15 @@ import React, { useState, useMemo } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 
 import 'react-quill/dist/quill.snow.css'
 import '@/styles/quill-editor-custom.css'
 
 const BlogCreate = () => {
-  const [title, setTitle] = useState<string>('')
-  const [content, setContent] = useState<string>('')
-  const [tagTitle, setTagTitle] = useState<string>('')
-  const [tags, setTags] = useState<string[]>([])
-
   const router = useRouter()
+  
+  const { data: session, status } = useSession({ required: true })
 
   // Quill editor
   const QuillNoSSRWrapper = useMemo(() => {
@@ -23,6 +21,11 @@ const BlogCreate = () => {
       ssr: false,
     })
   }, [])
+
+  const [title, setTitle] = useState<string>('')
+  const [content, setContent] = useState<string>('')
+  const [tagTitle, setTagTitle] = useState<string>('')
+  const [tags, setTags] = useState<string[]>([])
 
   // send content to the server
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react'
 import { useRouter, useParams } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
@@ -11,6 +12,8 @@ import '@/styles/quill-editor-custom.css'
 const BlogEditPage = () => {
   const router = useRouter()
   const params = useParams()
+
+  const { data: session, status } = useSession({ required: true })
 
   // Quill editor
   const QuillNoSSRWrapper = useMemo(() => {
