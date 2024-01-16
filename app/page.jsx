@@ -169,25 +169,27 @@ export default function Home() {
         '>
           {/* profile picture and greeting */}
           <div className='px-8 md:px-0 flex flex-col md:flex-row md:gap-10 items-center'>
-            <Image
-              src="/images/profile/me_cropped.jpeg"
-              alt="Profile picture of myself"
-              width={2448} height={2334}
-              placeholder='blur'
-              blurDataURL='/images/profile/me_cropped.jpeg'
-              className='
-                w-72
-                h-72
-                rounded-full
-                object-cover
-            '/>
+            <Link href='https://www.linkedin.com/in/harrison-kim-b246a5175/' target='_blank'>
+              <Image
+                src="/images/profile/me_cropped.jpeg"
+                alt="Profile picture of myself"
+                width={2448} height={2334}
+                placeholder='blur'
+                blurDataURL='/images/profile/me_cropped.jpeg'
+                className='
+                  w-72
+                  h-72
+                  rounded-full
+                  object-cover
+              '/>
+            </Link>
             <h1 className='
               text-5xl md:text-7xl font-bold text-stone-500
               animate__animated animate__pulse animate__repeat-3
             '>
               Hi, <br />
               <span className='whitespace-nowrap'>I&apos;m
-                <span className='text-stone-700'> Harrison</span>,
+                <Link href='/admin/login'><span className='text-stone-700'> Harrison</span></Link>,
               </span> <br /> Full Stack <br /> Engineer
             </h1>
           </div>

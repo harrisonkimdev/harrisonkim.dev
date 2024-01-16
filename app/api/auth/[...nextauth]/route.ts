@@ -1,57 +1,5 @@
-import NextAuth from "next-auth/next"
-// https://github.com/vercel/next.js/discussions/50511
-import { NextAuthOptions } from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
-
-const authOptions: NextAuthOptions = {
-  providers: [
-    CredentialsProvider({
-      name: "Credentials",
-      credentials: {
-        // email: {
-        //   label: "Email",
-        //   type: "email",
-        // },
-        password: {
-          label: "Password",
-          type: "password",
-        }
-      },
-      async authorize(credentials, req) {
-        const res = await fetch(`/api/auth/login`, {
-          method: "POST",
-          body: JSON.stringify(credentials),
-          headers: { "Content-Type": "application/json" },
-        })
-        const user = await res.json()
-
-        if (res.ok && user) {
-          return user
-        }
-        return null
-      }
-    })
-  ],
-  session: {
-    strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, // 30 days
-  },
-  pages: {
-    signIn: '/admin/login'
-  },
-  callbacks: {
-    async jwt({ token, user, trigger, session }) {
-      if (trigger === "update") {
-        return { ...token, ...session.user, }
-      }
-      return { ...token, ...user, }
-    },
-    async session({ session, token }) {
-      session.user = token
-      return { ...session }
-    }
-  },
-}
+import NextAuth from "next-auth"
+import authOptions from "./auth"
 
 const handler = NextAuth(authOptions)
 
