@@ -11,12 +11,9 @@ const AdminLogin = () => {
   const { data: session, status } = useSession({ required: false })
 
   const [passwordInput, setPasswordInput] = useState('')
-  const [confirmPasswordInput, setConfirmPasswordInput] = useState('')
 
   const submitCredential = async (e: React.FormEvent) => {
     e.preventDefault()
-
-    if (passwordInput !== confirmPasswordInput) alert('Password doesn\'t match')
 
     try {
       const res = await signIn("credentials", {
@@ -66,16 +63,6 @@ const AdminLogin = () => {
                 id="password"
                 value={passwordInput}
                 onChange={(e) => setPasswordInput(e.target.value)}
-                className='my-2 p-2 border rounded-md'
-              />
-            </div>
-            <div className='flex flex-col'>
-              <label htmlFor="confirmPassword">Confirm Password</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                value={confirmPasswordInput}
-                onChange={(e) => setConfirmPasswordInput(e.target.value)}
                 className='my-2 p-2 border rounded-md'
               />
             </div>
