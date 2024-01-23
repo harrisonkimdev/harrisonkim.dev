@@ -24,13 +24,15 @@ export default function RootLayout({ children }) {
             <Navbar />
           </nav>
 
-          <div className='mt-8 flex-grow'>
+          <main className='mt-8 flex-grow'>
             <MainComponent>
               { children }
             </MainComponent>
-          </div>
+          </main>
           
-          <Footer />
+          <footer>
+            <Footer />
+          </footer>
         </div>
       </body>
     </html>
