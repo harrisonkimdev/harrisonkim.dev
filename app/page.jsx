@@ -173,12 +173,12 @@ export default function Home() {
               <Image
                 src="/images/profile/me_cropped.jpeg"
                 alt="Profile picture of myself"
-                width={2448} height={2334}
+                width={288} height={288}
                 placeholder='blur'
                 blurDataURL='/images/profile/me_cropped.jpeg'
                 className='
-                  w-72
-                  h-72
+                  w-[288px]
+                  h-[288px]
                   rounded-full
                   object-cover
               '/>
@@ -328,8 +328,12 @@ export default function Home() {
                       </ul>
                     </div>
 
-                    <Image src='/images/screenshots/dandycv/landing_page.png' alt='mosPic Image'
-                      width={1595} height={964} className='object-contain h-full w-full md:col-span-1'
+                    <Image
+                      src='/images/screenshots/dandycv/landing_page.png'
+                      alt='dandycv preview'
+                      width={1595}
+                      height={964}
+                      className='object-contain h-full w-full md:col-span-1'
                     />
                   </div>
                 </li>
@@ -354,8 +358,12 @@ export default function Home() {
                       </ul>
                     </div>
 
-                    <Image src='/images/screenshots/mosPic/gallery-page.png' alt='mosPic Image'
-                      width={1562} height={1036} className='object-contain h-full w-full md:col-span-1'
+                    <Image
+                      src='/images/screenshots/mosPic/gallery-page.png'
+                      alt='mosPic preview'
+                      width={1562}
+                      height={1036}
+                      className='object-contain h-full w-full md:col-span-1'
                     />
                   </div>
                 </li>
@@ -378,8 +386,12 @@ export default function Home() {
                         </ul>
                       </div>
 
-                      <Image src='/images/screenshots/Dashboard/notes.png' alt='Dashboard Image'
-                        width={1525} height={1043} className='object-contain h-full w-full md:col-span-1'
+                      <Image
+                        src='/images/screenshots/Dashboard/notes.png'
+                        alt='Dashboard preview'
+                        width={1525}
+                        height={1043}
+                        className='object-contain h-full w-full md:col-span-1'
                       />
                     </div>
                 </li>
@@ -400,8 +412,12 @@ export default function Home() {
                       </ul>
                     </div>
 
-                    <Image src='/images/screenshots/claw-machine/full.png' alt='Clawmachine Image'
-                      width={128} height={128} className='object-contain h-full w-full md:col-span-1'
+                    <Image
+                      src='/images/screenshots/claw-machine/full.png'
+                      alt='Claw Machine preview'
+                      width={128}
+                      height={128}
+                      className='object-contain h-full w-full md:col-span-1'
                     />
                   </div>
                 </li>
