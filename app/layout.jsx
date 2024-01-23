@@ -4,7 +4,7 @@ import { Rubik } from 'next/font/google'
 import './globals.css'
 import 'semantic-ui-css/semantic.min.css'
 
-import TopNavbar from '@/layouts/TopNavbar'
+import Navbar from '@/layouts/Navbar'
 import MainComponent from '@/layouts/MainComponent'
 import Footer from '@/layouts/Footer'
 
@@ -20,7 +20,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${rubik.className}`}>
         <div className='flex flex-col'>
-          <TopNavbar />
+          <nav>
+            <Navbar />
+          </nav>
 
           <div className='mt-8 flex-grow'>
             <MainComponent>

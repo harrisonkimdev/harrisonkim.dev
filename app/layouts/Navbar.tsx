@@ -1,20 +1,21 @@
 'use client'
 
 import React,{ useState } from 'react'
-import { useSession, signOut } from 'next-auth/react'
+import { SessionProvider } from 'next-auth/react'
 import Link from 'next/link'
 import Sidebar from './Sidebar'
 import Image from 'next/image'
 import { FaBars } from "react-icons/fa6";
 
-const TopNavbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
-  const { data: session, status } = useSession({ required: false })
+import SignOutButton from '@/components/SignOutButton'
 
+const Navbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
   const [toggleSidebar, setToggleSidebar] = useState(false)
 
   return (
-    <nav>
+    <SessionProvider>
       { toggleSidebar ? (
+        // mobile devices
         <div className='absolute top-0 left-0 right-0'>
           <Sidebar
             handleClose={() => {
@@ -26,8 +27,8 @@ const TopNavbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
           />
         </div>
       ) : (
-        <nav className='fixed top-0 w-full z-10'>
-          {/* Tablets and Desktops */}
+        // Tablets and Desktops
+        <div className='fixed top-0 w-full z-10'>
           <div className='
             hidden h-16
             px-6 py-4 md:flex justify-between items-center text-stone-200 bg-black
@@ -57,13 +58,7 @@ const TopNavbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
                 '>Blog</p>
               </Link>
 
-              { session && (
-                <button onClick={() => signOut()}>
-                  <p className='
-                    cursor-pointer text-stone-100 hover:text-stone-50 hover:underline
-                  '>Sign out</p>
-                </button>
-              )}
+              <SignOutButton />
             </div>
           </div>
           
@@ -86,10 +81,10 @@ const TopNavbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
               </Link>
             </div>
           </div>
-        </nav>
+        </div>
       )}
-    </nav>
+    </SessionProvider>
   )
 }
 
-export default TopNavbar
+export default Navbar
