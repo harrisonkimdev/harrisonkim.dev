@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import {
   TableRow,
@@ -21,7 +20,6 @@ import { IBlog, IComment } from '@/interfaces';
 import { FaPenToSquare, FaRegTrashCan } from "react-icons/fa6";
 
 const TableComponent = ({ data }: { data: IBlog[] }) => {
-  const { data: session, status } = useSession({ required: true })
 
   const [blog, setBlog] = useState<IBlog[]>([])
 
