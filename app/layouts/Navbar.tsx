@@ -9,21 +9,16 @@ import { FaBars } from "react-icons/fa6";
 
 import SignOutButton from '@/components/SignOutButton'
 
-const Navbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
-  const [toggleSidebar, setToggleSidebar] = useState(false)
+const Navbar = () => {
+  const [showSidebar, setShowSidebar] = useState(false)
 
   return (
     <SessionProvider>
-      { toggleSidebar ? (
+      { showSidebar ? (
         // mobile devices
         <div className='absolute top-0 left-0 right-0'>
           <Sidebar
-            handleClose={() => {
-              setToggleSidebar(false); emitCloseSidebar(false);
-            }}
-            emitCloseSidebar={() => {
-              setToggleSidebar(false); emitCloseSidebar(false);
-            }}
+            closeSidebar={() => { setShowSidebar(false) }}
           />
         </div>
       ) : (
@@ -40,37 +35,34 @@ const Navbar = ({ emitCloseSidebar }: { emitCloseSidebar: Function }) => {
             </Link>
 
             <div className='flex gap-10 mt-1'>
-              <Link href="/">
-                <p className='
-                  text-stone-100 hover:text-stone-50 hover:underline
-                '>Home</p>
-              </Link>
+              <Link href="/" className='
+                text-stone-100 hover:text-stone-50 hover:underline
+              '> Home </Link>
 
-              <Link href="/projects">
-                <p className='
-                  text-stone-100 hover:text-stone-50 hover:underline
-                '>Projects</p>
-              </Link>
+              <Link href="/projects" className='
+                text-stone-100 hover:text-stone-50 hover:underline
+              '> Projects </Link>
 
-              <Link href="/blog">
-                <p className='
-                  text-stone-100 hover:text-stone-50 hover:underline
-                '>Blog</p>
-              </Link>
+              <Link href="/blog" className='
+                text-stone-100 hover:text-stone-50 hover:underline
+              '> Blog </Link>
 
               <SignOutButton />
             </div>
           </div>
           
           {/* Smartphones */}
-          <div className={toggleSidebar ? 'opacity-20' : ''}>
+          <div className={showSidebar ? 'opacity-20' : ''}>
             <div className='
-              p-4 grid md:hidden grid-cols-3 items-center bg-black
-              text-stone-200
+              p-4
+              grid
+              md:hidden
+              grid-cols-3
+              items-center
+            bg-black
+            text-stone-200
             '>
-              <div onClick={() => {
-                setToggleSidebar(true); emitCloseSidebar(true);
-              }} className='col-span-1'>
+              <div onClick={() => { setShowSidebar(true) }} className='col-span-1'>
                 <FaBars className='w-6 h-6'/>
               </div>
 
