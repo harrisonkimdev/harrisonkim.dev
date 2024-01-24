@@ -4,7 +4,7 @@ import React from 'react'
 import { useAppState } from '@/components/AppStateContext'
 import Sidebar from '@/layouts/SideBar'
 
-import Navbar from '@/layouts/Navbar'
+import NavBar from '@/layouts/NavBar'
 import Footer from '@/layouts/Footer'
 
 const MainWrapper = ({
@@ -27,7 +27,7 @@ const MainWrapper = ({
       ) : (
         <div className='flex flex-col'>
           <nav>
-            <Navbar />
+            <NavBar />
           </nav>
 
           <main className='mt-8 flex-grow'>

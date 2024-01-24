@@ -7,7 +7,7 @@ import { useAppState } from '@/components/AppStateContext'
 import LargeNavbar from '@/layouts/LargeNavBar'
 import SmallNavbar from '@/layouts/SmallNavBar'
 
-const Navbar = () => {
+const NavBar = () => {
   const { dispatch } = useAppState()
 
   return (
@@ -41,4 +41,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default NavBar
