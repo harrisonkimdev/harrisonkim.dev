@@ -5,7 +5,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import 'animate.css'
 
-import { FaDisplay, FaDatabase, FaToolbox } from "react-icons/fa6";
+import {
+  FaDisplay,
+  FaDatabase,
+  FaToolbox,
+  FaAngleUp
+} from "react-icons/fa6"
 
 export default function Home() {
 
@@ -148,6 +153,13 @@ export default function Home() {
     if (fourthContent.current) {
       observer.unobserve(fourthContent.current)
     }
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'  // This will create a smooth scrolling effect
+    })
   }
 
   const scrollToBottom = () => {
@@ -436,6 +448,14 @@ export default function Home() {
           '>Thank you for visiting my website :)</p>
         </div>
       </div>
+
+      <button type="button" onClick={() => scrollToTop()}
+        className='
+          hidden md:block fixed bottom-0 right-0 mb-8 mr-12 p-2
+          rounded-xl border-2 border-stone-800 bg-stone-100 hover:bg-stone-100
+      '>
+        <FaAngleUp />
+      </button>
     </>
   )
 }
