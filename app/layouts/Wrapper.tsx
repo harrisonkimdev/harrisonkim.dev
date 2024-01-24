@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { useAppState } from '@/components/AppStateContext'
-import Sidebar from '@/layouts/SideBar'
 
+import SideBar from '@/layouts/SideBar'
 import NavBar from '@/layouts/NavBar'
 import Footer from '@/layouts/Footer'
 
@@ -19,7 +19,7 @@ const MainWrapper = ({
       { state.showSideBar ? (
         <>
           <div className='absolute top-0 left-0 right-0'>
-            <Sidebar
+            <SideBar
               closeSidebar={() => dispatch({ type: 'TOGGLE_OFF' }) }
             />
           </div>
