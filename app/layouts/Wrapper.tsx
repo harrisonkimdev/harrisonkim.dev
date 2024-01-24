@@ -3,11 +3,11 @@
 import React from 'react'
 import { useAppState } from '@/components/AppStateContext'
 
-import SideBar from './SideBar'
-import NavBar from './NavBar'
-import Footer from './Footer'
+import SideBar from '@/layouts/SideBar'
+import NavBar from '@/layouts/NavBar'
+import Footer from '@/layouts/Footer'
 
-const MainWrapper = ({
+const Wrapper = ({
   children
 } : {
   children: React.ReactNode
@@ -43,4 +43,4 @@ const MainWrapper = ({
   )
 }
 
-export default MainWrapper
+export default Wrapper
