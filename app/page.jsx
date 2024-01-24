@@ -185,12 +185,12 @@ export default function Home() {
               <Image
                 src="/images/profile/me_cropped.jpeg"
                 alt="Profile picture of myself"
-                width={288} height={288}
+                width={256} height={256}
                 placeholder='blur'
                 blurDataURL='/images/profile/me_cropped.jpeg'
                 className='
-                  w-[288px]
-                  h-[288px]
+                  w-[256px]
+                  h-[256px]
                   rounded-full
                   object-cover
               '/>
