@@ -3,9 +3,9 @@
 import React from 'react'
 import { useAppState } from '@/components/AppStateContext'
 
-import SideBar from '@/layouts/SideBar'
-import NavBar from '@/layouts/NavBar'
-import Footer from '@/layouts/Footer'
+import SideBar from './SideBar'
+import NavBar from './NavBar'
+import Footer from './Footer'
 
 const MainWrapper = ({
   children
