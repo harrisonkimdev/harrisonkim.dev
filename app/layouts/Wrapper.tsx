@@ -3,8 +3,8 @@
 import React from 'react'
 import { useAppState } from '@/components/AppStateContext'
 
-import SideBar from '@/layouts/SideBar'
-import NavBar from '@/layouts/NavBar'
+import SideBar from '@/layouts/SideBarCaseSensitive'
+import NavBar from '@/layouts/NavBarCaseSensitive'
 import Footer from '@/layouts/Footer'
 
 const Wrapper = ({
