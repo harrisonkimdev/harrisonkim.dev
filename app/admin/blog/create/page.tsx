@@ -1,18 +1,16 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
-import { useSession } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
 
 import 'react-quill/dist/quill.snow.css'
 import '@/styles/quill-editor-custom.css'
 
 const BlogCreate = () => {
   const router = useRouter()
-  
-  const { data: session, status } = useSession({ required: true })
 
   // Quill editor
   const QuillNoSSRWrapper = useMemo(() => {
@@ -26,6 +24,15 @@ const BlogCreate = () => {
   const [content, setContent] = useState<string>('')
   const [tagTitle, setTagTitle] = useState<string>('')
   const [tags, setTags] = useState<string[]>([])
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const session = await getSession()
+      if (!session) router.push('/')
+    }
+    checkAuth()
+  }, [])
+  
 
   // send content to the server
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

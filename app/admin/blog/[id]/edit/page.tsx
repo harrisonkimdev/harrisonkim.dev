@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react'
 import { useRouter, useParams } from 'next/navigation'
-import { useSession } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
@@ -12,8 +12,6 @@ import '@/styles/quill-editor-custom.css'
 const BlogEditPage = () => {
   const router = useRouter()
   const params = useParams()
-
-  const { data: session, status } = useSession({ required: true })
 
   // Quill editor
   const QuillNoSSRWrapper = useMemo(() => {
@@ -29,15 +27,21 @@ const BlogEditPage = () => {
   const [tags, setTags] = useState<string[]>([])
 
   useEffect(() => {
-    const fetchBlog = async (id: string) => {
-      const res = await fetch(`/api/blog/${id}`, {
-        method: "GET",
-      })
-      const data = await res.json()
 
-      setTitle(data.blog.title)
-      setContent(data.blog.content)
-      setTags(data.blog.tags)
+    const fetchBlog = async (id: string) => {
+      const session = await getSession()
+      if (session) {
+        const res = await fetch(`/api/blog/${id}`, {
+          method: "GET",
+        })
+        const data = await res.json()
+  
+        setTitle(data.blog.title)
+        setContent(data.blog.content)
+        setTags(data.blog.tags)
+      } else {
+        router.push('/')
+      }
     }
     fetchBlog(params.id)
   }, [])

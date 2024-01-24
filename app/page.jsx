@@ -5,7 +5,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import 'animate.css'
 
-import { FaDisplay, FaDatabase, FaToolbox } from "react-icons/fa6";
+import {
+  FaDisplay,
+  FaDatabase,
+  FaToolbox,
+  FaAngleUp
+} from "react-icons/fa6"
 
 export default function Home() {
 
@@ -150,6 +155,13 @@ export default function Home() {
     }
   }
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'  // This will create a smooth scrolling effect
+    })
+  }
+
   const scrollToBottom = () => {
     window.scrollTo({
       top: document.body.scrollHeight,
@@ -164,7 +176,7 @@ export default function Home() {
 
         {/* first row */}
         <div className='
-          w-full h-screen px-8 py-10 md:py-20 bg-stone-100
+          w-full min-h-screen md:h-full px-8 md:py-72 bg-stone-100
           flex flex-col gap-8 md:gap-16 justify-center items-center
         '>
           {/* profile picture and greeting */}
@@ -173,12 +185,12 @@ export default function Home() {
               <Image
                 src="/images/profile/me_cropped.jpeg"
                 alt="Profile picture of myself"
-                width={288} height={288}
+                width={256} height={256}
                 placeholder='blur'
                 blurDataURL='/images/profile/me_cropped.jpeg'
                 className='
-                  w-[288px]
-                  h-[288px]
+                  w-[256px]
+                  h-[256px]
                   rounded-full
                   object-cover
               '/>
@@ -231,7 +243,7 @@ export default function Home() {
 
         {/* second row */}
         <div className='
-          w-full h-screen px-8 pt-10 pb-20 md:py-28
+          w-full h-full px-8 py-12 md:pt-28 md:pb-40
           flex flex-col justify-center bg-white
         '>
           <div className='
@@ -299,7 +311,9 @@ export default function Home() {
         </div>
 
         {/* third row */}
-        <div className='w-full px-8 pt-10 pb-16 md:py-20 bg-stone-300'>
+        <div className='
+          w-full min-h-screen h-full px-8 pt-10 pb-16 md:py-20 bg-stone-300
+        '>
           <div className='max-w-5xl mx-auto'>
             
             {/* title */}
@@ -436,6 +450,14 @@ export default function Home() {
           '>Thank you for visiting my website :)</p>
         </div>
       </div>
+
+      <button type="button" onClick={() => scrollToTop()}
+        className='
+          hidden md:block fixed bottom-0 right-0 mb-8 mr-12 p-2
+          rounded-xl border-2 border-stone-800 bg-stone-100 hover:bg-stone-100
+      '>
+        <FaAngleUp />
+      </button>
     </>
   )
 }

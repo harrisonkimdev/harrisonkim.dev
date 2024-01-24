@@ -1,22 +1,39 @@
-import React from 'react'
+'use client'
+
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { getSession } from 'next-auth/react'
+
+import { IBlog } from '@/interfaces'
+
 import Table from '@/components/Table'
 
-const fetchBlogData = async () => {
-  try {
-    const res = await fetch(`${process.env.BASE_URL}/api/blog`, {
-      method: 'GET',
-    })
-    const data = await res.json()
-    return data.blog
-  } catch (err) {
-    console.error(err)
-  }
-}
-
 const Admin = async () => {
-  var blogData = await fetchBlogData()
+  const router = useRouter()
 
+  const [blog, setBlog] = useState<IBlog[]>([])
+
+  useEffect(() => {
+    const fetchBlogData = async () => {
+      const session = await getSession()
+      if (session) {
+        try {
+          const res = await fetch(`${process.env.BASE_URL}/api/blog`, {
+            method: 'GET',
+          })
+          const data = await res.json()
+          setBlog(data.blog)
+        } catch (err) {
+          console.error(err)
+        }
+      } else {
+        router.push('/')
+      }
+    }
+    fetchBlogData()
+  }, [])
+  
   return (
     <div className='w-full min-h-screen mt-8 bg-stone-50'>
       <div className='max-w-5xl mx-auto py-20'>
@@ -29,7 +46,7 @@ const Admin = async () => {
           '>Create</Link>
         </div>
         <div className='mt-8'>
-          <Table data={blogData} />
+          <Table data={blog} />
         </div>
       </div>
     </div>
