@@ -1,13 +1,13 @@
 'use client'
 
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import Image from 'next/image'
 import { FaAngleLeft } from "react-icons/fa6";
 
 import { IBlog } from '@/interfaces';
 
-import Comments from '../components/Comments';
+import Comments from '@/blog/components/Comments';
 
 const BlogShow = ({ params }: { params: { id: string } }) => {
   const [blog, setBlog] = useState<IBlog | undefined>(undefined)
