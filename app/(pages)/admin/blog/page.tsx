@@ -19,7 +19,7 @@ const AdminBlogIndexPage = () => {
       const session = await getSession()
       if (session) {
         try {
-          const res = await fetch(`${process.env.BASE_URL}/api/blog`, {
+          const res = await fetch('/api/blog', {
             method: 'GET',
           })
           const data = await res.json()
@@ -35,7 +35,7 @@ const AdminBlogIndexPage = () => {
   }, [])
   
   return (
-    <div className='max-w-5xl mx-auto p-16'>
+    <>
       <h1 className='text-3xl font-medium'>Manage blog</h1>
       <div className='flex justify-end'>
         <Link href="/admin/blog/create" className='
@@ -45,7 +45,7 @@ const AdminBlogIndexPage = () => {
       <div className='mt-8'>
         <Table data={blog} />
       </div>
-    </div>
+    </>
   )
 }
 

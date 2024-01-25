@@ -81,7 +81,7 @@ const BlogEditPage = () => {
   }
   
   return (
-    <div className='max-w-5xl mx-auto p-16'>
+    <>
       {/* title */}
       <div className=''>
         <h1 className='text-3xl font-medium'>Edit Blog Post</h1>
@@ -146,7 +146,7 @@ const BlogEditPage = () => {
         </div>
 
       </form>
-    </div>
+    </>
   )
 }
 

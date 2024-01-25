@@ -70,7 +70,7 @@ const BlogCreatePage = () => {
   }
 
   return (
-    <div className='max-w-5xl mx-auto p-16'>
+    <>
       {/* title */}
       <div className=''>
         <h1 className='text-3xl font-medium'>Post A New Blog</h1>
@@ -134,7 +134,7 @@ const BlogCreatePage = () => {
           '>Submit</button>
         </div>
       </form>
-    </div>
+    </>
   )
 }
 
