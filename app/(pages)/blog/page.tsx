@@ -7,7 +7,7 @@ import Blog from './components/Blog'
 import PaginationNavigator from '@/components/PaginationNavigator'
 import SearchBar from '@/components/SearchBar'
 
-const BlogIndex = () => {
+const BlogIndexPage = () => {
   const [blogData, setBlogData] = useState<IBlog[] | undefined>(undefined)
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const BlogIndex = () => {
   }
 
   return (
-    <div className='max-w-5xl mx-auto p-16'>
+    <>
       {/* <SearchBar searchSubmit={(searchQuery: string) => handleSubmit(searchQuery)} /> */}
       <div>   
         { blogData && blogData.length > 0 ? (
@@ -49,8 +49,8 @@ const BlogIndex = () => {
           <PaginationNavigator />
         </div>
       )} */}
-    </div>
+    </>
   )
 }
 
-export default BlogIndex
+export default BlogIndexPage

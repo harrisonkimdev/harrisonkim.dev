@@ -9,7 +9,7 @@ import { getSession } from 'next-auth/react'
 import 'react-quill/dist/quill.snow.css'
 import '@/styles/quill-editor-custom.css'
 
-const BlogCreate = () => {
+const BlogCreatePage = () => {
   const router = useRouter()
 
   // Quill editor
@@ -138,4 +138,4 @@ const BlogCreate = () => {
   )
 }
 
-export default BlogCreate
+export default BlogCreatePage

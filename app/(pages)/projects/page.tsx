@@ -6,7 +6,7 @@ import ProjectContent from '@/(pages)/projects/components/ProjectContent'
 import '@/assets/project_description.json'
 import { FaTerminal } from "react-icons/fa6"
 
-const Page = () => {
+const ProjectsPage = () => {
   const [filepath, setFilepath] = useState('')
   const [isContentVisible, setIsContentVisible] = useState(false)
 
@@ -33,7 +33,7 @@ const Page = () => {
 
 return (
   <div className='
-    max-w-5xl min-h-screen mx-auto p-16
+    max-w-5xl min-h-screen mx-auto p-8 md:p-16
     flex flex-col justify-center
   '>
     {/* terminal window - desktop */}
@@ -50,7 +50,7 @@ return (
           'opacity-1 h-16 py-4 flex justify-center'
           : 'hidden'
         }
-        mt-20 ease-in duration-300 motion-reduce:duration-0
+        ease-in duration-300 motion-reduce:duration-0
       `}>
         <FaTerminal onClick={() => { tabClicked('', false) }}
           className='
@@ -137,7 +137,7 @@ return (
           'opacity-1 h-16 py-4 flex justify-center'
           : 'hidden'
         }
-        mt-20 ease-in duration-300 motion-reduce:duration-0
+        ease-in duration-300 motion-reduce:duration-0
       `}>
         <FaTerminal onClick={() => { tabClicked('', false) }}
           className='
@@ -203,4 +203,4 @@ return (
   )
 }
 
-export default Page
+export default ProjectsPage

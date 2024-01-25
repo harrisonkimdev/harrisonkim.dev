@@ -9,7 +9,7 @@ import { IBlog } from '@/interfaces'
 
 import Table from '@/(pages)/admin/blog/components/Table'
 
-const Admin = () => {
+const AdminBlogIndexPage = () => {
   const router = useRouter()
 
   const [blog, setBlog] = useState<IBlog[]>([])
@@ -49,4 +49,4 @@ const Admin = () => {
   )
 }
 
-export default Admin
+export default AdminBlogIndexPage

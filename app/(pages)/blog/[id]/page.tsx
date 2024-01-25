@@ -9,7 +9,7 @@ import { IBlog } from '@/interfaces';
 
 import Comments from '@/(pages)/blog/components/Comments';
 
-const BlogShow = ({ params }: { params: { id: string } }) => {
+const BlogShowPage = ({ params }: { params: { id: string } }) => {
   const [blog, setBlog] = useState<IBlog | undefined>(undefined)
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const BlogShow = ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <div className='max-w-5xl mx-auto p-16'>
+    <>
       <Link href='/blog' className='w-min flex justify-between'>
         <FaAngleLeft className='rounded-md text-black hover:border' />
       </Link>
@@ -85,8 +85,8 @@ const BlogShow = ({ params }: { params: { id: string } }) => {
           fetchComments={() => fetchBlog(params.id)}
         />
       </div>
-    </div>
+    </>
   )
 }
 
-export default BlogShow
+export default BlogShowPage
