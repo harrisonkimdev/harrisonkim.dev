@@ -32,172 +32,173 @@ const Page = () => {
   }
 
 return (
-  <div className='w-full min-h-screen px-4 flex flex-col justify-center bg-stone-50'>
-    <div className='max-w-5xl h-full mx-auto'>
-      {/* terminal window - desktop */}
+  <div className='
+    max-w-5xl min-h-screen mx-auto p-16
+    flex flex-col justify-center
+  '>
+    {/* terminal window - desktop */}
+    <div className={`
+      hidden md:block
+      ${ isContentVisible ? '' : 'h-full min-w-[44rem] flex flex-col justify-center' }
+      ease-in
+      duration-300
+      motion-reduce:duration-0
+    `}>
+      {/* toggled off, icon */}
       <div className={`
-        hidden md:block
-        ${ isContentVisible ? '' : 'h-full min-w-[44rem] flex flex-col justify-center' }
-        ease-in
-        duration-300
-        motion-reduce:duration-0
+        ${isContentVisible ?
+          'opacity-1 h-16 py-4 flex justify-center'
+          : 'hidden'
+        }
+        mt-20 ease-in duration-300 motion-reduce:duration-0
       `}>
-        {/* toggled off, icon */}
-        <div className={`
-          ${isContentVisible ?
-            'opacity-1 h-16 py-4 flex justify-center'
-            : 'hidden'
-          }
-          mt-20 ease-in duration-300 motion-reduce:duration-0
-        `}>
-          <FaTerminal onClick={() => { tabClicked('', false) }}
-            className='
-              text-2xl cursor-pointer hover:text-4xl
-              ease-in duration-300 motion-reduce:duration-0
-          '/>
-        </div>
-
-        {/* toggled on */}
-        <div className={`
-          ${isContentVisible ? 'hidden' : 'opacity-1 w-full'}
-          ease-in duration-300 motion-reduce:duration-0
-        `}>
-          {/* a group of project tabs */}
-          <div className='flex justify-between'>
-            <button onClick={() => { tabClicked('dandycv', true) }}
-              className={`
-                w-full
-                px-12
-                py-1
-                cursor-pointer
-                rounded-tl-md
-                whitespace-nowrap
-                bg-stone-200
-              hover:bg-stone-300
-            `}> dandycv </button>
-
-            <button onClick={() => { tabClicked('mosPic', true) }}
-              className={`
-                w-full
-                px-12
-                py-1
-                cursor-pointer
-                whitespace-nowrap
-                bg-stone-200
-              hover:bg-stone-300
-            `}> mosPic </button>
-
-            <button onClick={() => { tabClicked('dashboard', true) }}
-              className={`
-                w-full
-                px-12
-                py-1
-                cursor-pointer
-                witespace-nowrap
-                bg-stone-200
-                hover:bg-stone-300
-            `}> Dashboard </button>
-
-            <button onClick={() => { tabClicked('claw_machine', true) }}
-              className={`
-                w-full
-                px-12
-                py-1
-                cursor-pointer
-                rounded-tr-md
-                whitespace-nowrap
-                bg-stone-200
-              hover:bg-stone-300
-            `}> Claw Machine </button>
-          </div>
-
-          {/* terminal */}
-          <div className='
-            h-80 px-2 pt-1 pb-20 rounded-b-md bg-black
-            font-mono text-lime-400
-          '>
-            <p>
-              user@harrisonkim-dev ~ % git clone { filepath }
-              <span className='blink_me'>|</span>
-            </p>
-          </div>
-        </div>
+        <FaTerminal onClick={() => { tabClicked('', false) }}
+          className='
+            text-2xl cursor-pointer hover:text-4xl
+            ease-in duration-300 motion-reduce:duration-0
+        '/>
       </div>
 
-      {/* buttons - mobile */}
+      {/* toggled on */}
       <div className={`
-        md:hidden
-        ${ isContentVisible ? '' : 'opacity-1 w-full' }
+        ${isContentVisible ? 'hidden' : 'opacity-1 w-full'}
         ease-in duration-300 motion-reduce:duration-0
       `}>
-        <div className={`
-          ${isContentVisible ?
-            'opacity-1 h-16 py-4 flex justify-center'
-            : 'hidden'
-          }
-          mt-20 ease-in duration-300 motion-reduce:duration-0
-        `}>
-          <FaTerminal onClick={() => { tabClicked('', false) }}
-            className='
-              text-2xl active:scale-150
-              ease-in duration-300 motion-reduce:duration-0
-          '/>
-        </div>
-
-        <div className={`
-          ${ isContentVisible ? 'hidden' : 'opacity-1 w-full' }
-          grid grid-cols-2 gap-4
-        `}>
-          <button
-            onClick={() => { tabClicked('dandycv', true) }}
-            className='
-              p-6
-              rounded-md border
-              shadow-md
-              text-xl
+        {/* a group of project tabs */}
+        <div className='flex justify-between'>
+          <button onClick={() => { tabClicked('dandycv', true) }}
+            className={`
+              w-full
+              px-12
+              py-1
+              cursor-pointer
+              rounded-tl-md
               whitespace-nowrap
-            bg-stone-200
-            active:bg-stone-100
-          '>dandycv</button>
+              bg-stone-200
+            hover:bg-stone-300
+          `}> dandycv </button>
+
           <button onClick={() => { tabClicked('mosPic', true) }}
-            className='
-              p-6
-              rounded-md border
-              shadow-md
-              text-xl
+            className={`
+              w-full
+              px-12
+              py-1
+              cursor-pointer
               whitespace-nowrap
-            bg-stone-200
-            active:bg-stone-100
-          '>mosPic</button>
+              bg-stone-200
+            hover:bg-stone-300
+          `}> mosPic </button>
+
           <button onClick={() => { tabClicked('dashboard', true) }}
-            className='
-              p-6
-              rounded-md border
-              shadow-md
-              text-xl
-              whitespace-nowrap
-            bg-stone-200
-            active:bg-stone-100
-          '>Dashboard</button>
+            className={`
+              w-full
+              px-12
+              py-1
+              cursor-pointer
+              witespace-nowrap
+              bg-stone-200
+              hover:bg-stone-300
+          `}> Dashboard </button>
+
           <button onClick={() => { tabClicked('claw_machine', true) }}
-            className='
-              p-6
-              rounded-md border
-              shadow-md
-              text-xl
+            className={`
+              w-full
+              px-12
+              py-1
+              cursor-pointer
+              rounded-tr-md
               whitespace-nowrap
-            bg-stone-200
-            active:bg-stone-100
-          '>Claw Machine</button>
+              bg-stone-200
+            hover:bg-stone-300
+          `}> Claw Machine </button>
+        </div>
+
+        {/* terminal */}
+        <div className='
+          h-80 px-2 pt-1 pb-20 rounded-b-md bg-black
+          font-mono text-lime-400
+        '>
+          <p>
+            user@harrisonkim-dev ~ % git clone { filepath }
+            <span className='blink_me'>|</span>
+          </p>
         </div>
       </div>
-
-      {/* Project Description */}
-      <div className={`
-        ${isContentVisible ? 'opacity-1 py-6' : 'opacity-0'}
-        ease-in duration-300 motion-reduce:duration-0
-      `}>{ contentWrapper() }</div>
     </div>
+
+    {/* buttons - mobile */}
+    <div className={`
+      md:hidden
+      ${ isContentVisible ? '' : 'opacity-1 w-full' }
+      ease-in duration-300 motion-reduce:duration-0
+    `}>
+      <div className={`
+        ${isContentVisible ?
+          'opacity-1 h-16 py-4 flex justify-center'
+          : 'hidden'
+        }
+        mt-20 ease-in duration-300 motion-reduce:duration-0
+      `}>
+        <FaTerminal onClick={() => { tabClicked('', false) }}
+          className='
+            text-2xl active:scale-150
+            ease-in duration-300 motion-reduce:duration-0
+        '/>
+      </div>
+
+      <div className={`
+        ${ isContentVisible ? 'hidden' : 'opacity-1 w-full' }
+        grid grid-cols-2 gap-4
+      `}>
+        <button
+          onClick={() => { tabClicked('dandycv', true) }}
+          className='
+            p-6
+            rounded-md border
+            shadow-md
+            text-xl
+            whitespace-nowrap
+          bg-stone-200
+          active:bg-stone-100
+        '>dandycv</button>
+        <button onClick={() => { tabClicked('mosPic', true) }}
+          className='
+            p-6
+            rounded-md border
+            shadow-md
+            text-xl
+            whitespace-nowrap
+          bg-stone-200
+          active:bg-stone-100
+        '>mosPic</button>
+        <button onClick={() => { tabClicked('dashboard', true) }}
+          className='
+            p-6
+            rounded-md border
+            shadow-md
+            text-xl
+            whitespace-nowrap
+          bg-stone-200
+          active:bg-stone-100
+        '>Dashboard</button>
+        <button onClick={() => { tabClicked('claw_machine', true) }}
+          className='
+            p-6
+            rounded-md border
+            shadow-md
+            text-xl
+            whitespace-nowrap
+          bg-stone-200
+          active:bg-stone-100
+        '>Claw Machine</button>
+      </div>
+    </div>
+
+    {/* Project Description */}
+    <div className={`
+      ${isContentVisible ? 'opacity-1 py-6' : 'opacity-0'}
+      ease-in duration-300 motion-reduce:duration-0
+    `}>{ contentWrapper() }</div>
   </div>
   )
 }

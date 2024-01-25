@@ -81,73 +81,71 @@ const BlogEditPage = () => {
   }
   
   return (
-    <div className='w-full min-h-screen mt-8 bg-stone-50'>
-      <div className='max-w-5xl mx-auto py-20'>
-        {/* title */}
-        <div className=''>
-          <h1 className='text-3xl font-medium'>Edit Blog Post</h1>
-        </div>
+    <div className='max-w-5xl mx-auto p-16'>
+      {/* title */}
+      <div className=''>
+        <h1 className='text-3xl font-medium'>Edit Blog Post</h1>
+      </div>
 
-        {/* text editor and buttons */}
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <div className='mt-8'>
-            <input
-              type="text" id="title" placeholder='Title...'
-              value={title} onChange={(e) => setTitle(e.target.value)}
-              className='w-full my-4 p-4 border'
-            />
+      {/* text editor and buttons */}
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <div className='mt-8'>
+          <input
+            type="text" id="title" placeholder='Title...'
+            value={title} onChange={(e) => setTitle(e.target.value)}
+            className='w-full my-4 p-4 border'
+          />
 
-            <QuillNoSSRWrapper content={content} setContent={setContent} />
+          <QuillNoSSRWrapper content={content} setContent={setContent} />
 
-            <div className='my-4 p-4 border-2 border-dashed rounded-lg'>
-              <div className='flex gap-2'>
+          <div className='my-4 p-4 border-2 border-dashed rounded-lg'>
+            <div className='flex gap-2'>
 
-                <input
-                  type="text" id="tag" placeholder=''
-                  value={tagTitle} onChange={(e) => setTagTitle(e.target.value)}
-                  className='
-                    p-4 border
-                  '
-                />
-                <button type="button" onClick={() => addTagToArray()} className='p-4 border'>
-                  Add
-                </button>
-              </div>
-              <div className='w-full h-16 p-4 flex flex-wrap gap-2'>
-                { tags?.map((tag: string, index) => {
-                  return <span key={index} className='px-3 py-2 rounded-full border bg-white'>{ tag }</span>
-                })}
-              </div>
+              <input
+                type="text" id="tag" placeholder=''
+                value={tagTitle} onChange={(e) => setTagTitle(e.target.value)}
+                className='
+                  p-4 border
+                '
+              />
+              <button type="button" onClick={() => addTagToArray()} className='p-4 border'>
+                Add
+              </button>
+            </div>
+            <div className='w-full h-16 p-4 flex flex-wrap gap-2'>
+              { tags?.map((tag: string, index) => {
+                return <span key={index} className='px-3 py-2 rounded-full border bg-white'>{ tag }</span>
+              })}
             </div>
           </div>
+        </div>
 
-          {/* buttons */}
-          <div className='mt-4 flex gap-4 justify-end'>
-            <Link href="/admin/blog"
-              className='
-                p-2
-                shadow-sm
-                font-medium
-                text-stone-800
-                hover:text-stone-800
-                bg-white
-                hover:bg-stone-100
-            '>
-              Cancel
-            </Link>
-            <button type="submit"
-              className='
-                p-2
-                shadow-sm
-                font-medium
-                text-stone-800
-                hover:text-stone-800
-                bg-white hover:bg-stone-100
-            '>Update</button>
-          </div>
+        {/* buttons */}
+        <div className='mt-4 flex gap-4 justify-end'>
+          <Link href="/admin/blog"
+            className='
+              p-2
+              shadow-sm
+              font-medium
+              text-stone-800
+              hover:text-stone-800
+              bg-white
+              hover:bg-stone-100
+          '>
+            Cancel
+          </Link>
+          <button type="submit"
+            className='
+              p-2
+              shadow-sm
+              font-medium
+              text-stone-800
+              hover:text-stone-800
+              bg-white hover:bg-stone-100
+          '>Update</button>
+        </div>
 
-        </form>
-      </div>
+      </form>
     </div>
   )
 }

@@ -30,7 +30,7 @@ const Wrapper = ({
             <NavBar />
           </nav>
 
-          <main className='mt-8 flex-grow'>
+          <main className='w-full min-h-screen mt-16 bg-stone-50'>
             { children }
           </main>
 

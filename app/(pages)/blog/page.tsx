@@ -30,7 +30,7 @@ const BlogIndex = () => {
   }
 
   return (
-    <div className='min-h-screen'>
+    <div className='max-w-5xl mx-auto p-16'>
       {/* <SearchBar searchSubmit={(searchQuery: string) => handleSubmit(searchQuery)} /> */}
       <div>   
         { blogData && blogData.length > 0 ? (

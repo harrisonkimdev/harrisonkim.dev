@@ -176,7 +176,7 @@ export default function Home() {
 
         {/* first row */}
         <div className='
-          w-full min-h-screen md:h-full px-8 md:py-72 bg-stone-100
+          w-full min-h-screen md:h-full px-8 md:py-72 bg-stone-100 
           flex flex-col gap-8 md:gap-16 justify-center items-center
         '>
           {/* profile picture and greeting */}
@@ -201,7 +201,9 @@ export default function Home() {
             '>
               Hi, <br />
               <span className='whitespace-nowrap'>I&apos;m
-                <Link href='/admin/login'><span className='text-stone-700'> Harrison</span></Link>,
+                <Link href='/admin/login'>
+                  <span className='text-stone-700'> Harrison</span>
+                </Link>,
               </span> <br /> Full Stack <br /> Engineer
             </h1>
           </div>
@@ -360,10 +362,16 @@ export default function Home() {
                 <li className='p-6 rounded-xl bg-stone-50 hover:bg-stone-100'>
                   <div className='flex flex-col md:grid md:grid-cols-4 gap-8'>
                     <div className='md:col-span-3'>
-                      <h3 className='text-3xl font-bold text-stone-800'>mos<span className='text-stone-500'>Pic</span></h3>
+                      <h3 className='text-3xl font-bold text-stone-800'>
+                        mos<span className='text-stone-500'>Pic</span>
+                      </h3>
                       <h4 className='text-xl font-medium mt-2 text-stone-600'>
                         Image editing tool with the help of AI -
-                        <Link href='https://segment-anything.com/' target="_blank" className='text-stone-800'> Segment Anything</Link>
+                        <Link
+                          href='https://segment-anything.com/'
+                          target="_blank"
+                          className='text-stone-800
+                        '> Segment Anything </Link>
                       </h4>
                       <ul className='list-disc pl-6 text-stone-800'>
                         <li>Distributed tasks effectively to each team member and ran a 2 week-sprint using Agile as a project manager.</li>

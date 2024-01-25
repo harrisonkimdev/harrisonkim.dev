@@ -5,9 +5,8 @@ import { useSession, signIn, signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
 const LoginModal = () => {
-  const { data: session, status } = useSession({ required: false })
-  
   const router = useRouter()
+  const { data: session, status } = useSession({ required: false })
   
   const [passwordInput, setPasswordInput] = useState('')
 
@@ -21,10 +20,14 @@ const LoginModal = () => {
         callbackUrl: `${location.origin}/admin/blog`,
       })
 
+      // error handling
       if (res?.error === 'CredentialsSignin' && res.url === null) {
         // 
-      } else if (res?.error === null && res.url !== null) {
-        // 
+      }
+
+      // credential matchs
+      else if (res?.error === null && res.url !== null) {
+        // toast or some sort of feedback
 
         router.push(res.url)
       }
@@ -43,15 +46,17 @@ const LoginModal = () => {
             p-3
             rounded-md
             border
-            whitespace-nowrap
-            font-semibold
-          text-stone-800
           bg-stone-100
           hover:bg-stone-200
+          text-stone-800
+            whitespace-nowrap
+            font-semibold
           '>Sign out</button>
         </div>
       ) : (
-        <form onSubmit={(e) => submitCredential(e)} className='my-8 flex flex-col'>
+        <form onSubmit={(e) => submitCredential(e)}
+          className='my-8 flex flex-col'
+        >
           <div className='flex flex-col'>
             <label htmlFor="password">Password</label>
             <input
@@ -63,8 +68,13 @@ const LoginModal = () => {
             />
           </div>
           <div className='flex justify-center'>
-            <button type="submit" className='
-              w-full mt-8 py-2 rounded-md bg-stone-200 hover:bg-stone-300
+            <button className='
+              w-full
+              mt-8
+              py-2
+              rounded-md
+            bg-stone-200
+            hover:bg-stone-300
               font-semibold
             '>Submit</button>
           </div>

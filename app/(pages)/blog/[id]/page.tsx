@@ -47,7 +47,7 @@ const BlogShow = ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <div>
+    <div className='max-w-5xl mx-auto p-16'>
       <Link href='/blog' className='w-min flex justify-between'>
         <FaAngleLeft className='rounded-md text-black hover:border' />
       </Link>
