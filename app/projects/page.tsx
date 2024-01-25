@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import '@/globals.css'
-import ProjectContent from '@/components/ProjectContent'
+import ProjectContent from '@/projects/components/ProjectContent'
 import '@/assets/project_description.json'
 import { FaTerminal } from "react-icons/fa6"
 
@@ -34,10 +34,13 @@ const Page = () => {
 return (
   <div className='w-full min-h-screen px-4 flex flex-col justify-center bg-stone-50'>
     <div className='max-w-5xl h-full mx-auto'>
-      {/* terminal window */}
+      {/* terminal window - desktop */}
       <div className={`
-        ${isContentVisible ? '' : 'h-full min-w-[44rem] flex flex-col justify-center'}
-        ease-in duration-300 motion-reduce:duration-0
+        hidden md:block
+        ${ isContentVisible ? '' : 'h-full min-w-[44rem] flex flex-col justify-center' }
+        ease-in
+        duration-300
+        motion-reduce:duration-0
       `}>
         {/* toggled off, icon */}
         <div className={`
@@ -59,52 +62,51 @@ return (
           ${isContentVisible ? 'hidden' : 'opacity-1 w-full'}
           ease-in duration-300 motion-reduce:duration-0
         `}>
-          {/* a group of tabs for projects */}
+          {/* a group of project tabs */}
           <div className='flex justify-between'>
-            <button type='button' onClick={() => { tabClicked('dandycv', true) }}
+            <button onClick={() => { tabClicked('dandycv', true) }}
               className={`
-                ${filepath === 'dandycv' ? 'bg-stone-300' : 'bg-stone-200'}
                 w-full
                 px-12
                 py-1
                 cursor-pointer
                 rounded-tl-md
                 whitespace-nowrap
+                bg-stone-200
               hover:bg-stone-300
             `}> dandycv </button>
 
-            <button type='button' onClick={() => { tabClicked('mosPic', true) }}
+            <button onClick={() => { tabClicked('mosPic', true) }}
               className={`
-                ${filepath === 'mosPic' ? 'bg-stone-300' : 'bg-stone-200'}
                 w-full
                 px-12
                 py-1
                 cursor-pointer
                 whitespace-nowrap
+                bg-stone-200
               hover:bg-stone-300
             `}> mosPic </button>
 
-            {/* rounded-tr-md */}
-            <button type='button' onClick={() => { tabClicked('dashboard', true) }}
+            <button onClick={() => { tabClicked('dashboard', true) }}
               className={`
-                ${filepath === 'Dashboard' ? 'bg-stone-300' : 'bg-stone-200'}
                 w-full
                 px-12
                 py-1
                 cursor-pointer
                 witespace-nowrap
+                bg-stone-200
                 hover:bg-stone-300
             `}> Dashboard </button>
 
-            <button type='button' onClick={() => { tabClicked('claw_machine', true) }}
+            <button onClick={() => { tabClicked('claw_machine', true) }}
               className={`
-                ${filepath === 'claw_machine' ? 'bg-stone-300' : 'bg-stone-200'}
                 w-full
                 px-12
                 py-1
                 cursor-pointer
                 rounded-tr-md
                 whitespace-nowrap
+                bg-stone-200
               hover:bg-stone-300
             `}> Claw Machine </button>
           </div>
@@ -118,12 +120,75 @@ return (
               user@harrisonkim-dev ~ % git clone { filepath }
               <span className='blink_me'>|</span>
             </p>
-            {/* <p>Downloading...</p>
-            <p>Installing the program...</p>
-            <p>Initializing...</p>
-            <p>Hang on tight... Almost ready...</p>
-            <p>Happy coding!</p> */}
           </div>
+        </div>
+      </div>
+
+      {/* buttons - mobile */}
+      <div className={`
+        md:hidden
+        ${ isContentVisible ? '' : 'opacity-1 w-full' }
+        ease-in duration-300 motion-reduce:duration-0
+      `}>
+        <div className={`
+          ${isContentVisible ?
+            'opacity-1 h-16 py-4 flex justify-center'
+            : 'hidden'
+          }
+          mt-20 ease-in duration-300 motion-reduce:duration-0
+        `}>
+          <FaTerminal onClick={() => { tabClicked('', false) }}
+            className='
+              text-2xl active:scale-150
+              ease-in duration-300 motion-reduce:duration-0
+          '/>
+        </div>
+
+        <div className={`
+          ${ isContentVisible ? 'hidden' : 'opacity-1 w-full' }
+          grid grid-cols-2 gap-4
+        `}>
+          <button
+            onClick={() => { tabClicked('dandycv', true) }}
+            className='
+              p-6
+              rounded-md border
+              shadow-md
+              text-xl
+              whitespace-nowrap
+            bg-stone-200
+            active:bg-stone-100
+          '>dandycv</button>
+          <button onClick={() => { tabClicked('mosPic', true) }}
+            className='
+              p-6
+              rounded-md border
+              shadow-md
+              text-xl
+              whitespace-nowrap
+            bg-stone-200
+            active:bg-stone-100
+          '>mosPic</button>
+          <button onClick={() => { tabClicked('dashboard', true) }}
+            className='
+              p-6
+              rounded-md border
+              shadow-md
+              text-xl
+              whitespace-nowrap
+            bg-stone-200
+            active:bg-stone-100
+          '>Dashboard</button>
+          <button onClick={() => { tabClicked('claw_machine', true) }}
+            className='
+              p-6
+              rounded-md border
+              shadow-md
+              text-xl
+              whitespace-nowrap
+            bg-stone-200
+            active:bg-stone-100
+          '>Claw Machine</button>
         </div>
       </div>
 
