@@ -7,7 +7,7 @@ import { FaAngleLeft } from "react-icons/fa6";
 
 import { IBlog } from '@/interfaces';
 
-import Comments from '@/blog/components/Comments';
+import Comments from '@/(pages)/blog/components/Comments';
 
 const BlogShow = ({ params }: { params: { id: string } }) => {
   const [blog, setBlog] = useState<IBlog | undefined>(undefined)

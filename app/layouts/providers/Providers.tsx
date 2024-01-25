@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { SessionProvider } from 'next-auth/react'
-import { AppStateProvider } from '@/layouts/AppStateContext'
+import { AppStateProvider } from '@/layouts/providers/AppStateContext'
 
 const Providers = ({
   children

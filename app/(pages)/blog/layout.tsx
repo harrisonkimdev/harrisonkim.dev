@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogSidebar from '@/blog/components/BlogSidebar'
+import BlogSidebar from '@/(pages)/blog/components/BlogSidebar'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (

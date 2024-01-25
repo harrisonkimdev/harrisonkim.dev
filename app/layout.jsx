@@ -4,7 +4,7 @@ import { Rubik } from 'next/font/google'
 import './globals.css'
 import 'semantic-ui-css/semantic.min.css'
 
-import Providers from '@/components/Providers'
+import Providers from '@/layouts/providers/Providers'
 import Wrapper from '@/layouts/Wrapper'
 
 const rubik = Rubik({ subsets: ['latin'] })

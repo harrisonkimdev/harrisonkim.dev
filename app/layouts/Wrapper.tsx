@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useAppState } from '@/components/AppStateContext'
+import { useAppState } from '@/layouts/providers/AppStateContext'
 
 import SideBar from '@/layouts/SideBar'
 import NavBar from '@/layouts/NavBar'

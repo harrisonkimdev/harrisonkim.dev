@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useAppState } from '@/components/AppStateContext'
+import { useAppState } from '@/layouts/providers/AppStateContext'
 
 import LargeNavbar from '@/layouts/LargeNavBar'
 import SmallNavbar from '@/layouts/SmallNavBar'
