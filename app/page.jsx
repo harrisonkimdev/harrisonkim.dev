@@ -209,7 +209,7 @@ export default function Home() {
           </div>
 
           {/* buttons */}
-          <div className='flex flex-col gap-12'>
+          <div className='flex flex-col gap-10'>
             <div className='grid grid-cols-2 gap-4 md:gap-8'>
               <div className='
                 p-3 rounded-lg border border-stone-600 shadow-md
@@ -237,7 +237,7 @@ export default function Home() {
                 p-3 rounded-lg border border-stone-600 shadow-md
                 text-center cursor-pointer hover:bg-stone-50
               '>
-                Latest Project. Please Try Me!
+                <span className='font-medium text-stone-500'>Latest Project. Please Try Me!</span>
               </div>
             </button>
           </div>
