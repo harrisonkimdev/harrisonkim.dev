@@ -15,7 +15,7 @@ const BlogEditPage = () => {
 
   // Quill editor
   const QuillNoSSRWrapper = useMemo(() => {
-    return dynamic(() => import("@/components/ReactQuillWrapper"), {
+    return dynamic(() => import("@/libs/ReactQuillWrapper"), {
       loading: () => <p>loading...</p>,
       ssr: false,
     })
