@@ -13,18 +13,18 @@ class BackgroundNumber {
 
     var zeroOrOne = Math.floor(Math.random() * 2)
 
-    if (zeroOrOne === 0)
-      this.numberImage.src = '/images/zero.png'
-    else
-      this.numberImage.src = '/images/one.png'
+    if (zeroOrOne === 0) this.numberImage.src = '/images/zero.png'
+    else this.numberImage.src = '/images/one.png'
   }
 
   draw(ctx: CanvasRenderingContext2D) {
-    if (ctx) {
-      // ctx.fillStyle = 'yellow'
-      // ctx?.fillRect(this.x, this.y, this.width, this.height)
-      ctx?.drawImage(this.numberImage, this.x, this.y, this.width, this.height)
-    }
+    ctx?.drawImage(
+      this.numberImage,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    )
   }
 
   moveForward() {

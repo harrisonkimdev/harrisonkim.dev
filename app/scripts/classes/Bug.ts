@@ -15,11 +15,13 @@ class Bug {
   }
 
   draw(ctx: CanvasRenderingContext2D) {
-    if (ctx) {
-      // ctx.fillStyle = 'red'
-      // ctx?.fillRect(this.x, this.y, this.width, this.height)
-      ctx?.drawImage(this.bugImage, this.x, this.y, this.width, this.height)
-    }
+    ctx?.drawImage(
+      this.bugImage,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    )
   }
 
   moveForward() {
