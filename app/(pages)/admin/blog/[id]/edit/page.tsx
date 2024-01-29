@@ -6,10 +6,18 @@ import { getSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
+import Loader from '@/components/Loader'
+
 import 'react-quill/dist/quill.snow.css'
 import '@/styles/quill-editor-custom.css'
 
 const BlogEditPage = () => {
+  const [loading, setLoading] = useState(false)
+  const [title, setTitle] = useState<string>('')
+  const [content, setContent] = useState<string>('')
+  const [tagTitle, setTagTitle] = useState<string>('')
+  const [tags, setTags] = useState<string[]>([])
+
   const router = useRouter()
   const params = useParams()
 
@@ -21,28 +29,32 @@ const BlogEditPage = () => {
     })
   }, [])
 
-  const [title, setTitle] = useState<string>('')
-  const [content, setContent] = useState<string>('')
-  const [tagTitle, setTagTitle] = useState<string>('')
-  const [tags, setTags] = useState<string[]>([])
-
-  useEffect(() => {
-
-    const fetchBlog = async (id: string) => {
-      const session = await getSession()
-      if (session) {
+  const fetchBlog = async (id: string) => {
+    const session = await getSession()
+    if (session) {
+      try {
         const res = await fetch(`/api/blog/${id}`, {
           method: "GET",
         })
         const data = await res.json()
-  
+
         setTitle(data.blog.title)
         setContent(data.blog.content)
         setTags(data.blog.tags)
-      } else {
-        router.push('/')
+      } catch (err) {
+        console.error(err)
+      } finally {
+        setLoading(false)
       }
+
+    } else {
+      router.push('/')
     }
+  }
+
+  useEffect(() => {
+    setLoading(true)
+
     fetchBlog(params.id)
   }, [])
 
@@ -80,7 +92,13 @@ const BlogEditPage = () => {
     }
   }
   
-  return (
+  if (loading) return (
+    <>
+      <Loader />
+    </>
+  )
+  
+  else return (
     <>
       {/* title */}
       <div className=''>

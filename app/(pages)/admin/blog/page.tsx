@@ -7,34 +7,47 @@ import { getSession } from 'next-auth/react'
 
 import { IBlog } from '@/interfaces'
 
+import Loader from '@/components/Loader'
 import Table from '@/(pages)/admin/blog/components/Table'
 
 const AdminBlogIndexPage = () => {
   const router = useRouter()
 
+  const [loading, setLoading] = useState(false)
   const [blog, setBlog] = useState<IBlog[]>([])
 
-  useEffect(() => {
-    const fetchBlogData = async () => {
-      const session = await getSession()
-      if (session) {
-        try {
-          const res = await fetch('/api/blog', {
-            method: 'GET',
-          })
-          const data = await res.json()
-          setBlog(data.blog)
-        } catch (err) {
-          console.error(err)
-        }
-      } else {
-        router.push('/')
+  const fetchBlogData = async () => {
+    const session = await getSession()
+    if (session) {
+      try {
+        const res = await fetch('/api/blog', {
+          method: 'GET',
+        })
+        const data = await res.json()
+        setBlog(data.blog)
+      } catch (err) {
+        console.error(err)
+      } finally {
+        setLoading(false)
       }
+    } else {
+      router.push('/')
     }
+  }
+
+  useEffect(() => {
+    setLoading(true)
+
     fetchBlogData()
   }, [])
-  
-  return (
+
+  if (loading) return (
+    <>
+      <Loader />
+    </>
+  )
+
+  else return (
     <>
       <h1 className='text-3xl font-medium'>Manage blog</h1>
       <div className='flex justify-end'>

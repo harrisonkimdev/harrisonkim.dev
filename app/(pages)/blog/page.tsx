@@ -3,23 +3,29 @@
 import React, { useState, useEffect } from 'react'
 import { IBlog } from '@/interfaces'
 
+import Loader from '@/components/Loader'
 import Blog from './components/Blog'
 import PaginationNavigator from '@/components/PaginationNavigator'
 import SearchBar from '@/components/SearchBar'
 
 const BlogIndexPage = () => {
+  const [loading, setLoading] = useState(false)
   const [blogData, setBlogData] = useState<IBlog[] | undefined>(undefined)
 
-  useEffect(() => {
-    const getBlogs = async () => {
-      try {
-        const res = await fetch(`/api/blog?currentPage=${1}`)
-        const data = await res.json()
-        setBlogData(data.blog)
-      } catch (err) {
-        // 
-      }
+  const getBlogs = async () => {
+    try {
+      const res = await fetch(`/api/blog?currentPage=${1}`)
+      const data = await res.json()
+      setBlogData(data.blog)
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setLoading(false)
     }
+  }
+  useEffect(() => {
+    setLoading(true)
+
     getBlogs()
   }, [])
   
@@ -29,7 +35,13 @@ const BlogIndexPage = () => {
     const data = await res.json()
   }
 
-  return (
+  if (loading) return (
+    <>
+      <Loader />
+    </>
+  )
+
+  else return (
     <>
       {/* <SearchBar searchSubmit={(searchQuery: string) => handleSubmit(searchQuery)} /> */}
       <div>   

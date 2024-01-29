@@ -7,15 +7,13 @@ import { FaAngleLeft } from "react-icons/fa6";
 
 import { IBlog } from '@/interfaces';
 
+import Loader from '@/components/Loader'
 import Comments from '@/(pages)/blog/components/Comments';
 
 const BlogShowPage = ({ params }: { params: { id: string } }) => {
+  const [loading, setLoading] = useState(false)
   const [blog, setBlog] = useState<IBlog | undefined>(undefined)
 
-  useEffect(() => {
-    fetchBlog(params.id)
-  }, [])
-  
   const fetchBlog = async (id: string) => {
     try {
       const res = await fetch(`/api/blog/${id}?readOnly=1`)
@@ -23,8 +21,17 @@ const BlogShowPage = ({ params }: { params: { id: string } }) => {
       setBlog(data.blog)
     } catch (err) {
       console.error(err)
+    } finally {
+      setLoading(false)
     }
   }
+
+  useEffect(() => {
+    setLoading(true)
+
+    fetchBlog(params.id)
+  }, [])
+  
 
   const convertDate = (dateInString: string | undefined) => {
     const months = [
@@ -46,7 +53,13 @@ const BlogShowPage = ({ params }: { params: { id: string } }) => {
     }
   }
 
-  return (
+  if (loading) return (
+    <>
+      <Loader />
+    </>
+  )
+
+  else return (
     <>
       <Link href='/blog' className='w-min flex justify-between'>
         <FaAngleLeft className='rounded-md text-black hover:border' />
