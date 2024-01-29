@@ -6,30 +6,36 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
 import { getSession } from 'next-auth/react'
 
+import Loader from '@/components/Loader'
+
 import 'react-quill/dist/quill.snow.css'
 import '@/styles/quill-editor-custom.css'
 
 const BlogCreatePage = () => {
+  const [loading, setLoading] = useState(false)
+  const [title, setTitle] = useState<string>('')
+  const [content, setContent] = useState<string>('')
+  const [tagTitle, setTagTitle] = useState<string>('')
+  const [tags, setTags] = useState<string[]>([])
+
   const router = useRouter()
 
   // Quill editor
   const QuillNoSSRWrapper = useMemo(() => {
+    // setLoading(true)
+
     return dynamic(() => import("@/libs/ReactQuillWrapper"), {
       loading: () => <p>loading...</p>,
       ssr: false,
     })
   }, [])
 
-  const [title, setTitle] = useState<string>('')
-  const [content, setContent] = useState<string>('')
-  const [tagTitle, setTagTitle] = useState<string>('')
-  const [tags, setTags] = useState<string[]>([])
+  const checkAuth = async () => {
+    const session = await getSession()
+    if (!session) router.push('/')
+  }
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const session = await getSession()
-      if (!session) router.push('/')
-    }
     checkAuth()
   }, [])
   
@@ -69,7 +75,13 @@ const BlogCreatePage = () => {
     }
   }
 
-  return (
+  if (loading) return (
+    <>
+      <Loader />
+    </>
+  )
+
+  else return (
     <>
       {/* title */}
       <div className=''>
