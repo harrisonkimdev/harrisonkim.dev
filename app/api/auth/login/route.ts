@@ -26,7 +26,7 @@ export const POST = async (req: Request) => {
       if (!isMatch) return NextResponse.json({ error: "Password doesn't match." }, { status: 401 })
 
       // No user data available at the moment.
-      const accessToken = signJwtAccessToken({})
+      const accessToken = signJwtAccessToken({ password })
       console.log("token: ", accessToken)
 
       return NextResponse.json({ accessToken }, { status: 200 })
