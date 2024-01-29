@@ -10,6 +10,8 @@ export const POST = async (req: Request) => {
     await connectToDB()
     const { password } = body
 
+    console.log("password: ", password)
+
     // no valid password provided
     if (!password) {
       return NextResponse.json({ message: 'Missing password input.' }, { status: 400 })
@@ -25,6 +27,7 @@ export const POST = async (req: Request) => {
 
       // No user data available at the moment.
       const accessToken = signJwtAccessToken({})
+      console.log("token: ", accessToken)
 
       return NextResponse.json({ accessToken }, { status: 200 })
     }
