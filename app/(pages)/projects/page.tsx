@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import '@/globals.css'
-import ProjectContent from '@/(pages)/projects/components/ProjectContent'
+import ProjectContent from '@/(pages)/projects/(components)/ProjectContent'
 import '@/assets/project_description.json'
 import { FaTerminal } from "react-icons/fa6"
 
