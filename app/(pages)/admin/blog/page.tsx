@@ -8,7 +8,7 @@ import { getSession } from 'next-auth/react'
 import { IBlog } from '@/interfaces'
 
 import Loader from '@/components/Loader'
-import Table from '@/(pages)/admin/blog/components/Table'
+import Table from '@/(pages)/admin/blog/(components)/Table'
 
 const AdminBlogIndexPage = () => {
   const router = useRouter()

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { IBlog } from '@/interfaces'
 
 import Loader from '@/components/Loader'
-import Blog from './components/Blog'
+import Blog from './(components)/Blog'
 import PaginationNavigator from '@/components/PaginationNavigator'
 import SearchBar from '@/components/SearchBar'
 

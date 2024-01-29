@@ -8,7 +8,7 @@ import { FaAngleLeft } from "react-icons/fa6";
 import { IBlog } from '@/interfaces';
 
 import Loader from '@/components/Loader'
-import Comments from '@/(pages)/blog/components/Comments';
+import Comments from '@/(pages)/blog/(components)/Comments';
 
 const BlogShowPage = ({ params }: { params: { id: string } }) => {
   const [loading, setLoading] = useState(false)
