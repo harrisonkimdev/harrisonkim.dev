@@ -32,7 +32,7 @@ export const POST = async (req: Request) => {
       const accessToken = signJwtAccessToken(userData)
 
       return NextResponse.json({
-        token: accessToken,
+        accessToken,
         ...userData
       }, { status: 200 })
     }
