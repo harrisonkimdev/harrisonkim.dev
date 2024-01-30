@@ -24,11 +24,8 @@ export const POST = async (req: Request) => {
       if (!isMatch) return NextResponse.json({ error: "Password doesn't match." }, { status: 401 })
 
       const userData = {
-        id: '9009081034911',
         name: 'Harrison Kim',
         email: 'harrisonkimdev@gmail.com',
-        picture: '',
-        sub: ''
       }
 
       // No user data available at the moment.
