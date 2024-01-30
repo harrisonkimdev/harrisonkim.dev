@@ -26,7 +26,13 @@ export const POST = async (req: Request) => {
       // No user data available at the moment.
       const accessToken = signJwtAccessToken({ password })
 
-      return NextResponse.json({ accessToken }, { status: 200 })
+      return NextResponse.json({
+        accessToken,
+        id: '9009081034911',
+        name: 'Harrison Kim',
+        email: 'harrisonkimdev@gmail.com',
+        image: ''
+      }, { status: 200 })
     }
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 500 })

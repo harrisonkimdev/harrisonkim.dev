@@ -7,10 +7,11 @@ const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        // email: {
-        //   label: "Email",
-        //   type: "email",
-        // },
+        username: {
+          label: "Username",
+          type: "text",
+          placeholder: "hhkimmm9"
+        },
         password: {
           label: "Password",
           type: "password",
@@ -39,11 +40,27 @@ const authOptions: NextAuthOptions = {
     signIn: '/admin/login'
   },
   callbacks: {
+    /*
+      - Requests to /api/auth/signin, /api/auth/session and calls to
+        getSession(), getServerSession(), useSession() will invoke this
+        function.
+      - The returned value will be encrypted, and it is stored in a cookie.
+     */
     async jwt({ token }) {
       return token
     },
-    async session({ session, token }) {
-      if (token) session.user = token
+    /*
+      - If you want to make something available you added to the token via the
+        jwt() callback, you have to explicitly forward it here to make it
+        available to the client.
+      - Requests to /api/auth/signin, /api/auth/session and calls to
+        getSession(), useSession(), /api/auth/session will invoke this
+        function.
+      - When using database sessions, the User (user) object is passed as an
+        argument. When using JSON Web Tokens for sessions, the JWT payload
+        (token) is provided instead.
+     */
+    async session({ session }) {
       return session
     }
   },
