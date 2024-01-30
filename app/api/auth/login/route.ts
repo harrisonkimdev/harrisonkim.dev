@@ -31,7 +31,8 @@ export const POST = async (req: Request) => {
         id: '9009081034911',
         name: 'Harrison Kim',
         email: 'harrisonkimdev@gmail.com',
-        image: ''
+        picture: '',
+        sub: ''
       }, { status: 200 })
     }
   } catch (err) {
