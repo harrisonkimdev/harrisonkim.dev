@@ -16,7 +16,7 @@ const authOptions: NextAuthOptions = {
           type: "password",
         }
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/login`, {
           method: "POST",
           body: JSON.stringify(credentials),
@@ -42,7 +42,8 @@ const authOptions: NextAuthOptions = {
     async jwt({ token }) {
       return token
     },
-    async session({ session }) {
+    async session({ session, token }) {
+      if (token) session.user = token
       return session
     }
   },
