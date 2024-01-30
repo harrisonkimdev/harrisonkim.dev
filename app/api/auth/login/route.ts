@@ -23,16 +23,20 @@ export const POST = async (req: Request) => {
       const isMatch = await bcrypt.compare(password, systemPassword)
       if (!isMatch) return NextResponse.json({ error: "Password doesn't match." }, { status: 401 })
 
-      // No user data available at the moment.
-      const accessToken = signJwtAccessToken({ password })
-
-      return NextResponse.json({
-        accessToken,
+      const userData = {
         id: '9009081034911',
         name: 'Harrison Kim',
         email: 'harrisonkimdev@gmail.com',
         picture: '',
         sub: ''
+      }
+
+      // No user data available at the moment.
+      const accessToken = signJwtAccessToken(userData)
+
+      return NextResponse.json({
+        accessToken,
+        ...userData
       }, { status: 200 })
     }
   } catch (err) {
