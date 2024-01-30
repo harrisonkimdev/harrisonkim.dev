@@ -20,8 +20,6 @@ const LoginModal = () => {
         callbackUrl: `${location.origin}/admin/blog`,
       })
 
-      console.log(location.origin)
-
       // error handling
       if (res?.error === 'CredentialsSignin' && res.url === null) {
         // 
