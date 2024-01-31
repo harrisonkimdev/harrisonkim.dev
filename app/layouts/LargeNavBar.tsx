@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSession } from 'next-auth/react'
 
 import SignOutButton from '@/components/SignOutButton'
 
 const LargeNavBar = () => {
+  const [showAdminMenuDropdown, setShowAdminMenuDropdown] = useState(false)
+  
+  const { data: session } = useSession({ required: false })
+
+  const adminMenuDropdownRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    let adminMenuDropdownHandler = (e: any) => {
+      if (adminMenuDropdownRef.current && !adminMenuDropdownRef.current.contains(e.target)) {
+        setShowAdminMenuDropdown(false)
+      }
+    }
+    document.addEventListener("mousedown", adminMenuDropdownHandler)
+  }, [])
+
   return (
     <>
       <Link href="/" className='flex gap-2 items-center'> 
@@ -26,7 +42,46 @@ const LargeNavBar = () => {
           text-stone-100 hover:text-stone-50 hover:underline
         '> Blog </Link>
 
-        <SignOutButton />
+
+        { session && (
+          <>
+            <div ref={adminMenuDropdownRef} className='relative'>
+              <button onClick={() => setShowAdminMenuDropdown(!showAdminMenuDropdown)}
+                className='text-stone-100 hover:text-stone-50 hover:underline
+              '>
+                Admin
+              </button>
+
+              { showAdminMenuDropdown && (
+                <div className='
+                  absolute
+                  top-10
+                  right-0
+                  mt-[0.05rem]
+                  bg-stone-700
+                '>
+                  <ul>
+                    <li onClick={() => setShowAdminMenuDropdown(!showAdminMenuDropdown)}
+                      className='p-4 hover:bg-stone-500
+                    '>
+                      <Link href='/admin/blog' className='
+                          whitespace-nowrap
+                          hover:underline
+                          text-stone-100
+                          hover:text-stone-100
+                      '>Manage Blog</Link>
+                    </li>
+                    <li onClick={() => setShowAdminMenuDropdown(!showAdminMenuDropdown)}
+                      className='p-4 hover:bg-stone-500
+                    '>
+                      <SignOutButton />
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </>
   )
