@@ -18,11 +18,9 @@ const Wrapper = ({
     <>
       { state.showSideBar ? (
         <>
-          <div className='absolute top-0 left-0 right-0'>
-            <SideBar
-              closeSidebar={() => dispatch({ type: 'TOGGLE_OFF' }) }
-            />
-          </div>
+          <SideBar
+            closeSidebar={() => dispatch({ type: 'TOGGLE_OFF' }) }
+          />
         </>
       ) : (
         <div className='flex flex-col'>
