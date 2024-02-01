@@ -85,62 +85,66 @@ const Comment = ({
   }
 
   return (
-    <div
-      key={comment._id}
-      className='
-        m-4
-        pb-2
-        flex
-        gap-6
-        justify-between
-        items-start
-        border-b
-    '>
-      <div className='flex flex-col gap-4'>
-        <div className='h-8 flex gap-4 justify-between items-center'>
-          <div className='flex gap-2'>
-            <span>{ comment.writer }</span>
-            <span>·</span>
-            <span className='whitespace-nowrap'>
-              { timeSince(new Date(comment.createdAt).valueOf()) } ago
-            </span>
-          </div>
-          { showPasswordInput ? (
-            <>
-              <form
-                onSubmit={(e) => handleDelete(e, comment.password)}
-                className='flex gap-2 items-center'
-              >
-                <input
-                  id='passwordInputTag'
-                  type="password"
-                  value={passwordInput}
-                  onChange={(e) => setPasswordInput(e.target.value)}
-                  className='p-2 rounded-md'
-                />
+    <>
+      <ToastContainer />
 
-                {/* cancel button */}
-                <FaRegCircleXmark
-                  onClick={() => setShowPasswordInput(false)}
-                  className='text-2xl cursor-pointer'
-                />
-
-                {/* submit button */}
-                <button type="submit">
-                  <FaRegCircleCheck className='text-2xl cursor-pointer' />
-                </button>
-              </form>
-            </>
-          ) : (
-            <div onClick={() => {}} className='cursor-pointer'>
-              <FaRegTrashCan onClick={() => setShowPasswordInput(true)} />
+      <div
+        key={comment._id}
+        className='
+          m-4
+          pb-2
+          flex
+          gap-6
+          justify-between
+          items-start
+          border-b
+      '>
+        <div className='flex flex-col gap-4'>
+          <div className='h-8 flex gap-4 justify-between items-center'>
+            <div className='flex gap-2'>
+              <span>{ comment.writer }</span>
+              <span>·</span>
+              <span className='whitespace-nowrap'>
+                { timeSince(new Date(comment.createdAt).valueOf()) } ago
+              </span>
             </div>
-          )}
-        </div>
+            { showPasswordInput ? (
+              <>
+                <form
+                  onSubmit={(e) => handleDelete(e, comment.password)}
+                  className='flex gap-2 items-center'
+                >
+                  <input
+                    id='passwordInputTag'
+                    type="password"
+                    value={passwordInput}
+                    onChange={(e) => setPasswordInput(e.target.value)}
+                    className='p-2 rounded-md'
+                  />
 
-        <span>{ comment.comment }</span>
+                  {/* cancel button */}
+                  <FaRegCircleXmark
+                    onClick={() => setShowPasswordInput(false)}
+                    className='text-2xl cursor-pointer'
+                  />
+
+                  {/* submit button */}
+                  <button type="submit">
+                    <FaRegCircleCheck className='text-2xl cursor-pointer' />
+                  </button>
+                </form>
+              </>
+            ) : (
+              <div onClick={() => {}} className='cursor-pointer'>
+                <FaRegTrashCan onClick={() => setShowPasswordInput(true)} />
+              </div>
+            )}
+          </div>
+
+          <span>{ comment.comment }</span>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
