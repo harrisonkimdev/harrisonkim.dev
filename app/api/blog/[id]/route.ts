@@ -8,16 +8,7 @@ export const GET = async (
   try {
     await connectToDB()
 
-    // const { searchParams } = new URL(req.url)
-    // const readOnly = searchParams.get('readOnly')
-
     const blog = await Blog.findOne({ _id: params.id })
-
-    // var viewCount
-
-    // if (readOnly === 1) {
-    //   // 
-    // }
 
     return NextResponse.json({ blog }, { status: 200 })
   } catch (err) {

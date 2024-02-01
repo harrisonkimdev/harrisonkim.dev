@@ -1,10 +1,15 @@
-import { NextResponse } from "next/server"
+import { NextResponse, type NextRequest } from 'next/server'
 import blog from "@/models/blog"
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const data = await req.json()
 
-  // TODO: validation checks
+  if (data.wrtier.length === 0 ||
+      data.comments.length === 0 ||
+      data.password.length === 0
+  ) {
+    return NextResponse.json({ message: 'Invalid input.' }, { status: 400 })
+  }
 
   await blog.findOneAndUpdate(
     { _id: data.blogId },
@@ -21,7 +26,7 @@ export async function POST(req: Request) {
   )
   .then(updatedDocument => {
     if (updatedDocument) {
-      console.log('Updated Blog:', updatedDocument);
+      console.log('A new comment is added to a blog:', updatedDocument);
     } else {
       console.log('Blog not found.');
     }

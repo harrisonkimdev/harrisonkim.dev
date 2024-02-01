@@ -30,8 +30,6 @@ const AddComment = (
   const addComment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    // TODO: validation checks
-
     if (writer.length == 0 || comment.length == 0 || password.length == 0) {
       notifyInvalidComment()
       return
