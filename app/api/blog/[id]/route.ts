@@ -21,6 +21,12 @@ export const PATCH = async (
 ) => {
   const { title, content, tags } = await req.json()
 
+  if (title.length === 0) {
+    return NextResponse.json({
+      message: "You might have forgotten to fill in the title." 
+    }, { status: 400})
+  }
+
   try {
     await connectToDB()
 
@@ -33,7 +39,7 @@ export const PATCH = async (
 
     return NextResponse.json(blog, { status: 200 })
   } catch (err) {
-    return NextResponse.json({ message: err }, { status: 500 })
+    return NextResponse.json(err, { status: 500 })
   }
 }
 
@@ -51,6 +57,6 @@ export const DELETE = async (
       return NextResponse.json({ message: 'Item not found' }, { status: 404 })
     }
   } catch (err) {
-    return NextResponse.json({ message: err }, { status: 500 })
+    return NextResponse.json(err , { status: 500 })
   }
 }
