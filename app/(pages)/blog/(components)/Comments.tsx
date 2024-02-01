@@ -4,7 +4,7 @@ import AddComment from './AddComment'
 import ReadComments from './ReadComments'
 import { IComment } from '@/interfaces'
 
-const CommentComponent = (
+const Comments = (
     {
       blogId,
       comments,
@@ -29,4 +29,4 @@ const CommentComponent = (
   )
 }
 
-export default CommentComponent
+export default Comments

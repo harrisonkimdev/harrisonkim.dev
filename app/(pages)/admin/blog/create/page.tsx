@@ -5,6 +5,8 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
 import { getSession } from 'next-auth/react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 import Loader from '@/components/Loader'
 
@@ -30,6 +32,10 @@ const BlogCreatePage = () => {
     })
   }, [])
 
+  const notifyInvalidComment = () => toast.warn('You might have forgotten to fill in the title.', {
+    position: 'bottom-right'
+  })
+
   const checkAuth = async () => {
     const session = await getSession()
     if (!session) router.push('/')
@@ -43,6 +49,11 @@ const BlogCreatePage = () => {
   // send content to the server
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    if (title.length === 0) {
+      notifyInvalidComment()
+      return
+    }
 
     try {
       await fetch('/api/blog', {
@@ -83,6 +94,8 @@ const BlogCreatePage = () => {
 
   else return (
     <>
+      <ToastContainer />
+      
       {/* title */}
       <div className=''>
         <h1 className='text-3xl font-medium'>Post A New Blog</h1>

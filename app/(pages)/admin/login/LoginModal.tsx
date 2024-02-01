@@ -1,17 +1,32 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
-const LoginModal = () => {
-  const router = useRouter()
-  const { data: session, status } = useSession({ required: false })
-  
-  const [passwordInput, setPasswordInput] = useState('')
+import { FaTriangleExclamation } from "react-icons/fa6";
 
+const LoginModal = () => {
+  const [passwordInput, setPasswordInput] = useState('')
+  const [showInvalidPwdMessage, setShowInvalidPwdMessage] = useState(false)
+  const [showWrongPwdMessage, setShowWrongPwdMessage] = useState(false)
+
+  const router = useRouter()
+
+  const { data: session, status } = useSession({ required: false })
+
+  useEffect(() => {
+    if (passwordInput.length > 0) {
+      setShowInvalidPwdMessage(false)
+      setShowWrongPwdMessage(false)
+    }
+  }, [passwordInput])
+  
+  
   const submitCredential = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (passwordInput.length === 0) setShowInvalidPwdMessage(true)
 
     try {
       const res = await signIn("credentials", {
@@ -22,7 +37,8 @@ const LoginModal = () => {
 
       // error handling
       if (res?.error === 'CredentialsSignin' && res.url === null) {
-        // 
+        setShowWrongPwdMessage(true)
+        setPasswordInput('')
       }
 
       // credential matchs
@@ -67,10 +83,24 @@ const LoginModal = () => {
               className='my-2 p-2 border rounded-md'
             />
           </div>
+          <div className='h-2'>
+            { showInvalidPwdMessage && (
+              <p className='mt-2 flex gap-2 items-center'>
+                <FaTriangleExclamation />
+                Invalid password. Please try again.
+              </p>
+            )}
+            { showWrongPwdMessage && (
+              <p className='mt-2 flex gap-2 items-center'>
+                <FaTriangleExclamation />
+                Wrong password. Please try again.
+              </p>
+            )}
+          </div>
           <div className='flex justify-center'>
             <button className='
               w-full
-              mt-8
+              mt-7
               py-2
               rounded-md
             bg-stone-200

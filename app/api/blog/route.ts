@@ -23,13 +23,18 @@ export const GET = async (req: NextRequest) => {
     
     return NextResponse.json({ blog }, { status: 200 })
   } catch (err) {
-    return NextResponse.json({ message: err }, { status: 500 })
+    return NextResponse.json(err, { status: 500 })
   }
 }
 
-// STORE
 export const POST = async (req: NextRequest) => {
   const { title, content, tags } = await req.json()
+
+  if (title.length === 0) {
+    return NextResponse.json({
+      message: "You might have forgotten to fill in the title." 
+    }, { status: 400})
+  }
 
   try {
     await connectToDB()
@@ -42,6 +47,6 @@ export const POST = async (req: NextRequest) => {
 
     return NextResponse.json({ message: 'Successfully Posted.' }, { status: 200 })
   } catch (err) {
-    return NextResponse.json({ message: err }, { status: 500 })
+    return NextResponse.json(err, { status: 500 })
   }
 }

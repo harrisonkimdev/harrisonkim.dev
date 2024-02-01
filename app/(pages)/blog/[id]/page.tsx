@@ -88,7 +88,7 @@ const BlogShowPage = ({ params }: { params: { id: string } }) => {
 
       {/* content */}
       { blog && (
-          <div dangerouslySetInnerHTML={{ __html: blog?.content }} className='pt-4 text-stone-600' />
+        <div dangerouslySetInnerHTML={{ __html: blog?.content }} className='pt-4 text-stone-600' />
       )}
 
       {/* reply section */}
