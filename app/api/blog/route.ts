@@ -12,9 +12,26 @@ export const GET = async (req: NextRequest) => {
     return NextResponse.json({ message: err.message }, { status: 500 });
   }
 
+  const searchParams = req.nextUrl.searchParams;
+  const searchQuery = searchParams.get('searchQuery');
+
   // Retrieve blog posts.
   try {
-    const blog = await Blog.find();
+    let query = {}
+
+    if (searchQuery) {
+      const regexQuery = new RegExp(searchQuery, 'i');
+
+      query = {
+        $or: [
+          { title: { $regex: regexQuery } },
+          { content: { $regex: regexQuery } },
+          { tags: { $in: [regexQuery] } }
+        ]
+      };
+    }
+
+    const blog = await Blog.find(query);
 
     // pagination
     // const currentPage: (string | null) = req.nextUrl.searchParams.get('currentPage')
