@@ -30,7 +30,7 @@ const BlogIndexPage = () => {
   }, [])
   
 
-  const handleSubmit = async (query: string) => {
+  const handleSearch = async (query: string) => {
     const res = await fetch(`/api/blog?search=${query}`)
     const data = await res.json()
   }
@@ -43,7 +43,7 @@ const BlogIndexPage = () => {
 
   else return (
     <>
-      {/* <SearchBar searchSubmit={(searchQuery: string) => handleSubmit(searchQuery)} /> */}
+      {/* <SearchBar searchSubmit={(searchQuery: string) => handleSearch(searchQuery)} /> */}
       <div>   
         { blogData && blogData.length > 0 ? (
           <div className='
