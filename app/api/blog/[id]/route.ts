@@ -1,62 +1,116 @@
-import { NextResponse, type NextRequest } from 'next/server'
-import { connectToDB } from '@/utils/db'
-import Blog from '@/models/blog'
+import { NextResponse, type NextRequest } from 'next/server';
+import { getServerSession } from "next-auth/next"
+import { connectToDB } from '@/utils/db';
+import Blog from '@/models/blog';
 
 export const GET = async (
     req: NextRequest, { params }: { params: { id: string } }
 ) => {
+  // Connect to the database.
   try {
-    await connectToDB()
+    await connectToDB();
+  } catch (err: any) {
+    console.log('Having a problem connecting to the database.');
+    return NextResponse.json({ message: err.message }, { status: 500 });
+  }
 
-    const blog = await Blog.findOne({ _id: params.id })
-
-    return NextResponse.json({ blog }, { status: 200 })
-  } catch (err) {
-    return NextResponse.json({ message: err }, { status: 500 })
+  // Retrieve the blog with a given parameter.
+  try {
+    const blog = await Blog.findOne({ _id: params.id });
+  
+    console.log('Retrieved a blog post.');
+    return NextResponse.json({ blog }, { status: 200 });
+  } catch (err: any) {
+    console.log('Having a problem retrieving a blog post.');
+    return NextResponse.json({ message: err.message }, { status: 500 });
   }
 }
 
 export const PATCH = async (
   req: NextRequest, { params }: { params: { id: string } }
 ) => {
-  const { title, content, tags } = await req.json()
-
-  if (title.length === 0) {
+  // Check if the user is authroized.
+  const session = await getServerSession();
+  if (session && session.user?.email !== 'harrisonkimdev@gmail.com') {
+    console.log('Unauthroized.');
     return NextResponse.json({
-      message: "You might have forgotten to fill in the title." 
-    }, { status: 400})
+      message: 'You are not allowed to post a new blog.'
+    }, { status: 403 });
   }
 
-  try {
-    await connectToDB()
+  // Retrieve input parameters from the request.
+  const { title, content, tags } = await req.json();
 
-    const blog = await Blog.findByIdAndUpdate({ _id:params.id }, {
+  // Vaildate input.
+  if (title.length === 0) {
+    return NextResponse.json({
+      message: "Invalid input: missing title." 
+    }, { status: 400});
+  }
+
+  // Connect to the database.
+  try {
+    await connectToDB();
+  } catch (err: any) {
+    console.log('Having a problem connecting to the database.');
+    return NextResponse.json({ message: err.message }, { status: 500 });
+  }
+
+  // Update the blog post within the database.
+  try {
+    const updatedBlog = await Blog.findByIdAndUpdate({ _id: params.id }, {
       title,
       content,
       tags,
       updatedAt: Date.now()
-    })
+    });
 
-    return NextResponse.json(blog, { status: 200 })
-  } catch (err) {
-    return NextResponse.json(err, { status: 500 })
+    if (updatedBlog) {
+      console.log('The blog is updated.');
+      return NextResponse.json({ message: 'The blog is updated.' }, { status: 200 });
+    } else {
+      console.log('Blog not found.');
+      return NextResponse.json({ message: 'Blog not found.' }, { status: 404 });
+    }
+  } catch (err: any) {
+    console.log('Having a problem updating a blog post.');
+    return NextResponse.json({ message: err.message }, { status: 500 });
   }
 }
 
 export const DELETE = async (
   req: NextRequest, { params }: { params: { id: string } }
 ) => {
+  // Check if the user is authroized.
+  const session = await getServerSession()
+  if (session && session.user?.email !== 'harrisonkimdev@gmail.com') {
+    console.log('Unauthroized.');
+    return NextResponse.json({
+      message: 'You are not allowed to post a new blog.'
+    }, { status: 403 });
+  }
+
+  // Connect to the database.
   try {
-    await connectToDB()
+    await connectToDB();
+  } catch (err: any) {
+    console.log('Having a problem connecting to the database.');
+    return NextResponse.json({ message: err.message }, { status: 500 });
+  }
 
-    const result = await Blog.deleteOne({ _id: params.id })
+  // Delete the blog post from the database.
+  try {
+    const deletedBlog = await Blog.deleteOne({ _id: params.id })
 
-    if (result.acknowledged === true) {
-      return NextResponse.json({ message: 'Successfully deleted.' }, { status: 200 })
+    if (deletedBlog) {
+      console.log('The blog is deleted.');
+      return NextResponse.json({ message: 'The blog is deleted.' }, { status: 200 });
     } else {
-      return NextResponse.json({ message: 'Item not found' }, { status: 404 })
+      console.log('Blog not found.');
+      return NextResponse.json({ message: 'Blog not found.' }, { status: 404 });
     }
-  } catch (err) {
-    return NextResponse.json(err , { status: 500 })
+  } catch (err: any) {
+    console.log('Having a problem deleting a blog post.');
+    return NextResponse.json({ message: err.message }, { status: 500 });
   }
 }
