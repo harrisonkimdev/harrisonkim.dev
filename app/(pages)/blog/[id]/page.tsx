@@ -75,7 +75,7 @@ const BlogShowPage = ({ params }: { params: { id: string } }) => {
           className='object-cover absolute h-[200px]'
         />
         <h1 className='
-          absolute top-0 left-0 right-0 z-10
+          absolute top-0 left-0 right-0 z-1
           h-[200px] m-0 ml-12 flex items-center
           text-stone-50
         '>{ blog?.title }</h1>
