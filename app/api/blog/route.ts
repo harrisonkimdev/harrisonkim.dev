@@ -13,15 +13,17 @@ export const GET = async (req: NextRequest) => {
   }
 
   const searchParams = req.nextUrl.searchParams;
+  const currentPage = searchParams.get('currentPage');
+  const pageSize = searchParams.get('pageSize');
   const searchQuery = searchParams.get('searchQuery');
 
   // Retrieve blog posts.
   try {
     let query = {}
 
+    // Retrieve blog posts containing the search query.
     if (searchQuery) {
       const regexQuery = new RegExp(searchQuery, 'i');
-
       query = {
         $or: [
           { title: { $regex: regexQuery } },
@@ -31,22 +33,18 @@ export const GET = async (req: NextRequest) => {
       };
     }
 
-    const blog = await Blog.find(query);
+    const [totalDocuments, blog] = await Promise.all([
+      Blog.countDocuments(query),
+      Blog.find(query)
+        .skip(Number(pageSize) * (Number(currentPage) - 1))
+        .limit(Number(pageSize))
+        .exec()
+    ])
 
-    // pagination
-    // const currentPage: (string | null) = req.nextUrl.searchParams.get('currentPage')
-    // const query = Blog.find()
-    // query.skip(10*(Number(currentPage)-1)).limit(10)
-    // const blog = await query.exec()
-    
-    // TODO: find a way to merge the following operation into the upper one. 
-    // const lengthQuery = Blog.find()
-    // const lastPage = Math.ceil((await lengthQuery.estimatedDocumentCount())/10)
-
-    // return NextResponse.json({ blog, lastPage }, { status: 200 })
+    const lastPage = Math.ceil(totalDocuments / Number(pageSize));
     
     console.log('Retrieved blog posts.');
-    return NextResponse.json({ blog }, { status: 200 });
+    return NextResponse.json({ blog, lastPage }, { status: 200 });
   } catch (err: any) {
     console.log('Having a problem retrieving blog posts.');
     return NextResponse.json({ message: err.message }, { status: 500 });

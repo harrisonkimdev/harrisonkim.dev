@@ -1,12 +1,17 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 
-const PaginationNavigator = () => {
-  const [currentPage, setCurrentPage] = useState<number>(1)
-  const [lastPage, setLastPage] = useState<number>(1)
-
+const PaginationNavigator = ({
+  currentPage,
+  lastPage,
+  setCurrentPage
+} : {
+  currentPage: number,
+  lastPage: number,
+  setCurrentPage: Function
+}) => {
   const handlePagination = (pageNum: number) => {
     setCurrentPage(pageNum)
   }
@@ -24,28 +29,21 @@ const PaginationNavigator = () => {
             className='text-lg cursor-pointer'
           />
 
+          {/* { 1 < currentPage && (
+            <span onClick={() => handlePagination(currentPage-1)}
+              className='cursor-pointer'
+            >{ currentPage-1 }</span>
+          )} */}
+
           <span onClick={() => handlePagination(currentPage+0)}
             className='cursor-pointer'
           >{ currentPage+0 }</span>
 
-          { currentPage+1 < lastPage ? (
+          {/* { currentPage+1 <= lastPage && (
             <span onClick={() => handlePagination(currentPage+1)}
               className='cursor-pointer'
             >{ currentPage+1 }</span>
-          ) : (
-            <>
-              {/*  */}
-            </>
-          )}
-          { currentPage+2 < lastPage ? (
-            <span onClick={() => handlePagination(currentPage+2)}
-              className='cursor-pointer'
-            >{ currentPage+2 }</span>
-          ) : (
-            <>
-              {/*  */}
-            </>
-          )}
+          )} */}
 
           <FaChevronRight
             onClick={() => currentPage < lastPage
