@@ -14,7 +14,7 @@ const Wrapper = ({ children } : TWrapperProps) => {
         w-full min-h-screen bg-stone-50
       '>{ children }</main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
