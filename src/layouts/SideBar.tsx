@@ -11,9 +11,7 @@ const SideBar = () => {
   const { data: session } = useSession({ required: false })
 
   if (state.showSideBar) return (
-    <div className='
-      min-h-screen flex flex-col gap-6 bg-stone-100
-    '>
+    <div className='min-h-screen flex flex-col gap-6 bg-stone-100'>
       {/* close icon */}
       <div onClick={() => dispatch({ type: 'TOGGLE_OFF' })} className='m-5 flex justify-end'>
         <FaRegTimesCircle className='w-6 h-6 text-stone-600' />
