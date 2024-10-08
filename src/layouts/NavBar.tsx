@@ -1,11 +1,7 @@
-import { useAppState } from '@/layouts/providers/AppStateContext'
-
 import LargeNavbar from '@/layouts/LargeNavBar'
 import SmallNavbar from '@/layouts/SmallNavBar'
 
 const NavBar = () => {
-  const { dispatch } = useAppState()
-
   return (
       <nav className='fixed top-0 w-full z-10'>
         <div className='
@@ -22,16 +18,11 @@ const NavBar = () => {
          <LargeNavbar />        
         </div>
 
-        <div className={`
-          p-4
-          grid
-          md:hidden
-          grid-cols-3
-          items-center
-          bg-black
-          text-stone-200
-        `}>
-          <SmallNavbar showSideBar={() => dispatch({ type: 'TOGGLE_ON' }) } />
+        <div className='
+          hidden grid-cols-3 items-center
+          p-4 bg-black text-stone-200
+        '>
+          <SmallNavbar />
         </div>
       </nav>
   )

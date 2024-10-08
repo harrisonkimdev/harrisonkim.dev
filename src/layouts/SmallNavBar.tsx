@@ -1,15 +1,14 @@
+import { useAppState } from '@/layouts/providers/AppStateContext'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaBars } from 'react-icons/fa6'
 
-const SmallNavBar = ({
-  showSideBar
-} : {
-  showSideBar: Function
-}) => {
+const SmallNavBar = () => {
+  const { dispatch } = useAppState()
+
   return (
     <>
-      <div onClick={() => { showSideBar() }} className='col-span-1'>
+      <div onClick={() => { dispatch({ type: 'TOGGLE_ON' }) }} className='col-span-1'>
         {/* hamburger icon */}
         <FaBars className='w-6 h-6'/>
       </div>

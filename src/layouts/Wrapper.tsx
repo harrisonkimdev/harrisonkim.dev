@@ -19,7 +19,7 @@ const Wrapper = ({ children } : TWrapperProps) => {
           closeSidebar={() => dispatch({ type: 'TOGGLE_OFF' }) }
         />
       ) : (
-        <div className='flex flex-col'>
+        <>
           <NavBar />
 
           <main className='w-full min-h-screen mt-16 bg-stone-50'>
@@ -27,7 +27,7 @@ const Wrapper = ({ children } : TWrapperProps) => {
           </main>
 
           <Footer />
-        </div>
+        </>
       ) }
     </>
   )
