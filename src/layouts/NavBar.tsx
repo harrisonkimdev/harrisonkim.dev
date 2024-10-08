@@ -20,7 +20,7 @@ const NavBar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768)
+      setIsMobile(window.innerWidth < 768)
     }
 
     handleResize()
@@ -46,22 +46,22 @@ const NavBar = () => {
       {/* <div className='flex flex-row'> */}
       <div className='
         grid items-center
-        grid-cols-6 lg:grid-cols-2
-        px-4 lg:px-10
-        py-3 lg:py-5
+        grid-cols-6 md:grid-cols-2
+        px-4 md:px-10
+        py-3 md:py-5
       '>
         {/* hamburger icon */}
-          { isMobile && (
-        <div className='col-span-1'>
+        { isMobile && (
+          <div className='col-span-1'>
             <div onClick={() => { dispatch({ type: 'TOGGLE_ON' }) }}>
               <FaBars className='w-6 h-6'/>
             </div>
-        </div>
-          )}
+          </div>
+        )}
 
         <div className='
-          col-span-4 lg:col-span-1
-          text-center lg:text-left
+          col-span-4 md:col-span-1
+          text-center md:text-left
         '>
           <Link href='/'>
             <span className='
