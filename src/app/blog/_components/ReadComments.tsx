@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { IComment } from '@/interfaces/index'
-import Comment from '@/(pages)/blog/(components)/Comment'
+import Comment from 'app/blog/_components/Comment'
 
 const ReadComments = (
   {
