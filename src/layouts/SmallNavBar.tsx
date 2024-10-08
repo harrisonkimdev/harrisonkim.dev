@@ -1,3 +1,5 @@
+'use client'
+
 import { useAppState } from '@/layouts/providers/AppStateContext'
 import Link from 'next/link'
 import Image from 'next/image'
