@@ -5,33 +5,31 @@ import Image from 'next/image'
 const Footer = () => {
   return (
     <footer className='
-      p-8 flex flex-col gap-16 justify-center bg-stone-200
+      flex flex-row gap-12 justify-center items-center px-8 py-12 bg-white
     '>
-      <div className='
-        flex flex-row gap-8 justify-center items-center
-      '>
-        {/* links */}
-        <Link href='https://www.linkedin.com/in/harrison-kim-b246a5175/'
-          className='flex flex-row gap-2 items-center'
-        >
-          <Image src='/images/logos/linkedin-logo.png'
-            alt='LinkedIn Logo' width={16} height={16} className='object-contain'
-          />
-          <p className='
-            mt-0.5 font-normal text-stone-500 hover:text-stone-600
-          '>LinkedIn</p>
-        </Link>
-        <Link href='https://github.com/hhkimmm9'
-          className='flex flex-row gap-2 items-center'
-        >
-          <Image src='/images/logos/github-logo.png'
-            alt='GitHub Logo' width={16} height={16} className='object-contain'
-          />
-          <p className='
-            mt-0.5 font-normal text-stone-500 hover:text-stone-600
-          '>GitHub</p>
-        </Link>
-      </div>
+      {/* LinkedIn */}
+      <Link href='https://www.linkedin.com/in/harrison-kim-b246a5175/'
+        className='flex flex-row gap-2 items-center'
+      >
+        <Image src='/images/logos/linkedin-logo.png' alt='LinkedIn Logo'
+          width={512} height={512} className='object-contain w-8 h-8'
+        />
+        <p className='
+          mt-0.5 font-extralight text-lg text-black
+        '>LinkedIn</p>
+      </Link>
+
+      {/* GitHub */}
+      <Link href='https://github.com/hhkimmm9'
+        className='flex flex-row gap-2 items-center'
+      >
+        <Image src='/images/logos/github-logo.png' alt='GitHub Logo'
+          width={512} height={512} className='object-contain w-8 h-8'
+        />
+        <p className='
+          mt-0.5 font-extralight text-lg text-black
+        '>GitHub</p>
+      </Link>
 
       {/* TODO: move the game to a dedicated page */}
       {/* { pathname === '/' ? (
