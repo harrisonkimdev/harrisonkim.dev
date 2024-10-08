@@ -7,7 +7,7 @@ const NavBar = () => {
   const { dispatch } = useAppState()
 
   return (
-      <div className='fixed top-0 w-full z-10'>
+      <nav className='fixed top-0 w-full z-10'>
         <div className='
           hidden
           h-16
@@ -33,7 +33,7 @@ const NavBar = () => {
         `}>
           <SmallNavbar showSideBar={() => dispatch({ type: 'TOGGLE_ON' }) } />
         </div>
-      </div>
+      </nav>
   )
 }
 

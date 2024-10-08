@@ -15,24 +15,18 @@ const Wrapper = ({ children } : TWrapperProps) => {
   return (
     <>
       { state.showSideBar ? (
-        <>
-          <SideBar
-            closeSidebar={() => dispatch({ type: 'TOGGLE_OFF' }) }
-          />
-        </>
+        <SideBar
+          closeSidebar={() => dispatch({ type: 'TOGGLE_OFF' }) }
+        />
       ) : (
         <div className='flex flex-col'>
-          <nav>
-            <NavBar />
-          </nav>
+          <NavBar />
 
           <main className='w-full min-h-screen mt-16 bg-stone-50'>
             { children }
           </main>
 
-          <footer>
-            <Footer />
-          </footer>
+          <Footer />
         </div>
       ) }
     </>
