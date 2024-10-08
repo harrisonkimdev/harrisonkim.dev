@@ -19,26 +19,21 @@ export default function Home() {
     <>
       {/* Layout for Tablets & Desktops */}
       <div className='flex flex-col w-full items-center'>
+        {/* <FirstRow /> */}
 
-        {/* first row */}
-        <FirstRow />
+        {/* <SecondRow /> */}
 
-        {/* second row */}
-        <SecondRow />
+        {/* <ThirdRow /> */}
 
-        {/* third row */}
-        <ThirdRow />
-
-        {/* TODO: add some text here */}
-        <FourthRow />
+        {/* <FourthRow /> */}
       </div>
 
       <button type='button' onClick={() => scrollToTop()}
         className='
-          hidden md:block fixed bottom-0 right-0 mb-8 mr-12 p-2
-          rounded-xl border-2 border-stone-800 bg-stone-100 hover:bg-stone-100
+          hidden lg:block fixed bottom-4 right-6 p-2
+          rounded-xl bg-black
       '>
-        <FaAngleUp />
+        <FaAngleUp className='text-lg text-white' />
       </button>
     </>
   )
