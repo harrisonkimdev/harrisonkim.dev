@@ -1,4 +1,4 @@
-import { Rubik } from 'next/font/google'
+import { Rubik, Sunflower } from 'next/font/google'
 import './globals.css'
 import 'semantic-ui-css/semantic.min.css'
 
@@ -6,6 +6,7 @@ import Providers from '@/layouts/providers/Providers'
 import Wrapper from '@/layouts/Wrapper'
 
 const rubik = Rubik({ subsets: ['latin'] })
+const sunflower = Sunflower({ weight: '500', subsets: ['latin'] })
 
 export const metadata = {
   title: 'harrisonkim.dev',
@@ -15,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${rubik.className}`}>
+      <body className={`${rubik.className} ${sunflower.className}`}>
         <Providers>
           <Wrapper>
             { children }

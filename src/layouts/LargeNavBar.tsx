@@ -21,11 +21,9 @@ const LargeNavBar = () => {
   const adminMenuDropdownRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <>
-      <Link href='/' className='flex gap-2 items-center'> 
-        <Image src='/images/logos/dev-kim-transparent.png' alt='Logo'
-          width={500} height={500} className='object-contain w-28 invert'
-        />
+    <div className='w-full px-12 flex flex-row justify-between items-center'>
+      <Link href='/' className='font-sunflower text-3xl text-black hover:text-black'>
+        ㄱ ㅣ ㅁ ㅎ ㅐ ㅅ ㅜ
       </Link>
 
       <div className='flex gap-10 mt-1'>
@@ -82,7 +80,7 @@ const LargeNavBar = () => {
           </>
         )}
       </div>
-    </>
+    </div>
   )
 }
 

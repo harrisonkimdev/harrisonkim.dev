@@ -3,17 +3,10 @@ import SmallNavbar from '@/layouts/SmallNavBar'
 
 const NavBar = () => {
   return (
-      <nav className='fixed top-0 w-full z-10'>
+      <nav className='fixed top-0 w-full'>
         <div className='
-          hidden
-          h-16
-          px-6
-          py-4
-          md:flex
-          justify-between
-          items-center
-        text-stone-200
-        bg-black
+          hidden md:flex justify-between items-center
+          h-16 px-6 py-4 text-stone-200 bg-white
         '>
          <LargeNavbar />        
         </div>
