@@ -68,7 +68,7 @@ const NavBar = () => {
         '>
           <Link href='/'>
             <span className='
-              font-sunflower text-3xl text-black
+              text-3xl text-black
               whitespace-nowrap hover:text-black
             '>ㄱ ㅣ ㅁ ㅎ ㅐ ㅅ ㅜ</span>
           </Link>
