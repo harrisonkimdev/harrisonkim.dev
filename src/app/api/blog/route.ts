@@ -4,18 +4,21 @@ import { connectToDB } from '@/utils/db'
 import Blog from '@/models/blog'
 
 export const GET = async (req: NextRequest) => {
+  const { searchParams } = new URL(req.url);
+  const searchQuery = searchParams.get('searchQuery');
+  const pageSize = searchParams.get('pageSize') || '10';
+  const currentPage = searchParams.get('currentPage') || '1';
+
+  console.log('GET request received with searchQuery:', searchQuery);
+
   // Connect to the database.
   try {
-    await connectToDB()
+    await connectToDB();
+    console.log('Connected to the database.');
   } catch (err: any) {
-    console.log('Having a problem connecting to the database.')
-    return NextResponse.json({ message: err.message }, { status: 500 })
+    console.error('Error connecting to the database:', err.message);
+    return NextResponse.json({ message: err.message }, { status: 500 });
   }
-
-  const searchParams = req.nextUrl.searchParams
-  const currentPage = searchParams.get('currentPage')
-  const pageSize = searchParams.get('pageSize')
-  const searchQuery = searchParams.get('searchQuery')
 
   // Retrieve blog posts.
   try {
@@ -62,35 +65,46 @@ export const POST = async (req: NextRequest) => {
   }
 
   // Retrieve input parameters from the request.
-  const { title, content, tags } = await req.json()
+  let title, content, tags;
+  try {
+    ({ title, content, tags } = await req.json());
+    console.log('Received input:', { title, content, tags });
+  } catch (err: any) {
+    console.error('Error parsing request body:', err.message);
+    return NextResponse.json({ message: 'Invalid request body.' }, { status: 400 });
+  }
 
-  // Vaildate input.
-  if (title.length === 0) {
+  // Validate input.
+  if (!title || title.length === 0) {
     return NextResponse.json({
-      message: 'Invalid input: missing title.' 
-    }, { status: 400 })
+      message: 'Invalid input: missing title.'
+    }, { status: 400 });
   }
 
   // Connect to the database.
   try {
-    await connectToDB()
+    await connectToDB();
+    console.log('Connected to the database.');
   } catch (err: any) {
-    console.log('Having a problem connecting to the database.')
-    return NextResponse.json({ message: err.message }, { status: 500 })
+    console.error('Error connecting to the database:', err.message);
+    return NextResponse.json({ message: err.message }, { status: 500 });
   }
 
-  // Store a new blog post into the database.
+  // Create a new blog post.
   try {
-    const createdBlog = Blog.create({
+    const newBlog = new Blog({
       title,
       content,
       tags,
-    })
+      createdAt: new Date(),
+      updatedAt: new Date()
+    });
 
-    console.log('A new blog post has been created.')
-    return NextResponse.json({ message: 'A new blog post has been created.' }, { status: 200 })
+    await newBlog.save();
+    console.log('New blog post created:', newBlog);
+    return NextResponse.json({ message: 'New blog post created.' }, { status: 201 });
   } catch (err: any) {
-    console.log('Having a problem storing a new blog post.')
-    return NextResponse.json({ message: err.message }, { status: 500 })
+    console.error('Error creating a new blog post:', err.message);
+    return NextResponse.json({ message: err.message }, { status: 500 });
   }
 }
