@@ -6,7 +6,7 @@ import Providers from '@/layouts/providers/Providers'
 import LayoutWrapper from '@/layouts/LayoutWrapper'
 
 const rubik = Rubik({ subsets: ['latin'] })
-const sunflower = Sunflower({ weight: '500', subsets: ['latin'] })
+const sunflower = Sunflower({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'harrisonkim.dev',
