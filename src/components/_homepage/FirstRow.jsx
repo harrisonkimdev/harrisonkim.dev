@@ -37,7 +37,7 @@ const FirstRow = () => {
         '>
           Hi, <br />
           <span className='whitespace-nowrap'>I&apos;m
-            <Link href='/admin/login'>
+            <Link href='/login'>
               <span className='text-stone-700'> Harrison</span>
             </Link>,
           </span> <br /> Full Stack <br /> Engineer
