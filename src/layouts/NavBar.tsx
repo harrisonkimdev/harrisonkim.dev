@@ -40,7 +40,10 @@ const NavBar = () => {
   const adminMenuDropdownRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <nav className='fixed top-0 w-full bg-white bg-opacity-70 backdrop-blur'>
+    <nav className='
+      fixed top-0 w-full h-14 md:h-20
+      backdrop-blur bg-opacity-70 bg-white
+    '>
       <SideBar />
       
       {/* <div className='flex flex-row'> */}

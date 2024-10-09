@@ -12,8 +12,13 @@ const Wrapper = ({ children } : TWrapperProps) => {
       <NavBar />
       
       <main className='
-        w-full min-h-screen bg-stone-50
-      '>{ children }</main>
+        w-full min-h-screen mt-14 md:mt-20 pt-14
+        flex flex-col items-center bg-neutral-50 
+      '>
+        <div className='max-w-3xl'>
+          { children }
+        </div>
+      </main>
 
       <TopArrow />
 
