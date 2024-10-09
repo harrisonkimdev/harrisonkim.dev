@@ -79,7 +79,7 @@ export default function Home() {
             <span className='mt-1'>📆</span>
             <span className='
               font-sans font-extralight text-lg text-white
-            '>Let's chat</span>
+            '>Let&apos;s chat</span>
           </div>
         </Link>
       </div>
