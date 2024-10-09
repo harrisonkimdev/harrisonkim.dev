@@ -42,14 +42,27 @@ export default function Home() {
 
         <Link href='/assets/Harrison_Kim_Resume.pdf' target='_blank'>
           <div className='
-            flex flex-row justify-center items-center
+            flex flex-row gap-2.5 justify-center items-center
             h-12 px-28 rounded-full bg-gray-700 hover:bg-red-600 ease-in duration-150
           '>
-            <span className='font-sans font-extralight text-lg text-white'>
-              Download Resumé
-            </span>
+            <span className='mt-1'>📃</span>
+            <span className='
+              font-sans font-extralight text-lg text-white
+            '>Resumé</span>
             </div>
         </Link>
+
+        <a href='mailto:harrisonkimdev@gmail.com' target='_blank'>
+          <div className='
+            flex flex-row gap-2.5 justify-center items-center
+            h-12 px-28 rounded-full bg-gray-700 hover:bg-red-600 ease-in duration-150
+          '>
+            <span className='mt-1'>📧</span>
+            <span className='font-sans font-extralight text-lg text-white'>
+              Email
+            </span>
+            </div>
+        </a>
       </div>
     </div>
   )
