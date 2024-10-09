@@ -5,7 +5,7 @@ const nextConfig = {
   experimental: {
     // appDir: true,
     // serverComponentsExternalPackages: ["mongoose"],
-    optimizeFonts: false,
+    // optimizeFonts: false,
   },
   webpack: (config) => {
     config.experiments = { ...config.experiments, topLevelAwait: true }
