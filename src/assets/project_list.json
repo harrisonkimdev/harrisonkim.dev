@@ -1,0 +1,11 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Claw Machine",
+      "thumbnail": "/images/profile/sol_with_a_gym_ball.jpeg",
+      "description": "description",
+      "link": "http://www.google.com"
+    }
+  ]
+}
