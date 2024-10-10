@@ -3,7 +3,7 @@ import './globals.css'
 import 'semantic-ui-css/semantic.min.css'
 
 import Providers from '@/layouts/providers/Providers'
-import Wrapper from '@/layouts/Wrapper'
+import LayoutWrapper from '@/layouts/LayoutWrapper'
 
 const rubik = Rubik({ subsets: ['latin'] })
 
@@ -15,11 +15,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${rubik.className}`}>
+      <body className={rubik.className}>
         <Providers>
-          <Wrapper>
+          <LayoutWrapper>
             { children }
-          </Wrapper>
+          </LayoutWrapper>
         </Providers>
       </body>
     </html>

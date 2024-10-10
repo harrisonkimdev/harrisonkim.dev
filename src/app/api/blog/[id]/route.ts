@@ -1,116 +1,91 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { getServerSession } from 'next-auth/next'
 import { connectToDB } from '@/utils/db'
+import { Session } from 'next-auth'
 import Blog from '@/models/blog'
 
-export const GET = async (
-    req: NextRequest, { params }: { params: { id: string } }
-) => {
-  // Connect to the database.
+const connectToDatabase = async () => {
   try {
     await connectToDB()
+    console.log('Connected to the database.')
   } catch (err: any) {
-    console.log('Having a problem connecting to the database.')
-    return NextResponse.json({ message: err.message }, { status: 500 })
+    console.error('Error connecting to the database:', err.message)
+    throw new Error('Database connection error')
   }
+}
 
-  // Retrieve the blog with a given parameter.
+const checkAuthorization = (session: Session | null) => {
+  if (!session || session.user?.email !== 'harrisonkimdev@gmail.com') {
+    console.error('Unauthorized access attempt.')
+    return NextResponse.json({ message: 'You are not allowed to perform this action.' }, { status: 403 })
+  }
+}
+
+export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
   try {
+    await connectToDatabase()
     const blog = await Blog.findOne({ _id: params.id })
-  
-    console.log('Retrieved a blog post.')
-    return NextResponse.json({ blog }, { status: 200 })
+
+    if (blog) {
+      console.log('Blog post retrieved successfully.')
+      return NextResponse.json({ blog }, { status: 200 })
+    } else {
+      console.error('Blog post not found.')
+      return NextResponse.json({ message: 'Blog post not found.' }, { status: 404 })
+    }
   } catch (err: any) {
-    console.log('Having a problem retrieving a blog post.')
+    console.error('Error retrieving blog post:', err.message)
     return NextResponse.json({ message: err.message }, { status: 500 })
   }
 }
 
-export const PATCH = async (
-  req: NextRequest, { params }: { params: { id: string } }
-) => {
-  // Check if the user is authroized.
+export const PATCH = async (req: NextRequest, { params }: { params: { id: string } }) => {
   const session = await getServerSession()
-  if (session && session.user?.email !== 'harrisonkimdev@gmail.com') {
-    console.log('Unauthroized.')
-    return NextResponse.json({
-      message: 'You are not allowed to post a new blog.'
-    }, { status: 403 })
-  }
+  checkAuthorization(session)
 
-  // Retrieve input parameters from the request.
   const { title, content, tags } = await req.json()
-
-  // Vaildate input.
-  if (title.length === 0) {
-    return NextResponse.json({
-      message: 'Invalid input: missing title.' 
-    }, { status: 400})
+  if (!title) {
+    return NextResponse.json({ message: 'Invalid input: missing title.' }, { status: 400 })
   }
 
-  // Connect to the database.
   try {
-    await connectToDB()
-  } catch (err: any) {
-    console.log('Having a problem connecting to the database.')
-    return NextResponse.json({ message: err.message }, { status: 500 })
-  }
-
-  // Update the blog post within the database.
-  try {
-    const updatedBlog = await Blog.findByIdAndUpdate({ _id: params.id }, {
-      title,
-      content,
-      tags,
-      updatedAt: Date.now()
-    })
+    await connectToDatabase()
+    const updatedBlog = await Blog.findByIdAndUpdate(
+      params.id,
+      { title, content, tags, updatedAt: Date.now() },
+      { new: true }
+    )
 
     if (updatedBlog) {
-      console.log('The blog is updated.')
-      return NextResponse.json({ message: 'The blog is updated.' }, { status: 200 })
+      console.log('Blog post updated successfully.')
+      return NextResponse.json({ message: 'Blog post updated successfully.' }, { status: 200 })
     } else {
-      console.log('Blog not found.')
-      return NextResponse.json({ message: 'Blog not found.' }, { status: 404 })
+      console.error('Blog post not found.')
+      return NextResponse.json({ message: 'Blog post not found.' }, { status: 404 })
     }
   } catch (err: any) {
-    console.log('Having a problem updating a blog post.')
+    console.error('Error updating blog post:', err.message)
     return NextResponse.json({ message: err.message }, { status: 500 })
   }
 }
 
-export const DELETE = async (
-  req: NextRequest, { params }: { params: { id: string } }
-) => {
-  // Check if the user is authroized.
+export const DELETE = async (req: NextRequest, { params }: { params: { id: string } }) => {
   const session = await getServerSession()
-  if (session && session.user?.email !== 'harrisonkimdev@gmail.com') {
-    console.log('Unauthroized.')
-    return NextResponse.json({
-      message: 'You are not allowed to post a new blog.'
-    }, { status: 403 })
-  }
+  checkAuthorization(session)
 
-  // Connect to the database.
   try {
-    await connectToDB()
-  } catch (err: any) {
-    console.log('Having a problem connecting to the database.')
-    return NextResponse.json({ message: err.message }, { status: 500 })
-  }
-
-  // Delete the blog post from the database.
-  try {
+    await connectToDatabase()
     const deletedBlog = await Blog.deleteOne({ _id: params.id })
 
-    if (deletedBlog) {
-      console.log('The blog is deleted.')
-      return NextResponse.json({ message: 'The blog is deleted.' }, { status: 200 })
+    if (deletedBlog.deletedCount > 0) {
+      console.log('Blog post deleted successfully.')
+      return NextResponse.json({ message: 'Blog post deleted successfully.' }, { status: 200 })
     } else {
-      console.log('Blog not found.')
-      return NextResponse.json({ message: 'Blog not found.' }, { status: 404 })
+      console.error('Blog post not found.')
+      return NextResponse.json({ message: 'Blog post not found.' }, { status: 404 })
     }
   } catch (err: any) {
-    console.log('Having a problem deleting a blog post.')
+    console.error('Error deleting blog post:', err.message)
     return NextResponse.json({ message: err.message }, { status: 500 })
   }
 }

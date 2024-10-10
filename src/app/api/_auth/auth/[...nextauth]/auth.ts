@@ -39,7 +39,7 @@ const authOptions: NextAuthOptions = {
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   pages: {
-    signIn: '/admin/login'
+    signIn: '/login'
   },
   callbacks: {
     async jwt({ token }) {
