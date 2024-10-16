@@ -5,7 +5,7 @@ import NavBar from "@/layouts/(nav)/NavBar"
 import SideBar from '@/layouts/(nav)/SideBar'
 
 const NavMenus = () => {
-  const { state, dispatch } = useAppState()
+  const { state } = useAppState()
 
   return (
     <>
