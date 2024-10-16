@@ -53,7 +53,7 @@ export const GET = async (req: NextRequest) => {
     await connectToDatabase()
     const query = buildQuery(searchQuery)
 
-    const [totalDocuments, blog] = await Promise.all([
+    const [totalDocuments, blogs] = await Promise.all([
       Blog.countDocuments(query),
       Blog.find(query)
         .skip(pageSize * (currentPage - 1))
@@ -63,9 +63,9 @@ export const GET = async (req: NextRequest) => {
 
     const lastPage = Math.ceil(totalDocuments / pageSize)
     console.log('Retrieved blog posts.')
-    return NextResponse.json({ blog, lastPage }, { status: 200 })
+    return NextResponse.json({ blogs, lastPage }, { status: 200 })
   } catch (err: any) {
-    console.error('Error retrieving blog post:', err.message)
+    console.error('Error retrieving blog posts:', err.message)
     return NextResponse.json({ message: err.message }, { status: 500 })
   }
 }
@@ -97,9 +97,9 @@ export const POST = async (req: NextRequest) => {
 
     await newBlog.save()
     console.log('New blog post created:', newBlog)
-    return NextResponse.json({ message: 'New blog post created.' }, { status: 201 })
+    return NextResponse.json({ message: 'A new blog post created.' }, { status: 201 })
   } catch (err: any) {
-    console.error('Error posting blog post:', err.message)
+    console.error('Error posting a blog post:', err.message)
     return NextResponse.json({ message: err.message }, { status: 500 })
   }
 }

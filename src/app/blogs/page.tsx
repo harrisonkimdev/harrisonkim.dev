@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 
 import PaginationNavigator from '@/components/PaginationNavigator'
 import SearchBar from '@/components/SearchBar'
-import Blog from './_components/Blog'
+import Blog from './(components)/Blog'
 
 const BlogIndexPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)

@@ -80,10 +80,10 @@ const NavBar = () => {
                 'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
             `}> Projects </Link>
 
-            <Link href='/blog' className={`
-              hover:underline ${checkRouteGroup("blog") ?
+            <Link href='/blogs' className={`
+              hover:underline ${checkRouteGroup("blogs") ?
                 'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
-            `}> Blog </Link>
+            `}> Blogs </Link>
 
 
             { session && (
@@ -99,8 +99,8 @@ const NavBar = () => {
                     <li onClick={() => setShowAdminDropdown(!showAdminDropdown)}
                       className='p-4 hover:bg-stone-500
                     '>
-                      <Link href='/admin/blog' className='whitespace-nowrap hover:underline'>
-                        Manage Blog
+                      <Link href='/admin/blogs' className='whitespace-nowrap hover:underline'>
+                        Manage Blogs
                       </Link>
                     </li>
                     <li onClick={() => setShowAdminDropdown(!showAdminDropdown)}

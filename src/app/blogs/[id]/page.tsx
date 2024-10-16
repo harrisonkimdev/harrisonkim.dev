@@ -4,7 +4,7 @@ import { IBlog } from '@/interfaces'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import Comments from '../_components/Comments'
+import Comments from '../(components)/Comments'
 import { FaAngleLeft } from 'react-icons/fa6'
 
 const BlogShowPage = ({ params }: { params: { id: string } }) => {
