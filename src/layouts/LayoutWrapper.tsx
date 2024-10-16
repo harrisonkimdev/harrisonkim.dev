@@ -1,6 +1,6 @@
-import NavBar from '@/layouts/NavBar'
-import TopArrow from '@/components/TopArrow'
-import Footer from '@/layouts/Footer'
+import NavBar from "@/layouts/NavBar"
+import TopArrow from "@/components/TopArrow"
+// import Footer from "@/layouts/Footer"
 
 type TWrapperProps = {
   children: React.ReactNode
@@ -11,11 +11,10 @@ const Wrapper = ({ children } : TWrapperProps) => {
     <div>
       <NavBar />
       
-      <main className='
-        w-full min-h-screen mt-14 md:mt-20 pt-14
-        flex flex-col items-center bg-neutral-50 
-      '>
-        <div className='max-w-5xl px-6'>
+      <main className="
+        flex flex-col items-center w-full min-h-screen bg-black
+      ">
+        <div className="max-w-5xl mt-14 md:mt-20 pt-14 px-6">
           { children }
         </div>
       </main>
