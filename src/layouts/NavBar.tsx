@@ -64,13 +64,13 @@ const NavBar = () => {
 
         <div className='
           col-span-4 md:col-span-1
-          text-center md:text-left
+          md:pt-1 text-center md:text-left
         '>
           <Link href='/'>
             <span className='
-              text-3xl text-black
+              font-mono text-2xl md:text-3xl text-black
               whitespace-nowrap hover:text-black
-            '>ㄱ ㅣ ㅁ ㅎ ㅐ ㅅ ㅜ</span>
+            '>harrisonkim.dev</span>
           </Link>
         </div>
 
