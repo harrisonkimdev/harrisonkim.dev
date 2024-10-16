@@ -22,7 +22,7 @@ const SideBar = () => {
       {/* close icon */}
       <div className='flex justify-end'>
         <div onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })} className='p-5'>
-          <FaRegTimesCircle className='w-6 h-6 text-lime-400' />
+          <FaRegTimesCircle className='w-6 h-6 text-white active:text-lime-400' />
         </div>
       </div>
 
@@ -30,19 +30,19 @@ const SideBar = () => {
       <div className='flex flex-col gap-7 pl-12 font-mono'>
         <Link href='/' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
           <p className={`text-3xl font-medium ${checkRouteGroup("") ?
-              "text-lime-400 hover:text-lime-400" : "text-white hover:text-white" }
+              "text-lime-400 active:text-lime-400" : "text-white active:text-white" }
           `}> Home </p>
         </Link>
       
         <Link href='/projects' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
           <p className={`text-3xl font-medium ${checkRouteGroup("projects") ?
-              "text-lime-400 hover:text-lime-400" : "text-white hover:text-white" }
+              "text-lime-400 active:text-lime-400" : "text-white active:text-white" }
           `}> Projects </p>
         </Link>
       
         <Link href='/blog' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
           <p className={`text-3xl font-medium ${checkRouteGroup("blog") ?
-              "text-lime-400 hover:text-lime-400" : "text-white hover:text-white" }
+              "text-lime-400 active:text-lime-400" : "text-white active:text-white" }
           `}> Blogs </p>
         </Link>
 
@@ -50,14 +50,14 @@ const SideBar = () => {
           <>
             <Link href='/admin/blog' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
               <p className='
-                text-3xl font-medium text-lime-400 hover:text-lime-400
+                text-3xl font-medium text-lime-400 active:text-lime-400
               '>Manage Blog</p>
             </Link>
 
             {/* TODO: replace this code with the component. */}
             <button onClick={() => signOut()}>
               <p className='
-                cursor-pointer text-left text-3xl font-semibold text-lime-400 hover:text-lime-400
+                cursor-pointer text-left text-3xl font-semibold text-lime-400 active:text-lime-400
               '>Sign out</p>
             </button>
           </>
