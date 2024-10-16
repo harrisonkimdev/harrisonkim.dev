@@ -1,4 +1,8 @@
-import NavMenus from "./(nav)/NavMenus"
+"use client"
+
+import { useAppState } from '@/layouts/providers/AppStateContext'
+import NavBar from "@/layouts/NavBar"
+import SideBar from '@/layouts/SideBar'
 import TopArrow from "@/components/TopArrow"
 // import Footer from "@/layouts/Footer"
 
@@ -7,21 +11,29 @@ type TWrapperProps = {
 }
 
 const Wrapper = ({ children } : TWrapperProps) => {
+  const { state } = useAppState()
+  
   return (
     <div>
-      <NavMenus />      
-      
-      <main className="
-        flex flex-col items-center w-full min-h-screen bg-black
-      ">
-        <div className="max-w-5xl mt-14 md:mt-20 pt-14 px-6">
-          { children }
-        </div>
-      </main>
+      { state.showSideBar ? (
+        <SideBar />
+      ) : (
+        <>
+          <NavBar />
 
-      <TopArrow />
+          <main className="
+            flex flex-col items-center w-full min-h-screen bg-black
+          ">
+            <div className="max-w-5xl mt-14 md:mt-20 pt-14 px-6">
+              { children }
+            </div>
+          </main>
 
-      {/* <Footer /> */}
+          <TopArrow />
+
+          {/* <Footer /> */}
+        </>
+      )}
     </div>
   )
 }
