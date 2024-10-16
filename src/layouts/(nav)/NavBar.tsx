@@ -5,7 +5,6 @@ import { useSession } from 'next-auth/react'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import SideBar from '@/layouts/SideBar'
 import SignOutButton from '@/components/SignOutButton'
 import { FaBars } from 'react-icons/fa6'
 
@@ -41,9 +40,7 @@ const NavBar = () => {
   return (
     <nav className='
       fixed top-0 w-full h-14 md:h-20 backdrop-blur bg-opacity-70 bg-black
-    '>
-      <SideBar />
-      
+    '>      
       <div className='
         grid items-center
         grid-cols-6 md:grid-cols-2
@@ -64,10 +61,13 @@ const NavBar = () => {
           md:pt-1 text-center md:text-left
         '>
           <Link href='/'>
-            <span className='
-              font-mono text-2xl md:text-3xl text-lime-400
-              whitespace-nowrap hover:text-black
-            '>harrisonkim.dev</span>
+            <div className='
+              text-2xl md:text-3xl whitespace-nowrap
+              text-lime-400 hover:text-lime-400
+            '>
+              <span className='font-mono'>harrisonkim.dev</span>
+              <span className='ml-1.5 cursor-animation'>|</span>
+            </div>
           </Link>
         </div>
 
