@@ -14,7 +14,7 @@ const NavBar = () => {
   const pathname = usePathname()
 
   const [isMobile, setIsMobile] = useState(false)
-  const [showAdminMenuDropdown, setShowAdminMenuDropdown] = useState(false)
+  const [showAdminDropdown, setShowAdminDropdown] = useState(false)
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,15 +27,15 @@ const NavBar = () => {
   }, [])
 
   useEffect(() => {
-    let adminMenuDropdownHandler = (e: any) => {
-      if (adminMenuDropdownRef.current && !adminMenuDropdownRef.current.contains(e.target)) {
-        setShowAdminMenuDropdown(false)
+    let adminDropdownHandler = (e: any) => {
+      if (adminDropdownRef.current && !adminDropdownRef.current.contains(e.target)) {
+        setShowAdminDropdown(false)
       }
     }
-    document.addEventListener('mousedown', adminMenuDropdownHandler)
+    document.addEventListener('mousedown', adminDropdownHandler)
   }, [])
 
-  const adminMenuDropdownRef = useRef<HTMLDivElement | null>(null)
+  const adminDropdownRef = useRef<HTMLDivElement | null>(null)
 
   const checkRouteGroup = (routeGroup: String) => {
     const currRouteGroup = pathname.split('/')[1]
@@ -54,80 +54,66 @@ const NavBar = () => {
       '>
         {/* hamburger icon */}
         { isMobile && (
-          <div className='col-span-1'>
-            <div onClick={() => { dispatch({ type: 'SHOW_SIDEBAR' }) }}>
-              <FaBars className='w-6 h-6 text-lime-400' />
-            </div>
+          <div onClick={() => { dispatch({ type: 'SHOW_SIDEBAR' }) }} className='col-span-1'>
+            <FaBars className='w-6 h-6 text-lime-400' />
           </div>
         )}
 
-        <div className='
-          col-span-4 md:col-span-1
-          md:pt-1 text-center md:text-left
+        <Link href='/' className='
+          col-span-4 md:col-span-1 md:pt-1
+          text-center md:text-left text-2xl md:text-3xl
+          whitespace-nowrap text-lime-400 hover:text-lime-400
         '>
-          <Link href='/'>
-            <div className='
-              text-2xl md:text-3xl whitespace-nowrap
-              text-lime-400 hover:text-lime-400
-            '>
-              <span className='font-mono'>harrisonkim.dev</span>
-              <span className='ml-1.5 cursor-animation'>|</span>
-            </div>
-          </Link>
-        </div>
+          <span className='font-mono'>harrisonkim.dev</span>
+          <span className='ml-1.5 cursor-animation'>|</span>
+        </Link>
 
-        <div className='flex justify-end'>
-          { !isMobile && (
-            <div className='flex gap-10'>
-              <Link href='/' className={`
-                hover:underline ${checkRouteGroup("") ?
-                  'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
-              `}> Home </Link>
+        { !isMobile && (
+          <div className='flex justify-end gap-10'>
+            <Link href='/' className={`
+              hover:underline ${checkRouteGroup("") ?
+                'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
+            `}> Home </Link>
 
-              <Link href='/projects' className={`
-                hover:underline ${checkRouteGroup("projects") ?
-                  'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
-              `}> Projects </Link>
+            <Link href='/projects' className={`
+              hover:underline ${checkRouteGroup("projects") ?
+                'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
+            `}> Projects </Link>
 
-              <Link href='/blog' className={`
-                hover:underline ${checkRouteGroup("blog") ?
-                  'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
-              `}> Blog </Link>
+            <Link href='/blog' className={`
+              hover:underline ${checkRouteGroup("blog") ?
+                'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
+            `}> Blog </Link>
 
 
-              { session && (
-                <>
-                  <div ref={adminMenuDropdownRef} className='relative'>
-                    <button onClick={() => setShowAdminMenuDropdown(!showAdminMenuDropdown)}
-                      className='text-stone-100 hover:text-stone-50 hover:underline
+            { session && (
+              <div ref={adminDropdownRef} className='relative'>
+                <button onClick={() => setShowAdminDropdown(!showAdminDropdown)}
+                  className='text-stone-100 hover:text-stone-50 hover:underline
+                '>
+                  Admin
+                </button>
+
+                { showAdminDropdown && (
+                  <ul className='absolute top-10 right-0 mt-[0.05rem]'>
+                    <li onClick={() => setShowAdminDropdown(!showAdminDropdown)}
+                      className='p-4 hover:bg-stone-500
                     '>
-                      Admin
-                    </button>
-
-                    { showAdminMenuDropdown && (
-                      <div className='absolute top-10 right-0 mt-[0.05rem]'>
-                        <ul>
-                          <li onClick={() => setShowAdminMenuDropdown(!showAdminMenuDropdown)}
-                            className='p-4 hover:bg-stone-500
-                          '>
-                            <Link href='/admin/blog' className='whitespace-nowrap hover:underline'>
-                              Manage Blog
-                            </Link>
-                          </li>
-                          <li onClick={() => setShowAdminMenuDropdown(!showAdminMenuDropdown)}
-                            className='p-4 hover:bg-stone-500
-                          '>
-                            <SignOutButton />
-                          </li>
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </>
-              )}
-            </div>
-          )}
-        </div>
+                      <Link href='/admin/blog' className='whitespace-nowrap hover:underline'>
+                        Manage Blog
+                      </Link>
+                    </li>
+                    <li onClick={() => setShowAdminDropdown(!showAdminDropdown)}
+                      className='p-4 hover:bg-stone-500
+                    '>
+                      <SignOutButton />
+                    </li>
+                  </ul>
+                )}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </nav>
   )
