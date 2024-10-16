@@ -50,7 +50,7 @@ const NavBar = () => {
         {/* hamburger icon */}
         { isMobile && (
           <div className='col-span-1'>
-            <div onClick={() => { dispatch({ type: 'TOGGLE_ON' }) }}>
+            <div onClick={() => { dispatch({ type: 'SHOW_SIDEBAR' }) }}>
               <FaBars className='w-6 h-6 text-lime-400' />
             </div>
           </div>

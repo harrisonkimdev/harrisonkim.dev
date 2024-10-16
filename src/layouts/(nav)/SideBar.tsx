@@ -14,26 +14,26 @@ const SideBar = () => {
     <div className='min-h-screen flex flex-col gap-6 bg-black'>
       {/* close icon */}
       <div className='flex justify-end'>
-        <div onClick={() => dispatch({ type: 'TOGGLE_OFF' })} className='p-5'>
+        <div onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })} className='p-5'>
           <FaRegTimesCircle className='w-6 h-6 text-lime-400' />
         </div>
       </div>
 
       {/* tabs */}
       <div className='flex flex-col gap-7 pl-12 font-mono'>
-        <Link href='/' onClick={() => dispatch({ type: 'TOGGLE_OFF' })}>
+        <Link href='/' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
           <p className='
             text-3xl font-medium text-lime-400 hover:text-lime-400
           '>Home</p>
         </Link>
       
-        <Link href='/projects' onClick={() => dispatch({ type: 'TOGGLE_OFF' })}>
+        <Link href='/projects' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
           <p className='
             text-3xl font-medium text-lime-400 hover:text-lime-400
           '>Projects</p>
         </Link>
       
-        <Link href='/blog' onClick={() => dispatch({ type: 'TOGGLE_OFF' })}>
+        <Link href='/blog' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
           <p className='
             text-3xl font-medium text-lime-400 hover:text-lime-400
           '>Blogs</p>
@@ -41,7 +41,7 @@ const SideBar = () => {
 
         { session && (
           <>
-            <Link href='/admin/blog' onClick={() => dispatch({ type: 'TOGGLE_OFF' })}>
+            <Link href='/admin/blog' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
               <p className='
                 text-3xl font-medium text-lime-400 hover:text-lime-400
               '>Manage Blog</p>

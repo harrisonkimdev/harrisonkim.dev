@@ -7,8 +7,8 @@ interface AppState {
 }
 
 type Action =
-  | { type: 'TOGGLE_ON' }
-  | { type: 'TOGGLE_OFF' }
+  | { type: 'SHOW_SIDEBAR' }
+  | { type: 'HIDE_SIDEBAR' }
 
 const initialState: AppState = {
   showSideBar: false
@@ -24,9 +24,9 @@ const appStateReducer = (
   action: Action
 ): AppState => {
   switch (action.type) {
-    case 'TOGGLE_ON':
+    case 'SHOW_SIDEBAR':
       return { ...state, showSideBar: true }
-    case 'TOGGLE_OFF':
+    case 'HIDE_SIDEBAR':
       return { ...state, showSideBar: false }
     default:
       return state
