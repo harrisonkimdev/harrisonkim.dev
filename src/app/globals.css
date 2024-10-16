@@ -2,23 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Projects page */
-.blink_me {
-  animation: blinker 1.7s linear infinite;
-}
-
+/* animation effects */
 @keyframes blinker {
   50% {
     opacity: 0;
   }
 }
+.blink_me {
+  animation: blinker 1.7s linear infinite;
+}
 
+@keyframes typingCursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.cursor-animation {
+  animation: typingCursor 1.3s steps(1) infinite;
+}
+
+/* slick-carousel */
 .slick-slider .slick-arrow {
   filter: invert(100%);
 }
 
 .slick-slider .slick-arrow:hover {
   filter: invert(100%);
+}
+div.slick-slider.slick-initialized {
+  position: relative!important;
 }
 
 /* react-quill */
@@ -37,8 +52,4 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-div.slick-slider.slick-initialized {
-  position: relative!important;
 }

@@ -1,4 +1,4 @@
-import NavBar from "@/layouts/NavBar"
+import NavMenus from "./(nav)/NavMenus"
 import TopArrow from "@/components/TopArrow"
 // import Footer from "@/layouts/Footer"
 
@@ -9,7 +9,7 @@ type TWrapperProps = {
 const Wrapper = ({ children } : TWrapperProps) => {
   return (
     <div>
-      <NavBar />
+      <NavMenus />      
       
       <main className="
         flex flex-col items-center w-full min-h-screen bg-black
