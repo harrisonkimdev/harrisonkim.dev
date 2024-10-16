@@ -15,3 +15,10 @@ export interface IBlog {
   createdAt: string
   updatedAt: string
 }
+export interface IProject {
+  id: number
+  name: string
+  thumbnail: string
+  description: string
+  link: string
+}

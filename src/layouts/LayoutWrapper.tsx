@@ -15,7 +15,7 @@ const Wrapper = ({ children } : TWrapperProps) => {
         w-full min-h-screen mt-14 md:mt-20 pt-14
         flex flex-col items-center bg-neutral-50 
       '>
-        <div className='max-w-3xl'>
+        <div className='max-w-5xl px-6'>
           { children }
         </div>
       </main>

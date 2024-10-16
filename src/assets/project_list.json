@@ -1,0 +1,25 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "dandycv",
+      "thumbnail": "/images/screenshots/dandycv.png",
+      "description": "A simple and easy-to-use AI-powered image editing program.",
+      "link": "https://dandycv.vercel.app/"
+    },
+    {
+      "id": 2,
+      "name": "Soop Sok",
+      "thumbnail": "/images/screenshots/soop-sok.webp",
+      "description": "A real-time chat application with Firebase.",
+      "link": "https://soop-sok.vercel.app/"
+    },
+    {
+      "id": 3,
+      "name": "sample 3",
+      "thumbnail": "/images/profile/ellie.jpeg",
+      "description": "description 3",
+      "link": ""
+    }
+  ]
+}
