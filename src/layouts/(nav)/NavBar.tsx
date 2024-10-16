@@ -37,6 +37,11 @@ const NavBar = () => {
 
   const adminMenuDropdownRef = useRef<HTMLDivElement | null>(null)
 
+  const checkRouteGroup = (routeGroup: String) => {
+    const currRouteGroup = pathname.split('/')[1]
+    return currRouteGroup === routeGroup ? true : false
+  }
+
   return (
     <nav className='
       fixed top-0 w-full h-14 md:h-20 backdrop-blur bg-opacity-70 bg-black
@@ -75,21 +80,18 @@ const NavBar = () => {
           { !isMobile && (
             <div className='flex gap-10'>
               <Link href='/' className={`
-                ${pathname === '/' ?
-                  'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white'}
-                hover:underline
+                hover:underline ${checkRouteGroup("") ?
+                  'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
               `}> Home </Link>
 
               <Link href='/projects' className={`
-                ${pathname === '/projects' ?
-                  'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white'}
-                hover:underline
+                hover:underline ${checkRouteGroup("projects") ?
+                  'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
               `}> Projects </Link>
 
               <Link href='/blog' className={`
-                ${pathname === '/blog' ?
-                  'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white'}
-                hover:underline
+                hover:underline ${checkRouteGroup("blog") ?
+                  'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
               `}> Blog </Link>
 
 
