@@ -13,6 +13,7 @@ const BlogComponent = ({ blog }: { blog: IBlog }) => {
       <Image 
         src='https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         alt='Blog Thumbnail' width={1024} height={786}
+        className='h-full object-cover'
       />
       <div className='p-4'>
         {/* title */}
