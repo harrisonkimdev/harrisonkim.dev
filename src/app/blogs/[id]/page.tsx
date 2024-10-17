@@ -30,7 +30,7 @@ const BlogShowPage = ({ params }: { params: { id: string } }) => {
 
   return (
     <div className='flex flex-col'>
-      { window.innerWidth >= 1024 && (
+      { typeof window !== 'undefined' && window.innerWidth >= 1024 && (
         <div onClick={() => router.back()} className='hidden lg:block w-min'>
           <FaAngleLeft className='text-lime-400' />
         </div>
