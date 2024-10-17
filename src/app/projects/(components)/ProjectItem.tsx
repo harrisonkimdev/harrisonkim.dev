@@ -10,17 +10,19 @@ const ProjectItem = ({ project }: TProjectItemProps) => {
   return (
     <Link href={`projects/${project.id}`}>
       <div className="
-        flex flex-col justify-center
-        px-6 pt-6 pb-16 border rounded-md shadow
+        flex flex-col justify-center pb-15 bg-zinc-950 font-mono
       ">
-        <Image src={project.thumbnail} alt="" width={512} height={512} />
-        <span className="font-mono mt-4 text-xl text-black">
-          { project.name }
-        </span>
-        <div className="flex flex-col mt-2 font-mono text-zinc-400">
-          <span>
+        <Image src={project.thumbnail}
+          alt="Project Thumbnail"
+          width={1024} height={768}
+        />
+        <div className="p-4">
+          <h2 className="font-mono truncate text-lime-400">
+            { project.name }
+          </h2>
+          <div className="text-zinc-400">
             { project.description }
-          </span>
+          </div>
         </div>
       </div>
     </Link>

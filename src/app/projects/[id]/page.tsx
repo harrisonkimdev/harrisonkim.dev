@@ -8,23 +8,31 @@ import projectList from "@/assets/project_list.json"
 const ProjectPage = () => {
   const params = useParams()
 
-  const projectItem = projectList.projects.find((project) => project.id === Number(params.id))
+  const projectItem = projectList.projects.find((project) => {
+    return project.id === Number(params.id)
+  })
 
   if (projectItem) {
     return (
-      <div className="flex flex-col items-center">
-        <h2>{ projectItem.name }</h2>
+      <div className="flex flex-col items-center font-mono">
+        <h2 className="font-mono text-lime-400">
+          { projectItem.name }
+        </h2>
         <Image src={projectItem.thumbnail} alt="Project Sample Image"
           width={1024} height={768} className=""
         />
-        <div className="mt-12">
-          <h4>Description:</h4>
-          <p>{ projectItem.description }</p>
+        <div className="mt-6">
+          <p className="text-zinc-400">
+            { projectItem.description }
+          </p>
+
           { projectItem.link.length > 0 && (
-            <div className="py-8">
-              <hr className="pb-6" />
-              <Link href={`${projectItem.link}`} target="_blank">
-                <span className="font-medium">Visit website</span>
+            <div className="pt-4">
+              <Link href={`${projectItem.link}`} target="_blank"
+                className="
+                  text-zinc-500 underline underline-offset-4
+              ">
+                Visit website
               </Link>
             </div>
           )}
