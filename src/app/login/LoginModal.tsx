@@ -31,7 +31,7 @@ const LoginModal = () => {
       const res = await signIn('credentials', {
         password: passwordInput,
         redirect: false,
-        callbackUrl: `${location.origin}/admin/blog`,
+        callbackUrl: `${location.origin}/admin/blogs`,
       })
 
       // error handling

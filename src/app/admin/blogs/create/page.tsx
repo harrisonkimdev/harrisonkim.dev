@@ -64,7 +64,7 @@ const BlogCreatePage = () => {
         })
       })
 
-      router.push('/admin/blog')
+      router.push('/admin/blogs')
     } catch (err) {
       console.error(err)
     }
@@ -126,7 +126,7 @@ const BlogCreatePage = () => {
         
         {/* buttons */}
         <div className='mt-4 flex gap-4 justify-end'>
-          <Link href='/admin/blog'
+          <Link href='/admin/blogs'
             className='
               p-2
               shadow-sm

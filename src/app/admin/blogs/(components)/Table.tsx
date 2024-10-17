@@ -86,7 +86,7 @@ const TableComponent = ({ data }: { data: IBlog[] }) => {
               {/* Update/Delete */}
               <TableCell>
                 <div className='flex gap-3 justify-center'>
-                  <Link href={`/admin/blog/${blog._id}/edit`}
+                  <Link href={`/admin/blogs/${blog._id}/edit`}
                     className='text-xl text-stone-800 hover:text-stone-800'
                   ><FaPenToSquare /></Link>
                   <button onClick={() => { deleteBlog(blog._id) }}
