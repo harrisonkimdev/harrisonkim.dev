@@ -3,7 +3,7 @@ import { IComment } from '@/interfaces'
 import { timeSince } from '@/utils/functions'
 import { ToastContainer, toast } from 'react-toastify'
 import { useState } from 'react'
-import { FaRegTrashCan, FaRegCircleCheck, FaRegCircleXmark } from 'react-icons/fa6'
+import { FaRegTrashCan, FaCheck, FaXmark } from 'react-icons/fa6'
 
 type TCommentProps = {
   blogId: string | undefined,
@@ -56,60 +56,61 @@ const Comment = ({ blogId, refreshPage, comment } : TCommentProps) => {
     <>
       <ToastContainer />
 
-      <div
-        key={comment._id}
-        className='
-          m-4
-          pb-2
-          flex
-          gap-6
-          justify-between
-          items-start
-          border-b
+      <div className='
+        p-3 py-2 rounded-lg
+        border border-dashed border-lime-400
       '>
-        <div className='flex flex-col gap-4'>
-          <div className='h-8 flex gap-4 justify-between items-center'>
-            <div className='flex gap-2'>
-              <span>{ comment.writer }</span>
-              <span>·</span>
-              <span className='whitespace-nowrap'>
-                { timeSince(new Date(comment.createdAt).valueOf()) } ago
-              </span>
-            </div>
-            { showPasswordInput ? (
-              <>
-                <form
-                  onSubmit={(e) => handleDelete(e, comment.password)}
-                  className='flex gap-2 items-center'
-                >
-                  <input
-                    id='passwordInputTag'
-                    type='password'
-                    value={passwordInput}
-                    onChange={(e) => setPasswordInput(e.target.value)}
-                    className='p-2 rounded-md'
-                  />
+        {/* first row */}
+        <div className='flex items-center justify-between whitespace-nowrap'>
+          <span className='text-lime-400'>{ comment.writer }</span>
+          <span className='text-sm text-zinc-500'>
+            { timeSince(new Date(comment.createdAt).valueOf()) } ago
+          </span>
+        </div>
 
+        {/* second row */}
+        <p className='text-lime-400'>{ comment.comment }</p>
+
+        {/* third row */}
+        <div className='h-8 mb-1'>
+          {/* first row - right */}
+          { showPasswordInput ? (
+            <>
+              <form
+                onSubmit={(e) => handleDelete(e, comment.password)}
+                className='flex gap-4 justify-between items-center'
+              >
+                <input id='password' type='password' value={passwordInput}
+                  onChange={(e) => setPasswordInput(e.target.value)}
+                  className='
+                    w-full p-2 bg-black
+                    border-b border-dashed border-lime-400 outline-none
+                    text-lime-400
+                '/>
+
+                <div className='flex gap-2 pt-2'>
                   {/* cancel button */}
-                  <FaRegCircleXmark
+                  <FaXmark
                     onClick={() => setShowPasswordInput(false)}
-                    className='text-2xl cursor-pointer'
+                    className='text-lg text-lime-400 cursor-pointer'
                   />
 
                   {/* submit button */}
                   <button type='submit'>
-                    <FaRegCircleCheck className='text-2xl cursor-pointer' />
+                    <FaCheck
+                      className='text-lg text-lime-400 cursor-pointer'
+                    />
                   </button>
-                </form>
-              </>
-            ) : (
-              <div onClick={() => {}} className='cursor-pointer'>
-                <FaRegTrashCan onClick={() => setShowPasswordInput(true)} />
-              </div>
-            )}
-          </div>
-
-          <span>{ comment.comment }</span>
+                </div>
+              </form>
+            </>
+          ) : (
+            <div onClick={() => {}} className='h-full flex justify-end items-center'>
+              <FaRegTrashCan onClick={() => setShowPasswordInput(true)}
+                className='text-lime-400 cursor-pointer'  
+              />
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -1,8 +1,7 @@
-'use client'
+"use client"
 
-import React from 'react'
-import { IComment } from '@/interfaces/index'
-import Comment from '@/app/blogs/(components)/Comment'
+import { IComment } from "@/interfaces/index"
+import Comment from "@/app/blogs/(components)/Comment"
 
 interface ICommentProps {
   blogId: string | undefined,
@@ -12,15 +11,16 @@ interface ICommentProps {
 
 const Comments = ({ blogId, comments, refreshPage } : ICommentProps) => {
   return (
-    <>
+    <div className="space-y-3">
       { comments?.map((comment: IComment, index) => (
-        <Comment key={index}
+        <Comment
+          key={index}
           blogId={blogId}
           refreshPage={() => refreshPage()}
           comment={comment}
         />
-      )) }
-    </>
+      ))}
+    </div>
   )
 }
 

@@ -6,7 +6,8 @@ import { useState } from 'react'
 
 type TAddCommentProps = {
   blogId: string | undefined,
-  fetchComments: () => void
+  fetchComments: () => void,
+  hideAddComment: () => void
 }
 
 /**
@@ -27,7 +28,7 @@ type TAddCommentProps = {
  * It also includes form validation to ensure all input fields are filled before submission.
  */
 
-const AddComment = ({ blogId, fetchComments } : TAddCommentProps) => {
+const AddComment = ({ blogId, fetchComments, hideAddComment } : TAddCommentProps) => {
   const [writer, setWriter] = useState('')
   const [comment, setComment] = useState('')
   const [password, setPassword] = useState('')
@@ -79,38 +80,53 @@ const AddComment = ({ blogId, fetchComments } : TAddCommentProps) => {
     <>
       <ToastContainer />
     
-      <form onSubmit={(e) => addComment(e)} className='mb-8 p-4'>
-        <div className='grid grid-cols-5 gap-4'>
-          <div className='col-span-3 flex flex-col gap-1'>
+      <form onSubmit={(e) => addComment(e)}>
+        <div className='grid grid-cols-5 gap-6'>
+          <div className='col-span-3 flex flex-col'>
             <label htmlFor='writer' className='text-lime-400'>Writer</label>
             <input type='text' id='writer'
               value={writer} onChange={(e) => setWriter(e.target.value)}
-              className='p-2 rounded-md'
-            />
+              className='
+                p-2 bg-black text-lime-400
+                border-b border-dashed border-lime-400 outline-none
+            '/>
           </div>
-          <div className='col-span-2 flex flex-col gap-1'>
+          <div className='col-span-2 flex flex-col'>
             <label htmlFor='password' className='text-lime-400'>Password</label>
             <input type='password' id='password'
               value={password} onChange={(e) => setPassword(e.target.value)}
-              className='p-2 rounded-md'
-            />
+              className='
+                p-2 bg-black text-lime-400
+                border-b border-dashed border-lime-400 outline-none
+            '/>
           </div>
         </div>
         
-        <div className='mt-5 flex flex-col gap-1'>
+        <div className='mt-5 flex flex-col gap-2'>
           <label htmlFor='content' className='text-lime-400'>Comment</label>
           <textarea id='content' value={comment}
             onChange={(e) => setComment(e.target.value)}
-            className='w-full h-28 p-2 rounded-md resize-none overflow-auto'
+            className='
+              w-full h-28 p-2 rounded-md bg-black
+              border border-dashed border-lime-400
+              outline-none resize-none overflow-auto
+              text-lime-400
+            '
           />
         </div>
 
-        <button type='submit' className='
-          w-full mt-8 py-3
-          rounded-md border border-dashed border-lime-400 bg-black
-          text-lime-400
-          hover:
-        '>Add</button>
+        <div className='mt-6 grid grid-cols-2 gap-3'>
+          <button onClick={() => hideAddComment()} className='
+            py-3 rounded-md
+            border border-dashed border-lime-400
+            text-lime-400
+          '> Actually, nvm </button>
+          <button type='submit' className='
+            py-3 rounded-md
+            border border-dashed border-lime-400
+            text-lime-400
+          '> Add </button>
+        </div>
       </form>
     </>
   )
