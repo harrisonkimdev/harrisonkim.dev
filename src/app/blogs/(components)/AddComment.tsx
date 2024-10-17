@@ -6,8 +6,26 @@ import { useState } from 'react'
 
 type TAddCommentProps = {
   blogId: string | undefined,
-  fetchComments: any
+  fetchComments: () => void
 }
+
+/**
+ * AddComment component allows users to add comments to a blog post.
+ * 
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} props.blogId - The ID of the blog post to which the comment is being added
+ * @param {Function} props.fetchComments - Function to fetch the updated list of comments after a new comment is added
+ * 
+ * @returns {JSX.Element} The rendered AddComment component
+ * 
+ * @example
+ * <AddComment blogId="123" fetchComments={fetchCommentsFunction} />
+ * 
+ * @remarks
+ * This component uses the `react-toastify` library to display notifications for different states of the comment submission process.
+ * It also includes form validation to ensure all input fields are filled before submission.
+ */
 
 const AddComment = ({ blogId, fetchComments } : TAddCommentProps) => {
   const [writer, setWriter] = useState('')
@@ -27,7 +45,7 @@ const AddComment = ({ blogId, fetchComments } : TAddCommentProps) => {
   const addComment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    if (writer.length == 0 || comment.length == 0 || password.length == 0) {
+    if (!writer || !comment || !password) {
       notifyInvalidComment()
       return
     }
@@ -38,74 +56,62 @@ const AddComment = ({ blogId, fetchComments } : TAddCommentProps) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          blogId, writer, comment, password
-        })
+        body: JSON.stringify({ blogId, writer, comment, password })
       })
   
       if (res.ok) {
-        resetInputFields()
+        setWriter('')
+        setComment('')
+        setPassword('')
+        
         fetchComments()
-  
         notifyCommentAdded()
+      } else {
+        const errorText = await res.text()
+        notifyCommentFailed(errorText)
       }
-    } catch (err) {
-      notifyCommentFailed(err)
+    } catch (err: any) {
+      notifyCommentFailed(err.message || 'An error occurred')
     }
-  }
-
-  const resetInputFields = () => {
-    setWriter('')
-    setComment('')
-    setPassword('')
   }
 
   return (
     <>
       <ToastContainer />
     
-      <div>
-        <form onSubmit={(e) => addComment(e)}
-          className='mb-8 p-4'
-        >
-          <div className='flex flex-col md:flex-row md:justify-between'>
-            <div className='flex flex-col'>
-              <label htmlFor='writer'>Writer</label>
-              <input type='text' id='writer'
-                value={writer} onChange={(e) => setWriter(e.target.value)}
-                className='p-2 rounded-md'
-              />
-            </div>
-            <div className='flex flex-col'>
-              <label htmlFor=''>Password</label>
-              <input type='password' id='password'
-                value={password} onChange={(e) => setPassword(e.target.value)}
-                className='p-2 rounded-md'
-              />
-            </div>
-          </div>
-          
-          <div className='mt-2'>
-            <label htmlFor='content'>Comment</label>
-            <textarea id='content'
-              value={comment} onChange={(e) => setComment(e.target.value)}
-              className='w-full p-2 rounded-md'
+      <form onSubmit={(e) => addComment(e)} className='mb-8 p-4'>
+        <div className='grid grid-cols-5 gap-4'>
+          <div className='col-span-3 flex flex-col gap-1'>
+            <label htmlFor='writer' className='text-lime-400'>Writer</label>
+            <input type='text' id='writer'
+              value={writer} onChange={(e) => setWriter(e.target.value)}
+              className='p-2 rounded-md'
             />
           </div>
-
-          <div className='mt-6 flex justify-center'>
-            <button type='submit' className='
-              w-full
-              py-2
-              rounded-md
-              border
-            border-stone-300
-            bg-stone-200
-            hover:bg-stone-300
-            '>Add</button>
+          <div className='col-span-2 flex flex-col gap-1'>
+            <label htmlFor='password' className='text-lime-400'>Password</label>
+            <input type='password' id='password'
+              value={password} onChange={(e) => setPassword(e.target.value)}
+              className='p-2 rounded-md'
+            />
           </div>
-        </form>
-      </div>
+        </div>
+        
+        <div className='mt-5 flex flex-col gap-1'>
+          <label htmlFor='content' className='text-lime-400'>Comment</label>
+          <textarea id='content' value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            className='w-full h-28 p-2 rounded-md resize-none overflow-auto'
+          />
+        </div>
+
+        <button type='submit' className='
+          w-full mt-8 py-3
+          rounded-md border border-dashed border-lime-400 bg-black
+          text-lime-400
+          hover:
+        '>Add</button>
+      </form>
     </>
   )
 }
