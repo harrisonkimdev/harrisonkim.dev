@@ -16,7 +16,7 @@ const BlogComponent = ({ blog }: { blog: IBlog }) => {
       />
       <div className='p-4'>
         {/* title */}
-        <h2 className='font-mono truncate text-lime-400'>{ blog.title }</h2>
+        <h2 className='font-mono font-light truncate text-lime-400'>{ blog.title }</h2>
 
         {/* content */}
         <div dangerouslySetInnerHTML={{ __html: blog.content }}

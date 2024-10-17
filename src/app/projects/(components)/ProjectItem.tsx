@@ -17,7 +17,7 @@ const ProjectItem = ({ project }: TProjectItemProps) => {
           width={1024} height={768}
         />
         <div className="p-4">
-          <h2 className="font-mono truncate text-lime-400">
+          <h2 className="font-mono font-light truncate text-lime-400">
             { project.name }
           </h2>
           <div className="text-zinc-400">

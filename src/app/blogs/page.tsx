@@ -26,12 +26,11 @@ const BlogIndexPage = () => {
 
   return (
     <>
-      {/* { blogs && blogs?.length > 0 ? ( */}
-      { 1 ? (
+      { blogs && blogs?.length > 0 ? (
         <>
-          <h2 className="
+          <h1 className="
             font-mono font-light text-center text-lime-400
-          "> Blogs </h2>
+          "> Blogs </h1>
           <div className="
             my-8 grid
             grid-col-1 sm:grid-cols-2
