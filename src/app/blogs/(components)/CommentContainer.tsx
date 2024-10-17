@@ -23,7 +23,7 @@ const CommentContainer = ({ blogId, comments, refreshPage } : TCommentsProps ) =
   return (
     <div className="flex flex-col items-center">
       <div className="
-        mt-6 md:mt-10 p-5 space-y-6 rounded-xl
+        max-w-md mt-6 md:mt-10 p-5 space-y-6 rounded-xl
         border border-dashed border-lime-400 
       ">
         <div>
