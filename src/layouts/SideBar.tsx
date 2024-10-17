@@ -40,15 +40,15 @@ const SideBar = () => {
           `}> Projects </p>
         </Link>
       
-        <Link href='/blog' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
-          <p className={`text-3xl font-medium ${checkRouteGroup("blog") ?
+        <Link href='/blogs' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
+          <p className={`text-3xl font-medium ${checkRouteGroup("blogs") ?
               "text-lime-400 active:text-lime-400" : "text-white active:text-white" }
           `}> Blogs </p>
         </Link>
 
         { session && (
           <>
-            <Link href='/admin/blog' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
+            <Link href='/admin/blogs' onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}>
               <p className='
                 text-3xl font-medium text-lime-400 active:text-lime-400
               '>Manage Blog</p>

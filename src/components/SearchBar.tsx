@@ -24,7 +24,7 @@ const SearchBar = ({ searchSubmit }: { searchSubmit: Function }) => {
             w-64 p-2 rounded-tl-xl rounded-bl-xl border bg-white
         '/>
         <button type='submit' className='
-          p-2 rounded-tr-xl rounded-br-xl bg-gradient-to-bl from-stone-200
+          p-2 rounded-tr-xl rounded-br-xl bg-white
         '>
           <FaMagnifyingGlass />
         </button>

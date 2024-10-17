@@ -28,7 +28,8 @@ const NavBar = () => {
 
   useEffect(() => {
     let adminDropdownHandler = (e: any) => {
-      if (adminDropdownRef.current && !adminDropdownRef.current.contains(e.target)) {
+      const ref = adminDropdownRef.current
+      if (ref && !ref.contains(e.target)) {
         setShowAdminDropdown(false)
       }
     }
@@ -44,8 +45,9 @@ const NavBar = () => {
 
   return (
     <nav className='
-      fixed top-0 w-full h-14 md:h-20 backdrop-blur bg-opacity-70 bg-black
-    '>      
+      fixed top-0 w-full h-14 md:h-20
+      backdrop-blur bg-opacity-70 bg-black
+    '>
       <div className='
         grid items-center
         grid-cols-6 md:grid-cols-2
@@ -80,10 +82,10 @@ const NavBar = () => {
                 'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
             `}> Projects </Link>
 
-            <Link href='/blog' className={`
-              hover:underline ${checkRouteGroup("blog") ?
+            <Link href='/blogs' className={`
+              hover:underline ${checkRouteGroup("blogs") ?
                 'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
-            `}> Blog </Link>
+            `}> Blogs </Link>
 
 
             { session && (
@@ -99,8 +101,8 @@ const NavBar = () => {
                     <li onClick={() => setShowAdminDropdown(!showAdminDropdown)}
                       className='p-4 hover:bg-stone-500
                     '>
-                      <Link href='/admin/blog' className='whitespace-nowrap hover:underline'>
-                        Manage Blog
+                      <Link href='/admin/blogs' className='whitespace-nowrap hover:underline'>
+                        Manage Blogs
                       </Link>
                     </li>
                     <li onClick={() => setShowAdminDropdown(!showAdminDropdown)}
