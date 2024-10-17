@@ -28,7 +28,8 @@ const NavBar = () => {
 
   useEffect(() => {
     let adminDropdownHandler = (e: any) => {
-      if (adminDropdownRef.current && !adminDropdownRef.current.contains(e.target)) {
+      const ref = adminDropdownRef.current
+      if (ref && !ref.contains(e.target)) {
         setShowAdminDropdown(false)
       }
     }
@@ -44,8 +45,9 @@ const NavBar = () => {
 
   return (
     <nav className='
-      fixed top-0 w-full h-14 md:h-20 backdrop-blur bg-opacity-70 bg-black
-    '>      
+      fixed top-0 w-full h-14 md:h-20
+      backdrop-blur bg-opacity-70 bg-black
+    '>
       <div className='
         grid items-center
         grid-cols-6 md:grid-cols-2
