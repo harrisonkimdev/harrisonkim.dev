@@ -1,7 +1,7 @@
 "use client"
 
+import { useState, useEffect } from 'react';
 import { IComment } from "@/interfaces"
-import { useState } from "react"
 import AddComment from "./AddComment"
 import Comments from "./Comments"
 
@@ -12,7 +12,13 @@ type TCommentsProps = {
 }
 
 const CommentContainer = ({ blogId, comments, refreshPage } : TCommentsProps ) => {
-  const [showAddComment, setShowAddComment] = useState(false)
+  const [showAddComment, setShowAddComment] = useState(false);
+
+  useEffect(() => {
+    if (showAddComment) {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  }, [showAddComment]);
 
   return (
     <div className="flex flex-col items-center">
@@ -34,17 +40,21 @@ const CommentContainer = ({ blogId, comments, refreshPage } : TCommentsProps ) =
         <hr className="border border-dashed border-lime-400" />
 
         <>
-          { !showAddComment ? (
+          {!showAddComment ? (
             <div className="flex gap-3 justify-between items-center">
               <span className="font-mono font-normal text-lime-400">
                 Do you want to say something?
               </span>
-              <button onClick={() => setShowAddComment(true)}
+              <button
+                onClick={() => setShowAddComment(true)}
                 className="
                   px-3 py-2 rounded-lg
                   border border-dashed border-lime-400
                   whitespace-nowrap text-lime-400
-              ">YESSS&nbsp;&nbsp;😎</button>
+                "
+              >
+                YESSS&nbsp;&nbsp;😎
+              </button>
             </div>
           ) : (
             <AddComment
