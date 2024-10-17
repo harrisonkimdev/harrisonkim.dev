@@ -42,18 +42,29 @@ const BlogShowPage = ({ params }: { params: { id: string } }) => {
         <Image 
           src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Blog Image" width={1024} height={786}
-          className="pb-4"
         />
 
-        {/* content */}
+        {/* content and tags */}
         { blog && (
-          <div dangerouslySetInnerHTML={{ __html: blog.content }}
-            className="text-lime-400"
-          />
+          <>
+            <div dangerouslySetInnerHTML={{ __html: blog.content }}
+              className="py-4 text-lime-400"
+            />
+
+            <div className='flex flex-wrap gap-3 p-2'>
+              { blog.tags.map((tag: string, index: number) => (
+                <span key={index} className='
+                  w-min px-3 py-1 rounded-lg
+                  border border-dashed border-lime-400
+                  whitespace-nowrap text-sm text-lime-400
+                '> { tag } </span>
+              )) }
+            </div>
+          </>
         )}
 
         {/* created at */}
-        <div className="pt-8 text-end text-zinc-500">
+        <div className="text-end text-zinc-500">
           { convertDate(blog?.createdAt) }
         </div>
       </>
