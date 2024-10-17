@@ -13,13 +13,6 @@
       "thumbnail": "/images/screenshots/soop-sok.webp",
       "description": "A real-time chat application with Firebase.",
       "link": "https://soop-sok.vercel.app/"
-    },
-    {
-      "id": 3,
-      "name": "sample 3",
-      "thumbnail": "/images/profile/ellie.jpeg",
-      "description": "description 3",
-      "link": ""
     }
   ]
 }
