@@ -1,23 +1,26 @@
-import { IComment } from '@/interfaces'
-import AddComment from './AddComment'
-import ReadComments from './ReadComments'
+'use client'
 
-type TCommentsProps = {
+import React from 'react'
+import { IComment } from '@/interfaces/index'
+import Comment from '@/app/blogs/(components)/Comment'
+
+interface ICommentProps {
   blogId: string | undefined,
   comments: IComment[] | undefined,
-  fetchComments: any
+  refreshPage: () => void
 }
 
-const Comments = ({ blogId, comments, fetchComments } : TCommentsProps ) => {
+const Comments = ({ blogId, comments, refreshPage } : ICommentProps) => {
   return (
-    <div className='p-2 border border-stone-200 shadow-md rounded-lg bg-stone-100'>
-      <AddComment blogId={blogId} fetchComments={() => fetchComments()} />
-      <ReadComments
-        blogId={blogId}
-        comments={comments}
-        fetchComments={() => fetchComments()}
-      />
-    </div>
+    <>
+      { comments?.map((comment: IComment, index) => (
+        <Comment key={index}
+          blogId={blogId}
+          refreshPage={() => refreshPage()}
+          comment={comment}
+        />
+      )) }
+    </>
   )
 }
 

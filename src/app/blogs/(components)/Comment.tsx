@@ -6,11 +6,11 @@ import { FaRegTrashCan, FaRegCircleCheck, FaRegCircleXmark } from 'react-icons/f
 
 type TCommentProps = {
   blogId: string | undefined,
-  fetchComments: any
+  refreshPage: () => void,
   comment: IComment
 }
 
-const Comment = ({ blogId, fetchComments, comment } : TCommentProps) => {
+const Comment = ({ blogId, refreshPage, comment } : TCommentProps) => {
   const notifyCommentFailed = (err: any) => toast.error(err, {
     position: 'bottom-right'
   })
@@ -76,7 +76,7 @@ const Comment = ({ blogId, fetchComments, comment } : TCommentProps) => {
         method: 'DELETE',
       })
 
-      fetchComments()
+      refreshPage()
     } catch (err) {
       console.error(err)
     }

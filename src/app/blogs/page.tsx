@@ -5,34 +5,24 @@ import { useState, useEffect } from "react"
 import Blog from "./(components)/Blog"
 
 const BlogIndexPage = () => {
-  const [currentPage, setCurrentPage] = useState<number>(1)
-  const [lastPage, setLastPage] = useState<number>(1)
-  const [pageSize, setPageSize] = useState<string>("4")
   const [blogs, setBlogs] = useState<IBlog[] | undefined>(undefined)
 
-  const fetchBlogs = async (searchQuery: string = "") => {
-    try {
-      const params = new URLSearchParams({
-        currentPage: currentPage.toString(),
-        pageSize,
-        ...(searchQuery && { searchQuery })
-      })
-      const res = await fetch(`/api/blogs?${params}`)
-      const { blogs, lastPage } = await res.json()
-      setBlogs(blogs)
-      setLastPage(lastPage)
-    } catch (err: any) {
-      console.error(err.message)
-    }
-  }
-
   useEffect(() => {
-    fetchBlogs()
-  }, [currentPage, pageSize])
+    const fetchBlogs = async (searchQuery: string = "") => {
+      try {
+        const params = new URLSearchParams({
+          ...(searchQuery && { searchQuery })
+        })
+        const res = await fetch(`/api/blogs?${params}`)
+        const { blogs } = await res.json()
+        setBlogs(blogs)
+      } catch (err: any) {
+        console.error(err.message)
+      }
+    }
 
-  const handleSearch = (searchQuery: string) => {
-    fetchBlogs(searchQuery)
-  }
+    fetchBlogs()
+  }, [])
 
   return (
     <>
@@ -47,7 +37,7 @@ const BlogIndexPage = () => {
             grid-col-1 sm:grid-cols-2
             gap-8 sm:gap-4
           ">
-            { blogs?.map((blog: IBlog) => <Blog blogData={blog} key={blog._id} />) }
+            { blogs?.map((blog: IBlog) => <Blog blog={blog} key={blog._id} />) }
           </div>
         </>
       ) : (

@@ -1,90 +1,69 @@
 'use client'
 
 import { IBlog } from '@/interfaces'
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { convertDate } from '@/utils/functions'
 import Image from 'next/image'
-import Comments from '../(components)/Comments'
+import CommentContainer from '../(components)/CommentContainer'
 import { FaAngleLeft } from 'react-icons/fa6'
 
 const BlogShowPage = ({ params }: { params: { id: string } }) => {
-  const [blog, setBlog] = useState<IBlog | undefined>(undefined)
+  const router = useRouter()
 
-  const fetchBlog = async (id: string) => {
-    try {
-      const res = await fetch(`/api/blog/${id}?readOnly=1`)
-      const data = await res.json()
-      setBlog(data.blog)
-    } catch (err) {
-      console.error(err)
-    }
-  }
+  const [blog, setBlog] = useState<IBlog | undefined>(undefined)
+  const [refresh, setRefresh] = useState<boolean>(false)
 
   useEffect(() => {
-    fetchBlog(params.id)
-  }, [params.id])
-  
-
-  const convertDate = (dateInString: string | undefined) => {
-    const months = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ]
-    
-    if (dateInString) {
-      const date = new Date(dateInString)
-
-      const day = date.getDate()
-      const month = months[date.getMonth()]
-      const year = date.getFullYear()
-      const hours = (date.getHours() % 12) || 12 // Convert to 12-hour format
-      const minutes = String(date.getMinutes()).padStart(2, '0')
-      const period = date.getHours() < 12 ? 'AM' : 'PM'
-      
-      return `${month} ${day}, ${year} ${hours}:${minutes} ${period}`
+    const fetchBlog = async (id: string) => {
+      try {
+        const res = await fetch(`/api/blogs/${id}?readOnly=1`)
+        const { blog } = await res.json()
+        setBlog(blog)
+      } catch (err) {
+        console.error(err)
+      }
     }
-  }
+
+    fetchBlog(params.id)
+  }, [params.id, refresh])
 
   return (
-    <>
-      <Link href='/blog' className='w-min flex justify-between'>
-        <FaAngleLeft className='rounded-md text-black hover:border' />
-      </Link>
+    <div className='flex flex-col'>
+      { window.innerWidth >= 1024 && (
+        <div onClick={() => router.back()} className='hidden lg:block w-min'>
+          <FaAngleLeft className='text-lime-400' />
+        </div>
+      )}
 
-      {/* image and title */}
-      <div className='mt-8 relative'>
-        <Image 
-          src='https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-          alt='Blog Image'
-          width={1470}
-          height={980}
-          className='object-cover absolute h-[200px]'
-        />
-        <h1 className='
-          absolute top-0 left-0 right-0 z-1
-          h-[200px] m-0 ml-12 flex items-center
-          text-stone-50
-        '>{ blog?.title }</h1>
-      </div>
+      <h1 className='text-center text-lime-400'>{ blog?.title }</h1>
 
-      {/* writer and created at */}
-      <div className='pt-[215px] text-stone-600'>
-        <p>{ convertDate(blog?.createdAt) }</p>
-      </div>
+      <Image 
+        src='https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        alt='Blog Image' width={1024} height={786}
+        className='pb-4'
+      />
 
       {/* content */}
       { blog && (
-        <div dangerouslySetInnerHTML={{ __html: blog?.content }} className='pt-4 text-stone-600' />
+        <div dangerouslySetInnerHTML={{ __html: blog?.content }}
+          className='text-lime-400'
+        />
       )}
+
+      {/* created at */}
+      <div className='pt-2 text-end text-zinc-500'>
+        { convertDate(blog?.createdAt) }
+      </div>
 
       {/* reply section */}
       <div className='mt-12'>
-        <Comments
+        <CommentContainer
           blogId={blog?._id} comments={blog?.comments}
-          fetchComments={() => fetchBlog(params.id)}
+          refreshPage={() => setRefresh(true)}
         />
       </div>
-    </>
+    </div>
   )
 }
 

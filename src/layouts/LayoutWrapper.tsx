@@ -21,10 +21,8 @@ const Wrapper = ({ children } : TWrapperProps) => {
         <>
           <NavBar />
 
-          <main className="
-            flex flex-col items-center w-full min-h-screen bg-black
-          ">
-            <div className="max-w-5xl mt-14 md:mt-20 pt-14 px-6">
+          <main className="flex justify-center min-h-screen">
+            <div className="max-w-5xl mt-14 md:mt-20 p-6">
               { children }
             </div>
           </main>
