@@ -1,4 +1,4 @@
-import ProjectContainer from "./_components/ProjectContainer"
+import ProjectContainer from "./(components)/ProjectContainer"
 
 const ProjectIndexPage = () => {
 return (
