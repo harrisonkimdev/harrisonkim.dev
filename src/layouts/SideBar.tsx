@@ -5,6 +5,7 @@ import { useSession, signOut } from 'next-auth/react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { FaRegTimesCircle } from 'react-icons/fa'
+import { FaArrowUpRightFromSquare } from 'react-icons/fa6'
 
 // Only visible on devices with smaller screen
 const SideBar = () => {
@@ -45,6 +46,17 @@ const SideBar = () => {
               "text-lime-400 active:text-lime-400" : "text-white active:text-white" }
           `}> Blogs </p>
         </Link>
+
+        <a href='https://photobook-9mo4.vercel.app/' target='_blank'
+          onClick={() => dispatch({ type: 'HIDE_SIDEBAR' })}
+          className='
+            flex gap-3 items-center
+            text-3xl font-medium hover:underline 
+            text-white active:text-white hover:text-white
+        '>
+          <span>Gallery</span>
+          <FaArrowUpRightFromSquare className='text-xl' />
+        </a>
 
         { session && (
           <>

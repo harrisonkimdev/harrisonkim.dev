@@ -7,7 +7,7 @@ const MacOSStyleWindow = () => {
         flex flex-row items-center
         rounded-t-xl border bg-white
       '>
-        <Image src='/images/macos-buttons.webp' alt=''
+        <Image src='/images/projects/macos-buttons.webp' alt=''
           width={800} height={600} className='w-16 ml-2'
         />
         <span className='

@@ -31,6 +31,7 @@ const ProjectPage = () => {
               <Link href={`${projectItem.link}`} target="_blank"
                 className="
                   text-zinc-500 underline underline-offset-4
+                  hover:text-zinc-500 active:text-zinc-500 visited:text-zinc-500
               ">
                 Visit website
               </Link>

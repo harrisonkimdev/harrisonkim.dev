@@ -11,7 +11,7 @@ class Player {
     this.width = 65
     this.height = 75
 
-    this.personImage.src = '/images/enter.png'
+    this.personImage.src = '/images/chrome-dino-run/enter.png'
   }
 
   draw(ctx: CanvasRenderingContext2D) {

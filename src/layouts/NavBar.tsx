@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import SignOutButton from '@/components/SignOutButton'
-import { FaBars } from 'react-icons/fa6'
+import { FaBars, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 
 const NavBar = () => {
   const { dispatch } = useAppState()
@@ -86,6 +86,15 @@ const NavBar = () => {
               hover:underline ${checkRouteGroup("blogs") ?
                 'text-lime-400 hover:text-lime-400' : 'text-white hover:text-white' }
             `}> Blogs </Link>
+
+            <a href='https://photobook-9mo4.vercel.app/' target='_blank'
+              className='
+                flex gap-1.5 items-center
+                hover:underline text-white hover:text-white
+            '>
+              <span>Gallery</span>
+              <FaArrowUpRightFromSquare className='text-sm' />
+            </a>
 
 
             { session && (
