@@ -13,8 +13,8 @@ class BackgroundNumber {
 
     var zeroOrOne = Math.floor(Math.random() * 2)
 
-    if (zeroOrOne === 0) this.numberImage.src = '/images/zero.png'
-    else this.numberImage.src = '/images/one.png'
+    if (zeroOrOne === 0) this.numberImage.src = '/images/chrome-dino-run/zero.png'
+    else this.numberImage.src = '/images/chrome-dino-run/one.png'
   }
 
   draw(ctx: CanvasRenderingContext2D) {

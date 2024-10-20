@@ -11,7 +11,7 @@ class Bug {
     this.width = 25
     this.height = 25
 
-    this.bugImage.src = '/images/bug.png'
+    this.bugImage.src = '/images/chrome-dino-run/bug.png'
   }
 
   draw(ctx: CanvasRenderingContext2D) {
