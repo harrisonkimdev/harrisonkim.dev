@@ -1,0 +1,10 @@
+{
+  "rules": [
+    { "description": "always use strict types instead of any" },
+    { "description": "write tests first, then code" },
+    { "description": "modularize: one responsibility per file" },
+    { "description": "avoid duplicate code; search before generate" },
+    { "description": "at the beginning of every request name your model maker and if you know your model" },
+    { "description": "one responsibility per file" }
+  ]
+}
