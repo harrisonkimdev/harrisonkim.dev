@@ -5,7 +5,7 @@ import { FiGithub, FiLinkedin, FiFile, FiMail, FiMessageCircle } from 'react-ico
 import Link from 'next/link';
 import Image from 'next/image';
 import TerminalSection from '@/components/home/TerminalSection';
-import DinosaurGame from '@/components/DinosaurGame';
+// import DinosaurGame from '@/components/DinosaurGame';
 
 export default function Home() {
   return (
@@ -80,7 +80,7 @@ export default function Home() {
         <TerminalSection />
       </motion.section>
 
-      {/* Dinosaur Game Easter Egg */}
+      {/* Dinosaur Game Easter Egg - Temporarily hidden
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -90,6 +90,7 @@ export default function Home() {
         <h2 className="section-title text-2xl mb-6">Take a Break</h2>
         <DinosaurGame />
       </motion.section>
+      */}
     </div>
   );
 } 
