@@ -19,7 +19,7 @@ const Footer = () => {
 
           <div className="flex space-x-6">
             <Link 
-              href="https://github.com/hhkimmm9" 
+              href="https://github.com/harrisonkimdev" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-primary transition-colors"

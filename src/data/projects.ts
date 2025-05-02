@@ -16,7 +16,7 @@ export const projectList: Project[] = [
     description: "A simple and easy-to-use AI-powered image editing program.",
     thumbnail: "https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?q=80&w=800&auto=format&fit=crop",
     link: "https://dandycv.vercel.app/",
-    githubLink: "https://github.com/hhkimmm9/dandycv",
+    githubLink: "https://github.com/harrisonkimdev/dandycv",
     tags: ["Next.js", "React", "AI", "Image Processing"],
     featured: true
   },
@@ -26,7 +26,7 @@ export const projectList: Project[] = [
     description: "A real-time chat application with Firebase.",
     thumbnail: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop",
     link: "https://soop-sok.vercel.app/",
-    githubLink: "https://github.com/hhkimmm9/soop-sok",
+    githubLink: "https://github.com/harrisonkimdev/soop-sok",
     tags: ["React", "Firebase", "Real-time"],
     featured: true
   },
@@ -36,7 +36,7 @@ export const projectList: Project[] = [
     description: "This gallery showcases a curated collection of my photography. Each photo highlights the emotions and stories of the subjects, bringing out the depth and beauty in everyday life.",
     thumbnail: "https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?q=80&w=800&auto=format&fit=crop",
     link: "https://photobook-9mo4.vercel.app/",
-    githubLink: "https://github.com/hhkimmm9/photobook",
+    githubLink: "https://github.com/harrisonkimdev/photobook",
     tags: ["Next.js", "Photography", "Gallery"],
     featured: true
   }

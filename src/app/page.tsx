@@ -40,7 +40,7 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="https://github.com/hhkimmm9" target="_blank" rel="noopener noreferrer">
+          <Link href="https://github.com/harrisonkimdev" target="_blank" rel="noopener noreferrer">
             <div className="flex items-center justify-center gap-3 bg-accent hover:bg-primary hover:text-black py-3 px-6 rounded-full transition-all duration-300">
               <FiGithub size={20} />
               <span className="font-light">GitHub</span>

@@ -178,7 +178,7 @@ exports[`스냅샷 테스트 Home 페이지가 스냅샷과 일치해야 함 1`]
           </div>
         </a>
         <a
-          href="https://github.com/hhkimmm9"
+          href="https://github.com/harrisonkimdev"
           rel="noopener noreferrer"
           target="_blank"
         >
@@ -314,23 +314,6 @@ exports[`스냅샷 테스트 Home 페이지가 스냅샷과 일치해야 함 1`]
         data-testid="terminal-section-mock"
       >
         Terminal Section Mock
-      </div>
-    </section>
-    <section
-      animate="[object Object]"
-      class="mb-10"
-      initial="[object Object]"
-      transition="[object Object]"
-    >
-      <h2
-        class="section-title text-2xl mb-6"
-      >
-        Take a Break
-      </h2>
-      <div
-        data-testid="dinosaur-game-mock"
-      >
-        Dinosaur Game Mock
       </div>
     </section>
   </div>
