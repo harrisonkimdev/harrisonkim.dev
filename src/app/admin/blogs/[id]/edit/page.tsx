@@ -22,7 +22,7 @@ const BlogEditPage = () => {
 
   // Quill editor
   const QuillNoSSRWrapper = useMemo(() => {
-    return dynamic(() => import('@/libs/ReactQuillWrapper'), {
+    return dynamic(() => import('@/lib/ReactQuillWrapper'), {
       loading: () => <p>loading...</p>,
       ssr: false,
     })
@@ -57,7 +57,7 @@ const BlogEditPage = () => {
       }
     }
 
-    fetchBlog(params.id)
+    fetchBlog(Array.isArray(params.id) ? params.id[0] : params.id)
   }, [params.id, router])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -69,7 +69,8 @@ const BlogEditPage = () => {
     }
 
     try {
-      await fetch(`/api/blog/${params.id}`, {
+      const id = Array.isArray(params.id) ? params.id[0] : params.id
+      await fetch(`/api/blog/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

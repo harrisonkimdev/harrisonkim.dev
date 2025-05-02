@@ -3,6 +3,8 @@
 import { ReactNode } from 'react';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { MotionConfig } from 'framer-motion';
+import { SessionProvider } from 'next-auth/react';
+import { AppStateProvider } from '@/components/providers/AppStateContext';
 
 interface ProvidersProps {
   children: ReactNode;
@@ -10,11 +12,15 @@ interface ProvidersProps {
 
 const Providers = ({ children }: ProvidersProps) => {
   return (
-    <ThemeProvider>
-      <MotionConfig reducedMotion="user">
-        {children}
-      </MotionConfig>
-    </ThemeProvider>
+    <SessionProvider>
+      <AppStateProvider>
+        <ThemeProvider>
+          <MotionConfig reducedMotion="user">
+            {children}
+          </MotionConfig>
+        </ThemeProvider>
+      </AppStateProvider>
+    </SessionProvider>
   );
 };
 

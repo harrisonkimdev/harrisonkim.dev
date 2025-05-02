@@ -1,6 +1,6 @@
 'use client'
 
-import { useAppState } from '@/layouts/providers/AppStateContext'
+import { useAppState } from '@/components/providers/AppStateContext'
 import { useSession, signOut } from 'next-auth/react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'

@@ -1,6 +1,6 @@
 import 'react-toastify/dist/ReactToastify.css'
 import { IComment } from '@/interfaces'
-import { timeSince } from '@/utils/functions'
+import { timeSince } from '@/lib/functions'
 import { ToastContainer, toast } from 'react-toastify'
 import { useState } from 'react'
 import { FaRegTrashCan, FaCheck, FaXmark } from 'react-icons/fa6'

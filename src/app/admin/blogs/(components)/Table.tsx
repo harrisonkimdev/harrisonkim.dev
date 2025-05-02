@@ -1,14 +1,8 @@
 'use client'
 
-import { IBlog, IComment } from '@/interfaces'
+import { IBlog } from '@/interfaces'
 import { useEffect, useState } from 'react'
-import { convertDate } from '@/utils/functions'
-import {
-  Table, TableHeader, TableHeaderCell,
-  TableBody, TableRow, TableCell, TableFooter,
-  Menu, MenuItem, Icon, Label,
-} from 'semantic-ui-react'
-
+import { convertDate } from '@/lib/functions'
 import Link from 'next/link'
 import { FaPenToSquare, FaRegTrashCan } from 'react-icons/fa6'
 
@@ -52,72 +46,66 @@ const TableComponent = ({ data }: { data: IBlog[] }) => {
   }
 
   return (
-    <Table celled>
-      <TableHeader>
-        <TableRow>
-          <TableHeaderCell width={3}>Title</TableHeaderCell>
-          <TableHeaderCell width={5}>Content</TableHeaderCell>
-          <TableHeaderCell width={3}>Updated At</TableHeaderCell>
-          <TableHeaderCell width={1}>Update/Delete</TableHeaderCell>
-        </TableRow>
-      </TableHeader>
+    <table className="min-w-full border-collapse border border-gray-300">
+      <thead>
+        <tr className="bg-gray-100">
+          <th className="w-3/12 border border-gray-300 px-4 py-2 text-left">Title</th>
+          <th className="w-5/12 border border-gray-300 px-4 py-2 text-left">Content</th>
+          <th className="w-3/12 border border-gray-300 px-4 py-2 text-left">Updated At</th>
+          <th className="w-1/12 border border-gray-300 px-4 py-2 text-center">Update/Delete</th>
+        </tr>
+      </thead>
 
-      <TableBody>
-        { blog?.map((blog: IBlog) => {
-          return (
-            <TableRow key={blog._id} className='hover:bg-stone-100'>
-              {/* Title */}
-              <TableCell>
-                <Link href={`/blog/${blog._id}`}
-                  className='text-stone-800 hover:text-stone-400 hover:underline'
-                >{ blog.title }</Link>
-              </TableCell>
-              
-              {/* Content */}
-              <TableCell>
-                <div dangerouslySetInnerHTML={{ __html: blog.content }} className='h-[3rem] overflow-hidden line-clamp-2' />
-              </TableCell>
-              
-              {/* Updated at */}
-              <TableCell>
-                <span className='whitespace-nowrap'>{ convertDate(blog.updatedAt) }</span>
-              </TableCell>
-              
-              {/* Update/Delete */}
-              <TableCell>
-                <div className='flex gap-3 justify-center'>
-                  <Link href={`/admin/blogs/${blog._id}/edit`}
-                    className='text-xl text-stone-800 hover:text-stone-800'
-                  ><FaPenToSquare /></Link>
-                  <button onClick={() => { deleteBlog(blog._id) }}
-                    className='text-xl text-stone-800 hover:text-stone-800'
-                  ><FaRegTrashCan /></button>
-                </div>
-              </TableCell>
-            </TableRow>
-          )
-        }) }
-      </TableBody>
+      <tbody>
+        {blog?.map((blog: IBlog) => (
+          <tr key={blog._id} className="hover:bg-gray-50">
+            {/* Title */}
+            <td className="border border-gray-300 px-4 py-2">
+              <Link href={`/blog/${blog._id}`}
+                className="text-stone-800 hover:text-stone-400 hover:underline"
+              >{blog.title}</Link>
+            </td>
+            
+            {/* Content */}
+            <td className="border border-gray-300 px-4 py-2">
+              <div dangerouslySetInnerHTML={{ __html: blog.content }} className="h-12 overflow-hidden line-clamp-2" />
+            </td>
+            
+            {/* Updated at */}
+            <td className="border border-gray-300 px-4 py-2">
+              <span className="whitespace-nowrap">{convertDate(blog.updatedAt)}</span>
+            </td>
+            
+            {/* Update/Delete */}
+            <td className="border border-gray-300 px-4 py-2">
+              <div className="flex gap-3 justify-center">
+                <Link href={`/admin/blogs/${blog._id}/edit`}
+                  className="text-xl text-stone-800 hover:text-stone-800"
+                ><FaPenToSquare /></Link>
+                <button onClick={() => { deleteBlog(blog._id) }}
+                  className="text-xl text-stone-800 hover:text-stone-800"
+                ><FaRegTrashCan /></button>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
 
-      <TableFooter>
-        <TableRow>
-          <TableHeaderCell colSpan='4'>
-            <Menu floated='right' pagination>
-              <MenuItem as='a' icon>
-                <Icon name='chevron left' />
-              </MenuItem>
-              <MenuItem as='a'>1</MenuItem>
-              <MenuItem as='a'>2</MenuItem>
-              <MenuItem as='a'>3</MenuItem>
-              <MenuItem as='a'>4</MenuItem>
-              <MenuItem as='a' icon>
-                <Icon name='chevron right' />
-              </MenuItem>
-            </Menu>
-          </TableHeaderCell>
-        </TableRow>
-      </TableFooter>
-    </Table>
+      <tfoot>
+        <tr>
+          <td colSpan={4} className="border border-gray-300 px-4 py-2">
+            <div className="flex justify-end gap-2">
+              <button className="px-3 py-1 border rounded">&lt;</button>
+              <button className="px-3 py-1 border rounded">1</button>
+              <button className="px-3 py-1 border rounded">2</button>
+              <button className="px-3 py-1 border rounded">3</button>
+              <button className="px-3 py-1 border rounded">4</button>
+              <button className="px-3 py-1 border rounded">&gt;</button>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
   )
 }
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { IBlog } from '@/interfaces'
-import { timeSince } from '@/utils/functions'
+import { timeSince } from '@/lib/functions'
 import Link from 'next/link'
 import Image from 'next/image'
 

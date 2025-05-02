@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { connectToDB } from '@/utils/db'
+import { connectToDB } from '@/lib/db'
 import Blog from '@/models/blog'
 import { IComment } from '@/interfaces'
 

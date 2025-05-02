@@ -3,13 +3,33 @@
 import { useParams } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
-import projectList from "@/assets/project_list.json"
+import { promises as fs } from 'fs'
+import path from 'path'
 
-const ProjectPage = () => {
+interface Project {
+  id: number;
+  name: string;
+  thumbnail: string;
+  description: string;
+  link: string;
+}
+
+interface ProjectList {
+  projects: Project[];
+}
+
+async function getProjectData(): Promise<ProjectList> {
+  const filePath = path.join(process.cwd(), 'public', 'assets', 'project_list.json')
+  const fileData = await fs.readFile(filePath, 'utf8')
+  return JSON.parse(fileData)
+}
+
+const ProjectPage = async () => {
   const params = useParams()
+  const projectList = await getProjectData()
 
-  const projectItem = projectList.projects.find((project) => {
-    return project.id === Number(params.id)
+  const projectItem = projectList.projects.find((project: Project) => {
+    return project.id.toString() === params.id
   })
 
   if (projectItem) {

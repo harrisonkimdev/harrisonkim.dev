@@ -1,8 +1,9 @@
 "use client"
 
-import { useAppState } from '@/layouts/providers/AppStateContext'
-import NavBar from "@/layouts/NavBar"
-import SideBar from '@/layouts/SideBar'
+import { useAppState } from '@/components/providers/AppStateContext'
+import { useEffect } from 'react'
+import NavBar from "@/components/layout/NavBar"
+import SideBar from '@/components/layout/SideBar'
 import TopArrow from "@/components/TopArrow"
 // import Footer from "@/layouts/Footer"
 

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
-import { connectToDB } from '@/utils/db'
+import { connectToDB } from '@/lib/db'
 import bcrypt from 'bcryptjs' // Ensure correct import
-import { signJwtAccessToken } from '@/utils/jwt'
+import { signJwtAccessToken } from '@/lib/jwt'
 
 export const POST = async (req: Request) => {
   const body = await req.json()

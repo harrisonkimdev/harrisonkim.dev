@@ -1,8 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { getServerSession } from 'next-auth/next'
-import { connectToDB } from '@/utils/db'
+import { getServerSession } from 'next-auth'
+import { connectToDB } from '@/lib/db'
 import { Session } from 'next-auth'
 import Blog from '@/models/blog'
+import { authOptions } from '@/lib/auth'
 
 const connectToDatabase = async () => {
   try {
