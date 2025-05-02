@@ -1,34 +1,18 @@
-"use client"
-
 import { useParams } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
-import { promises as fs } from 'fs'
-import path from 'path'
+import { projectList, type Project } from "@/data/projects"
 
-interface Project {
-  id: number;
-  name: string;
-  thumbnail: string;
-  description: string;
-  link: string;
+async function getProjectData(): Promise<Project[]> {
+  console.log("getProjectData")
+  return projectList
 }
 
-interface ProjectList {
-  projects: Project[];
-}
+const ProjectPage = async ({ params }: { params: { id: string } }) => {
+  console.log("ProjectPage")
+  const projects = await getProjectData()
 
-async function getProjectData(): Promise<ProjectList> {
-  const filePath = path.join(process.cwd(), 'public', 'assets', 'project_list.json')
-  const fileData = await fs.readFile(filePath, 'utf8')
-  return JSON.parse(fileData)
-}
-
-const ProjectPage = async () => {
-  const params = useParams()
-  const projectList = await getProjectData()
-
-  const projectItem = projectList.projects.find((project: Project) => {
+  const projectItem = projects.find((project: Project) => {
     return project.id.toString() === params.id
   })
 
