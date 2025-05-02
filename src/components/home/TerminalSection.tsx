@@ -26,7 +26,7 @@ const TerminalSection = () => {
   }, [visibleLines, terminalLines.length]);
 
   return (
-    <div className="terminal-window w-full max-w-3xl mx-auto">
+    <div className="terminal-window w-full max-w-3xl mx-auto" data-testid="terminal-window">
       {/* Terminal header */}
       <div className="flex items-center gap-2 bg-gray-900 p-2 border-b border-gray-700">
         <div className="w-3 h-3 rounded-full bg-red-500"></div>
