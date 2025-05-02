@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth/next'
 import { connectToDB } from '@/utils/db'
 import { Session } from 'next-auth'
 import Blog from '@/models/blog'
+import { authOptions } from '@/utils/auth'
 
 let isConnected = false
 
@@ -28,42 +29,63 @@ const checkAuthorization = (session: Session | null) => {
 
 const parseRequestParams = (req: NextRequest) => {
   const { searchParams } = new URL(req.url)
-  const searchQuery = searchParams.get('searchQuery')
+  const searchQuery = searchParams.get('query')
   const pageSize = parseInt(searchParams.get('pageSize') || '10', 10)
-  const currentPage = parseInt(searchParams.get('currentPage') || '1', 10)
-  return { searchQuery, pageSize, currentPage }
+  const page = parseInt(searchParams.get('page') || '1', 10)
+  const tag = searchParams.get('tag')
+  return { searchQuery, pageSize, page, tag }
 }
 
-const buildQuery = (searchQuery: string | null) => {
-  if (!searchQuery) return {}
-  const regexQuery = new RegExp(searchQuery, 'i')
-  return {
-    $or: [
+const buildQuery = (searchQuery: string | null, tag: string | null) => {
+  const query: any = {}
+  
+  if (searchQuery) {
+    const regexQuery = new RegExp(searchQuery, 'i')
+    query.$or = [
       { title: { $regex: regexQuery } },
       { content: { $regex: regexQuery } },
       { tags: { $in: [regexQuery] } },
-    ],
+    ]
   }
+  
+  if (tag) {
+    query.tags = { $in: [tag] }
+  }
+
+  return query
 }
 
 export const GET = async (req: NextRequest) => {
-  const { searchQuery, pageSize, currentPage } = parseRequestParams(req)
+  const { searchQuery, pageSize, page, tag } = parseRequestParams(req)
 
   try {
     await connectToDatabase()
-    const query = buildQuery(searchQuery)
+    const query = buildQuery(searchQuery, tag)
 
-    const [totalDocuments, blogs] = await Promise.all([
-      Blog.countDocuments(query),
-      Blog.find(query)
-        .skip(pageSize * (currentPage - 1))
-        .limit(pageSize)
-        .exec(),
-    ])
+    const totalBlogs = await Blog.countDocuments(query)
+    
+    const blogs = await Blog.find(query)
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * pageSize)
+      .limit(pageSize)
+      .lean()
 
-    const lastPage = Math.ceil(totalDocuments / pageSize)
+    const totalPages = Math.ceil(totalBlogs / pageSize)
+    const hasNextPage = page < totalPages
+    const hasPrevPage = page > 1
+
     console.log('Retrieved blog posts.')
-    return NextResponse.json({ blogs, lastPage }, { status: 200 })
+    return NextResponse.json({
+      blogs,
+      pagination: {
+        total: totalBlogs,
+        totalPages,
+        currentPage: page,
+        pageSize,
+        hasNextPage,
+        hasPrevPage,
+      }
+    }, { status: 200 })
   } catch (err: any) {
     console.error('Error retrieving blog posts:', err.message)
     return NextResponse.json({ message: err.message }, { status: 500 })
@@ -71,16 +93,16 @@ export const GET = async (req: NextRequest) => {
 }
 
 export const POST = async (req: NextRequest) => {
-  const session = await getServerSession()
+  const session = await getServerSession(authOptions)
   checkAuthorization(session)
 
   try {
     const { title, content, tags } = await req.json()
     console.log('Received input:', { title, content, tags })
 
-    if (!title || title.length === 0) {
+    if (!title || !content) {
       return NextResponse.json(
-        { message: 'Invalid input: missing title.' },
+        { error: 'Title and content are required' },
         { status: 400 }
       )
     }
@@ -90,16 +112,19 @@ export const POST = async (req: NextRequest) => {
     const newBlog = new Blog({
       title,
       content,
-      tags,
+      tags: tags || [],
       createdAt: new Date(),
       updatedAt: new Date(),
     })
 
     await newBlog.save()
     console.log('New blog post created:', newBlog)
-    return NextResponse.json({ message: 'A new blog post created.' }, { status: 201 })
+    return NextResponse.json({ message: 'Blog post created successfully', blog: newBlog }, { status: 201 })
   } catch (err: any) {
-    console.error('Error posting a blog post:', err.message)
-    return NextResponse.json({ message: err.message }, { status: 500 })
+    console.error('Error creating blog post:', err.message)
+    return NextResponse.json({ error: 'Failed to create blog post' }, { status: 500 })
   }
 }
+
+// Cache control
+export const dynamic = 'force-dynamic'

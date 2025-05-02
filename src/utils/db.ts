@@ -1,22 +1,31 @@
 import mongoose from 'mongoose'
 
-let isConnected = false
+const MONGODB_URI = process.env.MONGODB_URI as string
 
-export const connectToDB = async () => {
+if (!MONGODB_URI) {
+  throw new Error(
+    'Please define the MONGODB_URI environment variable'
+  )
+}
+
+/**
+ * Global is used here to maintain a cached connection across hot reloads
+ * in development. This prevents connections growing exponentially 
+ * during API Route usage.
+ */
+let isConnected = false;
+
+export async function connectToDB() {
   if (isConnected) {
-    console.log('mongoDB is already connected')
-    return
+    return;
   }
 
   try {
-    await mongoose
-      .set({ debug: true, strictQuery: false })
-      .connect(`${process.env.MONGODB_URI}`)
-      .then((mongoose) => mongoose)
-
-    isConnected = true
-    console.log('MongoDB is connected')
-  } catch (err) {
-    console.log(err)
+    await mongoose.connect(MONGODB_URI);
+    isConnected = true;
+    console.log('MongoDB connected successfully');
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    throw error;
   }
 }

@@ -3,23 +3,27 @@ const path = require('path')
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    appDir: true,
-    serverComponentsExternalPackages: ["mongoose"],
-    // optimizeFonts: false,
-  },
-  webpack: (config) => {
-    config.experiments = { ...config.experiments, topLevelAwait: true }
-    return config
+    serverComponentsExternalPackages: ['mongoose'],
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
-      },
-    ],
+    domains: ['i.imgur.com', 'images.unsplash.com'],
+    formats: ['image/avif', 'image/webp'],
+  },
+  webpack(config) {
+    // Audio support
+    config.module.rules.push({
+      test: /\.(ogg|mp3|wav|mpe?g)$/i,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            name: '[name]-[hash].[ext]',
+          },
+        },
+      ],
+    });
+    
+    return config;
   },
 }
 
