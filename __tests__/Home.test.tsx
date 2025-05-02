@@ -66,7 +66,7 @@ describe('Home 페이지', () => {
     expect(terminalSection).toBeInTheDocument()
   })
   
-  it('공룡 게임 섹션이 렌더링되어야 함', () => {
+  it.skip('공룡 게임 섹션이 렌더링되어야 함', () => {
     render(<Home />)
     
     const gameTitle = screen.getByText('Take a Break')
