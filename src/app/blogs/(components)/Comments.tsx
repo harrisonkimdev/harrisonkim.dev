@@ -1,5 +1,6 @@
 "use client"
 
+import { memo } from 'react'
 import { IComment } from "@/interfaces/index"
 import Comment from "@/app/blogs/(components)/Comment"
 
@@ -9,19 +10,20 @@ interface ICommentProps {
   refreshPage: () => void
 }
 
-const Comments = ({ blogId, comments, refreshPage } : ICommentProps) => {
+const Comments = memo(({ blogId, comments, refreshPage } : ICommentProps) => {
   return (
     <div className="space-y-3">
-      { comments?.map((comment: IComment, index) => (
+      {comments?.map((comment: IComment, index) => (
         <Comment
           key={index}
           blogId={blogId}
-          refreshPage={() => refreshPage()}
+          refreshPage={refreshPage}
           comment={comment}
         />
       ))}
     </div>
   )
-}
+})
+Comments.displayName = 'Comments'
 
 export default Comments
