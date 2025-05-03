@@ -42,5 +42,13 @@ The contact form uses [Resend](https://resend.com) for sending emails. To set it
 3. Create a `.env.local` file in the root directory with:
    ```
    RESEND_API_KEY=your_api_key_here
+   
+   # Optional - configure recipient email
+   CONTACT_RECIPIENT_EMAIL=your_email@example.com
    ```
-4. (Optional) Update the recipient email in `src/app/api/contact/route.ts`
+4. **Important for test mode**: In free tier accounts, Resend only allows sending to verified email addresses. Make sure to:
+   - Either verify your recipient email in the Resend dashboard
+   - Or configure your domain for production use 
+   - See [Resend Documentation](https://resend.com/docs/dashboard/domains/introduction) for details
+
+5. Restart your development server to load the environment variables
