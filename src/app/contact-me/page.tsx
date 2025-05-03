@@ -269,21 +269,25 @@ export default function ContactPage() {
     }
     
     try {
-      // 실제 앱에서는 API에 데이터를 전송
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // });
+      // 실제 API에 데이터 전송
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
       
-      // if (!response.ok) throw new Error('Failed to send message');
+      const data = await response.json();
       
-      // 데모를 위한 성공 시뮬레이션
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
       
       dispatch({ type: 'SUBMIT_SUCCESS' });
-    } catch (err) {
-      dispatch({ type: 'SUBMIT_ERROR', error: 'Failed to send message. Please try again later.' });
+    } catch (err: any) {
+      dispatch({ 
+        type: 'SUBMIT_ERROR', 
+        error: err.message || 'Failed to send message. Please try again later.' 
+      });
     }
   };
   
