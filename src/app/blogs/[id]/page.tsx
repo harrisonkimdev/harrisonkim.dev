@@ -2,7 +2,7 @@
 
 import { IBlog } from "@/interfaces"
 import { useRouter } from "next/navigation"
-import { useReducer, useEffect, memo } from "react"
+import { use, useReducer, useEffect, memo } from "react"
 import { convertDate } from "@/lib/functions"
 import Image from "next/image"
 import CommentContainer from "app/blogs/(components)/CommentContainer"
@@ -69,7 +69,8 @@ const BlogImage = memo(() => (
 ))
 BlogImage.displayName = 'BlogImage'
 
-const BlogShowPage = ({ params }: { params: { id: string } }) => {
+const BlogShowPage = ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = use(params)
   const router = useRouter()
 
   // 초기 상태
@@ -92,8 +93,8 @@ const BlogShowPage = ({ params }: { params: { id: string } }) => {
       }
     }
 
-    fetchBlog(params.id)
-  }, [params.id, refresh])
+    fetchBlog(id)
+  }, [id, refresh])
 
   const handleRefresh = () => dispatch({ type: 'REFRESH' })
 

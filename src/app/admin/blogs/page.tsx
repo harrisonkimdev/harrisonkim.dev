@@ -41,7 +41,8 @@ const AdminBlogsIndexPage = () => {
   return (
     <div className='max-w-5xl mx-auto p-8 md:p-16'>
       <h1 className='text-3xl font-medium'>Manage Blogs</h1>
-      <div className='flex justify-end'>
+      <div className='flex justify-end gap-4'>
+        <Link href='/admin/messages' className='p-2 text-lime-400 underline'>Messages</Link>
         <Link href='/admin/blogs/create' className='
           p-2 shadow-xl font-medium text-stone-800 hover:text-stone-800 bg-white hover:bg-stone-100
         '>Create</Link>

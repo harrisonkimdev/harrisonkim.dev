@@ -15,7 +15,7 @@ const TableComponent = ({ data }: { data: IBlog[] }) => {
 
   const deleteBlog = async (id: string) => {
     try {
-      const res = await fetch(`/api/blog/${id}`, {
+      const res = await fetch(`/api/blogs/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -32,14 +32,14 @@ const TableComponent = ({ data }: { data: IBlog[] }) => {
 
   const fetchBlogData = async () => {
     try {
-      const res = await fetch(`/api/blog`, {
+      const res = await fetch(`/api/blogs`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         }
       })
       const data = await res.json()
-      setBlog(data.blog)
+      setBlog(data.blogs)
     } catch (err) {
       console.error(err)
     }
@@ -61,7 +61,7 @@ const TableComponent = ({ data }: { data: IBlog[] }) => {
           <tr key={blog._id} className="hover:bg-gray-50">
             {/* Title */}
             <td className="border border-gray-300 px-4 py-2">
-              <Link href={`/blog/${blog._id}`}
+              <Link href={`/blogs/${blog._id}`}
                 className="text-stone-800 hover:text-stone-400 hover:underline"
               >{blog.title}</Link>
             </td>

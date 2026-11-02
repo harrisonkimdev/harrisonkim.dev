@@ -1,92 +1,32 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { connectToDB } from '@/lib/db'
-import { Session } from 'next-auth'
-import Blog from '@/models/blog'
-import { authOptions } from '@/lib/auth'
+import { requireAdmin } from '@/lib/admin'
+import { apiError, blogInput, documentId, readJson } from '@/lib/api'
+import { deleteBlog, getBlog, updateBlog } from '@/lib/blogs-store'
 
-const connectToDatabase = async () => {
+type Context = { params: Promise<{ id: string }> }
+const notFound = () => NextResponse.json({ message: 'Blog post not found.' }, { status: 404 })
+
+export async function GET(_request: NextRequest, { params }: Context) {
   try {
-    await connectToDB()
-    console.log('Connected to the database.')
-  } catch (err: any) {
-    console.error('Error connecting to the database:', err.message)
-    throw new Error('Database connection error')
-  }
+    const blog = await getBlog(documentId((await params).id))
+    return blog ? NextResponse.json({ blog }) : notFound()
+  } catch (error) { return apiError(error, 'Unable to load blog post.') }
 }
 
-const checkAuthorization = (session: Session | null) => {
-  if (!session || session.user?.email !== 'harrisonkimdev@gmail.com') {
-    console.error('Unauthorized access attempt.')
-    return NextResponse.json({ message: 'You are not allowed to perform this action.' }, { status: 403 })
-  }
+export async function PATCH(request: NextRequest, { params }: Context) {
+  const unauthorized = await requireAdmin(request)
+  if (unauthorized) return unauthorized
+  try {
+    const updated = await updateBlog(documentId((await params).id), blogInput(await readJson(request)))
+    return updated ? NextResponse.json({ message: 'Blog post updated successfully.' }) : notFound()
+  } catch (error) { return apiError(error, 'Unable to update blog post.') }
 }
 
-export const GET = async (req: NextRequest, { params }: { params: { id: string } }) => {
+export async function DELETE(request: NextRequest, { params }: Context) {
+  const unauthorized = await requireAdmin(request)
+  if (unauthorized) return unauthorized
   try {
-    await connectToDatabase()
-    const blog = await Blog.findOne({ _id: params.id })
-
-    if (blog) {
-      console.log('Blog post retrieved successfully.')
-      return NextResponse.json({ blog }, { status: 200 })
-    } else {
-      console.error('Blog post not found.')
-      return NextResponse.json({ message: 'Blog post not found.' }, { status: 404 })
-    }
-  } catch (err: any) {
-    console.error('Error retrieving blog post:', err.message)
-    return NextResponse.json({ message: err.message }, { status: 500 })
-  }
-}
-
-export const PATCH = async (req: NextRequest, { params }: { params: { id: string } }) => {
-  const session = await getServerSession()
-  checkAuthorization(session)
-
-  const { title, content, tags } = await req.json()
-  if (!title) {
-    return NextResponse.json({ message: 'Invalid input: missing title.' }, { status: 400 })
-  }
-
-  try {
-    await connectToDatabase()
-    const updatedBlog = await Blog.findByIdAndUpdate(
-      params.id,
-      { title, content, tags, updatedAt: Date.now() },
-      { new: true }
-    )
-
-    if (updatedBlog) {
-      console.log('Blog post updated successfully.')
-      return NextResponse.json({ message: 'Blog post updated successfully.' }, { status: 200 })
-    } else {
-      console.error('Blog post not found.')
-      return NextResponse.json({ message: 'Blog post not found.' }, { status: 404 })
-    }
-  } catch (err: any) {
-    console.error('Error updating blog post:', err.message)
-    return NextResponse.json({ message: err.message }, { status: 500 })
-  }
-}
-
-export const DELETE = async (req: NextRequest, { params }: { params: { id: string } }) => {
-  const session = await getServerSession()
-  checkAuthorization(session)
-
-  try {
-    await connectToDatabase()
-    const deletedBlog = await Blog.deleteOne({ _id: params.id })
-
-    if (deletedBlog.deletedCount > 0) {
-      console.log('Blog post deleted successfully.')
-      return NextResponse.json({ message: 'Blog post deleted successfully.' }, { status: 200 })
-    } else {
-      console.error('Blog post not found.')
-      return NextResponse.json({ message: 'Blog post not found.' }, { status: 404 })
-    }
-  } catch (err: any) {
-    console.error('Error deleting blog post:', err.message)
-    return NextResponse.json({ message: err.message }, { status: 500 })
-  }
+    const deleted = await deleteBlog(documentId((await params).id))
+    return deleted ? NextResponse.json({ message: 'Blog post deleted successfully.' }) : notFound()
+  } catch (error) { return apiError(error, 'Unable to delete blog post.') }
 }

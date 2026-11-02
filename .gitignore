@@ -29,3 +29,14 @@ yarn-error.log*
 
 # vercel
 .vercel
+# TypeScript incremental cache
+*.tsbuildinfo
+
+# Local test caches
+.cache/
+
+# Firebase local state and emulator logs
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*

@@ -1,4 +1,3 @@
-import { useParams } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { projectList, type Project } from "@/data/projects"
@@ -8,12 +7,12 @@ async function getProjectData(): Promise<Project[]> {
   return projectList
 }
 
-const ProjectPage = async ({ params }: { params: { id: string } }) => {
-  console.log("ProjectPage")
+const ProjectPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params
   const projects = await getProjectData()
 
   const projectItem = projects.find((project: Project) => {
-    return project.id.toString() === params.id
+    return project.id.toString() === id
   })
 
   if (projectItem) {

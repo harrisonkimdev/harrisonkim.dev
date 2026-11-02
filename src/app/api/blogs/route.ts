@@ -1,130 +1,29 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { connectToDB } from '@/lib/db'
-import { Session } from 'next-auth'
-import Blog from '@/models/blog'
-import { authOptions } from '@/lib/auth'
+import { requireAdmin } from '@/lib/admin'
+import { apiError, blogInput, readJson, RequestError } from '@/lib/api'
+import { createBlog, listBlogs } from '@/lib/blogs-store'
 
-let isConnected = false
-
-const connectToDatabase = async () => {
-  if (!isConnected) {
-    try {
-      await connectToDB()
-      isConnected = true
-      console.log('Connected to the database.')
-    } catch (err: any) {
-      console.error('Error connecting to the database:', err.message)
-      throw new Error('Database connection error')
-    }
-  }
-}
-
-const checkAuthorization = (session: Session | null) => {
-  if (!session || session.user?.email !== 'harrisonkimdev@gmail.com') {
-    console.error('Unauthorized access attempt.')
-    return NextResponse.json({ message: 'You are not allowed to perform this action.' }, { status: 403 })
-  }
-}
-
-const parseRequestParams = (req: NextRequest) => {
-  const { searchParams } = new URL(req.url)
-  const searchQuery = searchParams.get('query')
-  const pageSize = parseInt(searchParams.get('pageSize') || '10', 10)
-  const page = parseInt(searchParams.get('page') || '1', 10)
-  const tag = searchParams.get('tag')
-  return { searchQuery, pageSize, page, tag }
-}
-
-const buildQuery = (searchQuery: string | null, tag: string | null) => {
-  const query: any = {}
-  
-  if (searchQuery) {
-    const regexQuery = new RegExp(searchQuery, 'i')
-    query.$or = [
-      { title: { $regex: regexQuery } },
-      { content: { $regex: regexQuery } },
-      { tags: { $in: [regexQuery] } },
-    ]
-  }
-  
-  if (tag) {
-    query.tags = { $in: [tag] }
-  }
-
-  return query
-}
-
-export const GET = async (req: NextRequest) => {
-  const { searchQuery, pageSize, page, tag } = parseRequestParams(req)
-
+export async function GET(request: NextRequest) {
   try {
-    await connectToDatabase()
-    const query = buildQuery(searchQuery, tag)
-
-    const totalBlogs = await Blog.countDocuments(query)
-    
-    const blogs = await Blog.find(query)
-      .sort({ createdAt: -1 })
-      .skip((page - 1) * pageSize)
-      .limit(pageSize)
-      .lean()
-
-    const totalPages = Math.ceil(totalBlogs / pageSize)
-    const hasNextPage = page < totalPages
-    const hasPrevPage = page > 1
-
-    console.log('Retrieved blog posts.')
-    return NextResponse.json({
-      blogs,
-      pagination: {
-        total: totalBlogs,
-        totalPages,
-        currentPage: page,
-        pageSize,
-        hasNextPage,
-        hasPrevPage,
-      }
-    }, { status: 200 })
-  } catch (err: any) {
-    console.error('Error retrieving blog posts:', err.message)
-    return NextResponse.json({ message: err.message }, { status: 500 })
-  }
-}
-
-export const POST = async (req: NextRequest) => {
-  const session = await getServerSession(authOptions)
-  checkAuthorization(session)
-
-  try {
-    const { title, content, tags } = await req.json()
-    console.log('Received input:', { title, content, tags })
-
-    if (!title || !content) {
-      return NextResponse.json(
-        { error: 'Title and content are required' },
-        { status: 400 }
-      )
+    const params = request.nextUrl.searchParams
+    const query = params.get('query') ?? ''
+    const tag = params.get('tag') ?? ''
+    const page = Number(params.get('page') ?? '1')
+    const pageSize = Number(params.get('pageSize') ?? '10')
+    if (!Number.isInteger(page) || page < 1 || page > 10000 || !Number.isInteger(pageSize) || pageSize < 1 || pageSize > 50 || query.length > 200 || tag.length > 100) {
+      throw new RequestError('Invalid pagination or search parameters.')
     }
-
-    await connectToDatabase()
-
-    const newBlog = new Blog({
-      title,
-      content,
-      tags: tags || [],
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    })
-
-    await newBlog.save()
-    console.log('New blog post created:', newBlog)
-    return NextResponse.json({ message: 'Blog post created successfully', blog: newBlog }, { status: 201 })
-  } catch (err: any) {
-    console.error('Error creating blog post:', err.message)
-    return NextResponse.json({ error: 'Failed to create blog post' }, { status: 500 })
-  }
+    return NextResponse.json(await listBlogs({ query, tag, page, pageSize }))
+  } catch (error) { return apiError(error, 'Unable to load blog posts.') }
 }
 
-// Cache control
+export async function POST(request: NextRequest) {
+  const unauthorized = await requireAdmin(request)
+  if (unauthorized) return unauthorized
+  try {
+    const blog = await createBlog(blogInput(await readJson(request)))
+    return NextResponse.json({ message: 'Blog post created successfully.', blog }, { status: 201 })
+  } catch (error) { return apiError(error, 'Unable to create blog post.') }
+}
+
 export const dynamic = 'force-dynamic'

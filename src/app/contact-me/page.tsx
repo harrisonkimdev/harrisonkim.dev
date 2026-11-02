@@ -74,9 +74,9 @@ const SuccessMessage = ({ onReset }: { onReset: () => void }) => (
     <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
       <FiCheck className="text-primary" size={32} />
     </div>
-    <h2 className="text-2xl font-semibold mb-2">Message Sent!</h2>
+    <h2 className="text-2xl font-semibold mb-2">Message Received!</h2>
     <p className="text-gray-300 mb-6">
-      Thanks for reaching out. I&apos;ll get back to you as soon as possible.
+      Thanks for reaching out. Your message has been saved, and I&apos;ll review it as soon as possible.
     </p>
     <button 
       onClick={onReset}

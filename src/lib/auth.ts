@@ -1,7 +1,6 @@
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { compare } from 'bcryptjs';
-import { connectToDB } from './db';
 import { JWT } from 'next-auth/jwt';
 import { Session } from 'next-auth';
 
@@ -30,7 +29,6 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Email and password required');
         }
         
-        await connectToDB();
         
         // In a real app, you would fetch the user from your database
         // This is a simple check for the site owner

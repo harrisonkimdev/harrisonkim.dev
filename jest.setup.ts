@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import React from 'react'
 
 // window.matchMedia 모킹
-Object.defineProperty(window, 'matchMedia', {
+if (typeof window !== 'undefined') Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation(query => ({
     matches: false,

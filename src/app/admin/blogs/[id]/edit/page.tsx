@@ -1,32 +1,30 @@
 'use client'
 
 import 'react-toastify/dist/ReactToastify.css'
-import 'react-quill/dist/quill.snow.css'
+import 'quill/dist/quill.snow.css'
 import '@/styles/quill-editor-custom.css'
 
 import { getSession } from 'next-auth/react'
 import { useRouter, useParams } from 'next/navigation'
 import { ToastContainer, toast } from 'react-toastify'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
+const QuillNoSSRWrapper = dynamic(() => import('@/lib/ReactQuillWrapper'), {
+  loading: () => <p>loading...</p>,
+  ssr: false,
+})
+
 const BlogEditPage = () => {
   const router = useRouter()
-  const params = useParams()
+  const params = useParams<{ id: string }>()
 
   const [title, setTitle] = useState<string>('')
   const [content, setContent] = useState<string>('')
   const [tagTitle, setTagTitle] = useState<string>('')
   const [tags, setTags] = useState<string[]>([])
 
-  // Quill editor
-  const QuillNoSSRWrapper = useMemo(() => {
-    return dynamic(() => import('@/lib/ReactQuillWrapper'), {
-      loading: () => <p>loading...</p>,
-      ssr: false,
-    })
-  }, [])
 
   const notifyInvalidComment = () => toast.warn('You might have forgotten to fill in the title.', {
     position: 'bottom-right'
@@ -37,7 +35,7 @@ const BlogEditPage = () => {
       const session = await getSession()
       if (session) {
         try {
-          const res = await fetch(`/api/blog/${id}`, {
+          const res = await fetch(`/api/blogs/${id}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -70,7 +68,7 @@ const BlogEditPage = () => {
 
     try {
       const id = Array.isArray(params.id) ? params.id[0] : params.id
-      await fetch(`/api/blog/${id}`, {
+      await fetch(`/api/blogs/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -115,7 +113,7 @@ const BlogEditPage = () => {
           <input
             type='text' id='title' placeholder='Title...'
             value={title} onChange={(e) => setTitle(e.target.value)}
-            className='w-full my-4 p-4 border'
+            className='w-full my-4 p-4 border text-stone-800'
           />
 
           <QuillNoSSRWrapper content={content} setContent={setContent} />
@@ -127,7 +125,7 @@ const BlogEditPage = () => {
                 type='text' id='tag' placeholder=''
                 value={tagTitle} onChange={(e) => setTagTitle(e.target.value)}
                 className='
-                  p-4 border
+                  p-4 border text-stone-800
                 '
               />
               <button type='button' onClick={() => addTagToArray()} className='p-4 border'>

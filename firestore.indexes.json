@@ -1,0 +1,4 @@
+{
+  "indexes": [{ "collectionGroup": "blogs", "queryScope": "COLLECTION", "fields": [{ "fieldPath": "tags", "arrayConfig": "CONTAINS" }, { "fieldPath": "createdAt", "order": "DESCENDING" }] }],
+  "fieldOverrides": [{ "collectionGroup": "blogs", "fieldPath": "content", "indexes": [] }, { "collectionGroup": "comments", "fieldPath": "passwordHash", "indexes": [] }, { "collectionGroup": "contactMessages", "fieldPath": "message", "indexes": [] }]
+}

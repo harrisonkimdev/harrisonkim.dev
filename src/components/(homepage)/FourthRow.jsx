@@ -21,14 +21,11 @@ const FourthRow = () => {
       })
     }, observerOptions)
 
-    if (fourthContent.current) {
-      observer.observe(fourthContent.current)
-    }
+    const element = fourthContent.current
+    if (element) observer.observe(element)
 
     return () => {
-      if (fourthContent.current) {
-        observer.unobserve(fourthContent.current)
-      }
+      observer.disconnect()
     }
   }, [])
 

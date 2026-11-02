@@ -1,16 +1,20 @@
 'use client'
 
-import 'react-quill/dist/quill.snow.css'
+import 'quill/dist/quill.snow.css'
 import 'react-toastify/dist/ReactToastify.css'
 import '@/styles/quill-editor-custom.css'
 
 import { getSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { ToastContainer, toast } from 'react-toastify'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
+const QuillNoSSRWrapper = dynamic(() => import('@/lib/ReactQuillWrapper'), {
+  loading: () => <p>loading...</p>,
+  ssr: false,
+})
 
 const BlogCreatePage = () => {
   const [title, setTitle] = useState<string>('')
@@ -20,13 +24,6 @@ const BlogCreatePage = () => {
 
   const router = useRouter()
 
-  // Quill editor
-  const QuillNoSSRWrapper = useMemo(() => {
-    return dynamic(() => import('@/lib/ReactQuillWrapper'), {
-      loading: () => <p>loading...</p>,
-      ssr: false,
-    })
-  }, [])
 
   const notifyInvalidComment = () => toast.warn('You might have forgotten to fill in the title.', {
     position: 'bottom-right'
@@ -52,7 +49,7 @@ const BlogCreatePage = () => {
     }
 
     try {
-      await fetch('/api/blog', {
+      await fetch('/api/blogs', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +94,7 @@ const BlogCreatePage = () => {
           <input
             type='text' id='title' placeholder='Title...'
             value={title} onChange={(e) => setTitle(e.target.value)}
-            className='w-full my-4 p-4 border'
+            className='w-full my-4 p-4 border text-stone-800'
           />
           <QuillNoSSRWrapper content={content} setContent={setContent} />
 
@@ -109,7 +106,7 @@ const BlogCreatePage = () => {
                 type='text' id='tag' placeholder=''
                 value={tagTitle} onChange={(e) => setTagTitle(e.target.value)}
                 className='
-                  p-4 border
+                  p-4 border text-stone-800
                 '
               />
               <button type='button' onClick={() => addTagToArray()} className='p-4 border'>

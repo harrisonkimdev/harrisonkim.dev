@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      next:
+        patterns: [next, eslint-config-next]
+      react:
+        patterns: [react, react-dom, '@types/react', '@types/react-dom']
+      jest:
+        patterns: [jest, jest-environment-jsdom, '@types/jest']
+      minor-and-patch:
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

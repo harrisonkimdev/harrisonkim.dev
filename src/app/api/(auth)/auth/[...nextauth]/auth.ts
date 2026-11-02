@@ -1,4 +1,5 @@
 import { NextAuthOptions } from 'next-auth'
+import { authenticateAdmin } from '@/lib/admin-credentials'
 // https://github.com/vercel/next.js/discussions/50511
 import CredentialsProvider from 'next-auth/providers/credentials'
 
@@ -18,19 +19,7 @@ const authOptions: NextAuthOptions = {
         }
       },
       async authorize(credentials) {
-        const res = await fetch(`${process.env.BASE_URL}/api/auth/login`, {
-          method: 'POST',
-          body: JSON.stringify(credentials),
-          headers: {
-            'Content-Type': 'application/json'
-          },
-        })
-        const user = await res.json()
-
-        if (res.ok && user) {
-          return user
-        }
-        return null
+        return authenticateAdmin(credentials?.password)
       }
     })
   ],

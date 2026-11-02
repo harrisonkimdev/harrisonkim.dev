@@ -149,17 +149,19 @@ const Comment = ({ blogId, refreshPage, comment } : TCommentProps) => {
       return
     }
 
-    if (comment.password !== passwordInput) {
-      dispatch({ type: 'CLEAR_PASSWORD_INPUT' })
-      Notifications.commentFailed('Password doesn\'t match. Please try again')
-      return
-    }
-
     try {
-      await fetch(`/api/comments/${comment._id}/?blogId=${blogId}`, {
+      const response = await fetch(`/api/comments/${comment._id}/?blogId=${blogId}`, {
         method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: passwordInput }),
       })
 
+      if (!response.ok) {
+        const data = await response.json()
+        dispatch({ type: 'CLEAR_PASSWORD_INPUT' })
+        Notifications.commentFailed(data.message || 'Unable to delete comment.')
+        return
+      }
       refreshPage()
     } catch (err) {
       console.error(err)
